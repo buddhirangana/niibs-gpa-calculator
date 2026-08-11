@@ -5,7 +5,24 @@
 
 import { useState, FormEvent } from 'react';
 import { SemesterRecord } from '../types';
-import { Award, Plus, Trash, BookOpen, AlertCircle, Save, Info, Download, Printer } from 'lucide-react';
+import { 
+  Award, 
+  Plus, 
+  Trash, 
+  BookOpen, 
+  AlertCircle, 
+  Save, 
+  Info, 
+  Download, 
+  Printer, 
+  Target,
+  Sparkles,
+  TrendingUp,
+  RotateCcw,
+  CheckCircle2,
+  FileSpreadsheet,
+  FileText
+} from 'lucide-react';
 import { LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend, ReferenceLine } from 'recharts';
 import { motion, AnimatePresence } from 'motion/react';
 import jsPDF from 'jspdf';
@@ -46,33 +63,33 @@ function SemesterRow({
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, scale: 0.95, transition: { duration: 0.2 } }}
-      transition={{ duration: 0.3, delay: index * 0.05 }}
-      className="py-4 flex flex-col hover:bg-white/10 dark:hover:bg-slate-800/10 px-3 rounded-2xl transition-colors space-y-3"
+      transition={{ duration: 0.25, delay: index * 0.04 }}
+      className="py-4 px-4 flex flex-col hover:bg-slate-100/50 dark:hover:bg-slate-800/30 rounded-2xl transition-all duration-200 space-y-3 border border-transparent hover:border-slate-200/60 dark:hover:border-slate-800/60"
     >
       <div className="flex items-center justify-between">
         <div className="space-y-1">
           <h4 className="font-display font-bold text-slate-900 dark:text-slate-100 text-sm sm:text-base">
             {sem.name}
           </h4>
-          <span className="text-xs text-slate-500 dark:text-slate-400 dark:text-slate-400 font-mono">
-            Completed Units: <b className="text-slate-700 dark:text-slate-300 font-bold">{sem.credits} Cr.</b>
+          <span className="text-xs text-slate-500 dark:text-slate-400 font-mono">
+            Earned Units: <b className="text-slate-800 dark:text-slate-200 font-bold">{sem.credits} Credits</b>
           </span>
         </div>
 
         <div className="flex items-center space-x-4 shrink-0">
           <div className="text-right">
-            <span className="font-mono text-lg sm:text-2xl font-extrabold text-niibs-blue dark:text-niibs-yellow leading-none block">
+            <span className="font-mono text-xl sm:text-2xl font-black text-niibs-blue dark:text-niibs-yellow leading-none block">
               {sem.gpa.toFixed(2)}
             </span>
             <span className="text-[10px] text-slate-400 font-mono uppercase tracking-wide">Term GPA</span>
           </div>
 
-          <div className="flex items-center space-x-1 border-l border-slate-200/40 dark:border-slate-800/40 pl-4 print:hidden">
+          <div className="flex items-center space-x-1 border-l border-slate-200 dark:border-slate-800 pl-4 print:hidden">
             <button
               onClick={() => setIsEditingNotes(!isEditingNotes)}
               className={`p-2 rounded-xl transition-all cursor-pointer ${
                 isEditingNotes || sem.notes 
-                  ? 'text-niibs-blue dark:text-niibs-yellow bg-niibs-blue/5 dark:bg-niibs-yellow/10' 
+                  ? 'text-niibs-blue dark:text-niibs-yellow bg-niibs-blue/10 dark:bg-niibs-yellow/15' 
                   : 'text-slate-400 hover:text-slate-600 dark:hover:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800'
               }`}
               title="Notes"
@@ -81,7 +98,7 @@ function SemesterRow({
             </button>
             <button
               onClick={() => onDelete(sem.id)}
-              className="p-2 text-slate-400 hover:text-rose-500 hover:bg-rose-50 dark:hover:bg-rose-950/20 rounded-xl transition-all cursor-pointer"
+              className="p-2 text-slate-400 hover:text-rose-600 hover:bg-rose-50 dark:hover:bg-rose-950/30 rounded-xl transition-all cursor-pointer"
               title="Remove record"
             >
               <Trash className="w-4 h-4" />
@@ -98,19 +115,19 @@ function SemesterRow({
             exit={{ height: 0, opacity: 0 }}
             className="overflow-hidden"
           >
-            <div className="pt-2 pl-1 border-t border-slate-100/50 dark:border-slate-800/30">
+            <div className="pt-2 pl-1 border-t border-slate-200/60 dark:border-slate-800/60">
               {isEditingNotes ? (
                 <div className="flex items-start space-x-2">
                   <textarea
                     value={notesDraft}
                     onChange={(e) => setNotesDraft(e.target.value)}
                     placeholder="Add a short note about this semester..."
-                    className="w-full bg-white/50 dark:bg-slate-900/50 border border-slate-200/60 dark:border-slate-800/60 rounded-xl text-xs p-2 text-slate-700 dark:text-slate-300 min-h-[60px] focus:outline-none focus:ring-1 focus:ring-niibs-blue/50 dark:focus:ring-niibs-yellow/50 resize-none font-sans"
+                    className="w-full bg-white/50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 rounded-xl text-xs p-2.5 text-slate-800 dark:text-slate-200 min-h-[60px] focus:outline-none focus:ring-2 focus:ring-niibs-yellow font-sans resize-none"
                     autoFocus
                   />
                   <button
                     onClick={handleSaveNotes}
-                    className="p-2 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-xl hover:opacity-90 transition-opacity"
+                    className="p-2.5 bg-niibs-blue dark:bg-niibs-yellow text-white dark:text-slate-950 rounded-xl hover:opacity-90 transition-opacity cursor-pointer font-bold"
                     title="Save Notes"
                   >
                     <Save className="w-4 h-4" />
@@ -118,11 +135,11 @@ function SemesterRow({
                 </div>
               ) : (
                 <p 
-                  className="text-xs text-slate-600 dark:text-slate-400 cursor-pointer hover:opacity-80 transition-opacity"
+                  className="text-xs text-slate-600 dark:text-slate-400 cursor-pointer hover:opacity-80 transition-opacity bg-slate-50 dark:bg-slate-900/40 p-2.5 rounded-xl border border-slate-200/40 dark:border-slate-800/40"
                   onClick={() => setIsEditingNotes(true)}
                   title="Click to edit notes"
                 >
-                  {sem.notes}
+                  💬 {sem.notes}
                 </p>
               )}
             </div>
@@ -172,27 +189,26 @@ export default function CgpaCalculator({ semesters, onAddSemester, onUpdateSemes
     plannerMsg = `Total degree credits must be greater than your completed credits (${totalCredits}).`;
   }
 
-
   // Predict Honors Degree Standing
   let honorsClassification = 'General Degree Standby';
-  let bannerStyle = 'bg-white/10 dark:bg-slate-800/10 border border-slate-200/30 dark:border-slate-800/30 text-slate-900 dark:text-white';
+  let bannerStyle = 'bg-white/40 dark:bg-slate-900/40 border border-slate-200/80 dark:border-slate-800/80 text-slate-900 dark:text-white';
 
   if (totalCredits > 0) {
     if (calculatedCgpa >= 3.70) {
       honorsClassification = 'First Class Honours (Distinction)';
-      bannerStyle = 'bg-niibs-yellow/15 border-l-4 border-l-niibs-yellow text-slate-900 dark:text-white';
+      bannerStyle = 'bg-gradient-to-r from-amber-500/15 via-yellow-500/5 to-transparent border border-amber-500/30 text-slate-900 dark:text-white';
     } else if (calculatedCgpa >= 3.30) {
       honorsClassification = 'Second Class Upper Division';
-      bannerStyle = 'bg-niibs-blue/10 border-l-4 border-l-niibs-blue text-slate-900 dark:text-white';
+      bannerStyle = 'bg-gradient-to-r from-niibs-blue/15 via-indigo-500/5 to-transparent border border-niibs-blue/30 text-slate-900 dark:text-white';
     } else if (calculatedCgpa >= 3.00) {
       honorsClassification = 'Second Class Lower Division';
-      bannerStyle = 'bg-niibs-green/10 border-l-4 border-l-niibs-green text-slate-900 dark:text-white';
+      bannerStyle = 'bg-gradient-to-r from-emerald-500/15 via-teal-500/5 to-transparent border border-emerald-500/30 text-slate-900 dark:text-white';
     } else if (calculatedCgpa >= 2.00) {
       honorsClassification = 'General Pass';
-      bannerStyle = 'bg-white/10 dark:bg-slate-800/10 border border-slate-200/40 dark:border-slate-800/40 text-slate-900 dark:text-white';
+      bannerStyle = 'bg-white/40 dark:bg-slate-900/40 border border-slate-200/80 dark:border-slate-800/80 text-slate-900 dark:text-white';
     } else {
       honorsClassification = 'Below Graduation Standby';
-      bannerStyle = 'bg-niibs-red/10 border-l-4 border-l-niibs-red text-slate-900 dark:text-white';
+      bannerStyle = 'bg-gradient-to-r from-rose-500/15 via-red-500/5 to-transparent border border-rose-500/30 text-slate-900 dark:text-white';
     }
   }
 
@@ -317,7 +333,7 @@ export default function CgpaCalculator({ semesters, onAddSemester, onUpdateSemes
     });
 
   return (
-    <div id="cgpa-calculator-component" className="grid grid-cols-1 lg:grid-cols-3 gap-8 relative z-10 print:block">
+    <div id="cgpa-calculator-component" className="grid grid-cols-1 lg:grid-cols-3 gap-8 relative z-10 print:block max-w-6xl mx-auto">
       
       {/* Official Print Header */}
       <div className="hidden print-only print-header">
@@ -330,54 +346,58 @@ export default function CgpaCalculator({ semesters, onAddSemester, onUpdateSemes
       <div className="lg:col-span-2 space-y-6">
         
         {/* Dynamic overall indicator card */}
-        <div className={`rounded-3xl p-6 sm:p-8 shadow-sm backdrop-blur-md flex flex-col justify-between overflow-hidden relative ${bannerStyle}`}>
+        <div className={`rounded-3xl p-6 sm:p-8 shadow-xl backdrop-blur-md flex flex-col justify-between overflow-hidden relative ${bannerStyle}`}>
           <div className="relative z-10 space-y-3">
-            <span className="text-[10px] sm:text-xs font-mono font-bold uppercase tracking-widest text-[#2d3091] dark:text-niibs-yellow">
-              Aggregated Graduation Prediction
-            </span>
-            <div className="flex items-baseline space-x-2">
-              <span className="font-mono text-5xl sm:text-6xl font-black text-slate-950 dark:text-white">
-                {calculatedCgpa.toFixed(3)}
+            <div className="flex items-center space-x-2">
+              <span className="text-[11px] sm:text-xs font-mono font-bold uppercase tracking-wider text-niibs-blue dark:text-niibs-yellow">
+                Aggregated Graduation Prediction
               </span>
-              <span className="text-xs sm:text-sm font-mono text-slate-600 dark:text-slate-400">Overall CGPA</span>
             </div>
             
-            <div className="pt-3.5 border-t border-slate-200/40 dark:border-slate-800/35">
-              <p className="text-sm sm:text-base font-display font-extrabold tracking-wide text-[#2d3091] dark:text-slate-100">
-                Predicted Status: {honorsClassification}
+            <div className="flex items-baseline space-x-3">
+              <span className="font-mono text-5xl sm:text-6xl font-black text-slate-950 dark:text-white tracking-tight">
+                {calculatedCgpa.toFixed(3)}
+              </span>
+              <span className="text-xs sm:text-sm font-mono text-slate-500 dark:text-slate-400">Overall CGPA</span>
+            </div>
+            
+            <div className="pt-4 border-t border-slate-200/60 dark:border-slate-800/60">
+              <p className="text-sm sm:text-base font-display font-extrabold tracking-wide text-niibs-blue dark:text-slate-100 flex items-center space-x-2">
+                <Sparkles className="w-4 h-4 text-niibs-yellow" />
+                <span>Predicted Status: {honorsClassification}</span>
               </p>
-              <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
-                Calculated over a database of <b className="font-mono text-slate-900 dark:text-white">{totalCredits}</b> completed units.
+              <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
+                Calculated over a database of <b className="font-mono text-slate-900 dark:text-white font-bold">{totalCredits}</b> completed units.
               </p>
             </div>
           </div>
-          <Award className="absolute -bottom-4 -right-4 w-28 h-28 opacity-5 text-niibs-blue dark:text-niibs-yellow pointer-events-none" />
+          <Award className="absolute -bottom-4 -right-4 w-32 h-32 opacity-10 text-niibs-blue dark:text-niibs-yellow pointer-events-none" />
         </div>
 
         {/* Saved historical data display ledger */}
         <motion.div
-          className="glass-card rounded-3xl p-6 shadow-sm space-y-5"
+          className="glass-card rounded-3xl p-6 sm:p-8 shadow-xl space-y-6 border border-slate-200/80 dark:border-slate-800/80"
           whileHover={{
-            y: -5,
-            boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)"
+            y: -2,
+            boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.06), 0 10px 10px -5px rgba(0, 0, 0, 0.02)"
           }}
-          transition={{
-            duration: 0.2
-          }}>
-          <div className="flex items-center justify-between">
+          transition={{ duration: 0.2 }}
+        >
+          <div className="flex items-center justify-between flex-wrap gap-3">
             <div>
-              <h3 className="font-display font-bold text-slate-900 dark:text-white text-base">
+              <h3 className="font-display font-bold text-slate-900 dark:text-white text-lg">
                 Multi-Semester Cumulative Log
               </h3>
-              <p className="text-xs text-slate-500 dark:text-slate-400">
+              <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
                 Individual academic terms currently loaded inside cumulative state memory.
               </p>
             </div>
+            
             {semesters.length > 0 && (
-              <div className="flex items-center space-x-2 print:hidden">
+              <div className="flex items-center flex-wrap gap-2 print:hidden">
                 <button
                   onClick={handlePrint}
-                  className="inline-flex items-center space-x-1.5 text-[10px] text-slate-500 hover:text-niibs-blue dark:text-slate-400 dark:hover:text-niibs-yellow font-mono font-bold uppercase tracking-wider border border-slate-200/40 dark:border-slate-800 px-3 py-1.5 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors cursor-pointer"
+                  className="inline-flex items-center space-x-1.5 text-xs text-slate-600 dark:text-slate-300 font-mono font-bold border border-slate-200 dark:border-slate-800 px-3 py-1.5 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-all cursor-pointer"
                   title="Print Report"
                 >
                   <Printer className="w-3.5 h-3.5" />
@@ -385,25 +405,26 @@ export default function CgpaCalculator({ semesters, onAddSemester, onUpdateSemes
                 </button>
                 <button
                   onClick={handleExportPdf}
-                  className="inline-flex items-center space-x-1.5 text-[10px] text-slate-500 hover:text-niibs-blue dark:text-slate-400 dark:hover:text-niibs-yellow font-mono font-bold uppercase tracking-wider border border-slate-200/40 dark:border-slate-800 px-3 py-1.5 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors cursor-pointer"
+                  className="inline-flex items-center space-x-1.5 text-xs text-slate-600 dark:text-slate-300 font-mono font-bold border border-slate-200 dark:border-slate-800 px-3 py-1.5 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-all cursor-pointer"
                   title="Download PDF Report"
                 >
-                  <Download className="w-3.5 h-3.5" />
-                  <span>PDF Report</span>
+                  <FileText className="w-3.5 h-3.5" />
+                  <span>PDF</span>
                 </button>
                 <button
                   onClick={handleExportCsv}
-                  className="inline-flex items-center space-x-1.5 text-[10px] text-slate-500 hover:text-niibs-blue dark:text-slate-400 dark:hover:text-niibs-yellow font-mono font-bold uppercase tracking-wider border border-slate-200/40 dark:border-slate-800 px-3 py-1.5 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors cursor-pointer"
+                  className="inline-flex items-center space-x-1.5 text-xs text-slate-600 dark:text-slate-300 font-mono font-bold border border-slate-200 dark:border-slate-800 px-3 py-1.5 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-all cursor-pointer"
                   title="Export to CSV"
                 >
-                  <Download className="w-3.5 h-3.5" />
+                  <FileSpreadsheet className="w-3.5 h-3.5" />
                   <span>CSV</span>
                 </button>
                 <button
                   onClick={onClearAll}
-                  className="text-[10px] text-slate-500 hover:text-niibs-red dark:text-slate-400 dark:hover:text-niibs-red font-mono font-bold uppercase tracking-wider border border-slate-200/40 dark:border-slate-800 px-3 py-1.5 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors cursor-pointer"
+                  className="inline-flex items-center space-x-1 text-xs text-rose-600 dark:text-rose-400 font-mono font-bold border border-rose-200 dark:border-rose-900/60 px-3 py-1.5 rounded-xl hover:bg-rose-50 dark:hover:bg-rose-950/30 transition-all cursor-pointer"
                 >
-                  Clear records
+                  <RotateCcw className="w-3.5 h-3.5" />
+                  <span>Clear</span>
                 </button>
               </div>
             )}
@@ -411,9 +432,8 @@ export default function CgpaCalculator({ semesters, onAddSemester, onUpdateSemes
 
           {semesters.length > 0 ? (
             <div className="space-y-6">
-              
               {totalCredits > 0 && calculatedCgpa < 3.00 && (
-                <div className="bg-rose-500/10 border border-rose-500/20 text-rose-950 dark:text-rose-200 p-4 rounded-3xl flex items-start space-x-3 animate-in fade-in zoom-in-95 duration-300">
+                <div className="bg-rose-500/10 border border-rose-500/30 text-rose-950 dark:text-rose-200 p-4.5 rounded-2xl flex items-start space-x-3 animate-in fade-in zoom-in-95 duration-200">
                   <AlertCircle className="w-5 h-5 text-rose-500 shrink-0 mt-0.5" />
                   <div className="space-y-1">
                     <h4 className="font-display font-bold text-sm">Honors Threshold Warning</h4>
@@ -425,61 +445,62 @@ export default function CgpaCalculator({ semesters, onAddSemester, onUpdateSemes
               )}
 
               {semesters.length > 0 && (
-                <div className="pt-2 pb-2 h-56 sm:h-64 w-full">
+                <div className="pt-2 pb-2 h-60 sm:h-68 w-full">
                   <ResponsiveContainer width="100%" height="100%">
-                    <LineChart data={chartData} margin={{ top: 15, right: 10, left: -20, bottom: 0 }}>
-                      <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#64748b" opacity={0.15} />
+                    <LineChart data={chartData} margin={{ top: 15, right: 15, left: -20, bottom: 0 }}>
+                      <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="rgba(148, 163, 184, 0.15)" />
                       <XAxis 
                         dataKey="name" 
                         axisLine={false} 
                         tickLine={false} 
-                        tick={{ fontSize: 10, fill: '#64748b' }} 
+                        tick={{ fontSize: 10, fill: '#64748b', fontFamily: 'JetBrains Mono' }} 
                         dy={10}
                       />
                       <YAxis 
                         domain={[0, 4.0]} 
                         axisLine={false} 
                         tickLine={false} 
-                        tick={{ fontSize: 10, fill: '#64748b' }} 
+                        tick={{ fontSize: 10, fill: '#64748b', fontFamily: 'JetBrains Mono' }} 
                       />
                       <ReferenceLine 
                         y={3.0} 
                         stroke="#ef4444" 
                         strokeDasharray="4 4" 
-                        opacity={0.5}
-                        label={{ position: 'insideBottomRight', value: 'Honors Min (3.0)', fill: '#ef4444', fontSize: 10, offset: 5 }} 
+                        opacity={0.6}
+                        label={{ position: 'insideBottomRight', value: 'Honors Min (3.0)', fill: '#ef4444', fontSize: 10, offset: 5, fontFamily: 'JetBrains Mono' }} 
                       />
                       <Tooltip 
                         contentStyle={{ 
-                          backgroundColor: 'rgba(15, 23, 42, 0.85)', 
-                          backdropFilter: 'blur(8px)',
+                          backgroundColor: 'rgba(15, 23, 42, 0.9)', 
+                          backdropFilter: 'blur(12px)',
                           borderRadius: '16px', 
-                          border: '1px solid rgba(255, 255, 255, 0.1)',
+                          border: '1px solid rgba(255, 255, 255, 0.15)',
                           color: '#f8fafc',
                           fontSize: '12px',
-                          boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)'
+                          fontWeight: 'bold',
+                          boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.3)'
                         }} 
                         itemStyle={{ color: '#e2e8f0' }}
-                        labelStyle={{ color: '#94a3b8', marginBottom: '4px' }}
+                        labelStyle={{ color: '#94a3b8', marginBottom: '4px', fontFamily: 'JetBrains Mono' }}
                       />
-                      <Legend iconType="circle" wrapperStyle={{ fontSize: '11px', paddingTop: '10px' }} />
+                      <Legend iconType="circle" wrapperStyle={{ fontSize: '11px', paddingTop: '10px', fontFamily: 'JetBrains Mono' }} />
                       <Line 
                         name="Term GPA"
                         type="monotone" 
                         dataKey="Term GPA" 
                         stroke="#2d3091" 
-                        strokeWidth={2.5} 
-                        dot={{ r: 3.5, strokeWidth: 0, fill: '#2d3091' }} 
-                        activeDot={{ r: 5, stroke: '#2d3091', strokeWidth: 2, fill: '#fff' }} 
+                        strokeWidth={3} 
+                        dot={{ r: 4, strokeWidth: 0, fill: '#2d3091' }} 
+                        activeDot={{ r: 6, stroke: '#2d3091', strokeWidth: 2, fill: '#fff' }} 
                       />
                       <Line 
                         name="Cumulative GPA"
                         type="monotone" 
                         dataKey="CGPA" 
-                        stroke="#f59e0b" 
-                        strokeWidth={2.5} 
-                        dot={{ r: 3.5, strokeWidth: 0, fill: '#f59e0b' }} 
-                        activeDot={{ r: 5, stroke: '#f59e0b', strokeWidth: 2, fill: '#fff' }} 
+                        stroke="#ffc013" 
+                        strokeWidth={3} 
+                        dot={{ r: 4, strokeWidth: 0, fill: '#ffc013' }} 
+                        activeDot={{ r: 6, stroke: '#ffc013', strokeWidth: 2, fill: '#fff' }} 
                       />
                     </LineChart>
                   </ResponsiveContainer>
@@ -487,47 +508,47 @@ export default function CgpaCalculator({ semesters, onAddSemester, onUpdateSemes
               )}
 
               {gradeChartData.length > 0 && (
-                <div className="pt-6 pb-2 h-56 sm:h-64 w-full border-t border-slate-200/40 dark:border-slate-800/40 mt-6">
-                  <h4 className="font-display font-semibold text-sm text-slate-800 dark:text-slate-200 mb-4 text-center">
+                <div className="pt-6 pb-2 h-56 sm:h-64 w-full border-t border-slate-200/80 dark:border-slate-800/80 mt-6">
+                  <h4 className="font-display font-bold text-sm text-slate-800 dark:text-slate-200 mb-4 text-center">
                     Grade Frequency Distribution
                   </h4>
                   <ResponsiveContainer width="100%" height="80%">
                     <BarChart data={gradeChartData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
-                      <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#64748b" opacity={0.15} />
+                      <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="rgba(148, 163, 184, 0.15)" />
                       <XAxis 
                         dataKey="grade" 
                         axisLine={false} 
                         tickLine={false} 
-                        tick={{ fontSize: 10, fill: '#64748b', fontWeight: 'bold' }} 
+                        tick={{ fontSize: 11, fill: '#64748b', fontWeight: 'bold', fontFamily: 'JetBrains Mono' }} 
                         dy={10}
                       />
                       <YAxis 
                         allowDecimals={false}
                         axisLine={false} 
                         tickLine={false} 
-                        tick={{ fontSize: 10, fill: '#64748b' }} 
+                        tick={{ fontSize: 10, fill: '#64748b', fontFamily: 'JetBrains Mono' }} 
                       />
                       <Tooltip 
                         contentStyle={{ 
-                          backgroundColor: 'rgba(15, 23, 42, 0.85)', 
-                          backdropFilter: 'blur(8px)',
+                          backgroundColor: 'rgba(15, 23, 42, 0.9)', 
+                          backdropFilter: 'blur(12px)',
                           borderRadius: '16px', 
-                          border: '1px solid rgba(255, 255, 255, 0.1)',
+                          border: '1px solid rgba(255, 255, 255, 0.15)',
                           color: '#f8fafc',
                           fontSize: '12px',
-                          boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)'
+                          boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.3)'
                         }} 
                         itemStyle={{ color: '#e2e8f0', fontWeight: 'bold' }}
                         labelStyle={{ color: '#94a3b8', marginBottom: '4px' }}
-                        cursor={{ fill: 'rgba(100, 116, 139, 0.1)' }}
+                        cursor={{ fill: 'rgba(148, 163, 184, 0.1)' }}
                       />
-                      <Bar dataKey="count" name="Frequency" fill="#2d3091" radius={[4, 4, 0, 0]} />
+                      <Bar dataKey="count" name="Frequency" fill="#2d3091" radius={[6, 6, 0, 0]} />
                     </BarChart>
                   </ResponsiveContainer>
                 </div>
               )}
 
-              <div className="divide-y divide-slate-200/30 dark:divide-slate-800/40">
+              <div className="divide-y divide-slate-100 dark:divide-slate-800/60 pt-2">
                 <AnimatePresence>
                   {semesters.map((sem, index) => (
                     <SemesterRow 
@@ -539,13 +560,13 @@ export default function CgpaCalculator({ semesters, onAddSemester, onUpdateSemes
                     />
                   ))}
                 </AnimatePresence>
+              </div>
             </div>
-          </div>
           ) : (
-            <div className="py-16 text-center border-2 border-dashed border-slate-200/40 dark:border-slate-800 rounded-3xl flex flex-col items-center space-y-3">
-              <BookOpen className="w-12 h-12 text-slate-400 dark:text-slate-600" strokeWidth={1.5} />
+            <div className="py-16 text-center border-2 border-dashed border-slate-200 dark:border-slate-800 rounded-3xl flex flex-col items-center space-y-3">
+              <BookOpen className="w-12 h-12 text-slate-300 dark:text-slate-600" strokeWidth={1.5} />
               <div className="space-y-1 text-center">
-                <h4 className="font-display font-semibold text-sm text-slate-700 dark:text-white">Cumulative Slate is Clean</h4>
+                <h4 className="font-display font-bold text-base text-slate-800 dark:text-white">Cumulative Slate is Clean</h4>
                 <p className="text-xs text-slate-500 dark:text-slate-400 max-w-sm mx-auto p-1 leading-relaxed">
                   Use the quick form on the right or any of the GPA calculators to save core semester benchmarks here.
                 </p>
@@ -558,21 +579,25 @@ export default function CgpaCalculator({ semesters, onAddSemester, onUpdateSemes
       {/* Manual fast entry form - Right 1 Column */}
       <div className="lg:col-span-1 space-y-6 print:hidden">
         <motion.div
-          className="glass-card p-6 rounded-3xl space-y-5 animate-in fade-in zoom-in-95 duration-200"
+          className="glass-card p-6 sm:p-7 rounded-3xl space-y-5 border border-slate-200/80 dark:border-slate-800/80 shadow-xl"
           whileHover={{
-            y: -5,
-            boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)"
+            y: -2,
+            boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.06), 0 10px 10px -5px rgba(0, 0, 0, 0.02)"
           }}
-          transition={{
-            duration: 0.2
-          }}>
-          <div className="pb-3 border-b border-slate-200/40 dark:border-slate-800/35">
-            <h3 className="font-display font-bold text-slate-950 dark:text-white text-base">
-              Add Term Record
-            </h3>
-            <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
-              Quickly append pre-calculated semester grades without loading individual subject ledger tables.
-            </p>
+          transition={{ duration: 0.2 }}
+        >
+          <div className="pb-3.5 border-b border-slate-200/80 dark:border-slate-800/80 flex items-center justify-between">
+            <div>
+              <h3 className="font-display font-bold text-slate-950 dark:text-white text-base">
+                Add Term Record
+              </h3>
+              <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
+                Quickly append pre-calculated semester grades.
+              </p>
+            </div>
+            <div className="p-2 rounded-xl bg-niibs-blue/10 dark:bg-niibs-yellow/15 text-niibs-blue dark:text-niibs-yellow">
+              <Plus className="w-4.5 h-4.5" />
+            </div>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-4">
@@ -583,10 +608,10 @@ export default function CgpaCalculator({ semesters, onAddSemester, onUpdateSemes
               </label>
               <input
                 type="text"
-                placeholder="e.g. Year 1 - Semester 1"
+                placeholder="e.g. FCIT - Year 1 Semester 1"
                 value={formData.name}
                 onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
-                className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200/50 dark:border-slate-800 bg-white/30 dark:bg-slate-900/30 text-slate-800 dark:text-slate-200 text-xs focus:ring-2 focus:ring-niibs-yellow focus:outline-none font-display font-medium backdrop-blur-md"
+                className="w-full px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 text-slate-800 dark:text-slate-200 text-xs focus:ring-2 focus:ring-niibs-yellow focus:outline-none font-display font-medium backdrop-blur-md"
               />
             </div>
 
@@ -604,7 +629,7 @@ export default function CgpaCalculator({ semesters, onAddSemester, onUpdateSemes
                   placeholder="e.g. 3.65"
                   value={formData.gpa}
                   onChange={(e) => setFormData(prev => ({ ...prev, gpa: e.target.value }))}
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200/50 dark:border-slate-800 bg-white/30 dark:bg-slate-900/30 text-slate-800 dark:text-slate-200 text-xs focus:ring-2 focus:ring-niibs-yellow focus:outline-none font-mono font-medium backdrop-blur-md"
+                  className="w-full px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 text-slate-800 dark:text-slate-200 text-xs focus:ring-2 focus:ring-niibs-yellow focus:outline-none font-mono font-medium backdrop-blur-md"
                 />
               </div>
 
@@ -620,13 +645,13 @@ export default function CgpaCalculator({ semesters, onAddSemester, onUpdateSemes
                   placeholder="e.g. 18"
                   value={formData.credits}
                   onChange={(e) => setFormData(prev => ({ ...prev, credits: e.target.value }))}
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200/50 dark:border-slate-800 bg-white/30 dark:bg-slate-900/30 text-slate-800 dark:text-slate-200 text-xs focus:ring-2 focus:ring-niibs-yellow focus:outline-none font-mono font-medium backdrop-blur-md"
+                  className="w-full px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 text-slate-800 dark:text-slate-200 text-xs focus:ring-2 focus:ring-niibs-yellow focus:outline-none font-mono font-medium backdrop-blur-md"
                 />
               </div>
             </div>
 
             {errorMsg && (
-              <div className="p-3 bg-niibs-red/10 text-niibs-red border border-niibs-red/20 text-[11px] rounded-xl leading-relaxed flex items-center space-x-2">
+              <div className="p-3 bg-rose-500/10 text-rose-600 dark:text-rose-400 border border-rose-500/20 text-xs rounded-xl leading-relaxed flex items-center space-x-2">
                 <AlertCircle className="w-4 h-4 shrink-0" />
                 <span>{errorMsg}</span>
               </div>
@@ -634,7 +659,7 @@ export default function CgpaCalculator({ semesters, onAddSemester, onUpdateSemes
 
             <button
               type="submit"
-              className="w-full inline-flex items-center justify-center space-x-1.5 px-4 py-2.5 rounded-xl text-xs font-black text-white bg-niibs-blue hover:bg-niibs-blue-light dark:bg-niibs-yellow dark:text-slate-950 transition-all shadow-sm focus:outline-none cursor-pointer"
+              className="w-full inline-flex items-center justify-center space-x-2 px-5 py-3 rounded-xl text-xs font-bold text-white bg-gradient-to-r from-niibs-blue to-indigo-700 dark:from-niibs-yellow dark:to-amber-400 dark:text-slate-950 hover:shadow-lg transition-all cursor-pointer font-display"
             >
               <Plus className="w-4 h-4" />
               <span>Log Semester Term</span>
@@ -644,21 +669,25 @@ export default function CgpaCalculator({ semesters, onAddSemester, onUpdateSemes
 
         {/* Target CGPA Planner widget */}
         <motion.div
-          className="glass-card p-6 rounded-3xl space-y-5 animate-in fade-in zoom-in-95 duration-300"
+          className="glass-card p-6 sm:p-7 rounded-3xl space-y-5 border border-slate-200/80 dark:border-slate-800/80 shadow-xl"
           whileHover={{
-            y: -5,
-            boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)"
+            y: -2,
+            boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.06), 0 10px 10px -5px rgba(0, 0, 0, 0.02)"
           }}
-          transition={{
-            duration: 0.2
-          }}>
-          <div className="pb-3 border-b border-slate-200/40 dark:border-slate-800/35">
-            <h3 className="font-display font-bold text-slate-950 dark:text-white text-base">
-              Target CGPA Planner
-            </h3>
-            <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
-              Set a target and find out what GPA you need for the remaining credits.
-            </p>
+          transition={{ duration: 0.2 }}
+        >
+          <div className="pb-3.5 border-b border-slate-200/80 dark:border-slate-800/80 flex items-center justify-between">
+            <div>
+              <h3 className="font-display font-bold text-slate-950 dark:text-white text-base">
+                Target CGPA Planner
+              </h3>
+              <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
+                Calculate needed GPA for remaining credits.
+              </p>
+            </div>
+            <div className="p-2 rounded-xl bg-amber-500/10 text-amber-500 dark:text-niibs-yellow">
+              <Target className="w-4.5 h-4.5" />
+            </div>
           </div>
 
           <div className="space-y-4">
@@ -675,7 +704,7 @@ export default function CgpaCalculator({ semesters, onAddSemester, onUpdateSemes
                   placeholder="e.g. 3.50"
                   value={targetPlan.targetCgpa}
                   onChange={(e) => setTargetPlan(prev => ({ ...prev, targetCgpa: e.target.value }))}
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200/50 dark:border-slate-800 bg-white/30 dark:bg-slate-900/30 text-slate-800 dark:text-slate-200 text-xs focus:ring-2 focus:ring-niibs-yellow focus:outline-none font-mono font-medium backdrop-blur-md"
+                  className="w-full px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 text-slate-800 dark:text-slate-200 text-xs focus:ring-2 focus:ring-niibs-yellow focus:outline-none font-mono font-medium backdrop-blur-md"
                 />
               </div>
 
@@ -689,7 +718,7 @@ export default function CgpaCalculator({ semesters, onAddSemester, onUpdateSemes
                   placeholder="e.g. 120"
                   value={targetPlan.totalDegreeCredits}
                   onChange={(e) => setTargetPlan(prev => ({ ...prev, totalDegreeCredits: e.target.value }))}
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200/50 dark:border-slate-800 bg-white/30 dark:bg-slate-900/30 text-slate-800 dark:text-slate-200 text-xs focus:ring-2 focus:ring-niibs-yellow focus:outline-none font-mono font-medium backdrop-blur-md"
+                  className="w-full px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 text-slate-800 dark:text-slate-200 text-xs focus:ring-2 focus:ring-niibs-yellow focus:outline-none font-mono font-medium backdrop-blur-md"
                 />
               </div>
             </div>
@@ -698,9 +727,9 @@ export default function CgpaCalculator({ semesters, onAddSemester, onUpdateSemes
               <div className={`p-4 rounded-2xl border ${
                 plannerStatus === 'possible' 
                   ? requiredGpa && requiredGpa > 3.7 
-                    ? 'bg-amber-500/10 border-amber-500/20 text-amber-950 dark:text-amber-200' 
-                    : 'bg-emerald-500/10 border-emerald-500/20 text-emerald-950 dark:text-emerald-200'
-                  : 'bg-rose-500/10 border-rose-500/20 text-rose-950 dark:text-rose-200'
+                    ? 'bg-amber-500/10 border-amber-500/30 text-amber-950 dark:text-amber-200' 
+                    : 'bg-emerald-500/10 border-emerald-500/30 text-emerald-950 dark:text-emerald-200'
+                  : 'bg-rose-500/10 border-rose-500/30 text-rose-950 dark:text-rose-200'
               } text-xs leading-relaxed space-y-2`}>
                 <div className="flex items-start space-x-2">
                   <AlertCircle className={`w-4 h-4 shrink-0 mt-0.5 ${
@@ -711,9 +740,9 @@ export default function CgpaCalculator({ semesters, onAddSemester, onUpdateSemes
                   <p>{plannerMsg}</p>
                 </div>
                 {plannerStatus === 'possible' && requiredGpa !== null && requiredGpa >= 0 && requiredGpa <= 4.0 && (
-                  <div className="pt-2 mt-2 border-t border-black/10 dark:border-white/10 flex justify-between items-end">
-                    <span className="font-mono text-[10px] uppercase tracking-wide opacity-80">Required Avg:</span>
-                    <span className="font-mono text-xl font-black leading-none">{requiredGpa.toFixed(2)}</span>
+                  <div className="pt-2 mt-2 border-t border-black/10 dark:border-white/10 flex justify-between items-end font-mono">
+                    <span className="text-[10px] uppercase tracking-wide opacity-80 font-bold">Required Avg:</span>
+                    <span className="text-xl font-black leading-none">{requiredGpa.toFixed(2)}</span>
                   </div>
                 )}
               </div>
@@ -723,14 +752,13 @@ export default function CgpaCalculator({ semesters, onAddSemester, onUpdateSemes
 
         {/* Informative advice widget */}
         <motion.div
-          className="glass-card p-5 rounded-3xl border-l-4 border-l-niibs-yellow flex items-start space-x-3 text-xs leading-relaxed text-slate-500 dark:text-slate-400"
+          className="glass-card p-5 rounded-3xl border-l-4 border-l-niibs-yellow flex items-start space-x-3 text-xs leading-relaxed text-slate-600 dark:text-slate-400 border-r border-t border-b border-slate-200/80 dark:border-slate-800/80"
           whileHover={{
-            y: -5,
-            boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)"
+            y: -2,
+            boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.06), 0 10px 10px -5px rgba(0, 0, 0, 0.02)"
           }}
-          transition={{
-            duration: 0.2
-          }}>
+          transition={{ duration: 0.2 }}
+        >
           <Info className="w-5 h-5 text-niibs-yellow shrink-0 mt-0.5" />
           <p>
             Your overall CGPA is computed by gathering total point values (credit hours multiplied by the GPA achieved) across all recorded terms, divided by total accumulated credits.

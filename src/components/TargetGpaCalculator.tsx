@@ -6,7 +6,7 @@ import { motion } from "motion/react";
 
 import { useState, useEffect } from 'react';
 import { TargetGPAPlan } from '../types';
-import { Target, Compass, Sparkles, CheckCircle, AlertTriangle, ArrowRight, BookOpen } from 'lucide-react';
+import { Target, Compass, Sparkles, CheckCircle2, AlertTriangle, ArrowRight, BookOpen, GraduationCap, ShieldCheck, Zap } from 'lucide-react';
 
 export default function TargetGpaCalculator() {
   const [currentCgpa, setCurrentCgpa] = useState<string>('3.25');
@@ -64,26 +64,30 @@ export default function TargetGpaCalculator() {
   };
 
   return (
-    <div id="target-gpa-calculator" className="grid grid-cols-1 lg:grid-cols-3 gap-8 relative z-10 animate-in fade-in slide-in-from-bottom-2 duration-300">
+    <div id="target-gpa-calculator" className="grid grid-cols-1 lg:grid-cols-3 gap-8 relative z-10 animate-in fade-in slide-in-from-bottom-2 duration-300 max-w-6xl mx-auto">
 
       {/* Parameter settings form panel - Left 1 Column */}
       <div className="lg:col-span-1 space-y-6">
         <motion.div
-          className="glass-card p-6 rounded-3xl space-y-5"
+          className="glass-card p-6 sm:p-7 rounded-3xl space-y-6 border border-slate-200/80 dark:border-slate-800/80 shadow-xl"
           whileHover={{
-            y: -5,
-            boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)"
+            y: -2,
+            boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.06), 0 10px 10px -5px rgba(0, 0, 0, 0.02)"
           }}
-          transition={{
-            duration: 0.2
-          }}>
-          <div className="pb-3 border-b border-slate-200/40 dark:border-slate-800/35">
-            <h3 className="font-display font-bold text-slate-950 dark:text-white text-base">
-              Target Calibration
-            </h3>
-            <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
-              Input historical statistics and targets.
-            </p>
+          transition={{ duration: 0.2 }}
+        >
+          <div className="pb-3 border-b border-slate-200/80 dark:border-slate-800/80 flex items-center justify-between">
+            <div>
+              <h3 className="font-display font-bold text-slate-950 dark:text-white text-base">
+                Target Calibration
+              </h3>
+              <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
+                Input historical statistics and targets.
+              </p>
+            </div>
+            <div className="p-2 rounded-xl bg-niibs-blue/10 dark:bg-niibs-yellow/15 text-niibs-blue dark:text-niibs-yellow">
+              <Target className="w-4.5 h-4.5" />
+            </div>
           </div>
 
           <div className="space-y-4">
@@ -99,7 +103,7 @@ export default function TargetGpaCalculator() {
                 max="4.00"
                 value={currentCgpa}
                 onChange={(e) => setCurrentCgpa(e.target.value)}
-                className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200/50 dark:border-slate-800 bg-white/30 dark:bg-slate-900/30 text-slate-800 dark:text-slate-200 text-xs focus:ring-2 focus:ring-niibs-yellow focus:outline-none font-mono font-medium backdrop-blur-md"
+                className="w-full px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 text-slate-800 dark:text-slate-200 text-xs focus:ring-2 focus:ring-niibs-yellow focus:outline-none font-mono font-medium backdrop-blur-md"
               />
             </div>
 
@@ -114,7 +118,7 @@ export default function TargetGpaCalculator() {
                 max="160"
                 value={completedCredits}
                 onChange={(e) => setCompletedCredits(e.target.value)}
-                className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200/50 dark:border-slate-800 bg-white/30 dark:bg-slate-900/30 text-slate-800 dark:text-slate-200 text-xs focus:ring-2 focus:ring-niibs-yellow focus:outline-none font-mono font-medium backdrop-blur-md"
+                className="w-full px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 text-slate-800 dark:text-slate-200 text-xs focus:ring-2 focus:ring-niibs-yellow focus:outline-none font-mono font-medium backdrop-blur-md"
               />
             </div>
 
@@ -130,7 +134,7 @@ export default function TargetGpaCalculator() {
                 max="4.00"
                 value={targetCgpa}
                 onChange={(e) => setTargetCgpa(e.target.value)}
-                className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200/50 dark:border-slate-800 bg-white/30 dark:bg-slate-900/30 text-slate-800 dark:text-slate-200 text-xs focus:ring-2 focus:ring-niibs-yellow focus:outline-none font-mono font-medium backdrop-blur-md"
+                className="w-full px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 text-slate-800 dark:text-slate-200 text-xs focus:ring-2 focus:ring-niibs-yellow focus:outline-none font-mono font-medium backdrop-blur-md"
               />
             </div>
 
@@ -145,7 +149,7 @@ export default function TargetGpaCalculator() {
                 max="100"
                 value={remainingCredits}
                 onChange={(e) => setRemainingCredits(e.target.value)}
-                className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200/50 dark:border-slate-800 bg-white/30 dark:bg-slate-900/30 text-slate-800 dark:text-slate-200 text-xs focus:ring-2 focus:ring-niibs-yellow focus:outline-none font-mono font-medium backdrop-blur-md"
+                className="w-full px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 text-slate-800 dark:text-slate-200 text-xs focus:ring-2 focus:ring-niibs-yellow focus:outline-none font-mono font-medium backdrop-blur-md"
               />
             </div>
           </div>
@@ -160,68 +164,67 @@ export default function TargetGpaCalculator() {
             
             {/* Core Required Index Card */}
             <motion.div
-              className="glass-card p-6 sm:p-8 rounded-3xl flex flex-col md:flex-row md:items-center md:justify-between gap-6 relative overflow-hidden"
+              className="glass-card p-6 sm:p-8 rounded-3xl flex flex-col md:flex-row md:items-center md:justify-between gap-6 relative overflow-hidden border border-slate-200/80 dark:border-slate-800/80 shadow-xl bg-gradient-to-r from-niibs-blue/5 via-transparent to-niibs-yellow/5"
               whileHover={{
-                y: -5,
-                boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)"
+                y: -2,
+                boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.06), 0 10px 10px -5px rgba(0, 0, 0, 0.02)"
               }}
-              transition={{
-                duration: 0.2
-              }}>
+              transition={{ duration: 0.2 }}
+            >
               <div className="space-y-2 relative z-10">
-                <span className="text-[10px] uppercase font-bold tracking-widest text-[#2d3091] dark:text-niibs-yellow font-mono">
+                <span className="text-[10px] uppercase font-bold tracking-wider text-niibs-blue dark:text-niibs-yellow font-mono block">
                   Calculated Target Path
                 </span>
-                <h3 className="font-display font-bold text-2xl text-slate-900 dark:text-white">
+                <h3 className="font-display font-black text-2xl text-slate-950 dark:text-white">
                   Incoming Semester Target
                 </h3>
-                <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed max-w-sm">
-                  Required average points across the remaining <b className="font-mono text-slate-800 dark:text-white">{plan.remainingCredits}</b> upcoming course credits.
+                <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 leading-relaxed max-w-sm">
+                  Required average points across the remaining <b className="font-mono text-slate-800 dark:text-white font-bold">{plan.remainingCredits}</b> upcoming course credits.
                 </p>
               </div>
 
               {/* Necessary GPA visual */}
-              <div className="text-center md:text-right shrink-0 p-6 bg-white/10 dark:bg-slate-800/10 rounded-2xl border border-slate-200/40 dark:border-slate-800/45 backdrop-blur-md min-w-[190px]">
-                <span className="text-[10px] text-slate-400 font-mono block uppercase tracking-wide leading-none">
+              <div className="text-center md:text-right shrink-0 p-6 bg-white/40 dark:bg-slate-900/40 rounded-2xl border border-slate-200/80 dark:border-slate-800/80 backdrop-blur-md min-w-[200px] shadow-sm">
+                <span className="text-[10px] text-slate-400 font-mono block uppercase tracking-wider font-bold">
                   Required GPA
                 </span>
-                <span className={`font-mono text-4xl sm:text-5xl font-black block mt-2.5 leading-none ${
+                <span className={`font-mono text-4xl sm:text-5xl font-black block mt-2 tracking-tight ${
                   !plan.isPossible 
-                    ? 'text-niibs-red' 
+                    ? 'text-rose-600 dark:text-rose-400' 
                     : (plan.requiredGpa || 0) > 3.6 
-                      ? 'text-niibs-yellow' 
+                      ? 'text-amber-600 dark:text-niibs-yellow' 
                       : 'text-niibs-blue dark:text-amber-400'
                 }`}>
                   {plan.requiredGpa !== null ? Math.max(0, plan.requiredGpa).toFixed(3) : 'N/A'}
                 </span>
-                <span className="text-[9px] text-slate-400 font-mono block uppercase mt-2 leading-none">
+                <span className="text-[10px] text-slate-400 font-mono block uppercase mt-2 font-bold">
                   Scale Limit: 4.000
                 </span>
               </div>
             </motion.div>
 
             {/* Feasibility assessment block */}
-            <div className={`p-5 rounded-3xl border flex items-start space-x-4 backdrop-blur-md ${
+            <div className={`p-5 rounded-3xl border flex items-start space-x-4 backdrop-blur-md shadow-sm ${
               !plan.isPossible 
-                ? 'bg-niibs-red/10 border-niibs-red/20 text-rose-950 dark:text-rose-200' 
+                ? 'bg-rose-500/10 border-rose-500/30 text-rose-950 dark:text-rose-200' 
                 : (plan.requiredGpa || 0) > 3.5 
-                  ? 'bg-niibs-yellow/10 border-niibs-yellow/20 text-amber-950 dark:text-amber-200' 
-                  : 'bg-emerald-500/10 border-emerald-500/20 text-emerald-900 dark:text-emerald-200'
+                  ? 'bg-amber-500/10 border-amber-500/30 text-amber-950 dark:text-amber-200' 
+                  : 'bg-emerald-500/10 border-emerald-500/30 text-emerald-950 dark:text-emerald-200'
             }`}>
               {!plan.isPossible ? (
-                <AlertTriangle className="w-5 h-5 shrink-0 mt-0.5 text-niibs-red" />
+                <AlertTriangle className="w-5 h-5 shrink-0 mt-0.5 text-rose-600 dark:text-rose-400" />
               ) : (
-                <CheckCircle className={`w-5 h-5 shrink-0 mt-0.5 ${(plan.requiredGpa || 0) > 3.5 ? 'text-niibs-yellow' : 'text-[#00a650]'}`} />
+                <CheckCircle2 className={`w-5 h-5 shrink-0 mt-0.5 ${(plan.requiredGpa || 0) > 3.5 ? 'text-amber-500 dark:text-niibs-yellow' : 'text-emerald-600 dark:text-emerald-400'}`} />
               )}
               <div className="space-y-1">
-                <h4 className="font-display font-bold text-sm">
+                <h4 className="font-display font-bold text-base">
                   {!plan.isPossible 
                     ? 'Target Mathematically Impossible' 
                     : (plan.requiredGpa || 0) > 3.5 
                       ? 'High Effort Required' 
                       : 'Achievable Pathway Confirmed'}
                 </h4>
-                <p className="text-xs leading-relaxed opacity-95">
+                <p className="text-xs sm:text-sm leading-relaxed opacity-95">
                   {plan.message}
                 </p>
               </div>
@@ -230,29 +233,33 @@ export default function TargetGpaCalculator() {
             {/* Strategic Advice ledger */}
             {plan.isPossible && (
               <motion.div
-                className="glass-card rounded-3xl p-6 shadow-sm space-y-4"
+                className="glass-card rounded-3xl p-6 sm:p-8 shadow-xl space-y-5 border border-slate-200/80 dark:border-slate-800/80"
                 whileHover={{
-                  y: -5,
-                  boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)"
+                  y: -2,
+                  boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.06), 0 10px 10px -5px rgba(0, 0, 0, 0.02)"
                 }}
-                transition={{
-                  duration: 0.2
-                }}>
-                <h4 className="font-display font-bold text-slate-900 dark:text-white text-base">
-                  Strategy Guide for this Goal
+                transition={{ duration: 0.2 }}
+              >
+                <h4 className="font-display font-bold text-slate-950 dark:text-white text-lg flex items-center space-x-2">
+                  <Sparkles className="w-5 h-5 text-niibs-yellow" />
+                  <span>Strategy Guide for this Goal</span>
                 </h4>
                 
-                <div className="space-y-4 text-xs font-sans">
-                  <div className="p-4 rounded-2xl bg-white/10 dark:bg-slate-900/10 border border-slate-200/40 dark:border-slate-800/40 space-y-1 backdrop-blur-md">
-                    <span className="font-mono font-bold text-slate-950 dark:text-slate-100">1. Core Weight Prioritization</span>
-                    <p className="text-slate-500 dark:text-slate-400 leading-relaxed mt-1">
+                <div className="space-y-4 text-xs sm:text-sm font-sans">
+                  <div className="p-5 rounded-2xl bg-white/40 dark:bg-slate-900/40 border border-slate-200/60 dark:border-slate-800/60 space-y-1.5 backdrop-blur-md">
+                    <span className="font-display font-bold text-slate-950 dark:text-slate-100 text-sm block">
+                      1. Core Weight Prioritization
+                    </span>
+                    <p className="text-slate-600 dark:text-slate-400 leading-relaxed text-xs sm:text-sm">
                       Focus intensively on courses with 3 or 4 credits. A higher grade in a 4-credit course provides 4x the impact of a 1-credit seminar, giving you maximum leverage to boost cumulative scores.
                     </p>
                   </div>
 
-                  <div className="p-4 rounded-2xl bg-white/10 dark:bg-slate-900/10 border border-slate-200/40 dark:border-slate-800/40 space-y-1 backdrop-blur-md">
-                    <span className="font-mono font-bold text-slate-950 dark:text-slate-100">2. Repeating Failed/Weak Subjects</span>
-                    <p className="text-slate-500 dark:text-slate-400 leading-relaxed mt-1">
+                  <div className="p-5 rounded-2xl bg-white/40 dark:bg-slate-900/40 border border-slate-200/60 dark:border-slate-800/60 space-y-1.5 backdrop-blur-md">
+                    <span className="font-display font-bold text-slate-950 dark:text-slate-100 text-sm block">
+                      2. Repeating Failed/Weak Subjects
+                    </span>
+                    <p className="text-slate-600 dark:text-slate-400 leading-relaxed text-xs sm:text-sm">
                       If you have previous "E", "D", or "C-" grades, check with your Faculty Board about repeating these papers. Upgrading a failing grade of 0.0 to a pass grade of 2.0 (C) is often the fastest mathematical way to elevate cumulative averages.
                     </p>
                   </div>
@@ -262,18 +269,17 @@ export default function TargetGpaCalculator() {
           </div>
         ) : (
           <motion.div
-            className="py-20 text-center border-2 border-dashed border-slate-200/40 dark:border-slate-800 rounded-3xl flex flex-col items-center space-y-3 glass-card bg-white dark:bg-slate-900"
+            className="py-20 text-center border-2 border-dashed border-slate-200 dark:border-slate-800 rounded-3xl flex flex-col items-center space-y-3 glass-card bg-white/40 dark:bg-slate-900/40"
             whileHover={{
-              y: -5,
-              boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)"
+              y: -2,
+              boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.06), 0 10px 10px -5px rgba(0, 0, 0, 0.02)"
             }}
-            transition={{
-              duration: 0.2
-            }}>
-            <Target className="w-12 h-12 text-slate-400 dark:text-slate-600" />
+            transition={{ duration: 0.2 }}
+          >
+            <Target className="w-12 h-12 text-slate-300 dark:text-slate-600" />
             <div className="space-y-1 text-center">
-              <h4 className="font-display font-semibold text-sm text-slate-700 dark:text-white">Enter Parameters above</h4>
-              <p className="text-xs text-slate-500 dark:text-slate-400 p-1">
+              <h4 className="font-display font-bold text-base text-slate-800 dark:text-white">Enter Target Parameters</h4>
+              <p className="text-xs text-slate-500 dark:text-slate-400 max-w-sm mx-auto p-1 leading-relaxed">
                 Type completed points details to generate custom goal targets and mathematical strategies.
               </p>
             </div>

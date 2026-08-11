@@ -31,7 +31,7 @@ export default function Header({ currentView, onViewChange, theme, setTheme }: H
     { id: 'cgpa', label: 'CGPA Tracker'},
     { id: 'target_gpa', label: 'Target Planner'},
     { id: 'resources', label: 'Academic Resources'},
-    { id: 'about', label: 'About NIIBS'},
+    { id: 'about', label: 'About Tool'},
   ];
 
   const handleNav = (viewId: string) => {
@@ -73,7 +73,7 @@ export default function Header({ currentView, onViewChange, theme, setTheme }: H
                   NIIBS
                 </span>
                 <span className="text-[9px] px-1.5 py-0.5 rounded-md bg-niibs-blue/10 dark:bg-niibs-yellow/20 text-niibs-blue dark:text-niibs-yellow font-mono font-bold tracking-wider shadow-sm border border-niibs-blue/10 dark:border-niibs-yellow/20">
-                  CAMPUS
+                  v1.0
                 </span>
               </div>
               <span className="text-[10px] sm:text-[11px] font-mono font-semibold tracking-wider text-slate-500 dark:text-slate-400 uppercase block leading-none mt-0.5 group-hover:text-slate-600 dark:group-hover:text-slate-300 transition-colors">
@@ -113,7 +113,7 @@ export default function Header({ currentView, onViewChange, theme, setTheme }: H
               title={`Theme: ${theme}`}
             >
               {theme === 'light' && <Sun className="w-4 h-4 text-niibs-yellow animate-pulse" />}
-              {theme === 'dark' && <Moon className="w-4 h-4 text-[#4447b8]" />}
+              {theme === 'dark' && <Moon className="w-4 h-4 text-niibs-yellow" />}
               {theme === 'system' && (
                 <div className="flex items-center space-x-1.5">
                   <span className="text-[10px] uppercase font-bold tracking-wider px-1 text-slate-400 dark:text-slate-500 font-mono">SYS</span>

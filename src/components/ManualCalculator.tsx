@@ -7,7 +7,7 @@ import { motion } from "motion/react";
 import { useState } from 'react';
 import { ManualSubject, SemesterRecord } from '../types';
 import { fcitGradingScheme } from '../data/faculties';
-import { Plus, Trash, Printer, Share2, Save, Sparkles, AlertCircle } from 'lucide-react';
+import { Plus, Trash, Printer, Share2, Save, Sparkles, AlertCircle, Layers, Check } from 'lucide-react';
 
 interface ManualCalculatorProps {
   onSaveSemester: (record: SemesterRecord) => void;
@@ -92,42 +92,51 @@ export default function ManualCalculator({ onSaveSemester }: ManualCalculatorPro
 
   // Share result
   const handleShareResult = () => {
-    const text = `My NIIBS Manual GPA Calculation Result 🎓\nTerm Name: ${customTermName}\nCalculated GPA: ${calculatedGpa.toFixed(3)}\nPercentage: ${gradePercentage.toFixed(1)}%\nCalculate yours standard or manual GPA online at: https://gpacalculator.niibs.lk`;
+    const text = `My NIIBS Manual GPA Calculation Result 🎓\nTerm Name: ${customTermName}\nCalculated GPA: ${calculatedGpa.toFixed(3)}\nPercentage: ${gradePercentage.toFixed(1)}%\nCalculate yours online at: https://gpacalculator.niibs.lk`;
     navigator.clipboard.writeText(text);
     setShareSuccess(true);
     setTimeout(() => setShareSuccess(false), 3000);
   };
 
   return (
-    <div id="manual-calculator-component" className="grid grid-cols-1 lg:grid-cols-3 gap-8 relative z-10">
+    <div id="manual-calculator-component" className="grid grid-cols-1 lg:grid-cols-3 gap-8 relative z-10 max-w-6xl mx-auto">
 
       {/* Subject rows config - Left 2 columns */}
       <div className="lg:col-span-2 space-y-6">
         <motion.div
-          className="glass-card p-6 rounded-3xl space-y-4"
+          className="glass-card p-6 sm:p-8 rounded-3xl space-y-6 border border-slate-200/80 dark:border-slate-800/80 shadow-xl"
           whileHover={{
-            y: -5,
-            boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)"
+            y: -2,
+            boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.06), 0 10px 10px -5px rgba(0, 0, 0, 0.02)"
           }}
-          transition={{
-            duration: 0.2
-          }}>
-          <div className="flex items-center justify-between">
-            <div className="space-y-1">
-              <h3 className="font-display font-bold text-lg text-slate-900 dark:text-white">
-                Customize GPA Calculations
+          transition={{ duration: 0.2 }}
+        >
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-slate-200/80 dark:border-slate-800/80 pb-5">
+            <div>
+              <h3 className="font-display font-bold text-slate-900 dark:text-white text-lg flex items-center space-x-2">
+                <Layers className="w-5 h-5 text-niibs-blue dark:text-niibs-yellow" />
+                <span>Customize GPA Calculations</span>
               </h3>
-              <p className="text-xs text-slate-500 dark:text-slate-400">
-                Type course descriptors, credit bounds, and select points in real-time. Unlimited rows are supported.
+              <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
+                Type course descriptors, credit weights, and letter grades. Unlimited rows are supported.
               </p>
             </div>
+            
             <button
               onClick={addSubjectRow}
-              className="inline-flex items-center space-x-1 px-3.5 py-2 rounded-xl text-xs font-bold text-white bg-niibs-blue hover:bg-niibs-blue-light dark:bg-niibs-yellow dark:text-slate-950 transition-all cursor-pointer shadow-sm"
+              className="inline-flex items-center justify-center space-x-2 px-4 py-2.5 rounded-xl text-xs font-bold text-white bg-gradient-to-r from-niibs-blue to-indigo-700 dark:from-niibs-yellow dark:to-amber-400 dark:text-slate-950 hover:shadow-md transition-all cursor-pointer font-display shrink-0"
             >
-              <Plus className="w-3.5 h-3.5" />
-              <span>Add Class Row</span>
+              <Plus className="w-4 h-4" />
+              <span>Add Course Row</span>
             </button>
+          </div>
+
+          {/* Header titles for Desktop */}
+          <div className="hidden sm:grid grid-cols-12 gap-3.5 px-4 text-[10px] uppercase tracking-wider font-mono font-bold text-slate-400">
+            <div className="col-span-5">Subject Descriptor</div>
+            <div className="col-span-3">Credit Weight</div>
+            <div className="col-span-3">Letter Grade</div>
+            <div className="col-span-1 text-right">Action</div>
           </div>
 
           {/* Table ledger input list */}
@@ -135,29 +144,29 @@ export default function ManualCalculator({ onSaveSemester }: ManualCalculatorPro
             {subjects.map((sub, index) => (
               <div 
                 key={sub.id} 
-                className="grid grid-cols-12 gap-3.5 p-4 rounded-2xl border border-slate-200/40 bg-white/20 dark:border-slate-800 dark:bg-slate-900/20 items-center backdrop-blur-md animate-in fade-in zoom-in-95 duration-200 shadow-sm"
+                className="grid grid-cols-12 gap-3.5 p-4 rounded-2xl border border-slate-200/80 bg-white/40 dark:border-slate-800/80 dark:bg-slate-900/40 items-center backdrop-blur-md shadow-sm transition-all duration-200 hover:border-slate-300 dark:hover:border-slate-700"
               >
                 {/* Course Name Index Field */}
-                <div className="col-span-12 sm:col-span-6 space-y-1">
-                  <span className="text-[10px] text-slate-500 dark:text-slate-400 dark:text-slate-400 font-mono font-bold block sm:hidden">
+                <div className="col-span-12 sm:col-span-5 space-y-1">
+                  <span className="text-[10px] text-slate-400 font-mono font-bold block sm:hidden">
                     Subject Name {index + 1}
                   </span>
                   <input
                     type="text"
-                    placeholder="e.g. Traditional Sanskrit Grammar, Software Arch..."
+                    placeholder="e.g. Software Architecture, Sanskrit Grammar..."
                     value={sub.name}
                     onChange={(e) => handleRowChange(sub.id, 'name', e.target.value)}
-                    className="w-full px-3.5 py-2 rounded-xl border border-slate-200/50 dark:border-slate-800 bg-white/30 dark:bg-slate-900/30 text-slate-800 dark:text-slate-200 text-xs focus:ring-2 focus:ring-niibs-yellow focus:outline-none backdrop-blur-md font-medium"
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white/60 dark:bg-slate-900/60 text-slate-800 dark:text-slate-200 text-xs focus:ring-2 focus:ring-niibs-yellow focus:outline-none backdrop-blur-md font-medium"
                   />
                 </div>
 
                 {/* Credits Input Selection */}
-                <div className="col-span-12 sm:col-span-2.5 space-y-1">
-                  <span className="text-[10px] text-slate-500 dark:text-slate-400 dark:text-slate-400 font-mono font-bold block sm:hidden">Credits</span>
+                <div className="col-span-6 sm:col-span-3 space-y-1">
+                  <span className="text-[10px] text-slate-400 font-mono font-bold block sm:hidden">Credits</span>
                   <select
                     value={sub.credits}
                     onChange={(e) => handleRowChange(sub.id, 'credits', Number(e.target.value))}
-                    className="w-full px-3 py-2 rounded-xl border border-slate-200/50 dark:border-slate-800 bg-white/30 dark:bg-slate-900/30 text-slate-800 dark:text-slate-200 text-xs focus:ring-2 focus:ring-niibs-yellow focus:outline-none font-semibold font-mono"
+                    className="w-full px-3 py-2.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white/60 dark:bg-slate-900/60 text-slate-800 dark:text-slate-200 text-xs focus:ring-2 focus:ring-niibs-yellow focus:outline-none font-bold font-mono"
                   >
                     {[1, 2, 3, 4, 5, 6].map(c => (
                       <option key={c} value={c} className="dark:bg-slate-950 dark:text-slate-300">{c} Credits</option>
@@ -166,12 +175,12 @@ export default function ManualCalculator({ onSaveSemester }: ManualCalculatorPro
                 </div>
 
                 {/* Selection Grade Choice */}
-                <div className="col-span-12 sm:col-span-2.5 space-y-1">
-                  <span className="text-[10px] text-slate-500 dark:text-slate-400 dark:text-slate-400 font-mono font-bold block sm:hidden">Select Grade</span>
+                <div className="col-span-5 sm:col-span-3 space-y-1">
+                  <span className="text-[10px] text-slate-400 font-mono font-bold block sm:hidden">Select Grade</span>
                   <select
                     value={sub.grade}
                     onChange={(e) => handleRowChange(sub.id, 'grade', e.target.value)}
-                    className="w-full px-3 py-2 rounded-xl border border-slate-200/50 dark:border-slate-800 bg-white/30 dark:bg-slate-900/30 text-slate-800 dark:text-slate-200 text-xs focus:ring-2 focus:ring-niibs-yellow focus:outline-none font-bold font-mono"
+                    className="w-full px-3 py-2.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white/60 dark:bg-slate-900/60 text-slate-800 dark:text-slate-200 text-xs focus:ring-2 focus:ring-niibs-yellow focus:outline-none font-extrabold font-mono"
                   >
                     <option value="" className="dark:bg-slate-950 dark:text-slate-300">— Select —</option>
                     {['A+', 'A', 'A-', 'B+', 'B', 'B-', 'C+', 'C', 'C-', 'D+', 'D', 'E'].map(g => (
@@ -181,11 +190,11 @@ export default function ManualCalculator({ onSaveSemester }: ManualCalculatorPro
                 </div>
 
                 {/* Trash Delete field */}
-                <div className="col-span-12 sm:col-span-1 text-right flex justify-end">
+                <div className="col-span-1 sm:col-span-1 text-right flex justify-end">
                   <button
                     onClick={() => deleteSubjectRow(sub.id)}
                     disabled={subjects.length <= 1}
-                    className="p-2 text-slate-400 hover:text-niibs-red hover:bg-niibs-red/10 dark:hover:bg-niibs-red/20 rounded-xl transition-all cursor-pointer disabled:opacity-30 disabled:cursor-not-allowed"
+                    className="p-2 text-slate-400 hover:text-rose-600 hover:bg-rose-50 dark:hover:bg-rose-950/30 rounded-xl transition-all cursor-pointer disabled:opacity-30 disabled:cursor-not-allowed"
                     title="Delete row"
                   >
                     <Trash className="w-4 h-4" />
@@ -200,47 +209,49 @@ export default function ManualCalculator({ onSaveSemester }: ManualCalculatorPro
       {/* Manual Calculation Results Indicators - Right 1 Column */}
       <div className="lg:col-span-1 space-y-6">
         <motion.div
-          className="glass-card p-6 rounded-3xl space-y-5"
+          className="glass-card p-6 sm:p-7 rounded-3xl space-y-6 border border-slate-200/80 dark:border-slate-800/80 shadow-xl"
           whileHover={{
-            y: -5,
-            boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)"
+            y: -2,
+            boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.06), 0 10px 10px -5px rgba(0, 0, 0, 0.02)"
           }}
-          transition={{
-            duration: 0.2
-          }}>
-          <span className="text-[10px] uppercase font-bold tracking-widest text-[#2d3091] dark:text-niibs-yellow font-mono block">
-            Result Board
-          </span>
+          transition={{ duration: 0.2 }}
+        >
+          <div className="pb-3 border-b border-slate-200/80 dark:border-slate-800/80 flex items-center justify-between">
+            <span className="text-[10px] uppercase font-bold tracking-wider text-niibs-blue dark:text-niibs-yellow font-mono block">
+              Result Board
+            </span>
+            <Sparkles className="w-4 h-4 text-niibs-yellow" />
+          </div>
 
           <div className="space-y-4">
-            <div className="text-center p-6 bg-white/10 dark:bg-slate-800/10 rounded-2xl border border-slate-200/40 dark:border-slate-800/45 backdrop-blur-md">
-              <span className="text-[10px] uppercase font-mono text-slate-400 dark:text-slate-500 font-bold block leading-none">
+            <div className="text-center p-6 bg-gradient-to-br from-niibs-blue/5 via-transparent to-niibs-yellow/5 dark:bg-slate-900/40 rounded-2xl border border-slate-200/80 dark:border-slate-800/80 shadow-inner">
+              <span className="text-[10px] uppercase font-mono text-slate-400 font-bold block tracking-wider">
                 TERM GPA
               </span>
-              <span className="font-mono text-4xl font-extrabold text-[#2d3091] dark:text-niibs-yellow block mt-2">
+              <span className="font-mono text-5xl font-black text-slate-950 dark:text-white block mt-2 tracking-tight">
                 {calculatedGpa.toFixed(3)}
               </span>
-              <span className="text-[11px] font-mono font-bold text-slate-500 dark:text-slate-400 block mt-1.5 leading-none">
-                Total Credits Weight: {totalCredits} Cr.
+              <span className="text-xs font-mono font-bold text-niibs-blue dark:text-niibs-yellow block mt-2">
+                Total Credits: {totalCredits} Cr.
               </span>
             </div>
 
             {/* Sub analytic details */}
             <div className="space-y-2.5 pt-2 text-xs">
-              <div className="flex justify-between items-center pb-2.5 border-b border-slate-200/40 dark:border-slate-800/45">
+              <div className="flex justify-between items-center pb-2.5 border-b border-slate-200/60 dark:border-slate-800/60 font-sans">
                 <span className="text-slate-500 dark:text-slate-400 font-medium">Earned Credits</span>
                 <span className="font-mono font-bold text-slate-800 dark:text-slate-200">{earnedCredits} Credits</span>
               </div>
-              <div className="flex justify-between items-center pb-2.5 border-b border-slate-200/40 dark:border-slate-800/45">
+              <div className="flex justify-between items-center pb-2.5 border-b border-slate-200/60 dark:border-slate-800/60 font-sans">
                 <span className="text-slate-500 dark:text-slate-400 font-medium">Cumulative Marks Percent</span>
                 <span className="font-mono font-bold text-slate-800 dark:text-slate-200">{gradePercentage.toFixed(1)}%</span>
               </div>
             </div>
 
             {/* Custom save layout */}
-            <div className="space-y-4 pt-3">
+            <div className="space-y-4 pt-2">
               <div className="space-y-1.5">
-                <label className="text-[11px] uppercase tracking-wider font-bold text-slate-500 dark:text-slate-400 block font-mono">
+                <label className="text-[10px] uppercase tracking-wider font-bold text-slate-500 dark:text-slate-400 block font-mono">
                   Custom Semester Name
                 </label>
                 <input
@@ -248,26 +259,27 @@ export default function ManualCalculator({ onSaveSemester }: ManualCalculatorPro
                   placeholder="e.g. Year 1 Semester 2"
                   value={customTermName}
                   onChange={(e) => setCustomTermName(e.target.value)}
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200/50 dark:border-slate-800 bg-white/30 dark:bg-slate-900/30 text-slate-800 dark:text-slate-200 text-xs focus:ring-2 focus:ring-niibs-yellow focus:outline-none backdrop-blur-md font-medium"
+                  className="w-full px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 text-slate-800 dark:text-slate-200 text-xs focus:ring-2 focus:ring-niibs-yellow focus:outline-none backdrop-blur-md font-medium"
                 />
               </div>
 
               {/* Actions */}
-              <div className="grid grid-cols-2 gap-2 mt-4">
+              <div className="grid grid-cols-2 gap-3 mt-4">
                 <button
                   onClick={handleShareResult}
-                  className="px-4 py-2.5 rounded-xl border border-slate-200/40 text-slate-700 dark:text-slate-300 hover:bg-white/20 dark:hover:bg-slate-800/20 backdrop-blur-md transition-all font-bold text-xs flex items-center justify-center space-x-1.5 cursor-pointer"
+                  className="px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white/40 dark:bg-slate-900/40 text-slate-700 dark:text-slate-300 hover:bg-white dark:hover:bg-slate-800 backdrop-blur-md transition-all font-bold text-xs flex items-center justify-center space-x-2 cursor-pointer font-display"
                 >
-                  <Share2 className="w-3.5 h-3.5" />
+                  <Share2 className="w-4 h-4" />
                   <span>{shareSuccess ? 'Copied' : 'Share'}</span>
                 </button>
+
                 <button
                   onClick={handleSaveToHistory}
                   disabled={totalCredits === 0}
-                  className="px-4 py-2.5 rounded-xl bg-niibs-blue dark:bg-niibs-yellow hover:bg-niibs-blue-light transition-all text-white dark:text-slate-950 font-black text-xs flex items-center justify-center space-x-1.5 shadow-sm active:scale-95 disabled:opacity-40 disabled:pointer-events-none cursor-pointer"
+                  className="px-4 py-2.5 rounded-xl bg-gradient-to-r from-niibs-blue to-indigo-700 dark:from-niibs-yellow dark:to-amber-400 text-white dark:text-slate-950 hover:shadow-lg transition-all font-bold text-xs flex items-center justify-center space-x-2 shadow-sm active:scale-95 disabled:opacity-40 disabled:pointer-events-none cursor-pointer font-display"
                 >
-                  <Save className="w-3.5 h-3.5" />
-                  <span>{saveSuccess ? 'Saved!' : 'Save record'}</span>
+                  <Save className="w-4 h-4" />
+                  <span>{saveSuccess ? 'Saved!' : 'Save Record'}</span>
                 </button>
               </div>
             </div>
@@ -276,14 +288,13 @@ export default function ManualCalculator({ onSaveSemester }: ManualCalculatorPro
 
         {/* Info advice panel */}
         <motion.div
-          className="glass-card p-5 rounded-3xl border-l-4 border-l-niibs-yellow flex items-start space-x-3 text-xs text-slate-600 dark:text-slate-300"
+          className="glass-card p-5 rounded-3xl border-l-4 border-l-niibs-yellow flex items-start space-x-3 text-xs text-slate-600 dark:text-slate-400 border-r border-t border-b border-slate-200/80 dark:border-slate-800/80"
           whileHover={{
-            y: -5,
-            boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)"
+            y: -2,
+            boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.06), 0 10px 10px -5px rgba(0, 0, 0, 0.02)"
           }}
-          transition={{
-            duration: 0.2
-          }}>
+          transition={{ duration: 0.2 }}
+        >
           <AlertCircle className="w-4.5 h-4.5 text-niibs-yellow shrink-0 mt-0.5" />
           <p className="leading-relaxed">
             Standard UGC computations automatically exclude grades where credits are unmarked or not yet completed. Only fill completed grades.

@@ -7,7 +7,7 @@ import { motion } from "motion/react";
 import { useState, useEffect } from 'react';
 import { Faculty, Program, Subject, FacultySelectedSubject, SemesterRecord } from '../types';
 import { facultiesData } from '../data/faculties';
-import { Check, Info, Save, Printer, Share2, Award, Calendar, RefreshCw } from 'lucide-react';
+import { Check, Info, Save, Printer, Share2, Award, Calendar, RefreshCw, BookOpen, Sparkles, CheckCircle2 } from 'lucide-react';
 
 interface FacultyCalculatorProps {
   onSaveSemester: (record: SemesterRecord) => void;
@@ -155,62 +155,71 @@ export default function FacultyCalculator({ onSaveSemester, savedSemesters, init
   };
 
   return (
-    <div id="faculty-calculator-component" className="grid grid-cols-1 lg:grid-cols-3 gap-8 relative z-10">
+    <div id="faculty-calculator-component" className="grid grid-cols-1 lg:grid-cols-3 gap-8 relative z-10 max-w-6xl mx-auto">
 
       {/* Selector Fields - Left 1 Column */}
       <div className="lg:col-span-1 space-y-6 no-print">
         <motion.div
-          className="glass-card p-6 rounded-3xl space-y-5"
+          className="glass-card p-6 sm:p-7 rounded-3xl space-y-6 border border-slate-200/80 dark:border-slate-800/80 shadow-xl"
           whileHover={{
-            y: -5,
-            boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)"
+            y: -2,
+            boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.06), 0 10px 10px -5px rgba(0, 0, 0, 0.02)"
           }}
-          transition={{
-            duration: 0.2
-          }}>
-          <h3 className="font-display font-bold text-lg text-slate-900 dark:text-white pb-3 border-b border-slate-200/40 dark:border-slate-800/35">
-            Syllabus Selector
-          </h3>
+          transition={{ duration: 0.2 }}
+        >
+          <div className="pb-3 border-b border-slate-200/80 dark:border-slate-800/80 flex items-center justify-between">
+            <h3 className="font-display font-bold text-lg text-slate-900 dark:text-white">
+              Syllabus Selector
+            </h3>
+            <BookOpen className="w-5 h-5 text-niibs-blue dark:text-niibs-yellow" />
+          </div>
 
           {/* Faculty Selector Selection */}
-          <div className="space-y-1.5 flex flex-col">
-            <label className="text-[11px] uppercase tracking-wider font-bold text-slate-500 dark:text-slate-400 block font-mono">
+          <div className="space-y-2 flex flex-col">
+            <label className="text-[10px] uppercase tracking-wider font-bold text-slate-500 dark:text-slate-400 block font-mono">
               Academic Faculty
             </label>
             <div className="grid grid-cols-1 gap-2">
-              {facultiesData.map(fac => (
-                <button
-                  id={`fac-select-${fac.id}`}
-                  key={fac.id}
-                  onClick={() => setSelectedFacultyId(fac.id)}
-                  className={`w-full text-left px-4 py-3 rounded-xl border text-xs sm:text-sm font-semibold tracking-wide transition-all ${
-                    selectedFacultyId === fac.id
-                      ? 'border-niibs-blue/30 dark:border-niibs-yellow/40 bg-niibs-blue/5 dark:bg-niibs-yellow/5 text-[#2d3091] dark:text-niibs-yellow shadow-inner'
-                      : 'border-slate-200/40 dark:border-slate-800/40 text-slate-600 dark:text-slate-400 hover:bg-white/30 dark:hover:bg-slate-800/30'
-                  }`}
-                >
-                  <div className="flex font-semibold justify-between items-center">
-                    <span>{fac.name}</span>
-                    <span className="text-[10px] bg-slate-200/50 dark:bg-slate-800/50 px-1.5 py-0.5 rounded tracking-wide font-mono text-slate-700 dark:text-slate-300">
-                      {fac.shortName}
-                    </span>
-                  </div>
-                </button>
-              ))}
+              {facultiesData.map(fac => {
+                const isSelected = selectedFacultyId === fac.id;
+                return (
+                  <button
+                    id={`fac-select-${fac.id}`}
+                    key={fac.id}
+                    onClick={() => setSelectedFacultyId(fac.id)}
+                    className={`w-full text-left px-4 py-3 rounded-2xl border text-xs sm:text-sm font-bold tracking-wide transition-all duration-200 cursor-pointer font-display ${
+                      isSelected
+                        ? 'border-niibs-blue dark:border-niibs-yellow bg-niibs-blue/10 dark:bg-niibs-yellow/15 text-niibs-blue dark:text-niibs-yellow shadow-md shadow-slate-900/5'
+                        : 'border-slate-200/80 dark:border-slate-800/80 text-slate-600 dark:text-slate-400 hover:bg-slate-100/50 dark:hover:bg-slate-800/50'
+                    }`}
+                  >
+                    <div className="flex justify-between items-center">
+                      <span>{fac.name}</span>
+                      <span className={`text-[10px] px-2 py-0.5 rounded-full font-mono font-bold ${
+                        isSelected 
+                          ? 'bg-niibs-blue text-white dark:bg-niibs-yellow dark:text-slate-950' 
+                          : 'bg-slate-200/60 dark:bg-slate-800/80 text-slate-600 dark:text-slate-400'
+                      }`}>
+                        {fac.shortName}
+                      </span>
+                    </div>
+                  </button>
+                );
+              })}
             </div>
           </div>
 
           {/* Program Select Options */}
           {activePrograms.length > 0 && (
-            <div className="space-y-1.5">
-              <label className="text-[11px] uppercase tracking-wider font-bold text-slate-500 dark:text-slate-400 block font-mono">
+            <div className="space-y-2">
+              <label className="text-[10px] uppercase tracking-wider font-bold text-slate-500 dark:text-slate-400 block font-mono">
                 Degree Program Curriculum
               </label>
               <select
                 id="program-selector-dropdown"
                 value={selectedProgramId}
                 onChange={(e) => setSelectedProgramId(e.target.value)}
-                className="w-full px-4 py-2.5 rounded-xl border border-slate-200/50 dark:border-slate-800 bg-white/20 dark:bg-slate-900/30 text-slate-800 dark:text-slate-200 text-xs sm:text-sm focus:ring-2 focus:ring-niibs-yellow focus:outline-none backdrop-blur-md font-medium"
+                className="w-full px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 text-slate-800 dark:text-slate-200 text-xs sm:text-sm focus:ring-2 focus:ring-niibs-yellow focus:outline-none backdrop-blur-md font-medium"
               >
                 {activePrograms.map(prog => (
                   <option key={prog.id} value={prog.id} className="dark:bg-slate-950 dark:text-slate-200">
@@ -223,25 +232,28 @@ export default function FacultyCalculator({ onSaveSemester, savedSemesters, init
 
           {/* Semester Selector Grid */}
           {activeProgram && (
-            <div className="space-y-1.5">
-              <label className="text-[11px] uppercase tracking-wider font-bold text-slate-500 dark:text-slate-400 block font-mono">
+            <div className="space-y-2">
+              <label className="text-[10px] uppercase tracking-wider font-bold text-slate-500 dark:text-slate-400 block font-mono">
                 Academic Semester
               </label>
-              <div className="grid grid-cols-4 gap-1.5">
-                {activeProgram.semesters.map(sem => (
-                  <button
-                    id={`sem-grid-btn-${sem.semesterNumber}`}
-                    key={sem.semesterNumber}
-                    onClick={() => setSelectedSemesterIndex(sem.semesterNumber)}
-                    className={`py-2 rounded-lg text-xs font-mono font-bold border transition-all ${
-                      selectedSemesterIndex === sem.semesterNumber
-                        ? 'border-niibs-blue bg-niibs-blue text-white dark:border-niibs-yellow dark:bg-niibs-yellow dark:text-slate-950 shadow-sm'
-                        : 'border-slate-200/40 dark:border-slate-800/40 bg-white/10 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-100/40'
-                    }`}
-                  >
-                    S{sem.semesterNumber}
-                  </button>
-                ))}
+              <div className="grid grid-cols-4 gap-2">
+                {activeProgram.semesters.map(sem => {
+                  const isSelected = selectedSemesterIndex === sem.semesterNumber;
+                  return (
+                    <button
+                      id={`sem-grid-btn-${sem.semesterNumber}`}
+                      key={sem.semesterNumber}
+                      onClick={() => setSelectedSemesterIndex(sem.semesterNumber)}
+                      className={`py-2 rounded-xl text-xs font-mono font-bold border transition-all duration-200 cursor-pointer ${
+                        isSelected
+                          ? 'border-niibs-blue bg-niibs-blue text-white dark:border-niibs-yellow dark:bg-niibs-yellow dark:text-slate-950 shadow-md'
+                          : 'border-slate-200 dark:border-slate-800 bg-white/40 dark:bg-slate-900/40 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800'
+                      }`}
+                    >
+                      Sem {sem.semesterNumber}
+                    </button>
+                  );
+                })}
               </div>
             </div>
           )}
@@ -249,22 +261,21 @@ export default function FacultyCalculator({ onSaveSemester, savedSemesters, init
 
         {/* Dynamic Rules Widget */}
         <motion.div
-          className="glass-card p-5 rounded-3xl space-y-3"
+          className="glass-card p-6 rounded-3xl space-y-3 border-l-4 border-l-niibs-yellow border-t border-r border-b border-slate-200/80 dark:border-slate-800/80"
           whileHover={{
-            y: -5,
-            boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)"
+            y: -2,
+            boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.06), 0 10px 10px -5px rgba(0, 0, 0, 0.02)"
           }}
-          transition={{
-            duration: 0.2
-          }}>
+          transition={{ duration: 0.2 }}
+        >
           <div className="flex items-center space-x-2">
             <Info className="w-4 h-4 text-niibs-yellow" />
             <span className="font-display font-bold text-xs uppercase tracking-wider text-slate-950 dark:text-white">
               Rules Active For {activeFaculty.shortName}
             </span>
           </div>
-          <p className="text-[11px] text-slate-500 dark:text-slate-400 leading-relaxed">
-            Faculty Scale is set to <b className="font-mono">{activeFaculty.rules.gpaScale.toFixed(1)}</b>. First Class requires a cumulative CGPA of <b className="font-mono text-niibs-blue dark:text-niibs-yellow">{activeFaculty.rules.degreeClassifications.firstClass.toFixed(2)}</b>. Credits count towards final class honors unless excluded manually.
+          <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+            Faculty Scale is set to <b className="font-mono">{activeFaculty.rules.gpaScale.toFixed(1)}</b>. First Class requires a cumulative CGPA of <b className="font-mono text-niibs-blue dark:text-niibs-yellow font-bold">{activeFaculty.rules.degreeClassifications.firstClass.toFixed(2)}</b>. Credits count towards final class honors unless excluded manually.
           </p>
         </motion.div>
       </div>
@@ -274,69 +285,70 @@ export default function FacultyCalculator({ onSaveSemester, savedSemesters, init
         
         {/* Results Overview Hub */}
         <motion.div
-          className="glass-card text-slate-900 dark:text-white rounded-3xl p-6 shadow-lg md:flex md:items-center md:justify-between border-l-4 border-l-niibs-yellow print-card"
+          className="glass-card text-slate-900 dark:text-white rounded-3xl p-6 sm:p-8 shadow-xl md:flex md:items-center md:justify-between border border-slate-200/80 dark:border-slate-800/80 border-l-4 border-l-niibs-yellow bg-gradient-to-r from-niibs-blue/5 via-transparent to-niibs-yellow/5 print-card"
           whileHover={{
-            y: -5,
-            boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)"
+            y: -2,
+            boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.06), 0 10px 10px -5px rgba(0, 0, 0, 0.02)"
           }}
-          transition={{
-            duration: 0.2
-          }}>
-          <div className="space-y-2">
-            <span className="text-[10px] uppercase font-bold tracking-widest text-[#2d3091] dark:text-niibs-yellow font-mono block">
-              In-Memory Term GPA Calculations
+          transition={{ duration: 0.2 }}
+        >
+          <div className="space-y-3">
+            <span className="text-[10px] sm:text-xs uppercase font-bold tracking-wider text-niibs-blue dark:text-niibs-yellow font-mono block">
+              Calculated Term GPA Index
             </span>
-            <div className="flex items-baseline space-x-2">
-              <span className="font-mono text-5xl font-extrabold text-[#2d3091] dark:text-white">
+            <div className="flex items-baseline space-x-3">
+              <span className="font-mono text-5xl sm:text-6xl font-black text-slate-950 dark:text-white tracking-tight">
                 {calculatedGpa.toFixed(3)}
               </span>
-              <span className="text-slate-400 font-mono text-sm leading-none">/ 4.000</span>
+              <span className="text-slate-400 font-mono text-xs sm:text-sm leading-none font-bold">/ 4.000</span>
             </div>
             
-            <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
-              Logged Credits: <b className="font-mono text-slate-800 dark:text-white">{totalCredits}</b> / Syllabus Potential: <b className="font-mono text-slate-500 dark:text-slate-400">{selectedSubjects.reduce((acc, s) => acc + s.credits, 0)}</b>
+            <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed font-sans">
+              Logged Credits: <b className="font-mono text-slate-800 dark:text-white font-bold">{totalCredits}</b> / Syllabus Potential: <b className="font-mono text-slate-500 dark:text-slate-400 font-bold">{selectedSubjects.reduce((acc, s) => acc + s.credits, 0)}</b>
             </p>
           </div>
 
           <div className="mt-5 md:mt-0 flex flex-col items-center md:items-end space-y-3 shrink-0">
             {/* Eligibility Banner */}
             {deansListEligible ? (
-              <div className="flex items-center space-x-1 px-3 py-1 bg-niibs-yellow/15 text-niibs-blue dark:text-niibs-yellow border border-niibs-yellow/30 rounded-full text-[10px] font-bold font-mono uppercase tracking-wider">
-                <Award className="w-3.5 h-3.5 animate-bounce" />
+              <div className="flex items-center space-x-1.5 px-3.5 py-1.5 bg-amber-500/15 text-amber-800 dark:text-niibs-yellow border border-amber-500/30 rounded-full text-xs font-bold font-mono uppercase tracking-wider shadow-sm font-display">
+                <Sparkles className="w-4 h-4 text-amber-500 dark:text-niibs-yellow" />
                 <span>Dean's List Eligible</span>
               </div>
             ) : (
-              <div className="text-[10px] text-slate-500 dark:text-slate-400 dark:text-slate-500 font-mono uppercase tracking-wide">
+              <div className="text-[11px] text-slate-500 dark:text-slate-400 font-mono uppercase tracking-wide font-medium">
                 Dean's Threshold: 3.70 GPA & 12 Credits
               </div>
             )}
 
-            {/* Quick Actions Actions */}
-            <div className="flex items-center space-x-2 no-print">
+            {/* Quick Actions */}
+            <div className="flex items-center space-x-2.5 no-print">
               <button
                 onClick={handlePrint}
-                className="p-2.5 rounded-xl border border-slate-200/50 dark:border-slate-800/60 bg-white/30 dark:bg-slate-800/30 text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white backdrop-blur-md transition-all active:scale-95 cursor-pointer"
+                className="p-2.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white/40 dark:bg-slate-900/40 text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white backdrop-blur-md transition-all active:scale-95 cursor-pointer"
                 title="Print Transcript"
               >
                 <Printer className="w-4 h-4" />
               </button>
+
               <button
                 onClick={handleShareResult}
-                className="p-2.5 rounded-xl border border-slate-200/50 dark:border-slate-800/60 bg-white/30 dark:bg-slate-800/30 text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white backdrop-blur-md transition-all active:scale-95 cursor-pointer"
+                className="p-2.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white/40 dark:bg-slate-900/40 text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white backdrop-blur-md transition-all active:scale-95 cursor-pointer"
                 title="Share Result String"
               >
                 {shareSuccess ? (
-                  <span className="text-[10px] text-niibs-green dark:text-niibs-green-light font-bold px-1 animate-pulse">Copied!</span>
+                  <span className="text-[10px] text-emerald-600 dark:text-emerald-400 font-bold px-1 animate-pulse font-mono">Copied!</span>
                 ) : (
                   <Share2 className="w-4 h-4" />
                 )}
               </button>
+
               <button
                 onClick={handleSaveToHistory}
                 disabled={totalCredits === 0}
-                className="inline-flex items-center space-x-1.5 px-4 py-2.5 rounded-xl text-xs font-extrabold text-white bg-niibs-blue hover:bg-niibs-blue-light dark:bg-niibs-yellow dark:text-slate-950 transition-all shadow-sm active:scale-95 disabled:opacity-40 select-none cursor-pointer"
+                className="inline-flex items-center space-x-2 px-5 py-2.5 rounded-xl text-xs font-bold text-white bg-gradient-to-r from-niibs-blue to-indigo-700 dark:from-niibs-yellow dark:to-amber-400 dark:text-slate-950 transition-all shadow-md active:scale-95 disabled:opacity-40 select-none cursor-pointer font-display"
               >
-                <Save className="w-3.5 h-3.5" />
+                <Save className="w-4 h-4" />
                 <span>{saveSuccess ? 'Saved!' : 'Save Progress'}</span>
               </button>
             </div>
@@ -345,21 +357,20 @@ export default function FacultyCalculator({ onSaveSemester, savedSemesters, init
 
         {/* Subjects List Panel */}
         <motion.div
-          className="glass-card rounded-3xl p-5 sm:p-6 shadow-sm space-y-5"
+          className="glass-card rounded-3xl p-6 sm:p-8 shadow-xl space-y-6 border border-slate-200/80 dark:border-slate-800/80"
           whileHover={{
-            y: -5,
-            boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)"
+            y: -2,
+            boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.06), 0 10px 10px -5px rgba(0, 0, 0, 0.02)"
           }}
-          transition={{
-            duration: 0.2
-          }}>
+          transition={{ duration: 0.2 }}
+        >
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             <div>
-              <h4 className="font-display font-bold text-slate-950 dark:text-white text-base">
+              <h4 className="font-display font-bold text-slate-950 dark:text-white text-lg">
                 Semester Module Ledger
               </h4>
-              <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
-                Click weights, simulate grades, and instantly inspect performance indices. Select checkboxes to include.
+              <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed mt-0.5">
+                Select letter grades for each module. Check boxes to include or exclude courses.
               </p>
             </div>
             
@@ -367,13 +378,13 @@ export default function FacultyCalculator({ onSaveSemester, savedSemesters, init
             <div className="flex space-x-2 no-print shrink-0">
               <button
                 onClick={simulatePerfectGrades}
-                className="text-[10px] h-7 px-3 bg-white/10 border border-slate-200/40 text-slate-600 dark:text-slate-300 hover:bg-white/30 rounded-lg dark:hover:bg-slate-800/30 font-semibold transition-all backdrop-blur-md cursor-pointer"
+                className="text-xs px-3.5 py-1.5 bg-white/40 dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:bg-white dark:hover:bg-slate-800 rounded-xl font-bold transition-all backdrop-blur-md cursor-pointer font-display"
               >
                 Simulate As
               </button>
               <button
                 onClick={clearGrades}
-                className="text-[10px] h-7 px-3 bg-white/10 border border-slate-200/40 text-slate-500 dark:text-slate-400 hover:bg-white/30 rounded-lg dark:hover:bg-slate-800/30 font-semibold transition-all backdrop-blur-md cursor-pointer"
+                className="text-xs px-3.5 py-1.5 bg-white/40 dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800 text-slate-500 dark:text-slate-400 hover:bg-white dark:hover:bg-slate-800 rounded-xl font-bold transition-all backdrop-blur-md cursor-pointer font-display"
               >
                 Reset All
               </button>
@@ -381,19 +392,19 @@ export default function FacultyCalculator({ onSaveSemester, savedSemesters, init
           </div>
 
           {/* Subjects Table Grid */}
-          <div className="space-y-3.5">
+          <div className="space-y-4">
             {selectedSubjects.length > 0 ? (
               selectedSubjects.map((sub) => (
                 <div
                   key={sub.id}
-                  className={`p-4 rounded-2xl border transition-colors flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 ${
+                  className={`p-4 sm:p-5 rounded-2xl border transition-all duration-200 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 ${
                     sub.included 
-                      ? 'border-slate-200/40 bg-white/20 dark:border-slate-800/30 dark:bg-slate-900/20 backdrop-blur-md' 
-                      : 'border-slate-100 opacity-60 bg-slate-100/10 dark:border-slate-800 dark:bg-transparent'
+                      ? 'border-slate-200/80 bg-white/40 dark:border-slate-800/80 dark:bg-slate-900/40 backdrop-blur-md shadow-sm' 
+                      : 'border-slate-200/40 opacity-50 bg-slate-100/20 dark:border-slate-800/40 dark:bg-transparent'
                   }`}
                 >
                   {/* Left Column Description */}
-                  <div className="flex items-start space-x-3 max-w-sm">
+                  <div className="flex items-start space-x-3.5 max-w-sm">
                     <input
                       type="checkbox"
                       checked={sub.included}
@@ -403,14 +414,14 @@ export default function FacultyCalculator({ onSaveSemester, savedSemesters, init
                     />
                     <div>
                       <div className="flex items-center space-x-2">
-                        <span className="font-mono text-[10px] tracking-wider font-extrabold bg-[#2d3091]/10 dark:bg-niibs-yellow/10 text-[#2d3091] dark:text-niibs-yellow px-1.5 py-0.5 rounded leading-none">
+                        <span className="font-mono text-[11px] font-bold bg-niibs-blue/10 dark:bg-niibs-yellow/15 text-niibs-blue dark:text-niibs-yellow px-2 py-0.5 rounded-md">
                           {sub.code}
                         </span>
-                        <span className="font-mono text-xs font-semibold text-slate-500 dark:text-slate-400 leading-none">
+                        <span className="font-mono text-xs font-semibold text-slate-500 dark:text-slate-400">
                           {sub.credits} Credits
                         </span>
                       </div>
-                      <h5 className="font-display font-semibold text-slate-900 dark:text-white mt-1.5 text-sm">
+                      <h5 className="font-display font-bold text-slate-900 dark:text-white mt-1.5 text-sm sm:text-base">
                         {sub.name}
                       </h5>
                     </div>
@@ -418,7 +429,7 @@ export default function FacultyCalculator({ onSaveSemester, savedSemesters, init
 
                   {/* Right Column Select Grader */}
                   <div className="flex items-center space-x-2 shrink-0">
-                    <div className="flex flex-wrap gap-1 max-w-[280px] sm:max-w-none justify-start sm:justify-end no-print">
+                    <div className="flex flex-wrap gap-1 max-w-[290px] sm:max-w-none justify-start sm:justify-end no-print">
                       {['A+', 'A', 'A-', 'B+', 'B', 'B-', 'C+', 'C', 'C-', 'D', 'E'].map(g => {
                         const isSelected = sub.grade === g;
                         return (
@@ -426,10 +437,10 @@ export default function FacultyCalculator({ onSaveSemester, savedSemesters, init
                             id={`grade-btn-${sub.id}-${g}`}
                             key={g}
                             onClick={() => handleGradeChange(sub.id, g)}
-                            className={`w-6.5 h-6.5 rounded font-mono font-bold text-[10px] transition-all border cursor-pointer ${
+                            className={`w-7 h-7 rounded-lg font-mono font-extrabold text-[11px] transition-all duration-150 border cursor-pointer ${
                               isSelected
-                                ? 'bg-[#2d3091] text-white border-niibs-blue dark:bg-niibs-yellow dark:text-slate-950 dark:border-[#ffc113] font-black scale-110 shadow-md'
-                                : 'bg-white/40 border-slate-200 text-slate-500 hover:bg-white/80 dark:bg-slate-800/40 dark:border-slate-800/40 dark:text-slate-300 dark:hover:bg-slate-800/80'
+                                ? 'bg-niibs-blue text-white border-niibs-blue dark:bg-niibs-yellow dark:text-slate-950 dark:border-niibs-yellow scale-110 shadow-md'
+                                : 'bg-white/50 border-slate-200/80 text-slate-600 hover:bg-white dark:bg-slate-800/40 dark:border-slate-800/80 dark:text-slate-300 dark:hover:bg-slate-800'
                             }`}
                           >
                             {g}
@@ -445,7 +456,7 @@ export default function FacultyCalculator({ onSaveSemester, savedSemesters, init
                 </div>
               ))
             ) : (
-              <div className="text-center py-10 text-slate-400 font-mono">
+              <div className="text-center py-12 text-slate-400 font-mono">
                 No subjects registered for this semester.
               </div>
             )}

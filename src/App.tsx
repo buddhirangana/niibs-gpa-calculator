@@ -13,6 +13,7 @@ import FacultyCalculator from "./components/FacultyCalculator";
 import ManualCalculator from "./components/ManualCalculator";
 import CgpaCalculator from "./components/CgpaCalculator";
 import TargetGpaCalculator from "./components/TargetGpaCalculator";
+import AboutView from "./components/AboutView";
 import { useLocalStorage } from "./hooks/useLocalStorage";
 import { SemesterRecord } from "./types";
 import {
@@ -32,7 +33,12 @@ import {
   Sparkles,
   CheckCircle,
   XCircle,
-  AlertCircle
+  AlertCircle,
+  ShieldCheck,
+  Zap,
+  Lock,
+  ArrowRight,
+  BarChart3
 } from "lucide-react";
 
 export default function App() {
@@ -142,9 +148,9 @@ export default function App() {
     <div className="min-h-screen bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-400 transition-colors duration-300 flex flex-col font-sans relative overflow-clip print:bg-white print:text-black">
       {/* Background decoration - Glowing blobs for Glassmorphism */}
       <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
-        <div className="absolute -top-32 -left-32 w-[550px] h-[550px] rounded-full ambient-glow-1 filter blur-3xl opacity-80" />
-        <div className="absolute top-1/4 -right-48 w-[600px] h-[600px] rounded-full ambient-glow-2 filter blur-3xl opacity-70" />
-        <div className="absolute bottom-12 left-12 w-[500px] h-[500px] rounded-full ambient-glow-3 filter blur-3xl opacity-80" />
+        <div className="absolute -top-32 -left-32 w-[600px] h-[600px] rounded-full ambient-glow-1 filter blur-3xl opacity-80" />
+        <div className="absolute top-1/3 -right-48 w-[650px] h-[650px] rounded-full ambient-glow-2 filter blur-3xl opacity-70" />
+        <div className="absolute bottom-10 left-12 w-[550px] h-[550px] rounded-full ambient-glow-3 filter blur-3xl opacity-80" />
       </div>
 
       {/* Branding Header Area */}
@@ -156,122 +162,197 @@ export default function App() {
       />
 
       {/* Main Content Arena */}
-      <main className="relative z-10 flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <main className="relative z-10 flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10">
         {/* Render View Router */}
         {currentView === "home" && (
           <div className="space-y-16 animate-in fade-in duration-350">
             {/* Hero Banner Section */}
-            <section className="text-center space-y-6 max-w-4xl mx-auto py-8">
-              <div className="inline-flex items-center space-x-2 px-3 py-1.5 rounded-full bg-niibs-yellow/15 border border-niibs-yellow/30 text-niibs-yellow dark:text-niibs-yellow font-mono text-[10px] sm:text-xs font-bold uppercase tracking-wider">
-                <Sparkles className="w-3.5 h-3.5" />
+            <section className="text-center space-y-8 max-w-4xl mx-auto py-6 sm:py-10">
+              <motion.div 
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4 }}
+                className="inline-flex items-center space-x-2.5 px-4 py-2 rounded-full bg-gradient-to-r from-niibs-yellow/20 via-amber-500/10 to-niibs-yellow/20 border border-niibs-yellow/40 text-niibs-yellow dark:text-niibs-yellow font-mono text-xs font-bold uppercase tracking-wider shadow-sm"
+              >
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-niibs-yellow opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-niibs-yellow"></span>
+                </span>
+                <Sparkles className="w-3.5 h-3.5 text-niibs-yellow" />
                 <span>Modern Academic Foresight Platform</span>
-              </div>
+              </motion.div>
 
-              <h1 className="font-display font-black text-4xl sm:text-6xl tracking-tight text-slate-950 dark:text-white leading-tight">
+              <motion.h1 
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.1 }}
+                className="font-display font-black text-4xl sm:text-6xl tracking-tight text-slate-950 dark:text-white leading-[1.12]"
+              >
                 Calculate & Calibrate Your{" "}
-                <span className="text-niibs-blue dark:text-niibs-yellow">
+                <span className="bg-gradient-to-r from-niibs-blue via-indigo-600 to-niibs-blue dark:from-niibs-yellow dark:via-amber-300 dark:to-niibs-yellow bg-clip-text text-transparent">
                   NIIBS GPA
                 </span>{" "}
                 Instantly
-              </h1>
+              </motion.h1>
 
-              <p className="text-sm sm:text-lg text-slate-500 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed">
+              <motion.p 
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                className="text-base sm:text-xl text-slate-600 dark:text-slate-300 max-w-2xl mx-auto leading-relaxed font-normal"
+              >
                 The standard-grade GPA calculator for Nāgānanda International
                 Institute for Buddhist Studies. Preload program subjects,
                 simulate target grades, and predict your final honors degree
                 standing.
-              </p>
+              </motion.p>
 
-              <div className="pt-4 flex flex-col sm:flex-row justify-center items-center gap-3">
+              {/* Action Buttons */}
+              <motion.div 
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.3 }}
+                className="pt-2 flex flex-col sm:flex-row justify-center items-center gap-4"
+              >
                 <button
                   id="hero-go-calculators"
                   onClick={() => {
                     setCurrentView("calculator");
                     window.scrollTo({ top: 0, behavior: "smooth" });
                   }}
-                  className="w-full sm:w-auto px-6 py-3.5 bg-niibs-blue hover:bg-niibs-blue-light text-white font-bold rounded-xl shadow-md transition-all active:scale-95 text-sm sm:text-base cursor-pointer dark:bg-niibs-yellow dark:text-slate-950 flex items-center justify-center space-x-2"
+                  className="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-niibs-blue to-indigo-700 hover:from-indigo-700 hover:to-niibs-blue dark:from-niibs-yellow dark:to-amber-400 dark:hover:from-amber-400 dark:hover:to-niibs-yellow text-white dark:text-slate-950 font-bold rounded-2xl shadow-xl shadow-niibs-blue/20 dark:shadow-niibs-yellow/20 hover:shadow-2xl hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 text-sm sm:text-base cursor-pointer flex items-center justify-center space-x-2.5 font-display"
                 >
                   <Calculator className="w-5 h-5" />
                   <span>Launch GPA Calculators</span>
+                  <ArrowRight className="w-4 h-4 ml-1 opacity-80" />
                 </button>
+                
                 <button
                   id="hero-go-dashboard"
                   onClick={() => {
                     setCurrentView("cgpa");
                     window.scrollTo({ top: 0, behavior: "smooth" });
                   }}
-                  className="w-full sm:w-auto px-6 py-3.5 border border-slate-200 dark:border-slate-800 bg-white/40 dark:bg-slate-900/30 font-bold rounded-xl text-xs sm:text-sm tracking-wide transition-all text-slate-800 dark:text-slate-200 flex items-center justify-center space-x-2 backdrop-blur-md"
+                  className="w-full sm:w-auto px-8 py-4 border border-slate-200/80 dark:border-slate-700/60 bg-white/60 dark:bg-slate-900/60 hover:bg-white dark:hover:bg-slate-900 font-bold rounded-2xl text-xs sm:text-sm tracking-wide transition-all duration-200 text-slate-800 dark:text-slate-100 flex items-center justify-center space-x-2.5 backdrop-blur-md shadow-sm hover:shadow-md cursor-pointer font-display"
                 >
                   <Award className="w-5 h-5 text-niibs-yellow animate-pulse" />
                   <span>Academic Trend Dashboard</span>
                 </button>
-              </div>
+              </motion.div>
+
+              {/* Quick Feature Stats Counter */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.4 }}
+                className="grid grid-cols-2 md:grid-cols-4 gap-3 pt-6 max-w-3xl mx-auto"
+              >
+                <div className="glass-card p-3.5 rounded-2xl text-center space-y-1">
+                  <div className="flex items-center justify-center text-niibs-blue dark:text-niibs-yellow mb-1">
+                    <BookOpen className="w-5 h-5" />
+                  </div>
+                  <div className="font-display font-black text-lg text-slate-900 dark:text-white">3 Faculties</div>
+                  <div className="text-[11px] text-slate-500 dark:text-slate-400 font-medium">FCIT, FBS, FHSS</div>
+                </div>
+
+                <div className="glass-card p-3.5 rounded-2xl text-center space-y-1">
+                  <div className="flex items-center justify-center text-niibs-green dark:text-niibs-green-light mb-1">
+                    <Lock className="w-5 h-5" />
+                  </div>
+                  <div className="font-display font-black text-lg text-slate-900 dark:text-white">100% Private</div>
+                  <div className="text-[11px] text-slate-500 dark:text-slate-400 font-medium">Client-Side Storage</div>
+                </div>
+
+                <div className="glass-card p-3.5 rounded-2xl text-center space-y-1">
+                  <div className="flex items-center justify-center text-amber-500 dark:text-niibs-yellow mb-1">
+                    <ShieldCheck className="w-5 h-5" />
+                  </div>
+                  <div className="font-display font-black text-lg text-slate-900 dark:text-white">UGC Aligned</div>
+                  <div className="text-[11px] text-slate-500 dark:text-slate-400 font-medium">Official Grading Scale</div>
+                </div>
+
+                <div className="glass-card p-3.5 rounded-2xl text-center space-y-1">
+                  <div className="flex items-center justify-center text-indigo-500 dark:text-indigo-400 mb-1">
+                    <Zap className="w-5 h-5" />
+                  </div>
+                  <div className="font-display font-black text-lg text-slate-900 dark:text-white">Real-Time</div>
+                  <div className="text-[11px] text-slate-500 dark:text-slate-400 font-medium">Honors Forecasting</div>
+                </div>
+              </motion.div>
             </section>
 
             {/* Quick Overall Summary Analytics Widget */}
-            <motion.section
-              className="glass-card rounded-3xl p-6 sm:p-10"
-              whileHover={{
-                y: -5,
-                boxShadow:
-                  "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
-              }}
-              transition={{
-                duration: 0.2,
-              }}
-            >
+            <section className="max-w-6xl mx-auto">
               <Dashboard
                 semesters={semesters}
                 onNavigate={setCurrentView}
                 clearHistory={handleClearHistory}
               />
-            </motion.section>
+            </section>
 
             {/* Faculty Profiles Cards */}
-            <section className="space-y-6">
+            <section className="space-y-8 max-w-6xl mx-auto">
               <div className="text-center space-y-2">
-                <h2 className="font-display font-black text-2xl sm:text-3xl text-slate-900 dark:text-white">
+                <div className="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full bg-slate-200/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-400 text-xs font-semibold uppercase tracking-wider font-mono">
+                  <BarChart3 className="w-3.5 h-3.5 text-niibs-blue dark:text-niibs-yellow" />
+                  <span>Syllabus Grid Matrix</span>
+                </div>
+                <h2 className="font-display font-black text-2xl sm:text-4xl text-slate-900 dark:text-white">
                   Academic Faculties Offered
                 </h2>
-                <p className="text-xs sm:text-sm text-slate-500 max-w-lg mx-auto">
+                <p className="text-xs sm:text-base text-slate-500 dark:text-slate-400 max-w-xl mx-auto">
                   Pre-configured curriculums aligned exactly with department
                   bylaws and credit point balances.
                 </p>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6.5">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 {/* Faculty 1: Computing */}
                 <motion.div
-                  className="glass-card p-6 rounded-3xl flex flex-col justify-between"
+                  className="glass-card p-7 rounded-3xl flex flex-col justify-between border border-indigo-100/60 dark:border-indigo-900/30 hover:border-indigo-400/50 dark:hover:border-indigo-500/50 transition-all duration-300"
                   whileHover={{
-                    y: -5,
+                    y: -6,
                     boxShadow:
-                      "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
+                      "0 20px 30px -10px rgba(79, 70, 229, 0.15)",
                   }}
                   transition={{
                     duration: 0.2,
                   }}
                 >
-                  <div className="space-y-4">
-                    <div className="w-11 h-11 bg-indigo-50/50 dark:bg-indigo-950/20 text-niibs-blue dark:text-indigo-400 rounded-xl border border-indigo-200/50 flex items-center justify-center">
-                      <Cpu className="w-6 h-6 animate-pulse" />
+                  <div className="space-y-5">
+                    <div className="flex items-center justify-between">
+                      <div className="w-12 h-12 bg-gradient-to-br from-indigo-500 to-niibs-blue text-white rounded-2xl shadow-md shadow-indigo-500/20 flex items-center justify-center">
+                        <Cpu className="w-6 h-6" />
+                      </div>
+                      <span className="px-2.5 py-1 rounded-full bg-indigo-50 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300 text-[11px] font-mono font-bold">
+                        FCIT
+                      </span>
                     </div>
-                    <div className="space-y-1.5">
-                      <h3 className="font-display font-bold text-lg text-slate-950 dark:text-white">
+
+                    <div className="space-y-2">
+                      <h3 className="font-display font-bold text-xl text-slate-950 dark:text-white">
                         Computing & IT (FCIT)
                       </h3>
-                      <p className="text-xs text-slate-500 leading-relaxed">
+                      <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
                         Preloads software development, network security,
                         database architectures, and AI curricula.
                       </p>
                     </div>
 
-                    <ul className="space-y-1 text-xs text-slate-500 dark:text-slate-400 font-medium">
-                      <li>• BSc (Hons) Software Engineering</li>
-                      <li>• BSc (Hons) Information Technology</li>
-                      <li>• BSc (Hons) Data Science</li>
-                      <li>• BSc (Hons) Cyber Security</li>
-                    </ul>
+                    <div className="flex flex-wrap gap-1.5 pt-1">
+                      <span className="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 text-[11px] font-medium">
+                        Software Engineering
+                      </span>
+                      <span className="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 text-[11px] font-medium">
+                        Information Technology
+                      </span>
+                      <span className="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 text-[11px] font-medium">
+                        Data Science
+                      </span>
+                      <span className="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 text-[11px] font-medium">
+                        Cyber Security
+                      </span>
+                    </div>
                   </div>
 
                   <button
@@ -281,44 +362,56 @@ export default function App() {
                       setCurrentView("calculator");
                       window.scrollTo({ top: 0, behavior: "smooth" });
                     }}
-                    className="w-full mt-6 text-center py-2 border hover:bg-white/40 dark:hover:bg-slate-800/30 border-slate-200/60 rounded-lg text-xs font-semibold text-slate-700 dark:border-slate-800 dark:text-slate-400 flex items-center justify-center space-x-1 transition-all"
+                    className="w-full mt-7 text-center py-3 border border-indigo-200 dark:border-indigo-800/60 hover:bg-indigo-600 hover:text-white dark:hover:bg-indigo-500 dark:hover:text-white rounded-xl text-xs font-bold text-indigo-700 dark:text-indigo-300 flex items-center justify-center space-x-2 transition-all duration-200 group font-display"
                   >
                     <span>Load FCIT Subject Grid</span>
-                    <ChevronRight className="w-3.5 h-3.5" />
+                    <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </button>
                 </motion.div>
 
                 {/* Faculty 2: Buddhist Studies */}
                 <motion.div
-                  className="glass-card p-6 rounded-3xl flex flex-col justify-between"
+                  className="glass-card p-7 rounded-3xl flex flex-col justify-between border border-amber-100/60 dark:border-amber-900/30 hover:border-amber-400/50 dark:hover:border-amber-500/50 transition-all duration-300"
                   whileHover={{
-                    y: -5,
+                    y: -6,
                     boxShadow:
-                      "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
+                      "0 20px 30px -10px rgba(245, 158, 11, 0.15)",
                   }}
                   transition={{
                     duration: 0.2,
                   }}
                 >
-                  <div className="space-y-4">
-                    <div className="w-11 h-11 bg-amber-50/50 dark:bg-amber-950/20 text-niibs-yellow dark:text-niibs-yellow rounded-xl border border-amber-200/50 flex items-center justify-center">
-                      <Flower className="w-6 h-6 animate-pulse" />
+                  <div className="space-y-5">
+                    <div className="flex items-center justify-between">
+                      <div className="w-12 h-12 bg-gradient-to-br from-amber-400 to-niibs-yellow text-slate-950 rounded-2xl shadow-md shadow-amber-500/20 flex items-center justify-center">
+                        <Flower className="w-6 h-6" />
+                      </div>
+                      <span className="px-2.5 py-1 rounded-full bg-amber-50 dark:bg-amber-950/60 text-amber-800 dark:text-niibs-yellow text-[11px] font-mono font-bold">
+                        FBS
+                      </span>
                     </div>
-                    <div className="space-y-1.5">
-                      <h3 className="font-display font-bold text-lg text-slate-950 dark:text-white">
+
+                    <div className="space-y-2">
+                      <h3 className="font-display font-bold text-xl text-slate-950 dark:text-white">
                         Buddhist Studies (FBS)
                       </h3>
-                      <p className="text-xs text-slate-500 leading-relaxed">
+                      <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
                         Features ancient Theravada and Mahayana philosophy, Pali
                         grammar, and Sanskrit literary analyses.
                       </p>
                     </div>
 
-                    <ul className="space-y-1 text-xs text-slate-500 dark:text-slate-400 font-medium">
-                      <li>• BA (General / Hons) Buddhist Studies</li>
-                      <li>• MA in Buddhist Studies (Masters)</li>
-                      <li>• MPhil in Buddhist Studies Research</li>
-                    </ul>
+                    <div className="flex flex-wrap gap-1.5 pt-1">
+                      <span className="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 text-[11px] font-medium">
+                        BA Buddhist Studies
+                      </span>
+                      <span className="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 text-[11px] font-medium">
+                        MA Buddhist Studies
+                      </span>
+                      <span className="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 text-[11px] font-medium">
+                        MPhil / PhD Research
+                      </span>
+                    </div>
                   </div>
 
                   <button
@@ -328,45 +421,57 @@ export default function App() {
                       setCurrentView("calculator");
                       window.scrollTo({ top: 0, behavior: "smooth" });
                     }}
-                    className="w-full mt-6 text-center py-2 border hover:bg-white/40 dark:hover:bg-slate-800/30 border-slate-200/60 rounded-lg text-xs font-semibold text-slate-700 dark:border-slate-800 dark:text-slate-400 flex items-center justify-center space-x-1 transition-all"
+                    className="w-full mt-7 text-center py-3 border border-amber-200 dark:border-amber-800/60 hover:bg-amber-500 hover:text-slate-950 dark:hover:bg-niibs-yellow dark:hover:text-slate-950 rounded-xl text-xs font-bold text-amber-800 dark:text-niibs-yellow flex items-center justify-center space-x-2 transition-all duration-200 group font-display"
                   >
                     <span>Load FBS Subject Grid</span>
-                    <ChevronRight className="w-3.5 h-3.5" />
+                    <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </button>
                 </motion.div>
 
                 {/* Faculty 3: Humanities */}
                 <motion.div
-                  className="glass-card p-6 rounded-3xl flex flex-col justify-between"
+                  className="glass-card p-7 rounded-3xl flex flex-col justify-between border border-teal-100/60 dark:border-teal-900/30 hover:border-teal-400/50 dark:hover:border-teal-500/50 transition-all duration-300"
                   whileHover={{
-                    y: -5,
+                    y: -6,
                     boxShadow:
-                      "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
+                      "0 20px 30px -10px rgba(20, 184, 166, 0.15)",
                   }}
                   transition={{
                     duration: 0.2,
                   }}
                 >
-                  <div className="space-y-4">
-                    <div className="w-11 h-11 bg-teal-50/50 dark:bg-teal-950/20 text-niibs-green dark:text-niibs-green-light rounded-xl border border-teal-200/50 flex items-center justify-center">
-                      <Globe className="w-5 h-5 animate-spin-slow" />
+                  <div className="space-y-5">
+                    <div className="flex items-center justify-between">
+                      <div className="w-12 h-12 bg-gradient-to-br from-teal-500 to-niibs-green text-white rounded-2xl shadow-md shadow-teal-500/20 flex items-center justify-center">
+                        <Globe className="w-6 h-6" />
+                      </div>
+                      <span className="px-2.5 py-1 rounded-full bg-teal-50 dark:bg-teal-950/60 text-teal-700 dark:text-teal-300 text-[11px] font-mono font-bold">
+                        FHSS
+                      </span>
                     </div>
-                    <div className="space-y-1.5">
-                      <h3 className="font-display font-bold text-lg text-slate-950 dark:text-white">
-                        Humanities & Social Sciences (FHSS)
+
+                    <div className="space-y-2">
+                      <h3 className="font-display font-bold text-xl text-slate-950 dark:text-white">
+                        Humanities & Social Sciences
                       </h3>
-                      <p className="text-xs text-slate-500 leading-relaxed">
-                        Curicculum profiles spanning mass communication,
-                        creative typography, tribal anthropology, and applied
+                      <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+                        Curriculum profiles spanning mass communication,
+                        creative typography, anthropology, and applied
                         archaeology.
                       </p>
                     </div>
 
-                    <ul className="space-y-1 text-xs text-slate-500 dark:text-slate-400 font-medium">
-                      <li>• BA (Hons) Applied Communication</li>
-                      <li>• BA (Hons) Anthropology</li>
-                      <li>• BA (Hons) Applied Archaeology</li>
-                    </ul>
+                    <div className="flex flex-wrap gap-1.5 pt-1">
+                      <span className="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 text-[11px] font-medium">
+                        Applied Communication
+                      </span>
+                      <span className="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 text-[11px] font-medium">
+                        Anthropology
+                      </span>
+                      <span className="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 text-[11px] font-medium">
+                        Applied Archaeology
+                      </span>
+                    </div>
                   </div>
 
                   <button
@@ -376,10 +481,10 @@ export default function App() {
                       setCurrentView("calculator");
                       window.scrollTo({ top: 0, behavior: "smooth" });
                     }}
-                    className="w-full mt-6 text-center py-2 border hover:bg-white/40 dark:hover:bg-slate-800/30 border-slate-200/60 rounded-lg text-xs font-semibold text-slate-700 dark:border-slate-800 dark:text-slate-400 flex items-center justify-center space-x-1 transition-all"
+                    className="w-full mt-7 text-center py-3 border border-teal-200 dark:border-teal-800/60 hover:bg-teal-600 hover:text-white dark:hover:bg-teal-500 dark:hover:text-white rounded-xl text-xs font-bold text-teal-700 dark:text-teal-300 flex items-center justify-center space-x-2 transition-all duration-200 group font-display"
                   >
                     <span>Load FHSS Subject Grid</span>
-                    <ChevronRight className="w-3.5 h-3.5" />
+                    <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </button>
                 </motion.div>
               </div>
@@ -387,9 +492,9 @@ export default function App() {
 
             {/* University Standards and Integrity Banner */}
             <motion.section
-              className="glass-card p-6 sm:p-8 rounded-3xl flex flex-col md:flex-row items-center justify-between gap-6"
+              className="glass-card p-6 sm:p-8 rounded-3xl border border-niibs-yellow/30 bg-gradient-to-r from-niibs-blue/5 via-transparent to-niibs-yellow/5 flex flex-col md:flex-row items-center justify-between gap-6 shadow-md max-w-6xl mx-auto"
               whileHover={{
-                y: -5,
+                y: -4,
                 boxShadow:
                   "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
               }}
@@ -398,12 +503,14 @@ export default function App() {
               }}
             >
               <div className="flex items-start space-x-4">
-                <ShieldAlert className="w-8 h-8 text-niibs-yellow shrink-0 mt-0.5" />
-                <div className="space-y-1">
-                  <h4 className="font-display font-bold text-slate-900 dark:text-white text-base">
-                    Official Board Verification Standards
+                <div className="w-12 h-12 rounded-2xl bg-niibs-yellow/20 border border-niibs-yellow/40 text-niibs-yellow dark:text-niibs-yellow flex items-center justify-center shrink-0 mt-0.5 shadow-sm">
+                  <ShieldCheck className="w-7 h-7 text-niibs-yellow" />
+                </div>
+                <div className="space-y-1.5">
+                  <h4 className="font-display font-bold text-slate-900 dark:text-white text-lg flex items-center space-x-2">
+                    <span>Official Board Verification Standards</span>
                   </h4>
-                  <p className="text-xs text-slate-500 leading-relaxed max-w-xl">
+                  <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed max-w-2xl">
                     Our dynamic calculation mechanisms align directly with the
                     criteria laid down by the UGC Sri Lanka and the academic
                     advisory council of NIIBS. This utility is entirely
@@ -416,50 +523,56 @@ export default function App() {
                   setCurrentView("resources");
                   window.scrollTo({ top: 0, behavior: "smooth" });
                 }}
-                className="px-5 py-3 bg-niibs-blue hover:bg-niibs-blue-light hover:shadow-lg hover:shadow-niibs-blue/15 text-white rounded-xl dark:bg-niibs-yellow dark:text-slate-950 dark:hover:bg-niibs-yellow-light text-xs font-bold leading-none shrink-0 transition-all font-display"
+                className="w-full md:w-auto px-6 py-3.5 bg-niibs-blue hover:bg-niibs-blue-light hover:shadow-lg hover:shadow-niibs-blue/20 text-white rounded-2xl dark:bg-niibs-yellow dark:text-slate-950 dark:hover:bg-niibs-yellow-light text-xs font-bold leading-none shrink-0 transition-all font-display cursor-pointer flex items-center justify-center space-x-2"
               >
-                Inspect Official Directives
+                <span>Inspect Official Directives</span>
+                <ChevronRight className="w-4 h-4" />
               </button>
             </motion.section>
           </div>
         )}
 
         {currentView === "calculator" && (
-          <div className="space-y-6 animate-in fade-in duration-300">
+          <div className="space-y-8 animate-in fade-in duration-300 max-w-6xl mx-auto">
             {/* View Title */}
-            <div>
-              <h1 className="font-display font-black text-2xl sm:text-3xl text-slate-950 dark:text-white flex items-center space-x-2">
-                <Calculator className="w-7 h-7 text-niibs-blue dark:text-niibs-yellow" />
-                <span>NIIBS GPA Calculators</span>
-              </h1>
-              <p className="text-xs sm:text-sm text-slate-500 leading-relaxed mt-1">
-                Choose between calculating via predefined faculty syllabus, or
-                typing manual credit points directly.
-              </p>
-            </div>
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-slate-200/80 dark:border-slate-800/80 pb-6">
+              <div>
+                <h1 className="font-display font-black text-2xl sm:text-4xl text-slate-950 dark:text-white flex items-center space-x-3">
+                  <div className="p-2.5 rounded-2xl bg-niibs-blue/10 dark:bg-niibs-yellow/15 text-niibs-blue dark:text-niibs-yellow">
+                    <Calculator className="w-7 h-7" />
+                  </div>
+                  <span>NIIBS GPA Calculators</span>
+                </h1>
+                <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 leading-relaxed mt-2 max-w-xl">
+                  Select predefined faculty course grids or manually enter course titles, credit weights, and letter grades.
+                </p>
+              </div>
 
-            {/* Toggle tabs select */}
-            <div className="flex border-b border-slate-200 dark:border-slate-800 pb-2 space-x-3.5 no-print">
-              <button
-                onClick={() => setActiveCalcTab("faculty")}
-                className={`py-2 text-sm font-bold tracking-wide transition-all border-b-2 font-display ${
-                  activeCalcTab === "faculty"
-                    ? "border-niibs-blue text-niibs-blue dark:border-niibs-yellow dark:text-white"
-                    : "border-transparent text-slate-400 hover:text-slate-600"
-                }`}
-              >
-                Faculty Syllabus Preloads
-              </button>
-              <button
-                onClick={() => setActiveCalcTab("manual")}
-                className={`py-2 text-sm font-bold tracking-wide transition-all border-b-2 font-display ${
-                  activeCalcTab === "manual"
-                    ? "border-niibs-blue text-niibs-blue dark:border-niibs-yellow dark:text-white"
-                    : "border-transparent text-slate-400 hover:text-slate-600"
-                }`}
-              >
-                Manual Entry Calculator
-              </button>
+              {/* Segmented Control Pill Switcher */}
+              <div className="inline-flex p-1.5 rounded-2xl bg-slate-200/70 dark:bg-slate-900/70 border border-slate-300/50 dark:border-slate-800/80 backdrop-blur-md self-start sm:self-center">
+                <button
+                  onClick={() => setActiveCalcTab("faculty")}
+                  className={`flex items-center space-x-2 px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all font-display cursor-pointer ${
+                    activeCalcTab === "faculty"
+                      ? "bg-white dark:bg-slate-800 text-niibs-blue dark:text-niibs-yellow shadow-md shadow-slate-900/5"
+                      : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
+                  }`}
+                >
+                  <BookOpen className="w-4 h-4" />
+                  <span>Faculty Syllabus Grid</span>
+                </button>
+                <button
+                  onClick={() => setActiveCalcTab("manual")}
+                  className={`flex items-center space-x-2 px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all font-display cursor-pointer ${
+                    activeCalcTab === "manual"
+                      ? "bg-white dark:bg-slate-800 text-niibs-blue dark:text-niibs-yellow shadow-md shadow-slate-900/5"
+                      : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
+                  }`}
+                >
+                  <Layers className="w-4 h-4" />
+                  <span>Manual Entry Mode</span>
+                </button>
+              </div>
             </div>
 
             {/* Tab view renders */}
@@ -476,13 +589,15 @@ export default function App() {
         )}
 
         {currentView === "cgpa" && (
-          <div className="space-y-6 animate-in fade-in duration-300">
-            <div>
-              <h1 className="font-display font-black text-2xl sm:text-3xl text-slate-950 dark:text-white flex items-center space-x-2">
-                <Award className="w-7 h-7 text-niibs-blue dark:text-niibs-yellow animate-bounce" />
+          <div className="space-y-8 animate-in fade-in duration-300 max-w-6xl mx-auto">
+            <div className="border-b border-slate-200/80 dark:border-slate-800/80 pb-6">
+              <h1 className="font-display font-black text-2xl sm:text-4xl text-slate-950 dark:text-white flex items-center space-x-3">
+                <div className="p-2.5 rounded-2xl bg-niibs-yellow/20 text-niibs-yellow dark:text-niibs-yellow">
+                  <Award className="w-7 h-7 text-niibs-yellow" />
+                </div>
                 <span>CGPA Tracker & Semester Log</span>
               </h1>
-              <p className="text-xs sm:text-sm text-slate-500 mt-1">
+              <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-2 max-w-xl">
                 Accumulate multi-semester grades to forecast overall GPA values
                 and predicted degree classification brackets.
               </p>
@@ -505,13 +620,15 @@ export default function App() {
         )}
 
         {currentView === "target_gpa" && (
-          <div className="space-y-6 animate-in fade-in duration-300">
-            <div>
-              <h1 className="font-display font-black text-2xl sm:text-3xl text-slate-950 dark:text-white flex items-center space-x-2">
-                <GraduationCap className="w-7 h-7 text-niibs-blue dark:text-niibs-yellow" />
+          <div className="space-y-8 animate-in fade-in duration-300 max-w-6xl mx-auto">
+            <div className="border-b border-slate-200/80 dark:border-slate-800/80 pb-6">
+              <h1 className="font-display font-black text-2xl sm:text-4xl text-slate-950 dark:text-white flex items-center space-x-3">
+                <div className="p-2.5 rounded-2xl bg-niibs-blue/10 dark:bg-niibs-yellow/15 text-niibs-blue dark:text-niibs-yellow">
+                  <GraduationCap className="w-7 h-7" />
+                </div>
                 <span>NIIBS Target CGPA Planner</span>
               </h1>
-              <p className="text-xs sm:text-sm text-slate-500 mt-1">
+              <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-2 max-w-xl">
                 Input completed stats and desired overall target. The planner
                 computes core points needed in subsequent semesters.
               </p>
@@ -523,86 +640,10 @@ export default function App() {
 
         {currentView === "resources" && <AcademicGuides />}
 
-        {currentView === "about" && (
-          <div className="max-w-3xl mx-auto space-y-8 animate-in fade-in duration-300">
-            {/* About Headline block */}
-            <div className="text-center space-y-3">
-              <Landmark className="w-12 h-12 text-niibs-blue dark:text-niibs-yellow mx-auto" />
-              <h1 className="font-display font-black text-3xl sm:text-4xl text-slate-950 dark:text-white leading-tight">
-                About the NIIBS GPA Calculator
-              </h1>
-              <p className="text-sm font-mono text-slate-400 uppercase tracking-widest font-bold">
-                Student Integrity & Innovation Portal
-              </p>
-            </div>
-
-            {/* In depth description */}
-            <motion.div
-              className="glass-card rounded-3xl p-6 sm:p-10 text-sm space-y-6 text-justify leading-relaxed"
-              whileHover={{
-                y: -5,
-                boxShadow:
-                  "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
-              }}
-              transition={{
-                duration: 0.2,
-              }}
-            >
-              <p>
-                The <b>NIIBS GPA Calculator</b> is formulated to empower
-                students at the Nāgānanda International Institute for Buddhist
-                Studies to seamlessly evaluate and manage academic standing
-                metrics. Understanding CGPA changes, honors degree brackets, and
-                Dean’s List criteria is essential to guide study structures
-                efficiently.
-              </p>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 border-t border-slate-100 dark:border-slate-800">
-                <div className="space-y-1.5 p-4 rounded-xl bg-white/20 dark:bg-slate-800/40 border border-slate-200/40 dark:border-slate-800/40">
-                  <h4 className="font-display font-bold text-slate-950 dark:text-white text-xs uppercase tracking-wider">
-                    Full Client-Side Security
-                  </h4>
-                  <p className="text-xs text-slate-500">
-                    Your semester logs, marks selections, and goals are stored
-                    exclusively inside local storage. We do not collect,
-                    transmit, or monitor data.
-                  </p>
-                </div>
-
-                <div className="space-y-1.5 p-4 rounded-xl bg-white/20 dark:bg-slate-800/40 border border-slate-200/40 dark:border-slate-800/40">
-                  <h4 className="font-display font-bold text-slate-950 dark:text-white text-xs uppercase tracking-wider">
-                    UGC Compliant Model
-                  </h4>
-                  <p className="text-xs text-slate-500">
-                    Formulated adhering strictly to public standards approved by
-                    the Sri Lankan University Grants Commission and NIIBS
-                    department ordinances.
-                  </p>
-                </div>
-              </div>
-
-              {/* Disclaimer */}
-              <div className="p-4 rounded-2xl bg-white/20 dark:bg-slate-800/40 border border-slate-200/40 dark:border-slate-800/40 flex items-start space-x-3 text-xs leading-relaxed text-slate-500">
-                <Info className="w-5 h-5 text-niibs-yellow shrink-0 mt-0.5" />
-                <div className="space-y-1">
-                  <b className="font-display font-semibold text-slate-900 dark:text-white">
-                    General Portal Disclaimer
-                  </b>
-                  <p>
-                    All values computed are generated directly using math
-                    algorithms for guiding and forecasting purposes. Official
-                    transcripts, final certificate ratings, and credit approvals
-                    remain under the sole jurisdiction of the Board of
-                    Examinations at the Bollegala, Kelaniya campus of NIIBS.
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        )}
+        {currentView === "about" && <AboutView onNavigate={setCurrentView} />}
       </main>
 
-      {/* University Portal Portal Footer */}
+      {/* University Portal Footer */}
       <Footer onViewChange={setCurrentView} />
 
       {/* Global Toast Notification Overlay */}
@@ -613,17 +654,17 @@ export default function App() {
             initial={{ opacity: 0, y: 50, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
-            transition={{ duration: 0.2 }}
-            className={`fixed bottom-6 right-6 z-50 flex items-center space-x-3 px-5 py-3.5 rounded-2xl shadow-xl border backdrop-blur-md text-sm font-medium ${
+            transition={{ duration: 0.25, ease: "easeOut" }}
+            className={`fixed bottom-6 right-6 z-50 flex items-center space-x-3 px-5 py-4 rounded-2xl shadow-2xl border backdrop-blur-xl text-sm font-semibold ${
               toast.type === 'success' 
-                ? 'bg-[#00a650]/90 border-[#00a650] text-white' 
+                ? 'bg-emerald-600/90 border-emerald-500 text-white shadow-emerald-600/20' 
                 : toast.type === 'error'
-                  ? 'bg-red-500/90 border-red-600 text-white'
-                  : 'bg-white/90 dark:bg-slate-800/90 border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-200'
+                  ? 'bg-rose-600/90 border-rose-500 text-white shadow-rose-600/20'
+                  : 'bg-white/90 dark:bg-slate-900/90 border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white shadow-slate-900/20'
             }`}
           >
             {toast.type === 'success' && <CheckCircle className="w-5 h-5 text-white shrink-0" />}
-            {toast.type === 'info' && <AlertCircle className="w-5 h-5 text-[#2d3091] dark:text-[#ffc013] shrink-0" />}
+            {toast.type === 'info' && <AlertCircle className="w-5 h-5 text-niibs-blue dark:text-niibs-yellow shrink-0" />}
             {toast.type === 'error' && <XCircle className="w-5 h-5 text-white shrink-0" />}
             <span>{toast.message}</span>
           </motion.div>

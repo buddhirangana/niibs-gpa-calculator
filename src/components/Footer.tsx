@@ -40,7 +40,7 @@ export default function Footer({ onViewChange }: FooterProps) {
                     NIIBS
                   </span>
                   <span className="text-[9px] px-1.5 py-0.5 rounded bg-niibs-yellow/20 text-niibs-yellow font-mono font-bold tracking-wider">
-                    CAMPUS
+                    v1.0
                   </span>
                 </div>
                 <span className="text-[10px] sm:text-xs font-mono font-medium tracking-wide text-niibs-yellow uppercase block leading-none mt-0.5">

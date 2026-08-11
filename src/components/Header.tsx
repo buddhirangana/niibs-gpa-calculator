@@ -4,7 +4,7 @@
  */
 
 import { useState, useEffect } from 'react';
-import { Menu, X, Sun, Moon, GraduationCap, Award, Compass, HelpCircle, BookOpen, Calculator, Landmark } from 'lucide-react';
+import { Menu, X, Sun, Moon, GraduationCap } from 'lucide-react';
 
 interface HeaderProps {
   currentView: string;
@@ -26,12 +26,12 @@ export default function Header({ currentView, onViewChange, theme, setTheme }: H
   }, []);
 
   const menuItems = [
-    { id: 'home', label: 'Home', icon: Compass },
-    { id: 'calculator', label: 'GPA Calculator', icon: Calculator },
-    { id: 'cgpa', label: 'CGPA Tracker', icon: Award },
-    { id: 'target_gpa', label: 'Target Planner', icon: GraduationCap },
-    { id: 'resources', label: 'Academic Resources', icon: BookOpen },
-    { id: 'about', label: 'About NIIBS', icon: Landmark },
+    { id: 'home', label: 'Home'},
+    { id: 'calculator', label: 'GPA Calculator'},
+    { id: 'cgpa', label: 'CGPA Tracker'},
+    { id: 'target_gpa', label: 'Target Planner'},
+    { id: 'resources', label: 'Academic Resources'},
+    { id: 'about', label: 'About NIIBS'},
   ];
 
   const handleNav = (viewId: string) => {
@@ -60,24 +60,19 @@ export default function Header({ currentView, onViewChange, theme, setTheme }: H
             className="flex items-center space-x-3 cursor-pointer group relative"
           >
             <div className="w-10 h-10 sm:w-12 sm:h-12 bg-white/20 dark:bg-slate-800/40 backdrop-blur-md flex items-center justify-center rounded-xl shadow-sm border border-niibs-yellow/40 dark:border-niibs-yellow/60 group-hover:scale-105 transition-transform duration-300">
-              {/* Custom Dharma Wheel (Academic Integrity Seal) */}
-              <svg className="w-6 h-6 text-niibs-yellow animate-spin-slow" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <circle cx="12" cy="12" r="9" />
-                <circle cx="12" cy="12" r="3" />
-                <path d="M12 3v6M12 15v6M3 12h6M15 12h6M5.64 5.64l4.24 4.24M14.12 14.12l4.24 4.24M5.64 18.36l4.24-4.24M14.12 9.88l4.24-4.24" />
-              </svg>
+              <GraduationCap className="w-6 h-6 text-[#2d3091] dark:text-niibs-yellow" />
             </div>
             <div>
               <div className="flex items-center space-x-1">
-                <span className="font-display font-black text-lg sm:text-xl tracking-tight text-[#2d3091] dark:text-white">
+                <span className="font-display font-semibold text-xl sm:text-xl tracking-tight text-[#2d3091] dark:text-white">
                   NIIBS
                 </span>
-                <span className="text-[9px] px-1.5 py-0.5 rounded bg-niibs-yellow/20 text-[#2d3091] dark:text-niibs-yellow font-mono font-bold tracking-wider">
-                  EDU
+                <span className="text-[9px] px-1.5 py-0.5 rounded bg-niibs-yellow/20 text-[#2d3091] dark:text-niibs-yellow font-mono font-medium tracking-wider">
+                  CAMPUS
                 </span>
               </div>
-              <span className="text-[10px] sm:text-xs font-mono font-bold tracking-wide text-[#2d3091] dark:text-niibs-yellow uppercase block leading-none">
-                GPA CALCULATOR PORTAL
+              <span className="text-[10px] sm:text-xs font-mono font-medium tracking-wide text-[#2d3091] dark:text-niibs-yellow uppercase block leading-none">
+                GPA CALCULATOR
               </span>
             </div>
           </div>
@@ -85,20 +80,18 @@ export default function Header({ currentView, onViewChange, theme, setTheme }: H
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-1.5">
             {menuItems.map((item) => {
-              const Icon = item.icon;
               const isActive = currentView === item.id;
               return (
                 <button
                   id={`nav-btn-${item.id}`}
                   key={item.id}
                   onClick={() => handleNav(item.id)}
-                  className={`flex items-center space-x-2 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold tracking-wide font-display transition-all duration-200 border ${
+                  className={`flex items-center space-x-2 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-medium tracking-wide font-display transition-all duration-200 border ${
                     isActive
                       ? 'bg-niibs-blue/10 dark:bg-niibs-yellow/10 text-niibs-blue dark:text-niibs-yellow border-niibs-blue/20 dark:border-niibs-yellow/30 shadow-inner'
                       : 'border-transparent text-slate-700 hover:text-slate-900 hover:bg-white/40 dark:text-slate-300 dark:hover:text-white dark:hover:bg-slate-800/40'
                   }`}
                 >
-                  <Icon className={`w-4 h-4 ${isActive ? 'text-niibs-blue dark:text-niibs-yellow scale-115' : 'text-slate-400'}`} />
                   <span>{item.label}</span>
                 </button>
               );
@@ -140,7 +133,6 @@ export default function Header({ currentView, onViewChange, theme, setTheme }: H
       {isOpen && (
         <div className="md:hidden border-t border-slate-200/40 dark:border-slate-800/30 bg-white/90 dark:bg-slate-900/90 shadow-2xl py-3 px-4 flex flex-col space-y-1.5 animate-in slide-in-from-top-4 duration-200 backdrop-blur-lg">
           {menuItems.map((item) => {
-            const Icon = item.icon;
             const isActive = currentView === item.id;
             return (
               <button
@@ -153,7 +145,6 @@ export default function Header({ currentView, onViewChange, theme, setTheme }: H
                     : 'border-transparent text-slate-700 hover:text-slate-900 hover:bg-slate-100/40 dark:text-slate-300 dark:hover:text-white dark:hover:bg-slate-800/40'
                 }`}
               >
-                <Icon className={`w-4 h-4 ${isActive ? 'text-niibs-blue dark:text-niibs-yellow' : 'text-slate-400'}`} />
                 <span>{item.label}</span>
               </button>
             );

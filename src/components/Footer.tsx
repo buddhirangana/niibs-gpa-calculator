@@ -24,55 +24,58 @@ export default function Footer({ onViewChange }: FooterProps) {
           {/* Brand/Description Column */}
           <div className="md:col-span-2 space-y-5">
             <div className="flex items-center space-x-3 cursor-pointer" onClick={() => handleNav('home')}>
-              <div className="p-2.5 bg-white/10 text-niibs-yellow rounded-xl shadow-md border border-niibs-yellow/40 backdrop-blur-md">
-                <svg className="w-5 h-5 text-niibs-yellow" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <circle cx="12" cy="12" r="9" />
-                  <circle cx="12" cy="12" r="3" />
-                  <path d="M12 3v6M12 15v6M3 12h6M15 12h6M5.64 5.64l4.24 4.24M14.12 14.12l4.24 4.24M5.64 18.36l4.24-4.24M14.12 9.88l4.24-4.24" />
-                </svg>
+              <div className="p-2.5 bg-white/10 text-niibs-yellow rounded-xl shadow-md border border-niibs-yellow/40 backdrop-blur-md" strokeWidth="2">
+                <GraduationCap className="w-6 h-6 text-niibs-yellow" />
               </div>
               <div>
-                <span className="font-display font-bold text-lg text-white tracking-tight">NIIBS</span>
-                <span className="text-[10px] uppercase font-mono font-bold tracking-wider text-niibs-yellow block leading-none">
-                  Nāgānanda Studies Portal
+                <div className="flex items-center space-x-1">
+                  <span className="font-display font-semibold text-xl sm:text-xl tracking-tight text-white">
+                    NIIBS
+                  </span>
+                  <span className="text-[9px] px-1.5 py-0.5 rounded bg-niibs-yellow/20 text-niibs-yellow font-mono font-medium tracking-wider">
+                    CAMPUS
+                  </span>
+                </div>
+                <span className="text-[10px] sm:text-xs font-mono font-medium tracking-wide text-niibs-yellow uppercase block leading-none">
+                  GPA CALCULATOR
                 </span>
               </div>
             </div>
-            
+
             <p className="text-sm leading-relaxed text-slate-400 max-w-sm">
               The official-grade GPA and CGPA management suite for students of Nāgānanda International Institute for Buddhist Studies. Formulated strictly according to university grading directives and curriculum credit configurations.
             </p>
 
             <div className="flex items-center space-x-4">
-              <a 
-                href="https://niibs.lk" 
-                target="_blank" 
-                rel="noopener noreferrer" 
+              <a
+                href="https://niibs.lk"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="p-2 rounded-full bg-slate-800 text-slate-300 hover:bg-niibs-yellow hover:text-slate-950 transition-all duration-300 border border-slate-700/50"
                 title="Official website"
               >
                 <Globe className="w-4 h-4" />
               </a>
-              <a 
-                href="https://fcit.niibs.lk" 
-                target="_blank" 
-                rel="noopener noreferrer" 
+              <a
+                href="https://fcit.niibs.lk"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-xs uppercase tracking-wider font-semibold font-mono text-slate-400 hover:text-niibs-yellow transition-colors"
               >
                 FCIT <ExternalLink className="w-3 h-3 inline pb-0.5 ml-0.5" />
               </a>
-              <a 
-                href="https://fbs.niibs.lk" 
-                target="_blank" 
-                rel="noopener noreferrer" 
+              <a
+                href="https://fbs.niibs.lk"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-xs uppercase tracking-wider font-semibold font-mono text-slate-400 hover:text-niibs-yellow transition-colors"
               >
                 FBS <ExternalLink className="w-3 h-3 inline pb-0.5 ml-0.5" />
               </a>
-              <a 
-                href="https://fhss.niibs.lk" 
-                target="_blank" 
-                rel="noopener noreferrer" 
+              <a
+                href="https://fhss.niibs.lk"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-xs uppercase tracking-wider font-semibold font-mono text-slate-400 hover:text-niibs-yellow transition-colors"
               >
                 FHSS <ExternalLink className="w-3 h-3 inline pb-0.5 ml-0.5" />
@@ -138,14 +141,13 @@ export default function Footer({ onViewChange }: FooterProps) {
 
         {/* Footer Bottom / Meta */}
         <div className="border-t border-slate-800 pt-8 mt-8 flex flex-col md:flex-row items-center justify-between text-xs text-slate-500">
-          <p>© {currentYear} Nāgānanda International Institute for Buddhist Studies (NIIBS). All intellectual rights reserved.</p>
+          <p>© {currentYear} NIIBS GPA Calculator. All rights reserved.</p>
           <div className="flex space-x-6 mt-4 md:mt-0">
-            <span className="hover:text-slate-400 transition-colors cursor-help" title="Lighthouse Compliant, PWA Webapp, Mobile First">
-              Responsive Design Core v1.4.0
+            <span className="transition-colors">
+              Made with ❤️ by <a href="https://buddhirangana.com" target="_blank" rel="noopener noreferrer" className="hover:text-slate-400 transition-colors">
+                Buddhi Rangana.
+              </a>
             </span>
-            <a href="https://niibs.lk" target="_blank" rel="noopener noreferrer" className="hover:text-slate-400 transition-colors">
-              NIIBS Web Portal
-            </a>
           </div>
         </div>
       </div>

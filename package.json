@@ -1,7 +1,9 @@
 {
-  "name": "react-example",
+  "name": "niibs-gpa-calculator",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "author": "Buddhi Rangana",
+  "license": "MIT",
   "type": "module",
   "scripts": {
     "dev": "vite --port=3000 --host=0.0.0.0",
@@ -36,5 +38,12 @@
     "tsx": "^4.21.0",
     "typescript": "~5.8.2",
     "vite": "^6.2.3"
+  },
+  "allowScripts": {
+    "@google/genai@2.16.0": true,
+    "core-js@3.50.0": true,
+    "esbuild@0.25.12": true,
+    "esbuild@0.28.2": true,
+    "protobufjs@7.6.5": true
   }
 }

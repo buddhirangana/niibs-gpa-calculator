@@ -1,1 +1,0 @@
-# niibs-gpa-calculator

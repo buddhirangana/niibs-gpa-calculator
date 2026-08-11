@@ -1,0 +1,6 @@
+{
+  "name": "NIIBS GPA Calculator",
+  "description": "Calculate GPA, CGPA, degree classification, and track academic progress at Nāgānanda International Institute for Buddhist Studies (NIIBS) with real-time results, custom rules, and persistent records.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

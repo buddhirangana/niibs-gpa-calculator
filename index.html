@@ -3,20 +3,37 @@
 
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
   <title>NIIBS GPA Calculator | Calculate Your SGPA & CGPA</title>
   <meta name="title" content="NIIBS GPA Calculator | Calculate Your SGPA & CGPA">
-  <meta name="description" content="NIIBS GPA Calculator is a tool for students to calculate their SGPA & CGPA. It is a simple and easy-to-use tool that can be used by students to calculate their SGPA & CGPA. It is a free tool that can be used by students to calculate their SGPA & CGPA. It is a must-have tool for students who want to calculate their SGPA & CGPA." />
+  <meta name="description" content="Official Academic Evaluation & CGPA Forecasting Tool for Nāgānanda International Institute for Buddhist Studies undergraduates." />
   <meta name="keywords" content="NIIBS GPA Calculator, SGPA Calculator, CGPA Calculator, GPA Calculator, Calculate SGPA, Calculate CGPA, Calculate GPA, NIIBS, GPA, SGPA, CGPA" />
   <meta name="author" content="Buddhi Rangana" />
   <meta name="robots" content="index, follow" />
   <meta name="theme-color" content="#2d3091" />
-  <link rel="icon" type="image/png" href="/favicon.png"/>
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="NIIBS GPA Calculator" />
+  <link rel="manifest" href="/manifest.json" />
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <link rel="apple-touch-icon" href="/favicon.png" />
 </head>
 
 <body>
   <div id="root"></div>
   <script type="module" src="/src/main.tsx"></script>
+  
+  <!-- PWA Service Worker Registration -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js')
+          .then((reg) => console.log('PWA Service Worker registered:', reg.scope))
+          .catch((err) => console.error('PWA Service Worker registration failed:', err));
+      });
+    }
+  </script>
 </body>
 
 </html>

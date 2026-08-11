@@ -14,6 +14,7 @@ import ManualCalculator from "./components/ManualCalculator";
 import CgpaCalculator from "./components/CgpaCalculator";
 import TargetGpaCalculator from "./components/TargetGpaCalculator";
 import AboutView from "./components/AboutView";
+import PwaInstallPrompt from "./components/PwaInstallPrompt";
 import { useLocalStorage } from "./hooks/useLocalStorage";
 import { SemesterRecord } from "./types";
 import {
@@ -645,6 +646,9 @@ export default function App() {
 
       {/* University Portal Footer */}
       <Footer onViewChange={setCurrentView} />
+
+      {/* PWA Install & Offline Status Prompt */}
+      <PwaInstallPrompt />
 
       {/* Global Toast Notification Overlay */}
       <AnimatePresence>

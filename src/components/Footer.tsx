@@ -43,7 +43,7 @@ export default function Footer({ onViewChange }: FooterProps) {
             </div>
 
             <p className="text-sm leading-relaxed text-slate-400 max-w-sm">
-              The official-grade GPA and CGPA management suite for students of Nāgānanda International Institute for Buddhist Studies. Formulated strictly according to university grading directives and curriculum credit configurations.
+              The NIIBS GPA Calculator is a free, online tool designed for students to easily calculate and track their semester and cumulative Grade Point Averages (GPA & CGPA) based on official university credit weightage and grade point values.
             </p>
 
             <div className="flex items-center space-x-4">
@@ -60,7 +60,7 @@ export default function Footer({ onViewChange }: FooterProps) {
                 href="https://fcit.niibs.lk"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-xs uppercase tracking-wider font-semibold font-mono text-slate-400 hover:text-niibs-yellow transition-colors"
+                className="text-xs uppercase tracking-wider font-medium font-mono text-slate-400 hover:text-niibs-yellow transition-colors"
               >
                 FCIT <ExternalLink className="w-3 h-3 inline pb-0.5 ml-0.5" />
               </a>
@@ -68,7 +68,7 @@ export default function Footer({ onViewChange }: FooterProps) {
                 href="https://fbs.niibs.lk"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-xs uppercase tracking-wider font-semibold font-mono text-slate-400 hover:text-niibs-yellow transition-colors"
+                className="text-xs uppercase tracking-wider font-medium font-mono text-slate-400 hover:text-niibs-yellow transition-colors"
               >
                 FBS <ExternalLink className="w-3 h-3 inline pb-0.5 ml-0.5" />
               </a>
@@ -76,7 +76,7 @@ export default function Footer({ onViewChange }: FooterProps) {
                 href="https://fhss.niibs.lk"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-xs uppercase tracking-wider font-semibold font-mono text-slate-400 hover:text-niibs-yellow transition-colors"
+                className="text-xs uppercase tracking-wider font-medium font-mono text-slate-400 hover:text-niibs-yellow transition-colors"
               >
                 FHSS <ExternalLink className="w-3 h-3 inline pb-0.5 ml-0.5" />
               </a>
@@ -85,7 +85,7 @@ export default function Footer({ onViewChange }: FooterProps) {
 
           {/* Practical Navigation Utilities */}
           <div>
-            <h3 className="font-display font-semibold text-white tracking-wide text-sm mb-4 uppercase">
+            <h3 className="font-display font-medium text-white tracking-wide text-sm mb-4 uppercase">
               Academic Toolsets
             </h3>
             <ul className="space-y-3 text-sm">
@@ -119,24 +119,32 @@ export default function Footer({ onViewChange }: FooterProps) {
 
           {/* Contact Details Column */}
           <div>
-            <h3 className="font-display font-semibold text-white tracking-wide text-sm mb-4 uppercase">
+            <h3 className="font-display font-medium text-white tracking-wide text-sm mb-4 uppercase">
               Institute Info
             </h3>
             <ul className="space-y-3 text-sm text-slate-400 font-sans">
               <li className="flex items-start space-x-2">
                 <MapPin className="w-4 h-4 text-niibs-yellow shrink-0 mt-1" />
-                <span>NIIBS, Manelwatta, Bollegala, Kelaniya, Sri Lanka</span>
+                <span>Nāgānanda International Institute for Buddhist Studies (NIIBS), Manelwatta, Bollegala, Kelaniya, Sri Lanka.</span>
               </li>
               <li className="flex items-center space-x-2">
                 <Phone className="w-4 h-4 text-niibs-yellow shrink-0" />
-                <span>+94 11 2 904 660 / 663</span>
+                <span><a href="tel:+94112904666" className="hover:text-niibs-yellow transition-colors">+94 11 2904 666</a></span>
               </li>
               <li className="flex items-center space-x-2">
                 <Mail className="w-4 h-4 text-niibs-yellow shrink-0" />
-                <span>info@niibs.edu.lk</span>
+                <span><a href="mailto:info@niibs.edu.lk" className="hover:text-niibs-yellow transition-colors">info@niibs.edu.lk</a></span>
               </li>
             </ul>
           </div>
+        </div>
+
+        {/* Disclaimer Section */}
+        <div className="mt-10 p-4 sm:p-5 bg-slate-800/40 rounded-xl border border-slate-700/50 text-xs text-slate-400 leading-relaxed text-center md:text-left">
+          <strong className="text-slate-300 font-semibold block mb-1">Disclaimer</strong>
+          <p>
+            This GPA calculator is an independent tool created using NIIBS Student Handbooks. It is not affiliated with, endorsed by, or sponsored by the Nāgānanda International Institute for Buddhist Studies (NIIBS). The accuracy of results is not guaranteed. Please use this tool at your own discretion.
+          </p>
         </div>
 
         {/* Footer Bottom / Meta */}

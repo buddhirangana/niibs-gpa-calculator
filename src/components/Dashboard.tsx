@@ -384,7 +384,7 @@ export default function Dashboard({ semesters, onNavigate, clearHistory }: Dashb
               {semesters.length > 0 && (
                 <button 
                   onClick={clearHistory}
-                  className="text-[10px] text-slate-500 hover:text-niibs-red dark:text-slate-400 dark:hover:text-niibs-red font-mono border border-slate-200/50 dark:border-slate-850 px-2.5 py-1 rounded-xl bg-white/10 dark:bg-slate-800/10 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
+                  className="text-[10px] text-slate-500 hover:text-niibs-red dark:text-slate-400 dark:hover:text-niibs-red font-mono border border-slate-200/50 dark:border-slate-800 px-2.5 py-1 rounded-xl bg-white/10 dark:bg-slate-800/10 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
                 >
                   Reset History
                 </button>
@@ -429,16 +429,16 @@ export default function Dashboard({ semesters, onNavigate, clearHistory }: Dashb
                 </div>
               </div>
             ) : semesters.length === 1 ? (
-              <div className="py-12 text-center text-slate-500 border border-slate-200/40 dark:border-slate-800/50 rounded-2xl bg-white/20 dark:bg-slate-850/10 backdrop-blur-sm">
-                <HelpCircle className="w-10 h-10 text-slate-350 dark:text-slate-700 mx-auto mb-2" />
+              <div className="py-12 text-center text-slate-500 border border-slate-200/40 dark:border-slate-800/50 rounded-2xl bg-white/20 dark:bg-slate-800/10 backdrop-blur-sm">
+                <HelpCircle className="w-10 h-10 text-slate-400 dark:text-slate-700 mx-auto mb-2" />
                 <p className="text-xs dark:text-slate-400">At least two semesters are required in local memory to generate a curve.</p>
                 <p className="text-[11px] text-slate-400 mt-1">Current single point is recorded at <b className="font-mono text-niibs-blue dark:text-niibs-yellow">{semesters[0].gpa.toFixed(2)}</b>.</p>
               </div>
             ) : (
               <div className="py-16 text-center border-2 border-dashed border-slate-200/50 dark:border-slate-800 rounded-3xl flex flex-col items-center space-y-3">
-                <Calendar className="w-12 h-12 text-slate-300 dark:text-slate-650" />
+                <Calendar className="w-12 h-12 text-slate-300 dark:text-slate-600" />
                 <div className="space-y-1 text-center">
-                  <h4 className="font-display font-semibold text-sm text-slate-750 dark:text-white">No Academic Milestones Logged</h4>
+                  <h4 className="font-display font-semibold text-sm text-slate-700 dark:text-white">No Academic Milestones Logged</h4>
                   <p className="text-xs text-slate-500 dark:text-slate-400 max-w-sm mx-auto p-1">
                     Calculate your GPA and click "Save to Dashboard History" inside the calculators to begin tracking.
                   </p>
@@ -567,12 +567,12 @@ export default function Dashboard({ semesters, onNavigate, clearHistory }: Dashb
                   </thead>
                   <tbody className="divide-y divide-slate-100 dark:divide-slate-850/40 text-slate-600 dark:text-slate-300">
                     {semesters.map((sem) => (
-                      <tr key={sem.id} className="hover:bg-slate-50/50 dark:hover:bg-slate-850/10">
+                      <tr key={sem.id} className="hover:bg-slate-50/50 dark:hover:bg-slate-800/10">
                         <td className="py-3 font-display font-bold text-slate-900 dark:text-slate-100">{sem.name}</td>
                         <td className="py-3 font-mono font-bold text-niibs-blue dark:text-niibs-yellow text-sm">
                           {sem.gpa.toFixed(2)}
                         </td>
-                        <td className="py-3 font-mono text-slate-600 dark:text-slate-350">{sem.credits} Credits</td>
+                        <td className="py-3 font-mono text-slate-600 dark:text-slate-400">{sem.credits} Credits</td>
                         <td className="py-3">
                           {sem.gpa >= 3.70 && sem.credits >= 12 ? (
                             <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[9px] font-bold bg-niibs-yellow/15 text-niibs-blue dark:text-niibs-yellow border border-niibs-yellow/20">
@@ -626,10 +626,10 @@ export default function Dashboard({ semesters, onNavigate, clearHistory }: Dashb
                 })}
               </div>
             ) : (
-              <div className="py-12 text-center text-slate-400 space-y-2 border border-slate-200/40 dark:border-slate-800/80 rounded-xl bg-slate-50/20">
-                <Sparkles className="w-8 h-8 text-slate-300 dark:text-slate-650 mx-auto" strokeWidth={1.5} />
-                <p className="text-xs font-mono">No achievements unlocked yet.</p>
-                <p className="text-[10px] text-slate-400 max-w-xs mx-auto text-center px-4 leading-relaxed">
+              <div className="py-12 text-center space-y-2 border border-slate-200/40 dark:border-slate-800/50 rounded-2xl bg-white/20 dark:bg-slate-800/10 backdrop-blur-sm">
+                <Sparkles className="w-8 h-8 text-slate-300 dark:text-slate-600 mx-auto" strokeWidth={1.5} />
+                <p className="text-xs font-mono text-slate-500 dark:text-slate-400">No achievements unlocked yet.</p>
+                <p className="text-[10px] text-slate-400 dark:text-slate-500 max-w-xs mx-auto text-center px-4 leading-relaxed">
                   Saving terms to your dashboard triggers badges in response to high CPGA indexes.
                 </p>
               </div>
@@ -652,11 +652,11 @@ export default function Dashboard({ semesters, onNavigate, clearHistory }: Dashb
                 Academic Standing Notice
               </h4>
             </div>
-            <p className="text-xs text-slate-550 dark:text-slate-300 leading-relaxed italic font-serif">
+            <p className="text-xs text-slate-500 dark:text-slate-300 leading-relaxed italic font-serif">
               "Diligent effort of focus is the foundation of scholarship. One who studies step-by-step reaches high peaks of wisdom naturally."
             </p>
             <div className="pt-2.5 border-t border-slate-200/50 dark:border-slate-800/40 flex items-center justify-between">
-              <span className="text-[10px] text-slate-450 dark:text-slate-400 font-mono uppercase font-bold">
+              <span className="text-[10px] text-slate-500 dark:text-slate-400 dark:text-slate-400 font-mono uppercase font-bold">
                 Academic Advisory
               </span>
               <button 

@@ -89,7 +89,7 @@ export default function TargetGpaCalculator() {
           <div className="space-y-4">
             {/* Current CGPA indicator input */}
             <div className="space-y-1.5">
-              <label className="text-[10px] uppercase font-bold tracking-wider text-slate-455 dark:text-slate-400 font-mono block">
+              <label className="text-[10px] uppercase font-bold tracking-wider text-slate-500 dark:text-slate-400 font-mono block">
                 Current Cumulative CGPA
               </label>
               <input
@@ -99,13 +99,13 @@ export default function TargetGpaCalculator() {
                 max="4.00"
                 value={currentCgpa}
                 onChange={(e) => setCurrentCgpa(e.target.value)}
-                className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200/50 dark:border-slate-850 bg-white/30 dark:bg-slate-900/30 text-slate-850 dark:text-slate-200 text-xs focus:ring-2 focus:ring-niibs-yellow focus:outline-none font-mono font-medium backdrop-blur-md"
+                className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200/50 dark:border-slate-800 bg-white/30 dark:bg-slate-900/30 text-slate-800 dark:text-slate-200 text-xs focus:ring-2 focus:ring-niibs-yellow focus:outline-none font-mono font-medium backdrop-blur-md"
               />
             </div>
 
             {/* Total credits earned input */}
             <div className="space-y-1.5">
-              <label className="text-[10px] uppercase font-bold tracking-wider text-slate-455 dark:text-slate-400 font-mono block">
+              <label className="text-[10px] uppercase font-bold tracking-wider text-slate-500 dark:text-slate-400 font-mono block">
                 Completed Credits (Units)
               </label>
               <input
@@ -114,13 +114,13 @@ export default function TargetGpaCalculator() {
                 max="160"
                 value={completedCredits}
                 onChange={(e) => setCompletedCredits(e.target.value)}
-                className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200/50 dark:border-slate-850 bg-white/30 dark:bg-slate-900/30 text-slate-850 dark:text-slate-200 text-xs focus:ring-2 focus:ring-niibs-yellow focus:outline-none font-mono font-medium backdrop-blur-md"
+                className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200/50 dark:border-slate-800 bg-white/30 dark:bg-slate-900/30 text-slate-800 dark:text-slate-200 text-xs focus:ring-2 focus:ring-niibs-yellow focus:outline-none font-mono font-medium backdrop-blur-md"
               />
             </div>
 
             {/* Target CGPA desired */}
             <div className="space-y-1.5">
-              <label className="text-[10px] uppercase font-bold tracking-wider text-slate-455 dark:text-slate-400 font-mono block">
+              <label className="text-[10px] uppercase font-bold tracking-wider text-slate-500 dark:text-slate-400 font-mono block">
                 Target CGPA Goal
               </label>
               <input
@@ -130,13 +130,13 @@ export default function TargetGpaCalculator() {
                 max="4.00"
                 value={targetCgpa}
                 onChange={(e) => setTargetCgpa(e.target.value)}
-                className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200/50 dark:border-slate-850 bg-white/30 dark:bg-slate-900/30 text-slate-850 dark:text-slate-200 text-xs focus:ring-2 focus:ring-niibs-yellow focus:outline-none font-mono font-medium backdrop-blur-md"
+                className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200/50 dark:border-slate-800 bg-white/30 dark:bg-slate-900/30 text-slate-800 dark:text-slate-200 text-xs focus:ring-2 focus:ring-niibs-yellow focus:outline-none font-mono font-medium backdrop-blur-md"
               />
             </div>
 
             {/* Remaining credits upcoming */}
             <div className="space-y-1.5">
-              <label className="text-[10px] uppercase font-bold tracking-wider text-slate-455 dark:text-slate-400 font-mono block">
+              <label className="text-[10px] uppercase font-bold tracking-wider text-slate-500 dark:text-slate-400 font-mono block">
                 Remaining Credits (Upcoming)
               </label>
               <input
@@ -145,7 +145,7 @@ export default function TargetGpaCalculator() {
                 max="100"
                 value={remainingCredits}
                 onChange={(e) => setRemainingCredits(e.target.value)}
-                className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200/50 dark:border-slate-850 bg-white/30 dark:bg-slate-900/30 text-slate-855 dark:text-slate-200 text-xs focus:ring-2 focus:ring-niibs-yellow focus:outline-none font-mono font-medium backdrop-blur-md"
+                className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200/50 dark:border-slate-800 bg-white/30 dark:bg-slate-900/30 text-slate-800 dark:text-slate-200 text-xs focus:ring-2 focus:ring-niibs-yellow focus:outline-none font-mono font-medium backdrop-blur-md"
               />
             </div>
           </div>
@@ -181,7 +181,7 @@ export default function TargetGpaCalculator() {
               </div>
 
               {/* Necessary GPA visual */}
-              <div className="text-center md:text-right shrink-0 p-6 bg-white/10 dark:bg-slate-800/10 rounded-2xl border border-slate-200/40 dark:border-slate-805/45 backdrop-blur-md min-w-[190px]">
+              <div className="text-center md:text-right shrink-0 p-6 bg-white/10 dark:bg-slate-800/10 rounded-2xl border border-slate-200/40 dark:border-slate-800/45 backdrop-blur-md min-w-[190px]">
                 <span className="text-[10px] text-slate-400 font-mono block uppercase tracking-wide leading-none">
                   Required GPA
                 </span>
@@ -205,7 +205,7 @@ export default function TargetGpaCalculator() {
               !plan.isPossible 
                 ? 'bg-niibs-red/10 border-niibs-red/20 text-rose-950 dark:text-rose-200' 
                 : (plan.requiredGpa || 0) > 3.5 
-                  ? 'bg-niibs-yellow/10 border-niibs-yellow/20 text-amber-955 dark:text-amber-200' 
+                  ? 'bg-niibs-yellow/10 border-niibs-yellow/20 text-amber-950 dark:text-amber-200' 
                   : 'bg-emerald-500/10 border-emerald-500/20 text-emerald-900 dark:text-emerald-200'
             }`}>
               {!plan.isPossible ? (
@@ -270,9 +270,9 @@ export default function TargetGpaCalculator() {
             transition={{
               duration: 0.2
             }}>
-            <Target className="w-12 h-12 text-slate-350 dark:text-slate-650" />
+            <Target className="w-12 h-12 text-slate-400 dark:text-slate-600" />
             <div className="space-y-1 text-center">
-              <h4 className="font-display font-semibold text-sm text-slate-755 dark:text-white">Enter Parameters above</h4>
+              <h4 className="font-display font-semibold text-sm text-slate-700 dark:text-white">Enter Parameters above</h4>
               <p className="text-xs text-slate-500 dark:text-slate-400 p-1">
                 Type completed points details to generate custom goal targets and mathematical strategies.
               </p>

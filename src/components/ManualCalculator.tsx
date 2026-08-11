@@ -117,7 +117,7 @@ export default function ManualCalculator({ onSaveSemester }: ManualCalculatorPro
               <h3 className="font-display font-bold text-lg text-slate-900 dark:text-white">
                 Customize GPA Calculations
               </h3>
-              <p className="text-xs text-slate-505 dark:text-slate-400">
+              <p className="text-xs text-slate-500 dark:text-slate-400">
                 Type course descriptors, credit bounds, and select points in real-time. Unlimited rows are supported.
               </p>
             </div>
@@ -135,11 +135,11 @@ export default function ManualCalculator({ onSaveSemester }: ManualCalculatorPro
             {subjects.map((sub, index) => (
               <div 
                 key={sub.id} 
-                className="grid grid-cols-12 gap-3.5 p-4 rounded-2xl border border-slate-200/40 bg-white/20 dark:border-slate-850 dark:bg-slate-900/20 items-center backdrop-blur-md animate-in fade-in zoom-in-95 duration-200 shadow-sm"
+                className="grid grid-cols-12 gap-3.5 p-4 rounded-2xl border border-slate-200/40 bg-white/20 dark:border-slate-800 dark:bg-slate-900/20 items-center backdrop-blur-md animate-in fade-in zoom-in-95 duration-200 shadow-sm"
               >
                 {/* Course Name Index Field */}
                 <div className="col-span-12 sm:col-span-6 space-y-1">
-                  <span className="text-[10px] text-slate-450 dark:text-slate-400 font-mono font-bold block sm:hidden">
+                  <span className="text-[10px] text-slate-500 dark:text-slate-400 dark:text-slate-400 font-mono font-bold block sm:hidden">
                     Subject Name {index + 1}
                   </span>
                   <input
@@ -147,17 +147,17 @@ export default function ManualCalculator({ onSaveSemester }: ManualCalculatorPro
                     placeholder="e.g. Traditional Sanskrit Grammar, Software Arch..."
                     value={sub.name}
                     onChange={(e) => handleRowChange(sub.id, 'name', e.target.value)}
-                    className="w-full px-3.5 py-2 rounded-xl border border-slate-200/50 dark:border-slate-850 bg-white/30 dark:bg-slate-900/30 text-slate-800 dark:text-slate-200 text-xs focus:ring-2 focus:ring-niibs-yellow focus:outline-none backdrop-blur-md font-medium"
+                    className="w-full px-3.5 py-2 rounded-xl border border-slate-200/50 dark:border-slate-800 bg-white/30 dark:bg-slate-900/30 text-slate-800 dark:text-slate-200 text-xs focus:ring-2 focus:ring-niibs-yellow focus:outline-none backdrop-blur-md font-medium"
                   />
                 </div>
 
                 {/* Credits Input Selection */}
                 <div className="col-span-12 sm:col-span-2.5 space-y-1">
-                  <span className="text-[10px] text-slate-450 dark:text-slate-400 font-mono font-bold block sm:hidden">Credits</span>
+                  <span className="text-[10px] text-slate-500 dark:text-slate-400 dark:text-slate-400 font-mono font-bold block sm:hidden">Credits</span>
                   <select
                     value={sub.credits}
                     onChange={(e) => handleRowChange(sub.id, 'credits', Number(e.target.value))}
-                    className="w-full px-3 py-2 rounded-xl border border-slate-200/50 dark:border-slate-855 bg-white/30 dark:bg-slate-900/30 text-slate-800 dark:text-slate-200 text-xs focus:ring-2 focus:ring-niibs-yellow focus:outline-none font-semibold font-mono"
+                    className="w-full px-3 py-2 rounded-xl border border-slate-200/50 dark:border-slate-800 bg-white/30 dark:bg-slate-900/30 text-slate-800 dark:text-slate-200 text-xs focus:ring-2 focus:ring-niibs-yellow focus:outline-none font-semibold font-mono"
                   >
                     {[1, 2, 3, 4, 5, 6].map(c => (
                       <option key={c} value={c} className="dark:bg-slate-950 dark:text-slate-300">{c} Credits</option>
@@ -167,11 +167,11 @@ export default function ManualCalculator({ onSaveSemester }: ManualCalculatorPro
 
                 {/* Selection Grade Choice */}
                 <div className="col-span-12 sm:col-span-2.5 space-y-1">
-                  <span className="text-[10px] text-slate-450 dark:text-slate-400 font-mono font-bold block sm:hidden">Select Grade</span>
+                  <span className="text-[10px] text-slate-500 dark:text-slate-400 dark:text-slate-400 font-mono font-bold block sm:hidden">Select Grade</span>
                   <select
                     value={sub.grade}
                     onChange={(e) => handleRowChange(sub.id, 'grade', e.target.value)}
-                    className="w-full px-3 py-2 rounded-xl border border-slate-200/50 dark:border-slate-855 bg-white/30 dark:bg-slate-900/30 text-slate-800 dark:text-slate-200 text-xs focus:ring-2 focus:ring-niibs-yellow focus:outline-none font-bold font-mono"
+                    className="w-full px-3 py-2 rounded-xl border border-slate-200/50 dark:border-slate-800 bg-white/30 dark:bg-slate-900/30 text-slate-800 dark:text-slate-200 text-xs focus:ring-2 focus:ring-niibs-yellow focus:outline-none font-bold font-mono"
                   >
                     <option value="" className="dark:bg-slate-950 dark:text-slate-300">— Select —</option>
                     {['A+', 'A', 'A-', 'B+', 'B', 'B-', 'C+', 'C', 'C-', 'D+', 'D', 'E'].map(g => (
@@ -213,8 +213,8 @@ export default function ManualCalculator({ onSaveSemester }: ManualCalculatorPro
           </span>
 
           <div className="space-y-4">
-            <div className="text-center p-6 bg-white/10 dark:bg-slate-800/10 rounded-2xl border border-slate-200/40 dark:border-slate-805/45 backdrop-blur-md">
-              <span className="text-[10px] uppercase font-mono text-slate-400 dark:text-slate-550 font-bold block leading-none">
+            <div className="text-center p-6 bg-white/10 dark:bg-slate-800/10 rounded-2xl border border-slate-200/40 dark:border-slate-800/45 backdrop-blur-md">
+              <span className="text-[10px] uppercase font-mono text-slate-400 dark:text-slate-500 font-bold block leading-none">
                 TERM GPA
               </span>
               <span className="font-mono text-4xl font-extrabold text-[#2d3091] dark:text-niibs-yellow block mt-2">
@@ -228,11 +228,11 @@ export default function ManualCalculator({ onSaveSemester }: ManualCalculatorPro
             {/* Sub analytic details */}
             <div className="space-y-2.5 pt-2 text-xs">
               <div className="flex justify-between items-center pb-2.5 border-b border-slate-200/40 dark:border-slate-800/45">
-                <span className="text-slate-505 dark:text-slate-400 font-medium">Earned Credits</span>
+                <span className="text-slate-500 dark:text-slate-400 font-medium">Earned Credits</span>
                 <span className="font-mono font-bold text-slate-800 dark:text-slate-200">{earnedCredits} Credits</span>
               </div>
               <div className="flex justify-between items-center pb-2.5 border-b border-slate-200/40 dark:border-slate-800/45">
-                <span className="text-slate-505 dark:text-slate-400 font-medium">Cumulative Marks Percent</span>
+                <span className="text-slate-500 dark:text-slate-400 font-medium">Cumulative Marks Percent</span>
                 <span className="font-mono font-bold text-slate-800 dark:text-slate-200">{gradePercentage.toFixed(1)}%</span>
               </div>
             </div>
@@ -240,7 +240,7 @@ export default function ManualCalculator({ onSaveSemester }: ManualCalculatorPro
             {/* Custom save layout */}
             <div className="space-y-4 pt-3">
               <div className="space-y-1.5">
-                <label className="text-[11px] uppercase tracking-wider font-bold text-slate-455 dark:text-slate-400 block font-mono">
+                <label className="text-[11px] uppercase tracking-wider font-bold text-slate-500 dark:text-slate-400 block font-mono">
                   Custom Semester Name
                 </label>
                 <input
@@ -248,7 +248,7 @@ export default function ManualCalculator({ onSaveSemester }: ManualCalculatorPro
                   placeholder="e.g. Year 1 Semester 2"
                   value={customTermName}
                   onChange={(e) => setCustomTermName(e.target.value)}
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200/50 dark:border-slate-850 bg-white/30 dark:bg-slate-900/30 text-slate-800 dark:text-slate-200 text-xs focus:ring-2 focus:ring-niibs-yellow focus:outline-none backdrop-blur-md font-medium"
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200/50 dark:border-slate-800 bg-white/30 dark:bg-slate-900/30 text-slate-800 dark:text-slate-200 text-xs focus:ring-2 focus:ring-niibs-yellow focus:outline-none backdrop-blur-md font-medium"
                 />
               </div>
 

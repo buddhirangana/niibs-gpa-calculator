@@ -49,29 +49,34 @@ export default function Header({ currentView, onViewChange, theme, setTheme }: H
   return (
     <header
       id="main-app-header"
-      className="sticky top-0 z-50 transition-all duration-300 no-print glass-nav"
+      className={`sticky top-0 z-50 transition-all duration-500 no-print ${
+        isScrolled 
+          ? 'bg-white/70 dark:bg-slate-950/70 backdrop-blur-xl shadow-lg shadow-slate-200/20 dark:shadow-black/40 border-b border-slate-200/60 dark:border-slate-800/80 py-1' 
+          : 'bg-transparent py-3'
+      }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 sm:h-20">
+        <div className="flex items-center justify-between h-16 sm:h-18 transition-all duration-300">
           {/* Logo & University Branding */}
           <div
             id="brand-logo"
             onClick={() => handleNav('home')}
             className="flex items-center space-x-3 cursor-pointer group relative"
           >
-            <div className="w-10 h-10 sm:w-12 sm:h-12 bg-white/20 dark:bg-slate-800/40 backdrop-blur-md flex items-center justify-center rounded-xl shadow-sm border border-niibs-yellow/40 dark:border-niibs-yellow/60 group-hover:scale-105 transition-transform duration-300">
-              <GraduationCap className="w-6 h-6 text-[#2d3091] dark:text-niibs-yellow" />
+            <div className="w-10 h-10 sm:w-11 sm:h-11 bg-white/40 dark:bg-slate-800/60 backdrop-blur-md flex items-center justify-center rounded-xl shadow-sm border border-slate-200 dark:border-slate-700/60 group-hover:scale-105 group-hover:border-niibs-blue/40 dark:group-hover:border-niibs-yellow/40 group-hover:shadow-md transition-all duration-300 overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-tr from-niibs-blue/5 to-transparent dark:from-niibs-yellow/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+              <GraduationCap className="w-5 h-5 sm:w-6 sm:h-6 text-niibs-blue dark:text-niibs-yellow relative z-10" />
             </div>
             <div>
-              <div className="flex items-center space-x-1">
-                <span className="font-display font-semibold text-xl sm:text-xl tracking-tight text-[#2d3091] dark:text-white">
+              <div className="flex items-center space-x-1.5">
+                <span className="font-display font-bold text-xl sm:text-xl tracking-tight text-slate-900 dark:text-white group-hover:text-niibs-blue dark:group-hover:text-niibs-yellow transition-colors">
                   NIIBS
                 </span>
-                <span className="text-[9px] px-1.5 py-0.5 rounded bg-niibs-yellow/20 text-[#2d3091] dark:text-niibs-yellow font-mono font-medium tracking-wider">
+                <span className="text-[9px] px-1.5 py-0.5 rounded-md bg-niibs-blue/10 dark:bg-niibs-yellow/20 text-niibs-blue dark:text-niibs-yellow font-mono font-bold tracking-wider shadow-sm border border-niibs-blue/10 dark:border-niibs-yellow/20">
                   CAMPUS
                 </span>
               </div>
-              <span className="text-[10px] sm:text-xs font-mono font-medium tracking-wide text-[#2d3091] dark:text-niibs-yellow uppercase block leading-none">
+              <span className="text-[10px] sm:text-[11px] font-mono font-semibold tracking-wider text-slate-500 dark:text-slate-400 uppercase block leading-none mt-0.5 group-hover:text-slate-600 dark:group-hover:text-slate-300 transition-colors">
                 GPA CALCULATOR
               </span>
             </div>
@@ -86,10 +91,10 @@ export default function Header({ currentView, onViewChange, theme, setTheme }: H
                   id={`nav-btn-${item.id}`}
                   key={item.id}
                   onClick={() => handleNav(item.id)}
-                  className={`flex items-center space-x-2 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-medium tracking-wide font-display transition-all duration-200 border ${
+                  className={`flex items-center space-x-2 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold tracking-wide font-display transition-all duration-300 border ${
                     isActive
                       ? 'bg-niibs-blue/10 dark:bg-niibs-yellow/10 text-niibs-blue dark:text-niibs-yellow border-niibs-blue/20 dark:border-niibs-yellow/30 shadow-inner'
-                      : 'border-transparent text-slate-700 hover:text-slate-900 hover:bg-white/40 dark:text-slate-300 dark:hover:text-white dark:hover:bg-slate-800/40'
+                      : 'border-transparent text-slate-500 hover:text-slate-900 hover:bg-white/60 dark:text-slate-400 dark:hover:text-white dark:hover:bg-slate-800/60 hover:-translate-y-0.5 hover:shadow-sm'
                   }`}
                 >
                   <span>{item.label}</span>
@@ -104,15 +109,15 @@ export default function Header({ currentView, onViewChange, theme, setTheme }: H
             <button
               id="theme-toggler"
               onClick={cycleTheme}
-              className="p-2 sm:p-2.5 rounded-xl border border-slate-200/50 dark:border-slate-800/50 bg-white/30 dark:bg-slate-800/30 text-slate-700 dark:text-slate-250 hover:bg-white/60 dark:hover:bg-slate-800/60 transition-all focus:outline-none focus:ring-2 focus:ring-niibs-yellow text-xs sm:text-sm font-mono flex items-center space-x-1 backdrop-blur-md"
+              className="p-2 sm:p-2.5 rounded-xl border border-slate-200/60 dark:border-slate-700/60 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 hover:bg-white dark:hover:bg-slate-700 hover:scale-105 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-niibs-blue dark:focus:ring-niibs-yellow shadow-sm flex items-center space-x-1 backdrop-blur-md"
               title={`Theme: ${theme}`}
             >
               {theme === 'light' && <Sun className="w-4 h-4 text-niibs-yellow animate-pulse" />}
               {theme === 'dark' && <Moon className="w-4 h-4 text-[#4447b8]" />}
               {theme === 'system' && (
-                <div className="flex items-center space-x-1">
-                  <span className="text-[10px] uppercase font-bold tracking-wider px-1 text-slate-500">SYS</span>
-                  <Sun className="w-3.5 h-3.5 text-slate-400" />
+                <div className="flex items-center space-x-1.5">
+                  <span className="text-[10px] uppercase font-bold tracking-wider px-1 text-slate-400 dark:text-slate-500 font-mono">SYS</span>
+                  <Sun className="w-3.5 h-3.5 text-slate-400 dark:text-slate-500" />
                 </div>
               )}
             </button>
@@ -139,10 +144,10 @@ export default function Header({ currentView, onViewChange, theme, setTheme }: H
                 id={`mobile-nav-btn-${item.id}`}
                 key={item.id}
                 onClick={() => handleNav(item.id)}
-                className={`flex items-center space-x-3 w-full px-4 py-3 rounded-xl text-left text-sm font-bold border transition-all ${
+                className={`flex items-center space-x-3 w-full px-4 py-3.5 rounded-xl text-left text-sm font-bold border transition-all duration-200 ${
                   isActive
-                    ? 'bg-niibs-blue/10 dark:bg-niibs-yellow/10 text-niibs-blue dark:text-niibs-yellow border-niibs-blue/25 dark:border-niibs-yellow/35'
-                    : 'border-transparent text-slate-700 hover:text-slate-900 hover:bg-slate-100/40 dark:text-slate-300 dark:hover:text-white dark:hover:bg-slate-800/40'
+                    ? 'bg-niibs-blue/10 dark:bg-niibs-yellow/10 text-niibs-blue dark:text-niibs-yellow border-niibs-blue/20 dark:border-niibs-yellow/30 shadow-sm'
+                    : 'border-transparent text-slate-600 hover:text-slate-900 hover:bg-slate-100/60 dark:text-slate-400 dark:hover:text-white dark:hover:bg-slate-800/60'
                 }`}
               >
                 <span>{item.label}</span>

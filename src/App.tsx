@@ -62,6 +62,7 @@ export default function App() {
   const [activeCalcTab, setActiveCalcTab] = useState<"faculty" | "manual">(
     "faculty",
   );
+  const [targetFacultyId, setTargetFacultyId] = useState<string>("FCIT");
 
   const [toast, setToast] = useState<{ message: string; type: 'success' | 'info' | 'error' | null; id: number }>({ message: '', type: null, id: 0 });
 
@@ -138,7 +139,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-350 transition-colors duration-300 flex flex-col font-sans relative overflow-hidden print:bg-white print:text-black">
+    <div className="min-h-screen bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-400 transition-colors duration-300 flex flex-col font-sans relative overflow-clip print:bg-white print:text-black">
       {/* Background decoration - Glowing blobs for Glassmorphism */}
       <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
         <div className="absolute -top-32 -left-32 w-[550px] h-[550px] rounded-full ambient-glow-1 filter blur-3xl opacity-80" />
@@ -147,14 +148,12 @@ export default function App() {
       </div>
 
       {/* Branding Header Area */}
-      <div className="relative z-10">
-        <Header
-          currentView={currentView}
-          onViewChange={setCurrentView}
-          theme={theme}
-          setTheme={setTheme}
-        />
-      </div>
+      <Header
+        currentView={currentView}
+        onViewChange={setCurrentView}
+        theme={theme}
+        setTheme={setTheme}
+      />
 
       {/* Main Content Arena */}
       <main className="relative z-10 flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -176,7 +175,7 @@ export default function App() {
                 Instantly
               </h1>
 
-              <p className="text-sm sm:text-lg text-slate-505 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed">
+              <p className="text-sm sm:text-lg text-slate-500 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed">
                 The standard-grade GPA calculator for Nāgānanda International
                 Institute for Buddhist Studies. Preload program subjects,
                 simulate target grades, and predict your final honors degree
@@ -201,7 +200,7 @@ export default function App() {
                     setCurrentView("cgpa");
                     window.scrollTo({ top: 0, behavior: "smooth" });
                   }}
-                  className="w-full sm:w-auto px-6 py-3.5 border border-slate-205 dark:border-slate-801 bg-white/40 dark:bg-slate-900/30 font-bold rounded-xl text-xs sm:text-sm tracking-wide transition-all text-slate-850 dark:text-slate-200 flex items-center justify-center space-x-2 backdrop-blur-md"
+                  className="w-full sm:w-auto px-6 py-3.5 border border-slate-200 dark:border-slate-800 bg-white/40 dark:bg-slate-900/30 font-bold rounded-xl text-xs sm:text-sm tracking-wide transition-all text-slate-800 dark:text-slate-200 flex items-center justify-center space-x-2 backdrop-blur-md"
                 >
                   <Award className="w-5 h-5 text-niibs-yellow animate-pulse" />
                   <span>Academic Trend Dashboard</span>
@@ -231,7 +230,7 @@ export default function App() {
             {/* Faculty Profiles Cards */}
             <section className="space-y-6">
               <div className="text-center space-y-2">
-                <h2 className="font-display font-black text-2xl sm:text-3xl text-slate-930 dark:text-white">
+                <h2 className="font-display font-black text-2xl sm:text-3xl text-slate-900 dark:text-white">
                   Academic Faculties Offered
                 </h2>
                 <p className="text-xs sm:text-sm text-slate-500 max-w-lg mx-auto">
@@ -267,7 +266,7 @@ export default function App() {
                       </p>
                     </div>
 
-                    <ul className="space-y-1 text-xs text-slate-450 font-medium">
+                    <ul className="space-y-1 text-xs text-slate-500 dark:text-slate-400 font-medium">
                       <li>• BSc (Hons) Software Engineering</li>
                       <li>• BSc (Hons) Information Technology</li>
                       <li>• BSc (Hons) Data Science</li>
@@ -277,10 +276,12 @@ export default function App() {
 
                   <button
                     onClick={() => {
+                      setTargetFacultyId("FCIT");
+                      setActiveCalcTab("faculty");
                       setCurrentView("calculator");
                       window.scrollTo({ top: 0, behavior: "smooth" });
                     }}
-                    className="w-full mt-6 text-center py-2 border hover:bg-white/40 dark:hover:bg-slate-800/30 border-slate-200/60 rounded-lg text-xs font-semibold text-slate-700 dark:border-slate-800 dark:text-slate-355 flex items-center justify-center space-x-1 transition-all"
+                    className="w-full mt-6 text-center py-2 border hover:bg-white/40 dark:hover:bg-slate-800/30 border-slate-200/60 rounded-lg text-xs font-semibold text-slate-700 dark:border-slate-800 dark:text-slate-400 flex items-center justify-center space-x-1 transition-all"
                   >
                     <span>Load FCIT Subject Grid</span>
                     <ChevronRight className="w-3.5 h-3.5" />
@@ -313,7 +314,7 @@ export default function App() {
                       </p>
                     </div>
 
-                    <ul className="space-y-1 text-xs text-slate-450 font-medium">
+                    <ul className="space-y-1 text-xs text-slate-500 dark:text-slate-400 font-medium">
                       <li>• BA (General / Hons) Buddhist Studies</li>
                       <li>• MA in Buddhist Studies (Masters)</li>
                       <li>• MPhil in Buddhist Studies Research</li>
@@ -322,10 +323,12 @@ export default function App() {
 
                   <button
                     onClick={() => {
+                      setTargetFacultyId("FBS");
+                      setActiveCalcTab("faculty");
                       setCurrentView("calculator");
                       window.scrollTo({ top: 0, behavior: "smooth" });
                     }}
-                    className="w-full mt-6 text-center py-2 border hover:bg-white/40 dark:hover:bg-slate-800/30 border-slate-200/60 rounded-lg text-xs font-semibold text-slate-700 dark:border-slate-800 dark:text-slate-355 flex items-center justify-center space-x-1 transition-all"
+                    className="w-full mt-6 text-center py-2 border hover:bg-white/40 dark:hover:bg-slate-800/30 border-slate-200/60 rounded-lg text-xs font-semibold text-slate-700 dark:border-slate-800 dark:text-slate-400 flex items-center justify-center space-x-1 transition-all"
                   >
                     <span>Load FBS Subject Grid</span>
                     <ChevronRight className="w-3.5 h-3.5" />
@@ -359,7 +362,7 @@ export default function App() {
                       </p>
                     </div>
 
-                    <ul className="space-y-1 text-xs text-slate-455 font-medium">
+                    <ul className="space-y-1 text-xs text-slate-500 dark:text-slate-400 font-medium">
                       <li>• BA (Hons) Applied Communication</li>
                       <li>• BA (Hons) Anthropology</li>
                       <li>• BA (Hons) Applied Archaeology</li>
@@ -368,10 +371,12 @@ export default function App() {
 
                   <button
                     onClick={() => {
+                      setTargetFacultyId("FHSS");
+                      setActiveCalcTab("faculty");
                       setCurrentView("calculator");
                       window.scrollTo({ top: 0, behavior: "smooth" });
                     }}
-                    className="w-full mt-6 text-center py-2 border hover:bg-white/40 dark:hover:bg-slate-800/30 border-slate-200/60 rounded-lg text-xs font-semibold text-slate-700 dark:border-slate-800 dark:text-slate-355 flex items-center justify-center space-x-1 transition-all"
+                    className="w-full mt-6 text-center py-2 border hover:bg-white/40 dark:hover:bg-slate-800/30 border-slate-200/60 rounded-lg text-xs font-semibold text-slate-700 dark:border-slate-800 dark:text-slate-400 flex items-center justify-center space-x-1 transition-all"
                   >
                     <span>Load FHSS Subject Grid</span>
                     <ChevronRight className="w-3.5 h-3.5" />
@@ -434,7 +439,7 @@ export default function App() {
             </div>
 
             {/* Toggle tabs select */}
-            <div className="flex border-b border-slate-200 dark:border-slate-850 pb-2 space-x-3.5 no-print">
+            <div className="flex border-b border-slate-200 dark:border-slate-800 pb-2 space-x-3.5 no-print">
               <button
                 onClick={() => setActiveCalcTab("faculty")}
                 className={`py-2 text-sm font-bold tracking-wide transition-all border-b-2 font-display ${
@@ -462,6 +467,7 @@ export default function App() {
               <FacultyCalculator
                 onSaveSemester={handleSaveSemester}
                 savedSemesters={semesters}
+                initialFacultyId={targetFacultyId}
               />
             ) : (
               <ManualCalculator onSaveSemester={handleSaveSemester} />
@@ -551,8 +557,8 @@ export default function App() {
                 efficiently.
               </p>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 border-t border-slate-100 dark:border-slate-810">
-                <div className="space-y-1.5 p-4 rounded-xl bg-white/20 dark:bg-slate-850/40 border border-slate-200/40 dark:border-slate-800/40">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 border-t border-slate-100 dark:border-slate-800">
+                <div className="space-y-1.5 p-4 rounded-xl bg-white/20 dark:bg-slate-800/40 border border-slate-200/40 dark:border-slate-800/40">
                   <h4 className="font-display font-bold text-slate-950 dark:text-white text-xs uppercase tracking-wider">
                     Full Client-Side Security
                   </h4>
@@ -563,11 +569,11 @@ export default function App() {
                   </p>
                 </div>
 
-                <div className="space-y-1.5 p-4 rounded-xl bg-white/20 dark:bg-slate-850/40 border border-slate-200/40 dark:border-slate-800/40">
+                <div className="space-y-1.5 p-4 rounded-xl bg-white/20 dark:bg-slate-800/40 border border-slate-200/40 dark:border-slate-800/40">
                   <h4 className="font-display font-bold text-slate-950 dark:text-white text-xs uppercase tracking-wider">
                     UGC Compliant Model
                   </h4>
-                  <p className="text-xs text-slate-550">
+                  <p className="text-xs text-slate-500">
                     Formulated adhering strictly to public standards approved by
                     the Sri Lankan University Grants Commission and NIIBS
                     department ordinances.
@@ -576,7 +582,7 @@ export default function App() {
               </div>
 
               {/* Disclaimer */}
-              <div className="p-4 rounded-2xl bg-white/20 dark:bg-slate-850/40 border border-slate-200/40 dark:border-slate-800/40 flex items-start space-x-3 text-xs leading-relaxed text-slate-500">
+              <div className="p-4 rounded-2xl bg-white/20 dark:bg-slate-800/40 border border-slate-200/40 dark:border-slate-800/40 flex items-start space-x-3 text-xs leading-relaxed text-slate-500">
                 <Info className="w-5 h-5 text-niibs-yellow shrink-0 mt-0.5" />
                 <div className="space-y-1">
                   <b className="font-display font-semibold text-slate-900 dark:text-white">

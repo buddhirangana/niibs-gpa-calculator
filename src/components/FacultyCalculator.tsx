@@ -12,13 +12,21 @@ import { Check, Info, Save, Printer, Share2, Award, Calendar, RefreshCw } from '
 interface FacultyCalculatorProps {
   onSaveSemester: (record: SemesterRecord) => void;
   savedSemesters: SemesterRecord[];
+  initialFacultyId?: string;
 }
 
-export default function FacultyCalculator({ onSaveSemester, savedSemesters }: FacultyCalculatorProps) {
+export default function FacultyCalculator({ onSaveSemester, savedSemesters, initialFacultyId }: FacultyCalculatorProps) {
   // Selector states
-  const [selectedFacultyId, setSelectedFacultyId] = useState<string>('FCIT');
+  const [selectedFacultyId, setSelectedFacultyId] = useState<string>(initialFacultyId || 'FCIT');
   const [selectedProgramId, setSelectedProgramId] = useState<string>('');
   const [selectedSemesterIndex, setSelectedSemesterIndex] = useState<number>(1);
+
+  // Sync initialFacultyId if it changes from outside
+  useEffect(() => {
+    if (initialFacultyId) {
+      setSelectedFacultyId(initialFacultyId);
+    }
+  }, [initialFacultyId]);
 
   // Active Subject rows
   const [selectedSubjects, setSelectedSubjects] = useState<FacultySelectedSubject[]>([]);
@@ -166,7 +174,7 @@ export default function FacultyCalculator({ onSaveSemester, savedSemesters }: Fa
 
           {/* Faculty Selector Selection */}
           <div className="space-y-1.5 flex flex-col">
-            <label className="text-[11px] uppercase tracking-wider font-bold text-slate-455 dark:text-slate-400 block font-mono">
+            <label className="text-[11px] uppercase tracking-wider font-bold text-slate-500 dark:text-slate-400 block font-mono">
               Academic Faculty
             </label>
             <div className="grid grid-cols-1 gap-2">
@@ -195,14 +203,14 @@ export default function FacultyCalculator({ onSaveSemester, savedSemesters }: Fa
           {/* Program Select Options */}
           {activePrograms.length > 0 && (
             <div className="space-y-1.5">
-              <label className="text-[11px] uppercase tracking-wider font-bold text-slate-455 dark:text-slate-400 block font-mono">
+              <label className="text-[11px] uppercase tracking-wider font-bold text-slate-500 dark:text-slate-400 block font-mono">
                 Degree Program Curriculum
               </label>
               <select
                 id="program-selector-dropdown"
                 value={selectedProgramId}
                 onChange={(e) => setSelectedProgramId(e.target.value)}
-                className="w-full px-4 py-2.5 rounded-xl border border-slate-200/50 dark:border-slate-850 bg-white/20 dark:bg-slate-900/30 text-slate-800 dark:text-slate-200 text-xs sm:text-sm focus:ring-2 focus:ring-niibs-yellow focus:outline-none backdrop-blur-md font-medium"
+                className="w-full px-4 py-2.5 rounded-xl border border-slate-200/50 dark:border-slate-800 bg-white/20 dark:bg-slate-900/30 text-slate-800 dark:text-slate-200 text-xs sm:text-sm focus:ring-2 focus:ring-niibs-yellow focus:outline-none backdrop-blur-md font-medium"
               >
                 {activePrograms.map(prog => (
                   <option key={prog.id} value={prog.id} className="dark:bg-slate-950 dark:text-slate-200">
@@ -216,7 +224,7 @@ export default function FacultyCalculator({ onSaveSemester, savedSemesters }: Fa
           {/* Semester Selector Grid */}
           {activeProgram && (
             <div className="space-y-1.5">
-              <label className="text-[11px] uppercase tracking-wider font-bold text-slate-455 dark:text-slate-400 block font-mono">
+              <label className="text-[11px] uppercase tracking-wider font-bold text-slate-500 dark:text-slate-400 block font-mono">
                 Academic Semester
               </label>
               <div className="grid grid-cols-4 gap-1.5">
@@ -228,7 +236,7 @@ export default function FacultyCalculator({ onSaveSemester, savedSemesters }: Fa
                     className={`py-2 rounded-lg text-xs font-mono font-bold border transition-all ${
                       selectedSemesterIndex === sem.semesterNumber
                         ? 'border-niibs-blue bg-niibs-blue text-white dark:border-niibs-yellow dark:bg-niibs-yellow dark:text-slate-950 shadow-sm'
-                        : 'border-slate-200/40 dark:border-slate-800/40 bg-white/10 dark:bg-slate-855 text-slate-600 dark:text-slate-400 hover:bg-slate-100/40'
+                        : 'border-slate-200/40 dark:border-slate-800/40 bg-white/10 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-100/40'
                     }`}
                   >
                     S{sem.semesterNumber}
@@ -285,8 +293,8 @@ export default function FacultyCalculator({ onSaveSemester, savedSemesters }: Fa
               <span className="text-slate-400 font-mono text-sm leading-none">/ 4.000</span>
             </div>
             
-            <p className="text-xs text-slate-500 dark:text-slate-350 leading-relaxed">
-              Logged Credits: <b className="font-mono text-slate-800 dark:text-white">{totalCredits}</b> / Syllabus Potential: <b className="font-mono text-slate-505 dark:text-slate-400">{selectedSubjects.reduce((acc, s) => acc + s.credits, 0)}</b>
+            <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+              Logged Credits: <b className="font-mono text-slate-800 dark:text-white">{totalCredits}</b> / Syllabus Potential: <b className="font-mono text-slate-500 dark:text-slate-400">{selectedSubjects.reduce((acc, s) => acc + s.credits, 0)}</b>
             </p>
           </div>
 
@@ -298,7 +306,7 @@ export default function FacultyCalculator({ onSaveSemester, savedSemesters }: Fa
                 <span>Dean's List Eligible</span>
               </div>
             ) : (
-              <div className="text-[10px] text-slate-450 dark:text-slate-500 font-mono uppercase tracking-wide">
+              <div className="text-[10px] text-slate-500 dark:text-slate-400 dark:text-slate-500 font-mono uppercase tracking-wide">
                 Dean's Threshold: 3.70 GPA & 12 Credits
               </div>
             )}
@@ -359,13 +367,13 @@ export default function FacultyCalculator({ onSaveSemester, savedSemesters }: Fa
             <div className="flex space-x-2 no-print shrink-0">
               <button
                 onClick={simulatePerfectGrades}
-                className="text-[10px] h-7 px-3 bg-white/10 border border-slate-200/40 text-slate-650 dark:text-slate-300 hover:bg-white/30 rounded-lg dark:hover:bg-slate-800/30 font-semibold transition-all backdrop-blur-md cursor-pointer"
+                className="text-[10px] h-7 px-3 bg-white/10 border border-slate-200/40 text-slate-600 dark:text-slate-300 hover:bg-white/30 rounded-lg dark:hover:bg-slate-800/30 font-semibold transition-all backdrop-blur-md cursor-pointer"
               >
                 Simulate As
               </button>
               <button
                 onClick={clearGrades}
-                className="text-[10px] h-7 px-3 bg-white/10 border border-slate-200/40 text-slate-505 dark:text-slate-400 hover:bg-white/30 rounded-lg dark:hover:bg-slate-800/30 font-semibold transition-all backdrop-blur-md cursor-pointer"
+                className="text-[10px] h-7 px-3 bg-white/10 border border-slate-200/40 text-slate-500 dark:text-slate-400 hover:bg-white/30 rounded-lg dark:hover:bg-slate-800/30 font-semibold transition-all backdrop-blur-md cursor-pointer"
               >
                 Reset All
               </button>
@@ -381,7 +389,7 @@ export default function FacultyCalculator({ onSaveSemester, savedSemesters }: Fa
                   className={`p-4 rounded-2xl border transition-colors flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 ${
                     sub.included 
                       ? 'border-slate-200/40 bg-white/20 dark:border-slate-800/30 dark:bg-slate-900/20 backdrop-blur-md' 
-                      : 'border-slate-100 opacity-60 bg-slate-100/10 dark:border-slate-850 dark:bg-transparent'
+                      : 'border-slate-100 opacity-60 bg-slate-100/10 dark:border-slate-800 dark:bg-transparent'
                   }`}
                 >
                   {/* Left Column Description */}
@@ -390,7 +398,7 @@ export default function FacultyCalculator({ onSaveSemester, savedSemesters }: Fa
                       type="checkbox"
                       checked={sub.included}
                       onChange={(e) => handleInclusionChange(sub.id, e.target.checked)}
-                      className="mt-1 w-4 h-4 text-niibs-blue border-slate-310 dark:border-slate-800 rounded focus:ring-niibs-yellow no-print cursor-pointer"
+                      className="mt-1 w-4 h-4 text-niibs-blue border-slate-300 dark:border-slate-800 rounded focus:ring-niibs-yellow no-print cursor-pointer"
                       id={`chk-${sub.id}`}
                     />
                     <div>
@@ -398,7 +406,7 @@ export default function FacultyCalculator({ onSaveSemester, savedSemesters }: Fa
                         <span className="font-mono text-[10px] tracking-wider font-extrabold bg-[#2d3091]/10 dark:bg-niibs-yellow/10 text-[#2d3091] dark:text-niibs-yellow px-1.5 py-0.5 rounded leading-none">
                           {sub.code}
                         </span>
-                        <span className="font-mono text-xs font-semibold text-slate-405 leading-none">
+                        <span className="font-mono text-xs font-semibold text-slate-500 dark:text-slate-400 leading-none">
                           {sub.credits} Credits
                         </span>
                       </div>
@@ -421,7 +429,7 @@ export default function FacultyCalculator({ onSaveSemester, savedSemesters }: Fa
                             className={`w-6.5 h-6.5 rounded font-mono font-bold text-[10px] transition-all border cursor-pointer ${
                               isSelected
                                 ? 'bg-[#2d3091] text-white border-niibs-blue dark:bg-niibs-yellow dark:text-slate-950 dark:border-[#ffc113] font-black scale-110 shadow-md'
-                                : 'bg-white/40 border-slate-205 text-slate-500 hover:bg-white/80 dark:bg-slate-850/40 dark:border-slate-800/40 dark:text-slate-300 dark:hover:bg-slate-800/80'
+                                : 'bg-white/40 border-slate-200 text-slate-500 hover:bg-white/80 dark:bg-slate-800/40 dark:border-slate-800/40 dark:text-slate-300 dark:hover:bg-slate-800/80'
                             }`}
                           >
                             {g}

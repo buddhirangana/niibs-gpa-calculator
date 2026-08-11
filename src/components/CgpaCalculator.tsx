@@ -47,14 +47,14 @@ function SemesterRow({
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, scale: 0.95, transition: { duration: 0.2 } }}
       transition={{ duration: 0.3, delay: index * 0.05 }}
-      className="py-4 flex flex-col hover:bg-white/10 dark:hover:bg-slate-850/10 px-3 rounded-2xl transition-colors space-y-3"
+      className="py-4 flex flex-col hover:bg-white/10 dark:hover:bg-slate-800/10 px-3 rounded-2xl transition-colors space-y-3"
     >
       <div className="flex items-center justify-between">
         <div className="space-y-1">
           <h4 className="font-display font-bold text-slate-900 dark:text-slate-100 text-sm sm:text-base">
             {sem.name}
           </h4>
-          <span className="text-xs text-slate-450 dark:text-slate-400 font-mono">
+          <span className="text-xs text-slate-500 dark:text-slate-400 dark:text-slate-400 font-mono">
             Completed Units: <b className="text-slate-700 dark:text-slate-300 font-bold">{sem.credits} Cr.</b>
           </span>
         </div>
@@ -73,7 +73,7 @@ function SemesterRow({
               className={`p-2 rounded-xl transition-all cursor-pointer ${
                 isEditingNotes || sem.notes 
                   ? 'text-niibs-blue dark:text-niibs-yellow bg-niibs-blue/5 dark:bg-niibs-yellow/10' 
-                  : 'text-slate-440 hover:text-slate-600 dark:hover:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800'
+                  : 'text-slate-400 hover:text-slate-600 dark:hover:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800'
               }`}
               title="Notes"
             >
@@ -81,7 +81,7 @@ function SemesterRow({
             </button>
             <button
               onClick={() => onDelete(sem.id)}
-              className="p-2 text-slate-440 hover:text-rose-500 hover:bg-rose-50 dark:hover:bg-rose-950/20 rounded-xl transition-all cursor-pointer"
+              className="p-2 text-slate-400 hover:text-rose-500 hover:bg-rose-50 dark:hover:bg-rose-950/20 rounded-xl transition-all cursor-pointer"
               title="Remove record"
             >
               <Trash className="w-4 h-4" />
@@ -377,7 +377,7 @@ export default function CgpaCalculator({ semesters, onAddSemester, onUpdateSemes
               <div className="flex items-center space-x-2 print:hidden">
                 <button
                   onClick={handlePrint}
-                  className="inline-flex items-center space-x-1.5 text-[10px] text-slate-500 hover:text-niibs-blue dark:text-slate-400 dark:hover:text-niibs-yellow font-mono font-bold uppercase tracking-wider border border-slate-200/40 dark:border-slate-805 px-3 py-1.5 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors cursor-pointer"
+                  className="inline-flex items-center space-x-1.5 text-[10px] text-slate-500 hover:text-niibs-blue dark:text-slate-400 dark:hover:text-niibs-yellow font-mono font-bold uppercase tracking-wider border border-slate-200/40 dark:border-slate-800 px-3 py-1.5 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors cursor-pointer"
                   title="Print Report"
                 >
                   <Printer className="w-3.5 h-3.5" />
@@ -385,7 +385,7 @@ export default function CgpaCalculator({ semesters, onAddSemester, onUpdateSemes
                 </button>
                 <button
                   onClick={handleExportPdf}
-                  className="inline-flex items-center space-x-1.5 text-[10px] text-slate-500 hover:text-niibs-blue dark:text-slate-400 dark:hover:text-niibs-yellow font-mono font-bold uppercase tracking-wider border border-slate-200/40 dark:border-slate-805 px-3 py-1.5 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors cursor-pointer"
+                  className="inline-flex items-center space-x-1.5 text-[10px] text-slate-500 hover:text-niibs-blue dark:text-slate-400 dark:hover:text-niibs-yellow font-mono font-bold uppercase tracking-wider border border-slate-200/40 dark:border-slate-800 px-3 py-1.5 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors cursor-pointer"
                   title="Download PDF Report"
                 >
                   <Download className="w-3.5 h-3.5" />
@@ -393,7 +393,7 @@ export default function CgpaCalculator({ semesters, onAddSemester, onUpdateSemes
                 </button>
                 <button
                   onClick={handleExportCsv}
-                  className="inline-flex items-center space-x-1.5 text-[10px] text-slate-500 hover:text-niibs-blue dark:text-slate-400 dark:hover:text-niibs-yellow font-mono font-bold uppercase tracking-wider border border-slate-200/40 dark:border-slate-805 px-3 py-1.5 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors cursor-pointer"
+                  className="inline-flex items-center space-x-1.5 text-[10px] text-slate-500 hover:text-niibs-blue dark:text-slate-400 dark:hover:text-niibs-yellow font-mono font-bold uppercase tracking-wider border border-slate-200/40 dark:border-slate-800 px-3 py-1.5 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors cursor-pointer"
                   title="Export to CSV"
                 >
                   <Download className="w-3.5 h-3.5" />
@@ -401,7 +401,7 @@ export default function CgpaCalculator({ semesters, onAddSemester, onUpdateSemes
                 </button>
                 <button
                   onClick={onClearAll}
-                  className="text-[10px] text-slate-500 hover:text-niibs-red dark:text-slate-400 dark:hover:text-niibs-red font-mono font-bold uppercase tracking-wider border border-slate-200/40 dark:border-slate-805 px-3 py-1.5 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors cursor-pointer"
+                  className="text-[10px] text-slate-500 hover:text-niibs-red dark:text-slate-400 dark:hover:text-niibs-red font-mono font-bold uppercase tracking-wider border border-slate-200/40 dark:border-slate-800 px-3 py-1.5 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors cursor-pointer"
                 >
                   Clear records
                 </button>
@@ -543,9 +543,9 @@ export default function CgpaCalculator({ semesters, onAddSemester, onUpdateSemes
           </div>
           ) : (
             <div className="py-16 text-center border-2 border-dashed border-slate-200/40 dark:border-slate-800 rounded-3xl flex flex-col items-center space-y-3">
-              <BookOpen className="w-12 h-12 text-slate-350 dark:text-slate-650" strokeWidth={1.5} />
+              <BookOpen className="w-12 h-12 text-slate-400 dark:text-slate-600" strokeWidth={1.5} />
               <div className="space-y-1 text-center">
-                <h4 className="font-display font-semibold text-sm text-slate-755 dark:text-white">Cumulative Slate is Clean</h4>
+                <h4 className="font-display font-semibold text-sm text-slate-700 dark:text-white">Cumulative Slate is Clean</h4>
                 <p className="text-xs text-slate-500 dark:text-slate-400 max-w-sm mx-auto p-1 leading-relaxed">
                   Use the quick form on the right or any of the GPA calculators to save core semester benchmarks here.
                 </p>
@@ -578,7 +578,7 @@ export default function CgpaCalculator({ semesters, onAddSemester, onUpdateSemes
           <form onSubmit={handleSubmit} className="space-y-4">
             {/* Term Name Descriptor */}
             <div className="space-y-1.5">
-              <label className="text-[10px] uppercase font-bold tracking-wider text-slate-455 dark:text-slate-400 font-mono block">
+              <label className="text-[10px] uppercase font-bold tracking-wider text-slate-500 dark:text-slate-400 font-mono block">
                 Semester Descriptor
               </label>
               <input
@@ -586,14 +586,14 @@ export default function CgpaCalculator({ semesters, onAddSemester, onUpdateSemes
                 placeholder="e.g. Year 1 - Semester 1"
                 value={formData.name}
                 onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
-                className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200/50 dark:border-slate-850 bg-white/30 dark:bg-slate-900/30 text-slate-850 dark:text-slate-200 text-xs focus:ring-2 focus:ring-niibs-yellow focus:outline-none font-display font-medium backdrop-blur-md"
+                className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200/50 dark:border-slate-800 bg-white/30 dark:bg-slate-900/30 text-slate-800 dark:text-slate-200 text-xs focus:ring-2 focus:ring-niibs-yellow focus:outline-none font-display font-medium backdrop-blur-md"
               />
             </div>
 
             <div className="grid grid-cols-2 gap-3.5">
               {/* GPA score */}
               <div className="space-y-1.5">
-                <label className="text-[10px] uppercase font-bold tracking-wider text-slate-455 dark:text-slate-400 font-mono block">
+                <label className="text-[10px] uppercase font-bold tracking-wider text-slate-500 dark:text-slate-400 font-mono block">
                   Term GPA Index
                 </label>
                 <input
@@ -604,13 +604,13 @@ export default function CgpaCalculator({ semesters, onAddSemester, onUpdateSemes
                   placeholder="e.g. 3.65"
                   value={formData.gpa}
                   onChange={(e) => setFormData(prev => ({ ...prev, gpa: e.target.value }))}
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200/50 dark:border-slate-850 bg-white/30 dark:bg-slate-900/30 text-slate-850 dark:text-slate-200 text-xs focus:ring-2 focus:ring-niibs-yellow focus:outline-none font-mono font-medium backdrop-blur-md"
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200/50 dark:border-slate-800 bg-white/30 dark:bg-slate-900/30 text-slate-800 dark:text-slate-200 text-xs focus:ring-2 focus:ring-niibs-yellow focus:outline-none font-mono font-medium backdrop-blur-md"
                 />
               </div>
 
               {/* Completed Credits load */}
               <div className="space-y-1.5">
-                <label className="text-[10px] uppercase font-bold tracking-wider text-slate-455 dark:text-slate-400 font-mono block">
+                <label className="text-[10px] uppercase font-bold tracking-wider text-slate-500 dark:text-slate-400 font-mono block">
                   Semester Credits
                 </label>
                 <input
@@ -620,7 +620,7 @@ export default function CgpaCalculator({ semesters, onAddSemester, onUpdateSemes
                   placeholder="e.g. 18"
                   value={formData.credits}
                   onChange={(e) => setFormData(prev => ({ ...prev, credits: e.target.value }))}
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200/50 dark:border-slate-850 bg-white/30 dark:bg-slate-900/30 text-slate-850 dark:text-slate-200 text-xs focus:ring-2 focus:ring-niibs-yellow focus:outline-none font-mono font-medium backdrop-blur-md"
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200/50 dark:border-slate-800 bg-white/30 dark:bg-slate-900/30 text-slate-800 dark:text-slate-200 text-xs focus:ring-2 focus:ring-niibs-yellow focus:outline-none font-mono font-medium backdrop-blur-md"
                 />
               </div>
             </div>
@@ -664,7 +664,7 @@ export default function CgpaCalculator({ semesters, onAddSemester, onUpdateSemes
           <div className="space-y-4">
             <div className="grid grid-cols-2 gap-3.5">
               <div className="space-y-1.5">
-                <label className="text-[10px] uppercase font-bold tracking-wider text-slate-455 dark:text-slate-400 font-mono block">
+                <label className="text-[10px] uppercase font-bold tracking-wider text-slate-500 dark:text-slate-400 font-mono block">
                   Target CGPA
                 </label>
                 <input
@@ -675,12 +675,12 @@ export default function CgpaCalculator({ semesters, onAddSemester, onUpdateSemes
                   placeholder="e.g. 3.50"
                   value={targetPlan.targetCgpa}
                   onChange={(e) => setTargetPlan(prev => ({ ...prev, targetCgpa: e.target.value }))}
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200/50 dark:border-slate-850 bg-white/30 dark:bg-slate-900/30 text-slate-850 dark:text-slate-200 text-xs focus:ring-2 focus:ring-niibs-yellow focus:outline-none font-mono font-medium backdrop-blur-md"
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200/50 dark:border-slate-800 bg-white/30 dark:bg-slate-900/30 text-slate-800 dark:text-slate-200 text-xs focus:ring-2 focus:ring-niibs-yellow focus:outline-none font-mono font-medium backdrop-blur-md"
                 />
               </div>
 
               <div className="space-y-1.5">
-                <label className="text-[10px] uppercase font-bold tracking-wider text-slate-455 dark:text-slate-400 font-mono block">
+                <label className="text-[10px] uppercase font-bold tracking-wider text-slate-500 dark:text-slate-400 font-mono block">
                   Total Degree Credits
                 </label>
                 <input
@@ -689,7 +689,7 @@ export default function CgpaCalculator({ semesters, onAddSemester, onUpdateSemes
                   placeholder="e.g. 120"
                   value={targetPlan.totalDegreeCredits}
                   onChange={(e) => setTargetPlan(prev => ({ ...prev, totalDegreeCredits: e.target.value }))}
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200/50 dark:border-slate-850 bg-white/30 dark:bg-slate-900/30 text-slate-850 dark:text-slate-200 text-xs focus:ring-2 focus:ring-niibs-yellow focus:outline-none font-mono font-medium backdrop-blur-md"
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200/50 dark:border-slate-800 bg-white/30 dark:bg-slate-900/30 text-slate-800 dark:text-slate-200 text-xs focus:ring-2 focus:ring-niibs-yellow focus:outline-none font-mono font-medium backdrop-blur-md"
                 />
               </div>
             </div>

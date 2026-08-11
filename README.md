@@ -1,4 +1,4 @@
-# NIIBS GPA Calculator
+# 🎓 NIIBS GPA Calculator
 
 The **NIIBS GPA Calculator** is a free, online tool designed for students of the Nāgānanda International Institute for Buddhist Studies (NIIBS) to easily calculate and track their semester and cumulative Grade Point Averages (GPA & CGPA) based on official university credit weightage and grade point values.
 
@@ -25,7 +25,7 @@ Then, run the development server:
 npm run dev
 ```
 
-Open [http://localhost:5173](http://localhost:5173) with your browser to see the app running locally.
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the app running locally.
 
 ## Technologies Used
 

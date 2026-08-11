@@ -14,6 +14,7 @@ import ManualCalculator from "./components/ManualCalculator";
 import CgpaCalculator from "./components/CgpaCalculator";
 import TargetGpaCalculator from "./components/TargetGpaCalculator";
 import AboutView from "./components/AboutView";
+import NotFoundView from "./components/NotFoundView";
 import PwaInstallPrompt from "./components/PwaInstallPrompt";
 import { useLocalStorage } from "./hooks/useLocalStorage";
 import { SemesterRecord } from "./types";
@@ -42,8 +43,53 @@ import {
   BarChart3
 } from "lucide-react";
 
+const VALID_VIEWS = ["home", "calculator", "cgpa", "target_gpa", "resources", "about"];
+
+const getViewFromUrl = (): string => {
+  const path = window.location.pathname.replace(/^\/+|\/+$/g, "");
+  const searchParams = new URLSearchParams(window.location.search);
+  const viewParam = searchParams.get("view");
+
+  if (viewParam) {
+    if (VALID_VIEWS.includes(viewParam)) return viewParam;
+    return "404";
+  }
+
+  if (!path || path === "home") return "home";
+  if (path === "calculator") return "calculator";
+  if (path === "cgpa") return "cgpa";
+  if (path === "target-gpa" || path === "target_gpa") return "target_gpa";
+  if (path === "resources" || path === "academic-resources") return "resources";
+  if (path === "about") return "about";
+
+  return "404";
+};
+
 export default function App() {
-  const [currentView, setCurrentView] = useState<string>("home");
+  const [currentView, setCurrentView] = useState<string>(getViewFromUrl);
+
+  const handleViewChange = (viewId: string) => {
+    setCurrentView(viewId);
+    let targetPath = "/";
+    if (viewId === "calculator") targetPath = "/calculator";
+    else if (viewId === "cgpa") targetPath = "/cgpa";
+    else if (viewId === "target_gpa") targetPath = "/target-gpa";
+    else if (viewId === "resources") targetPath = "/resources";
+    else if (viewId === "about") targetPath = "/about";
+    else if (viewId === "404") targetPath = "/404";
+
+    if (window.location.pathname !== targetPath) {
+      window.history.pushState({ view: viewId }, "", targetPath);
+    }
+  };
+
+  useEffect(() => {
+    const handlePopState = () => {
+      setCurrentView(getViewFromUrl());
+    };
+    window.addEventListener("popstate", handlePopState);
+    return () => window.removeEventListener("popstate", handlePopState);
+  }, []);
   const [theme, setTheme] = useLocalStorage<"light" | "dark" | "system">(
     "niibs-theme",
     "system",
@@ -157,7 +203,7 @@ export default function App() {
       {/* Branding Header Area */}
       <Header
         currentView={currentView}
-        onViewChange={setCurrentView}
+        onViewChange={handleViewChange}
         theme={theme}
         setTheme={setTheme}
       />
@@ -218,7 +264,7 @@ export default function App() {
                 <button
                   id="hero-go-calculators"
                   onClick={() => {
-                    setCurrentView("calculator");
+                    handleViewChange("calculator");
                     window.scrollTo({ top: 0, behavior: "smooth" });
                   }}
                   className="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-niibs-blue to-indigo-700 hover:from-indigo-700 hover:to-niibs-blue dark:from-niibs-yellow dark:to-amber-400 dark:hover:from-amber-400 dark:hover:to-niibs-yellow text-white dark:text-slate-950 font-bold rounded-2xl shadow-xl shadow-niibs-blue/20 dark:shadow-niibs-yellow/20 hover:shadow-2xl hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 text-sm sm:text-base cursor-pointer flex items-center justify-center space-x-2.5 font-display"
@@ -231,7 +277,7 @@ export default function App() {
                 <button
                   id="hero-go-dashboard"
                   onClick={() => {
-                    setCurrentView("cgpa");
+                    handleViewChange("cgpa");
                     window.scrollTo({ top: 0, behavior: "smooth" });
                   }}
                   className="w-full sm:w-auto px-8 py-4 border border-slate-200/80 dark:border-slate-700/60 bg-white/60 dark:bg-slate-900/60 hover:bg-white dark:hover:bg-slate-900 font-bold rounded-2xl text-xs sm:text-sm tracking-wide transition-all duration-200 text-slate-800 dark:text-slate-100 flex items-center justify-center space-x-2.5 backdrop-blur-md shadow-sm hover:shadow-md cursor-pointer font-display"
@@ -286,7 +332,7 @@ export default function App() {
             <section className="max-w-6xl mx-auto">
               <Dashboard
                 semesters={semesters}
-                onNavigate={setCurrentView}
+                onNavigate={handleViewChange}
                 clearHistory={handleClearHistory}
               />
             </section>
@@ -360,7 +406,7 @@ export default function App() {
                     onClick={() => {
                       setTargetFacultyId("FCIT");
                       setActiveCalcTab("faculty");
-                      setCurrentView("calculator");
+                      handleViewChange("calculator");
                       window.scrollTo({ top: 0, behavior: "smooth" });
                     }}
                     className="w-full mt-7 text-center py-3 border border-indigo-200 dark:border-indigo-800/60 hover:bg-indigo-600 hover:text-white dark:hover:bg-indigo-500 dark:hover:text-white rounded-xl text-xs font-bold text-indigo-700 dark:text-indigo-300 flex items-center justify-center space-x-2 transition-all duration-200 group font-display"
@@ -419,7 +465,7 @@ export default function App() {
                     onClick={() => {
                       setTargetFacultyId("FBS");
                       setActiveCalcTab("faculty");
-                      setCurrentView("calculator");
+                      handleViewChange("calculator");
                       window.scrollTo({ top: 0, behavior: "smooth" });
                     }}
                     className="w-full mt-7 text-center py-3 border border-amber-200 dark:border-amber-800/60 hover:bg-amber-500 hover:text-slate-950 dark:hover:bg-niibs-yellow dark:hover:text-slate-950 rounded-xl text-xs font-bold text-amber-800 dark:text-niibs-yellow flex items-center justify-center space-x-2 transition-all duration-200 group font-display"
@@ -479,7 +525,7 @@ export default function App() {
                     onClick={() => {
                       setTargetFacultyId("FHSS");
                       setActiveCalcTab("faculty");
-                      setCurrentView("calculator");
+                      handleViewChange("calculator");
                       window.scrollTo({ top: 0, behavior: "smooth" });
                     }}
                     className="w-full mt-7 text-center py-3 border border-teal-200 dark:border-teal-800/60 hover:bg-teal-600 hover:text-white dark:hover:bg-teal-500 dark:hover:text-white rounded-xl text-xs font-bold text-teal-700 dark:text-teal-300 flex items-center justify-center space-x-2 transition-all duration-200 group font-display"
@@ -521,7 +567,7 @@ export default function App() {
               </div>
               <button
                 onClick={() => {
-                  setCurrentView("resources");
+                  handleViewChange("resources");
                   window.scrollTo({ top: 0, behavior: "smooth" });
                 }}
                 className="w-full md:w-auto px-6 py-3.5 bg-niibs-blue hover:bg-niibs-blue-light hover:shadow-lg hover:shadow-niibs-blue/20 text-white rounded-2xl dark:bg-niibs-yellow dark:text-slate-950 dark:hover:bg-niibs-yellow-light text-xs font-bold leading-none shrink-0 transition-all font-display cursor-pointer flex items-center justify-center space-x-2"
@@ -641,11 +687,15 @@ export default function App() {
 
         {currentView === "resources" && <AcademicGuides />}
 
-        {currentView === "about" && <AboutView onNavigate={setCurrentView} />}
+        {currentView === "about" && <AboutView onNavigate={handleViewChange} />}
+
+        {!["home", "calculator", "cgpa", "target_gpa", "resources", "about"].includes(currentView) && (
+          <NotFoundView onNavigate={handleViewChange} />
+        )}
       </main>
 
       {/* University Portal Footer */}
-      <Footer onViewChange={setCurrentView} />
+      <Footer onViewChange={handleViewChange} />
 
       {/* PWA Install & Offline Status Prompt */}
       <PwaInstallPrompt />

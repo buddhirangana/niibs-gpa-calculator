@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="en" class="dark">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>404 - Page Not Found | NIIBS GPA Calculator</title>
+  <meta name="theme-color" content="#2d3091" />
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@600;800;900&family=JetBrains+Mono:wght@700;800&display=swap"
+    rel="stylesheet">
+
+  <style>
+    :root {
+      --niibs-blue: #2d3091;
+      --niibs-yellow: #ffc013;
+      --niibs-green: #00a650;
+      --bg-dark: #07090e;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background-color: var(--bg-dark);
+      color: #f8fafc;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Ambient Background Lighting */
+    .glow-1 {
+      position: absolute;
+      top: -15%;
+      left: -10%;
+      width: 35rem;
+      height: 35rem;
+      background: radial-gradient(circle, rgba(45, 48, 145, 0.25) 0%, rgba(0, 0, 0, 0) 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .glow-2 {
+      position: absolute;
+      bottom: -15%;
+      right: -10%;
+      width: 35rem;
+      height: 35rem;
+      background: radial-gradient(circle, rgba(255, 192, 19, 0.18) 0%, rgba(0, 0, 0, 0) 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    /* Glass Container */
+    .glass-card {
+      max-width: 34rem;
+      width: 100%;
+      background: rgba(15, 23, 42, 0.65);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 2rem;
+      padding: 3rem 2.25rem;
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.6), inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
+      position: relative;
+      z-index: 10;
+    }
+
+    /* Brand Header Pill */
+    .brand-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.4rem 0.9rem;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 192, 19, 0.25);
+      border-radius: 9999px;
+      margin-bottom: 1.5rem;
+    }
+
+    .brand-pill svg {
+      width: 1.25rem;
+      height: 1.25rem;
+      color: var(--niibs-yellow);
+    }
+
+    .brand-title {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 800;
+      font-size: 0.875rem;
+      color: #ffffff;
+      letter-spacing: -0.01em;
+    }
+
+    .brand-badge {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem;
+      font-weight: 800;
+      padding: 0.15rem 0.4rem;
+      background: rgba(255, 192, 19, 0.2);
+      color: var(--niibs-yellow);
+      border-radius: 0.25rem;
+      letter-spacing: 0.05em;
+    }
+
+    /* 404 Large Code */
+    .code-404 {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 5.5rem;
+      font-weight: 900;
+      line-height: 1;
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.05em;
+      color: var(--niibs-yellow);
+      filter: drop-shadow(0 4px 12px rgba(255, 192, 19, 0.25));
+    }
+
+    h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.65rem;
+      font-weight: 800;
+      margin-bottom: 0.75rem;
+      color: #ffffff;
+      letter-spacing: -0.02em;
+    }
+
+    p {
+      font-size: 0.875rem;
+      color: #94a3b8;
+      line-height: 1.6;
+      margin-bottom: 2.25rem;
+      max-width: 26rem;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Actions Grid */
+    .actions {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    @media (min-width: 480px) {
+      .actions {
+        flex-direction: row;
+      }
+    }
+
+    .btn-primary {
+      flex: 1;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.9rem 1.5rem;
+      background: linear-gradient(135deg, #ffc013 0%, #f59e0b 100%);
+      color: #0b0f19;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 800;
+      font-size: 0.875rem;
+      border-radius: 1rem;
+      text-decoration: none;
+      transition: all 0.25 season;
+      box-shadow: 0 10px 20px -5px rgba(255, 192, 19, 0.3);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 15px 25px -5px rgba(255, 192, 19, 0.4);
+    }
+
+    .btn-secondary {
+      flex: 1;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.9rem 1.5rem;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: #e2e8f0;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      font-size: 0.875rem;
+      border-radius: 1rem;
+      text-decoration: none;
+      transition: all 0.25s ease;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: rgba(255, 255, 255, 0.25);
+      color: #ffffff;
+      transform: translateY(-2px);
+    }
+
+    .footer-text {
+      margin-top: 2rem;
+      font-size: 0.75rem;
+      color: #64748b;
+      font-family: 'JetBrains Mono', monospace;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="glow-1"></div>
+  <div class="glow-2"></div>
+
+  <div class="glass-card">
+    <!-- Brand Header -->
+    <div class="brand-pill">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round">
+        <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+        <path d="M6 12v5c3 3 9 3 12 0v-5" />
+      </svg>
+      <span class="brand-title">NIIBS GPA Calculator</span>
+      <span class="brand-badge">v1.0</span>
+    </div>
+
+    <!-- 404 Headline -->
+    <div class="code-404">404</div>
+    <h1>Page Not Found</h1>
+    <p>The page or curriculum resource you are searching for does not exist or has been relocated within the NIIBS GPA
+      Calculator suite.</p>
+
+    <!-- Navigation Actions -->
+    <div class="actions">
+      <a href="/" class="btn-primary">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+          <polyline points="9 22 9 12 15 12 15 22" />
+        </svg>
+        Return to Portal
+      </a>
+      <a href="/?view=calculator" class="btn-secondary">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <rect width="16" height="20" x="4" y="2" rx="2" />
+          <line x1="8" x2="16" y1="6" y2="6" />
+          <line x1="16" x2="16" y1="14" y2="18" />
+          <path d="M16 10h.01" />
+          <path d="M12 10h.01" />
+          <path d="M8 10h.01" />
+          <path d="M12 14h.01" />
+          <path d="M8 14h.01" />
+          <path d="M12 18h.01" />
+          <path d="M8 18h.01" />
+        </svg>
+        GPA Calculator
+      </a>
+    </div>
+
+    <div class="footer-text">
+      <span>© <span id="currentYear"></span> NIIBS GPA Calculator.</span>
+    </div>
+  </div>
+  <script>
+    const currentYear = new Date().getFullYear();
+    document.getElementById('currentYear').textContent = currentYear;
+  </script>
+</body>
+
+</html>

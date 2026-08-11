@@ -1,7 +1,7 @@
 {
   "name": "NIIBS GPA & CGPA Calculator",
-  "short_name": "NIIBS GPA",
-  "description": "Official Academic Evaluation & CGPA Forecasting Tool for Nāgānanda International Institute for Buddhist Studies undergraduates.",
+  "short_name": "NIIBS GPA Calculator",
+  "description": "Academic Evaluation & CGPA Forecasting Tool for Nāgānanda International Institute for Buddhist Studies undergraduates.",
   "start_url": "/",
   "id": "/",
   "display": "standalone",

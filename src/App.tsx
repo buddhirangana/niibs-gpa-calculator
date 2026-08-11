@@ -96,21 +96,15 @@ export default function App() {
   );
   const [semesters, setSemesters] = useLocalStorage<SemesterRecord[]>(
     "niibs-saved-semesters",
-    [
-      {
-        id: "sample-1",
-        name: "FCIT - Year 1 Semester 1",
-        gpa: 3.65,
-        credits: 13,
-      },
-      {
-        id: "sample-2",
-        name: "FCIT - Year 1 Semester 2",
-        gpa: 3.82,
-        credits: 14,
-      },
-    ],
+    [],
   );
+
+  // Clear legacy sample data if present in localStorage
+  useEffect(() => {
+    if (semesters.some((s) => s.id.startsWith("sample-"))) {
+      setSemesters((prev) => prev.filter((s) => !s.id.startsWith("sample-")));
+    }
+  }, []);
 
   const [activeCalcTab, setActiveCalcTab] = useState<"faculty" | "manual">(
     "faculty",

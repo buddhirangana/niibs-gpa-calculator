@@ -15,12 +15,10 @@ interface ManualCalculatorProps {
 
 export default function ManualCalculator({ onSaveSemester }: ManualCalculatorProps) {
   const [subjects, setSubjects] = useState<ManualSubject[]>([
-    { id: '1', name: 'Software Development Core', credits: 3, grade: 'A' },
-    { id: '2', name: 'Applied Mathematics', credits: 3, grade: 'B+' },
-    { id: '3', name: 'Buddhist Fine Arts & Heritage', credits: 2, grade: 'A-' },
+    { id: '1', name: '', credits: 3, grade: '' },
   ]);
 
-  const [customTermName, setCustomTermName] = useState('Custom Term');
+  const [customTermName, setCustomTermName] = useState('');
   const [saveSuccess, setSaveSuccess] = useState(false);
   const [shareSuccess, setShareSuccess] = useState(false);
 

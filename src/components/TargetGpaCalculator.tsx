@@ -9,10 +9,10 @@ import { TargetGPAPlan } from '../types';
 import { Target, Compass, Sparkles, CheckCircle2, AlertTriangle, ArrowRight, BookOpen, GraduationCap, ShieldCheck, Zap } from 'lucide-react';
 
 export default function TargetGpaCalculator() {
-  const [currentCgpa, setCurrentCgpa] = useState<string>('3.25');
-  const [completedCredits, setCompletedCredits] = useState<string>('45');
-  const [targetCgpa, setTargetCgpa] = useState<string>('3.50');
-  const [remainingCredits, setRemainingCredits] = useState<string>('30');
+  const [currentCgpa, setCurrentCgpa] = useState<string>('');
+  const [completedCredits, setCompletedCredits] = useState<string>('');
+  const [targetCgpa, setTargetCgpa] = useState<string>('');
+  const [remainingCredits, setRemainingCredits] = useState<string>('');
 
   const [plan, setPlan] = useState<TargetGPAPlan | null>(null);
 

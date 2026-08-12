@@ -88,10 +88,10 @@ export default function PwaInstallPrompt() {
             <div className="flex items-start justify-between">
               <div className="flex items-center space-x-3">
                 <div className="w-10 h-10 rounded-2xl bg-white/10 p-2 flex items-center justify-center shrink-0 border border-niibs-yellow/40 shadow-md backdrop-blur-md">
-                  <img src="/favicon.png" alt="NIIBS GPA Logo" className="w-full h-full object-contain" />
+                  <img src="/favicon.png" alt="NIIBS GPA Calculator" className="w-full h-full object-contain" />
                 </div>
                 <div>
-                  <h4 className="font-display font-bold text-sm text-slate-900 dark:text-white leading-tight">
+                  <h4 className="font-display font-medium text-sm text-slate-900 dark:text-white leading-tight">
                     Install NIIBS GPA App
                   </h4>
                   <p className="text-[11px] text-slate-500 dark:text-slate-400 leading-tight mt-0.5">

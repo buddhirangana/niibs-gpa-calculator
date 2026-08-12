@@ -258,7 +258,7 @@ export default function App() {
                     handleViewChange("calculator");
                     window.scrollTo({ top: 0, behavior: "smooth" });
                   }}
-                  className="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-niibs-blue to-indigo-700 hover:from-indigo-700 hover:to-niibs-blue dark:from-niibs-yellow dark:to-amber-400 dark:hover:from-amber-400 dark:hover:to-niibs-yellow text-white dark:text-slate-950 font-bold rounded-2xl shadow-xl shadow-niibs-blue/20 dark:shadow-niibs-yellow/20 hover:shadow-2xl hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 text-sm sm:text-base cursor-pointer flex items-center justify-center space-x-2.5 font-display"
+                  className="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-niibs-blue to-indigo-700 hover:from-indigo-700 hover:to-niibs-blue dark:from-niibs-yellow dark:to-amber-400 dark:hover:from-amber-400 dark:hover:to-niibs-yellow text-white dark:text-slate-950 font-semibold rounded-2xl shadow-xl shadow-niibs-blue/20 dark:shadow-niibs-yellow/20 hover:shadow-2xl hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 text-sm sm:text-base cursor-pointer flex items-center justify-center space-x-2.5 font-display"
                 >
                   <Calculator className="w-5 h-5" />
                   <span>Launch GPA Calculators</span>
@@ -271,7 +271,7 @@ export default function App() {
                     handleViewChange("cgpa");
                     window.scrollTo({ top: 0, behavior: "smooth" });
                   }}
-                  className="w-full sm:w-auto px-8 py-4 border border-slate-200/80 dark:border-slate-700/60 bg-white/60 dark:bg-slate-900/60 hover:bg-white dark:hover:bg-slate-900 font-bold rounded-2xl text-xs sm:text-sm tracking-wide transition-all duration-200 text-slate-800 dark:text-slate-100 flex items-center justify-center space-x-2.5 backdrop-blur-md shadow-sm hover:shadow-md cursor-pointer font-display"
+                  className="w-full sm:w-auto px-8 py-4 border border-slate-200/80 dark:border-slate-700/60 bg-white/60 dark:bg-slate-900/60 hover:bg-white dark:hover:bg-slate-900 font-semibold rounded-2xl text-xs sm:text-sm tracking-wide transition-all duration-200 text-slate-800 dark:text-slate-100 flex items-center justify-center space-x-2.5 backdrop-blur-md shadow-sm hover:shadow-md cursor-pointer font-display"
                 >
                   <Award className="w-5 h-5 text-niibs-yellow animate-pulse" />
                   <span>Academic Trend Dashboard</span>
@@ -289,7 +289,7 @@ export default function App() {
                   <div className="flex items-center justify-center text-niibs-blue dark:text-niibs-yellow mb-1">
                     <BookOpen className="w-5 h-5" />
                   </div>
-                  <div className="font-display font-black text-lg text-slate-900 dark:text-white">3 Faculties</div>
+                  <div className="font-display font-semibold text-lg text-slate-900 dark:text-white">3 Faculties</div>
                   <div className="text-[11px] text-slate-500 dark:text-slate-400 font-medium">FCIT, FBS, FHSS</div>
                 </div>
 
@@ -297,7 +297,7 @@ export default function App() {
                   <div className="flex items-center justify-center text-niibs-green dark:text-niibs-green-light mb-1">
                     <Lock className="w-5 h-5" />
                   </div>
-                  <div className="font-display font-black text-lg text-slate-900 dark:text-white">100% Private</div>
+                  <div className="font-display font-semibold text-lg text-slate-900 dark:text-white">100% Private</div>
                   <div className="text-[11px] text-slate-500 dark:text-slate-400 font-medium">Client-Side Storage</div>
                 </div>
 
@@ -305,7 +305,7 @@ export default function App() {
                   <div className="flex items-center justify-center text-amber-500 dark:text-niibs-yellow mb-1">
                     <ShieldCheck className="w-5 h-5" />
                   </div>
-                  <div className="font-display font-black text-lg text-slate-900 dark:text-white">UGC Aligned</div>
+                  <div className="font-display font-semibold text-lg text-slate-900 dark:text-white">UGC Aligned</div>
                   <div className="text-[11px] text-slate-500 dark:text-slate-400 font-medium">Official Grading Scale</div>
                 </div>
 
@@ -313,7 +313,7 @@ export default function App() {
                   <div className="flex items-center justify-center text-indigo-500 dark:text-indigo-400 mb-1">
                     <Zap className="w-5 h-5" />
                   </div>
-                  <div className="font-display font-black text-lg text-slate-900 dark:text-white">Real-Time</div>
+                  <div className="font-display font-semibold text-lg text-slate-900 dark:text-white">Real-Time</div>
                   <div className="text-[11px] text-slate-500 dark:text-slate-400 font-medium">GPA Forecasting</div>
                 </div>
               </motion.div>
@@ -331,7 +331,7 @@ export default function App() {
             {/* Faculty Profiles Cards */}
             <section className="space-y-8 max-w-6xl mx-auto">
               <div className="text-center space-y-2">
-                <div className="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full bg-slate-200/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-400 text-xs font-semibold uppercase tracking-wider font-mono">
+                <div className="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full bg-slate-200/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-400 text-xs font-medium uppercase tracking-wider font-mono">
                   <BarChart3 className="w-3.5 h-3.5 text-niibs-blue dark:text-niibs-yellow" />
                   <span>Syllabus Grid Matrix</span>
                 </div>
@@ -362,33 +362,24 @@ export default function App() {
                       <div className="w-12 h-12 bg-gradient-to-br from-indigo-500 to-niibs-blue text-white rounded-2xl shadow-md shadow-indigo-500/20 flex items-center justify-center">
                         <Cpu className="w-6 h-6" />
                       </div>
-                      <span className="px-2.5 py-1 rounded-full bg-indigo-50 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300 text-[11px] font-mono font-bold">
+                      <span className="px-2.5 py-1 rounded-full bg-indigo-50 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300 text-[11px] font-mono font-medium">
                         FCIT
                       </span>
                     </div>
 
                     <div className="space-y-2">
-                      <h3 className="font-display font-bold text-xl text-slate-950 dark:text-white">
+                      <h3 className="font-display font-semibold text-xl text-slate-950 dark:text-white">
                         Computing & IT (FCIT)
                       </h3>
                       <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
                         Preloads software development, network security,
-                        database architectures, and AI curricula.
+                        database architectures and AI curricula.
                       </p>
                     </div>
 
                     <div className="flex flex-wrap gap-1.5 pt-1">
                       <span className="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 text-[11px] font-medium">
-                        Software Engineering
-                      </span>
-                      <span className="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 text-[11px] font-medium">
-                        Information Technology
-                      </span>
-                      <span className="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 text-[11px] font-medium">
-                        Data Science
-                      </span>
-                      <span className="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 text-[11px] font-medium">
-                        Cyber Security
+                        BSc (Hons.) in Information Technology
                       </span>
                     </div>
                   </div>
@@ -400,7 +391,7 @@ export default function App() {
                       handleViewChange("calculator");
                       window.scrollTo({ top: 0, behavior: "smooth" });
                     }}
-                    className="w-full mt-7 text-center py-3 border border-indigo-200 dark:border-indigo-800/60 hover:bg-indigo-600 hover:text-white dark:hover:bg-indigo-500 dark:hover:text-white rounded-xl text-xs font-bold text-indigo-700 dark:text-indigo-300 flex items-center justify-center space-x-2 transition-all duration-200 group font-display"
+                    className="w-full mt-7 text-center py-3 border border-indigo-200 dark:border-indigo-800/60 hover:bg-indigo-600 hover:text-white dark:hover:bg-indigo-500 dark:hover:text-white rounded-xl text-xs font-semibold text-indigo-700 dark:text-indigo-300 flex items-center justify-center space-x-2 transition-all duration-200 group font-display"
                   >
                     <span>Load FCIT Subject Grid</span>
                     <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -424,30 +415,27 @@ export default function App() {
                       <div className="w-12 h-12 bg-gradient-to-br from-amber-400 to-niibs-yellow text-slate-950 rounded-2xl shadow-md shadow-amber-500/20 flex items-center justify-center">
                         <Flower className="w-6 h-6" />
                       </div>
-                      <span className="px-2.5 py-1 rounded-full bg-amber-50 dark:bg-amber-950/60 text-amber-800 dark:text-niibs-yellow text-[11px] font-mono font-bold">
+                      <span className="px-2.5 py-1 rounded-full bg-amber-50 dark:bg-amber-950/60 text-amber-800 dark:text-niibs-yellow text-[11px] font-mono font-medium">
                         FBS
                       </span>
                     </div>
 
                     <div className="space-y-2">
-                      <h3 className="font-display font-bold text-xl text-slate-950 dark:text-white">
+                      <h3 className="font-display font-semibold text-xl text-slate-950 dark:text-white">
                         Buddhist Studies (FBS)
                       </h3>
                       <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
                         Features ancient Theravada and Mahayana philosophy, Pali
-                        grammar, and Sanskrit literary analyses.
+                        grammar and Sanskrit literary analyses.
                       </p>
                     </div>
 
                     <div className="flex flex-wrap gap-1.5 pt-1">
                       <span className="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 text-[11px] font-medium">
-                        BA Buddhist Studies
+                        BA (Hons.) in Buddhist Studies
                       </span>
-                      <span className="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 text-[11px] font-medium">
-                        MA Buddhist Studies
-                      </span>
-                      <span className="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 text-[11px] font-medium">
-                        MPhil / PhD Research
+                       <span className="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 text-[11px] font-medium">
+                        BA (General) in Buddhist Studies
                       </span>
                     </div>
                   </div>
@@ -459,7 +447,7 @@ export default function App() {
                       handleViewChange("calculator");
                       window.scrollTo({ top: 0, behavior: "smooth" });
                     }}
-                    className="w-full mt-7 text-center py-3 border border-amber-200 dark:border-amber-800/60 hover:bg-amber-500 hover:text-slate-950 dark:hover:bg-niibs-yellow dark:hover:text-slate-950 rounded-xl text-xs font-bold text-amber-800 dark:text-niibs-yellow flex items-center justify-center space-x-2 transition-all duration-200 group font-display"
+                    className="w-full mt-7 text-center py-3 border border-amber-200 dark:border-amber-800/60 hover:bg-amber-500 hover:text-slate-950 dark:hover:bg-niibs-yellow dark:hover:text-slate-950 rounded-xl text-xs font-semibold text-amber-800 dark:text-niibs-yellow flex items-center justify-center space-x-2 transition-all duration-200 group font-display"
                   >
                     <span>Load FBS Subject Grid</span>
                     <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -483,14 +471,14 @@ export default function App() {
                       <div className="w-12 h-12 bg-gradient-to-br from-teal-500 to-niibs-green text-white rounded-2xl shadow-md shadow-teal-500/20 flex items-center justify-center">
                         <Globe className="w-6 h-6" />
                       </div>
-                      <span className="px-2.5 py-1 rounded-full bg-teal-50 dark:bg-teal-950/60 text-teal-700 dark:text-teal-300 text-[11px] font-mono font-bold">
+                      <span className="px-2.5 py-1 rounded-full bg-teal-50 dark:bg-teal-950/60 text-teal-700 dark:text-teal-300 text-[11px] font-mono font-medium">
                         FHSS
                       </span>
                     </div>
 
                     <div className="space-y-2">
-                      <h3 className="font-display font-bold text-xl text-slate-950 dark:text-white">
-                        Humanities & Social Sciences
+                      <h3 className="font-display font-semibold text-xl text-slate-950 dark:text-white">
+                        Humanities & Social Sciences (FHSS)
                       </h3>
                       <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
                         Curriculum profiles spanning mass communication,
@@ -501,13 +489,13 @@ export default function App() {
 
                     <div className="flex flex-wrap gap-1.5 pt-1">
                       <span className="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 text-[11px] font-medium">
-                        Applied Communication
+                        BA (Hons.) in Applied Communication & Media Technology
                       </span>
                       <span className="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 text-[11px] font-medium">
-                        Anthropology
+                        BA (Hons.) in Anthropology
                       </span>
                       <span className="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 text-[11px] font-medium">
-                        Applied Archaeology
+                        BA (Hons.) in Applied Archaeology
                       </span>
                     </div>
                   </div>
@@ -519,7 +507,7 @@ export default function App() {
                       handleViewChange("calculator");
                       window.scrollTo({ top: 0, behavior: "smooth" });
                     }}
-                    className="w-full mt-7 text-center py-3 border border-teal-200 dark:border-teal-800/60 hover:bg-teal-600 hover:text-white dark:hover:bg-teal-500 dark:hover:text-white rounded-xl text-xs font-bold text-teal-700 dark:text-teal-300 flex items-center justify-center space-x-2 transition-all duration-200 group font-display"
+                    className="w-full mt-7 text-center py-3 border border-teal-200 dark:border-teal-800/60 hover:bg-teal-600 hover:text-white dark:hover:bg-teal-500 dark:hover:text-white rounded-xl text-xs font-semibold text-teal-700 dark:text-teal-300 flex items-center justify-center space-x-2 transition-all duration-200 group font-display"
                   >
                     <span>Load FHSS Subject Grid</span>
                     <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -530,7 +518,7 @@ export default function App() {
 
             {/* University Standards and Integrity Banner */}
             <motion.section
-              className="glass-card p-6 sm:p-8 rounded-3xl border border-niibs-yellow/30 bg-gradient-to-r from-niibs-blue/5 via-transparent to-niibs-yellow/5 flex flex-col md:flex-row items-center justify-between gap-6 shadow-md max-w-6xl mx-auto"
+              className="glass-card p-6 sm:p-8 rounded-3xl border border-slate-200/80 dark:border-slate-800/80 flex flex-col md:flex-row items-center justify-between gap-6 shadow-md max-w-6xl mx-auto bg-white/40 dark:bg-slate-900/40"
               whileHover={{
                 y: -4,
                 boxShadow:
@@ -540,12 +528,12 @@ export default function App() {
                 duration: 0.2,
               }}
             >
-              <div className="flex items-start space-x-4">
-                <div className="w-12 h-12 rounded-2xl bg-niibs-yellow/20 border border-niibs-yellow/40 text-niibs-yellow dark:text-niibs-yellow flex items-center justify-center shrink-0 mt-0.5 shadow-sm">
-                  <ShieldCheck className="w-7 h-7 text-niibs-yellow" />
+              <div className="flex items-center space-x-4">
+                <div className="w-12 h-12 rounded-2xl bg-niibs-yellow/10 border border-niibs-yellow/30 text-niibs-yellow flex items-center justify-center shrink-0 shadow-sm">
+                  <ShieldCheck className="w-6 h-6" />
                 </div>
                 <div className="space-y-1.5">
-                  <h4 className="font-display font-bold text-slate-900 dark:text-white text-lg flex items-center space-x-2">
+                  <h4 className="font-display font-semibold text-slate-900 dark:text-white text-lg flex items-center space-x-2">
                     <span>Official Board Verification Standards</span>
                   </h4>
                   <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed max-w-2xl">
@@ -561,7 +549,7 @@ export default function App() {
                   handleViewChange("resources");
                   window.scrollTo({ top: 0, behavior: "smooth" });
                 }}
-                className="w-full md:w-auto px-6 py-3.5 bg-niibs-blue hover:bg-niibs-blue-light hover:shadow-lg hover:shadow-niibs-blue/20 text-white rounded-2xl dark:bg-niibs-yellow dark:text-slate-950 dark:hover:bg-niibs-yellow-light text-xs font-bold leading-none shrink-0 transition-all font-display cursor-pointer flex items-center justify-center space-x-2"
+                className="w-full md:w-auto px-6 py-3.5 bg-niibs-blue hover:bg-niibs-blue-light hover:shadow-lg hover:shadow-niibs-blue/20 text-white rounded-xl dark:bg-niibs-yellow dark:text-slate-950 dark:hover:bg-niibs-yellow-light text-xs font-semibold leading-none shrink-0 transition-all font-display cursor-pointer flex items-center justify-center space-x-2"
               >
                 <span>Inspect Official Directives</span>
                 <ChevronRight className="w-4 h-4" />

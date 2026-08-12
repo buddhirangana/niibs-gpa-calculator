@@ -368,7 +368,7 @@ export default function Dashboard({ semesters, onNavigate, clearHistory }: Dashb
         >
           <div className="space-y-3">
             <div className="flex items-center justify-between">
-              <span className="text-[11px] uppercase font-bold font-mono tracking-wider text-slate-400 dark:text-slate-500">
+              <span className="text-[11px] uppercase font-semibold font-mono tracking-wider text-slate-400 dark:text-slate-500">
                 Cumulative CGPA
               </span>
               <div className="w-8 h-8 rounded-xl bg-niibs-blue/10 dark:bg-niibs-yellow/15 text-niibs-blue dark:text-niibs-yellow flex items-center justify-center">
@@ -377,10 +377,10 @@ export default function Dashboard({ semesters, onNavigate, clearHistory }: Dashb
             </div>
 
             <div className="flex items-baseline space-x-2">
-              <span className="font-mono text-4xl font-black text-niibs-blue dark:text-niibs-yellow tracking-tight">
+              <span className="font-mono text-4xl font-bold text-niibs-blue dark:text-niibs-yellow tracking-tight">
                 {totalCredits > 0 ? calculatedCgpa.toFixed(3) : '0.000'}
               </span>
-              <span className="text-xs text-slate-400 font-mono font-semibold">/ 4.000</span>
+              <span className="text-xs text-slate-400 font-mono font-medium">/ 4.000</span>
             </div>
           </div>
 
@@ -409,7 +409,7 @@ export default function Dashboard({ semesters, onNavigate, clearHistory }: Dashb
         >
           <div className="space-y-3">
             <div className="flex items-center justify-between">
-              <span className="text-[11px] uppercase font-bold font-mono tracking-wider text-slate-400 dark:text-slate-500">
+              <span className="text-[11px] uppercase font-semibold font-mono tracking-wider text-slate-400 dark:text-slate-500">
                 Credits Logged
               </span>
               <div className="w-8 h-8 rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center">
@@ -418,10 +418,10 @@ export default function Dashboard({ semesters, onNavigate, clearHistory }: Dashb
             </div>
 
             <div className="flex items-baseline space-x-2">
-              <span className="font-mono text-4xl font-black text-emerald-600 dark:text-emerald-400 tracking-tight">
+              <span className="font-mono text-4xl font-bold text-emerald-600 dark:text-emerald-400 tracking-tight">
                 {totalCredits}
               </span>
-              <span className="text-xs text-slate-400 font-mono font-semibold">Earned Units</span>
+              <span className="text-xs text-slate-400 font-mono font-medium">Earned Units</span>
             </div>
           </div>
 
@@ -450,7 +450,7 @@ export default function Dashboard({ semesters, onNavigate, clearHistory }: Dashb
         >
           <div className="space-y-3">
             <div className="flex items-center justify-between">
-              <span className="text-[11px] uppercase font-bold font-mono tracking-wider text-slate-400 dark:text-slate-500 block">
+              <span className="text-[11px] uppercase font-semibold font-mono tracking-wider text-slate-400 dark:text-slate-500 block">
                 Honors Graduation Standing
               </span>
               <div className="w-8 h-8 rounded-xl bg-amber-500/10 text-amber-500 dark:text-niibs-yellow flex items-center justify-center">
@@ -459,7 +459,7 @@ export default function Dashboard({ semesters, onNavigate, clearHistory }: Dashb
             </div>
 
             <div className="pt-1">
-              <span className={`inline-flex items-center space-x-2 text-xs font-bold px-3.5 py-1.5 rounded-xl border ${classColor} shadow-sm font-display`}>
+              <span className={`inline-flex items-center space-x-2 text-xs font-medium px-3.5 py-1.5 rounded-xl border ${classColor} shadow-sm font-display`}>
                 <Sparkles className="w-3.5 h-3.5 shrink-0" />
                 <span>{degreeClass}</span>
               </span>
@@ -495,7 +495,7 @@ export default function Dashboard({ semesters, onNavigate, clearHistory }: Dashb
                   <TrendingUp className="w-5 h-5" />
                 </div>
                 <div>
-                  <h3 className="font-display font-bold text-lg text-slate-900 dark:text-white">
+                  <h3 className="font-display font-semibold text-lg text-slate-900 dark:text-white">
                     Semester GPA Progress Trail
                   </h3>
                   <p className="text-xs text-slate-500 dark:text-slate-400">
@@ -575,7 +575,7 @@ export default function Dashboard({ semesters, onNavigate, clearHistory }: Dashb
               <div className="py-14 text-center border-2 border-dashed border-slate-200 dark:border-slate-800 rounded-3xl flex flex-col items-center space-y-3">
                 <Calendar className="w-12 h-12 text-slate-300 dark:text-slate-600" />
                 <div className="space-y-1 text-center">
-                  <h4 className="font-display font-bold text-slate-800 dark:text-white text-base">No Academic Milestones Logged</h4>
+                  <h4 className="font-display font-semibold text-slate-800 dark:text-white text-base">No Academic Milestones Logged</h4>
                   <p className="text-xs text-slate-500 dark:text-slate-400 max-w-sm mx-auto">
                     Calculate your GPA and click "Save to Dashboard History" inside the calculators to begin tracking.
                   </p>
@@ -607,7 +607,7 @@ export default function Dashboard({ semesters, onNavigate, clearHistory }: Dashb
                     <PieChartIcon className="w-5 h-5" />
                   </div>
                   <div>
-                    <h3 className="font-display font-bold text-lg text-slate-900 dark:text-white">
+                    <h3 className="font-display font-semibold text-lg text-slate-900 dark:text-white">
                       Grade Distribution
                     </h3>
                     <p className="text-xs text-slate-500 dark:text-slate-400">
@@ -672,7 +672,7 @@ export default function Dashboard({ semesters, onNavigate, clearHistory }: Dashb
                     <BarChartIcon className="w-5 h-5" />
                   </div>
                   <div>
-                    <h3 className="font-display font-bold text-lg text-slate-900 dark:text-white">
+                    <h3 className="font-display font-semibold text-lg text-slate-900 dark:text-white">
                       Grade Frequency Breakdown
                     </h3>
                     <p className="text-xs text-slate-500 dark:text-slate-400">
@@ -695,7 +695,7 @@ export default function Dashboard({ semesters, onNavigate, clearHistory }: Dashb
               }}
               transition={{ duration: 0.2 }}
             >
-              <h4 className="font-display font-bold text-slate-900 dark:text-white text-base">
+              <h4 className="font-display font-semibold text-slate-900 dark:text-white text-base">
                 Saved Academic Semester Records
               </h4>
               <div className="overflow-x-auto">
@@ -760,11 +760,11 @@ export default function Dashboard({ semesters, onNavigate, clearHistory }: Dashb
             transition={{ duration: 0.2 }}
           >
             <div className="flex items-center justify-between">
-              <h3 className="font-display font-bold text-base text-slate-900 dark:text-white flex items-center space-x-2">
+              <h3 className="font-display font-semibold text-base text-slate-900 dark:text-white flex items-center space-x-2">
                 <Trophy className="w-5 h-5 text-amber-500 dark:text-niibs-yellow" />
                 <span>NIIBS GPA Badges</span>
               </h3>
-              <span className="px-2.5 py-0.5 rounded-full bg-amber-500/15 text-amber-800 dark:text-niibs-yellow font-mono text-xs font-bold border border-amber-500/30">
+              <span className="px-2.5 py-0.5 rounded-full bg-amber-500/15 text-amber-800 dark:text-niibs-yellow font-mono text-xs font-medium border border-amber-500/30">
                 {badges.length} Unlocked
               </span>
             </div>
@@ -782,7 +782,7 @@ export default function Dashboard({ semesters, onNavigate, clearHistory }: Dashb
                         <Icon className="w-5 h-5" />
                       </div>
                       <div className="space-y-0.5">
-                        <h4 className="font-display font-bold text-slate-950 dark:text-slate-100 text-sm flex items-center space-x-1.5">
+                        <h4 className="font-display font-semibold text-slate-950 dark:text-slate-100 text-sm flex items-center space-x-1.5">
                           <span>{b.title}</span>
                           <Check className="w-3.5 h-3.5 text-emerald-500" />
                         </h4>
@@ -814,7 +814,7 @@ export default function Dashboard({ semesters, onNavigate, clearHistory }: Dashb
           >
             <div className="flex items-center space-x-2">
               <Dumbbell className="w-4.5 h-4.5 text-niibs-yellow" />
-              <h4 className="font-display font-bold text-niibs-blue dark:text-white text-xs uppercase tracking-wider">
+              <h4 className="font-display font-semibold text-niibs-blue dark:text-white text-xs uppercase tracking-wider">
                 Academic Standing Notice
               </h4>
             </div>
@@ -822,12 +822,12 @@ export default function Dashboard({ semesters, onNavigate, clearHistory }: Dashb
               "Diligent effort of focus is the foundation of scholarship. One who studies step-by-step reaches high peaks of wisdom naturally."
             </p>
             <div className="pt-3 border-t border-slate-200/50 dark:border-slate-800/50 flex items-center justify-between">
-              <span className="text-[10px] text-slate-400 font-mono uppercase font-bold">
+              <span className="text-[10px] text-slate-400 font-mono uppercase font-medium">
                 Academic Advisory
               </span>
               <button 
                 onClick={() => onNavigate('resources')}
-                className="text-xs font-bold text-niibs-blue dark:text-niibs-yellow hover:underline flex items-center space-x-1 font-display cursor-pointer"
+                className="text-xs font-semibold text-niibs-blue dark:text-niibs-yellow hover:underline flex items-center space-x-1 font-display cursor-pointer"
               >
                 <span>Read Guidebook</span>
                 <ArrowRight className="w-3.5 h-3.5" />

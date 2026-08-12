@@ -398,7 +398,7 @@ export const facultiesData: Faculty[] = [
     programs: [
       {
         id: 'ba-acmt',
-        name: 'BA (Hons) in Applied Communication and Media Technology',
+        name: 'BA (Hons.) in Applied Communication and Media Technology',
         durationYears: 4,
         gradingScheme: fhssAppliedMediaGradingScheme,
         degreeClassifications: {
@@ -411,70 +411,74 @@ export const facultiesData: Faculty[] = [
           {
             semesterNumber: 1,
             subjects: [
-              { id: 'ac1010', code: 'ACMT1010', name: 'Understanding Media & Communication', credits: 3 },
-              { id: 'ac1020', code: 'ACMT1020', name: 'Principles of Applied Journalism', credits: 3 },
-              { id: 'ac1030', code: 'ACMT1030', name: 'Introduction to Creative Graphic Design', credits: 3 },
-              { id: 'ac1040', code: 'ACMT1040', name: 'Language Proficiency for Media I', credits: 3 },
+              { id: 'acmt11514', code: 'ACMT 11514', name: 'Principles of Communication', credits: 4 },
+              { id: 'acmt11523', code: 'ACMT 11523', name: 'Evolution of Communication', credits: 3 },
+              { id: 'aarc11513', code: 'AARC 11513', name: 'Introduction to Applied Archaeology', credits: 3 },
+              { id: 'anth11553', code: 'ANTH 11553', name: 'Introduction to Anthropology', credits: 3 },
+              { id: 'engl11512', code: 'ENGL 11512', name: 'Advanced English Grammar', credits: 2 },
             ]
           },
           {
             semesterNumber: 2,
             subjects: [
-              { id: 'ac1050', code: 'ACMT1050', name: 'Development Communication Concepts', credits: 3 },
-              { id: 'ac1060', code: 'ACMT1060', name: 'Digital Typography & Layout Systems', credits: 3 },
-              { id: 'ac1070', code: 'ACMT1070', name: 'Photography and Visual Composition', credits: 3 },
-              { id: 'ac1080', code: 'ACMT1080', name: 'Language Proficiency for Media II', credits: 3 },
+              { id: 'acmt12533', code: 'ACMT 12533', name: 'Media Literacy and Criticism', credits: 3 },
+              { id: 'acmt12544', code: 'ACMT 12544', name: 'Study of Contemporary Media Technology and Applications', credits: 4 },
+              { id: 'aarc12573', code: 'AARC 12573', name: 'Introduction to Epigraphy and Paleography', credits: 3 },
+              { id: 'anth12613', code: 'ANTH 12613', name: 'Introduction to Non-material and Material Culture', credits: 3 },
+              { id: 'engl12532', code: 'ENGL 12532', name: 'Advanced English Grammar', credits: 2 },
             ]
           },
           {
             semesterNumber: 3,
             subjects: [
-              { id: 'ac2010', code: 'ACMT2010', name: 'Audio Design & Broadcasting Tech', credits: 3 },
-              { id: 'ac2020', code: 'ACMT2020', name: 'Public Relations and Media Relations', credits: 3 },
-              { id: 'ac2030', code: 'ACMT2030', name: 'Web Content Strategy & Blogging', credits: 3 },
-              { id: 'ac2040', code: 'ACMT2040', name: 'Sociology of Communication Mechanics', credits: 3 },
+              { id: 'acmt21513', code: 'ACMT 21513', name: 'Legal and Ethical concerns of Media applications in Society', credits: 3 },
+              { id: 'acmt21524', code: 'ACMT 21524', name: 'Regional Media Studies of South Asia', credits: 4 },
+              { id: 'acmt21535', code: 'ACMT 21535', name: 'Principal of Media Technology', credits: 5 },
+              { id: 'acmt21545', code: 'ACMT 21545', name: 'Virtual Communication', credits: 5 },
+              { id: 'acmt22555', code: 'ACMT 22555', name: 'Advertising and Marketing Communication', credits: 5 },
             ]
           },
           {
             semesterNumber: 4,
             subjects: [
-              { id: 'ac2050', code: 'ACMT2050', name: 'Video Recording and Production Basics', credits: 3 },
-              { id: 'ac2060', code: 'ACMT2060', name: 'Mass Media Ethics, Copyrights & Law', credits: 3 },
-              { id: 'ac2070', code: 'ACMT2070', name: 'Sri Lankan Cultural Heritage & Media', credits: 3 },
-              { id: 'ac2080', code: 'ACMT2080', name: 'Statistical Tools for Communication', credits: 3 },
+              { id: 'eacmt22563', code: 'EACMT 22563', name: 'Fundamental of English Grammar', credits: 3 },
+              { id: 'acmt22575', code: 'ACMT 22575', name: 'Organizational Behaviour and Media Management', credits: 5 },
+              { id: 'acmt22583', code: 'ACMT 22583', name: 'Culture and Globalization', credits: 3 },
             ]
           },
           {
             semesterNumber: 5,
             subjects: [
-              { id: 'ac3010', code: 'ACMT3010', name: 'Documentary Storytelling and Scripting', credits: 3 },
-              { id: 'ac3020', code: 'ACMT3020', name: 'Advanced Graphic Design & UX Design', credits: 3 },
-              { id: 'ac3030', code: 'ACMT3030', name: 'Integrated Marketing and Advertising', credits: 3 },
-              { id: 'ac3040', code: 'ACMT3040', name: 'Cultural Studies and Media Performance', credits: 3 },
+              { id: 'acmt31514', code: 'ACMT 31514', name: 'Introduction to Research and Research Methodology', credits: 4 },
+              { id: 'acmt31523', code: 'ACMT 31523', name: 'Student Symposium of Communication Studies', credits: 3 },
+              { id: 'acmt31533', code: 'ACMT 31533', name: 'Mindful Communication and Buddhism', credits: 3 },
+              { id: 'acmt31545', code: 'ACMT 31545', name: 'Practical oriented assessment (internship)', credits: 5 },
+              { id: 'acmt32555', code: 'ACMT 32555', name: 'Communication for Development and Extension', credits: 5 },
             ]
           },
           {
             semesterNumber: 6,
             subjects: [
-              { id: 'ac3050', code: 'ACMT3050', name: 'Non-Linear Video Post-Production', credits: 3 },
-              { id: 'ac3060', code: 'ACMT3060', name: 'Applied Research Methodology', credits: 3 },
-              { id: 'ac3070', code: 'ACMT3070', name: 'Digital Marketing & Social Media Strategy', credits: 3 },
-              { id: 'ac3080', code: 'ACMT3080', name: 'Field Placement Project', credits: 3 },
+              { id: 'acmt32563', code: 'ACMT 32563', name: 'Comprehensive English Grammar for Media', credits: 3 },
+              { id: 'acmt32574', code: 'ACMT 32574', name: 'Applied Media Technologies - Radio Communication', credits: 4 },
+              { id: 'acmt32584', code: 'ACMT 32584', name: 'Applied Media Technologies - TV and Cinema', credits: 4 },
             ]
           },
           {
             semesterNumber: 7,
             subjects: [
-              { id: 'ac4010', code: 'ACMT4010', name: 'Political Communication & Campaigns', credits: 4 },
-              { id: 'ac4020', code: 'ACMT4020', name: 'Special Investigative Journalism', credits: 3 },
-              { id: 'ac4030', code: 'ACMT4030', name: 'Applied Portfolio & Thesis Design I', credits: 4 },
+              { id: 'acmt41515', code: 'ACMT 41515', name: 'Applied Media Technologies - Print Communication', credits: 5 },
+              { id: 'acmt41523', code: 'ACMT 41523', name: 'Language for Communication', credits: 3 },
+              { id: 'coit41534', code: 'COIT 41534', name: 'Common IT (offered by FCIT)', credits: 4 },
+              { id: 'acmt41543', code: 'ACMT 41543', name: 'Traditional Communication and New Applications', credits: 3 },
+              { id: 'eacmt42553', code: 'EACMT 42553', name: 'Advanced English Writing for Media', credits: 3 },
             ]
           },
           {
             semesterNumber: 8,
             subjects: [
-              { id: 'ac4040', code: 'ACMT4040', name: 'Senior Media Internship', credits: 6 },
-              { id: 'ac4050', code: 'ACMT4050', name: 'Applied Portfolio & Thesis Design II', credits: 4 },
+              { id: 'acmt42564', code: 'ACMT 42564', name: 'Creative Communication and New Trends', credits: 4 },
+              { id: 'acmt42578', code: 'ACMT 42578', name: 'Theses', credits: 8 },
             ]
           }
         ]

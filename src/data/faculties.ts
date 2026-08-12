@@ -67,7 +67,7 @@ export const facultiesData: Faculty[] = [
       gradingScheme: fcitGradingScheme,
       degreeClassifications: {
         firstClass: 3.70,
-        secondUpper: 3.30,
+        secondUpper: 3.25,
         secondLower: 3.00,
         generalDegree: 2.00
       }

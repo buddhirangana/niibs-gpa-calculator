@@ -485,140 +485,196 @@ export const facultiesData: Faculty[] = [
       },
       {
         id: 'ba-anth',
-        name: 'BA (Hons) in Anthropology',
+        name: 'BA (Hons.) in Anthropology',
         durationYears: 4,
         semesters: [
           {
             semesterNumber: 1,
             subjects: [
-              { id: 'an1010', code: 'ANTH1010', name: 'Introduction to Anthropology', credits: 3 },
-              { id: 'an1020', code: 'ANTH1020', name: 'Man and Environment Evolution', credits: 3 },
-              { id: 'an1030', code: 'ANTH1030', name: 'Basic Academic Communication', credits: 3 },
+              { id: 'anth11513', code: 'ANTH 11513', name: 'Introduction to Socio-cultural Anthropology', credits: 3 },
+              { id: 'anth11523', code: 'ANTH 11523', name: 'Introduction to Biological Anthropology', credits: 3 },
+              { id: 'anth11532', code: 'ANTH 11532', name: 'Basic Academic English - I', credits: 2 },
+              { id: 'anth11542', code: 'ANTH 11542', name: 'Introduction of Information Communication Technology', credits: 2 },
+              { id: 'aarc11553', code: 'AARC 11553', name: 'Introduction to Archaeology', credits: 3 },
+              { id: 'comd11563', code: 'COMD 11563', name: 'Fundamentals of Communication (Elective)', credits: 3 },
+              { id: 'bust11573', code: 'BUST 11573', name: 'Fundamentals of Early Buddhism (Elective)', credits: 3 },
             ]
           },
           {
             semesterNumber: 2,
             subjects: [
-              { id: 'an1040', code: 'ANTH1040', name: 'Social & Cultural Anthropology', credits: 3 },
-              { id: 'an1050', code: 'ANTH1050', name: 'Linguistic Diversity and Identity', credits: 3 },
-              { id: 'an1060', code: 'ANTH1060', name: 'Human Biology & Genetic Archetypes', credits: 3 },
+              { id: 'anth12583', code: 'ANTH 12583', name: 'Physical Anthropology', credits: 3 },
+              { id: 'anth12593', code: 'ANTH 12593', name: 'Intangible Cultural Heritage', credits: 3 },
+              { id: 'anth12602', code: 'ANTH 12602', name: 'English for Professionals - I', credits: 2 },
+              { id: 'anth12612', code: 'ANTH 12612', name: 'Computer Applications for Anthropology', credits: 2 },
+              { id: 'aarc12623', code: 'AARC 12623', name: 'Evolution of Culture', credits: 3 },
+              { id: 'comd12633', code: 'COMD 12633', name: 'History of Comparative Media Studies (Elective)', credits: 3 },
+              { id: 'bust12643', code: 'BUST 12643', name: 'Principles of Buddhist Civilization (Elective)', credits: 3 },
             ]
           },
           {
             semesterNumber: 3,
             subjects: [
-              { id: 'an2010', code: 'ANTH2010', name: 'Anthropological Theory Chronicles', credits: 3 },
-              { id: 'an2020', code: 'ANTH2020', name: 'Kinship, Gender and Social Structure', credits: 3 },
-              { id: 'an2030', code: 'ANTH2030', name: 'Economic Systems of Tribal Societies', credits: 3 },
+              { id: 'anth21513', code: 'ANTH 21513', name: 'Theoretical Perspective in Socio-Cultural Anthropology', credits: 3 },
+              { id: 'anth21523', code: 'ANTH 21523', name: 'Hydraulic Civilization', credits: 3 },
+              { id: 'anth21533', code: 'ANTH 21533', name: 'Qualitative and Quantitative Methods in Anthropology', credits: 3 },
+              { id: 'anth21543', code: 'ANTH 21543', name: 'English for Professionals - II', credits: 3 },
+              { id: 'anth21553', code: 'ANTH 21553', name: 'Introduction of Statistical Package for the Social Sciences', credits: 3 },
+              { id: 'anth21563', code: 'ANTH 21563', name: 'Anthropology of Food and Nutrition (Elective)', credits: 3 },
+              { id: 'bust21573', code: 'BUST 21573', name: 'Principles of Buddhist Social Philosophy (Elective)', credits: 3 },
             ]
           },
           {
             semesterNumber: 4,
             subjects: [
-              { id: 'an2040', code: 'ANTH2040', name: 'Political Systems in Primitives', credits: 3 },
-              { id: 'an2050', code: 'ANTH2050', name: 'Religion, Ritual & Spiritual Systems', credits: 3 },
-              { id: 'an2060', code: 'ANTH2060', name: 'Visual Anthropology & Movie Review', credits: 3 },
+              { id: 'anth22583', code: 'ANTH 22583', name: 'Evolution and Human Behaviour', credits: 3 },
+              { id: 'anth22593', code: 'ANTH 22593', name: 'Mind Body and Anthropology', credits: 3 },
+              { id: 'anth22603', code: 'ANTH 22603', name: 'Primate Behavior: Ecology and Conservation', credits: 3 },
+              { id: 'anth22613', code: 'ANTH 22613', name: 'English for Anthropology', credits: 3 },
+              { id: 'aarc22623', code: 'AARC 22623', name: 'Environmental Archaeology', credits: 3 },
+              { id: 'bust22633', code: 'BUST 22633', name: 'Pre Buddhist and Contemporary Religious and Cultural Background of India (Elective)', credits: 3 },
             ]
           },
           {
             semesterNumber: 5,
             subjects: [
-              { id: 'an3010', code: 'ANTH3010', name: 'Ethnographic Fieldwork Methodology', credits: 4 },
-              { id: 'an3020', code: 'ANTH3020', name: 'Medical Anthropology & Healing Traditions', credits: 3 },
-              { id: 'an3030', code: 'ANTH3030', name: 'Anthropological Ecology and Crises', credits: 3 },
+              { id: 'anth31513', code: 'ANTH 31513', name: 'Alternative Medical System', credits: 3 },
+              { id: 'anth31523', code: 'ANTH 31523', name: 'Linguistic Anthropology', credits: 3 },
+              { id: 'anth31533', code: 'ANTH 31533', name: 'Sri Lanka: Culture, Society and Modernity', credits: 3 },
+              { id: 'anth31543', code: 'ANTH 31543', name: 'Research methodology in Socio-Cultural Anthropology', credits: 3 },
+              { id: 'anth31553', code: 'ANTH 31553', name: 'Applied Anthropology', credits: 3 },
+              { id: 'anth31563', code: 'ANTH 31563', name: 'Applied Statistics in Anthropology Using SPSS (Elective)', credits: 3 },
+              { id: 'bust31573', code: 'BUST 31573', name: 'Buddhist Social Work (Elective)', credits: 3 },
             ]
           },
           {
             semesterNumber: 6,
             subjects: [
-              { id: 'an3040', code: 'ANTH3040', name: 'Anthropology of Sri Lanka Indigenous Vedda', credits: 3 },
-              { id: 'an3050', code: 'ANTH3050', name: 'Applied Anthropology in NGO Dev', credits: 3 },
-              { id: 'an3060', code: 'ANTH3060', name: 'Academic Research Preparation Seminar', credits: 3 },
+              { id: 'aarc32583', code: 'AARC 32583', name: 'Ethnoarchaeology', credits: 3 },
+              { id: 'anth32593', code: 'ANTH 32593', name: 'Human Osteology', credits: 3 },
+              { id: 'anth32603', code: 'ANTH 32603', name: 'Human Ontology', credits: 3 },
+              { id: 'anth32613', code: 'ANTH 32613', name: 'Geographical Information System (GIS)', credits: 3 },
+              { id: 'aarc32623', code: 'AARC 32623', name: 'Settlement Archaeology (Elective)', credits: 3 },
+              { id: 'bust32633', code: 'BUST 32633', name: 'Principles of Buddhist Management (Elective)', credits: 3 },
             ]
           },
           {
             semesterNumber: 7,
             subjects: [
-              { id: 'an4010', code: 'ANTH4010', name: 'Postmodern Anthropological Debate', credits: 4 },
-              { id: 'an4020', code: 'ANTH4020', name: 'Symbolic Anthropology Paradigms', credits: 4 },
-              { id: 'an4030', code: 'ANTH4030', name: 'Field monograph Synthesis part I', credits: 4 },
+              { id: 'anth41513', code: 'ANTH 41513', name: 'Anthropology of Development', credits: 3 },
+              { id: 'anth41523', code: 'ANTH 41523', name: 'Genetics and Evolution', credits: 3 },
+              { id: 'anth41533', code: 'ANTH 41533', name: 'Introduction to Paleoanthropology', credits: 3 },
+              { id: 'anth41543', code: 'ANTH 41543', name: 'Religion in Digital Age', credits: 3 },
+              { id: 'anth41553', code: 'ANTH 41553', name: 'Genocide: Through Anthropological Perspective', credits: 3 },
             ]
           },
           {
             semesterNumber: 8,
             subjects: [
-              { id: 'an4040', code: 'ANTH4040', name: 'Dissertation Thesis & Defence', credits: 8 },
-              { id: 'an4050', code: 'ANTH4050', name: 'Contemporary Globalization Anthropologies', credits: 4 },
+              { id: 'anth42563', code: 'ANTH 42563', name: 'Cultural Tourism', credits: 3 },
+              { id: 'anth42573', code: 'ANTH 42573', name: 'Collecting culture: Anthropology and Museum', credits: 3 },
+              { id: 'anth42586', code: 'ANTH 42586', name: 'Industrial Training', credits: 6 },
+              { id: 'anth42596', code: 'ANTH 42596', name: 'Dissertation', credits: 6 },
             ]
           }
         ]
       },
       {
         id: 'ba-arch',
-        name: 'BA (Hons) in Applied Archaeology',
+        name: 'BA (Hons.) in Applied Archaeology',
         durationYears: 4,
         semesters: [
           {
             semesterNumber: 1,
             subjects: [
-              { id: 'ar1010', code: 'ARCH1010', name: 'Introduction to Archaeology', credits: 3 },
-              { id: 'ar1020', code: 'ARCH1020', name: 'Geological Methods in Civilizations', credits: 3 },
-              { id: 'ar1030', code: 'ARCH1030', name: 'Ancient Civilization Chronologies', credits: 3 },
+              { id: 'aarc11513', code: 'AARC 11513', name: 'Introduction to Archaeology', credits: 3 },
+              { id: 'aarc11523', code: 'AARC 11523', name: 'Theories in Contemporary Archaeology', credits: 3 },
+              { id: 'engl11532', code: 'ENGL 11532', name: 'Basic Academic English', credits: 2 },
+              { id: 'anth11542', code: 'ANTH 11542', name: 'Introduction to Anthropology', credits: 2 },
+              { id: 'comp11552', code: 'COMP 11552', name: 'Introduction of Information Communication Technology', credits: 2 },
+              { id: 'bust11563', code: 'BUST 11563', name: 'Fundamentals of Early Buddhism (Elective)', credits: 3 },
+              { id: 'comd11573', code: 'COMD 11573', name: 'Fundamentals of Communication (Elective)', credits: 3 },
             ]
           },
           {
             semesterNumber: 2,
             subjects: [
-              { id: 'ar1040', code: 'ARCH1040', name: 'Archaeological Fieldwork Methods', credits: 3 },
-              { id: 'ar1050', code: 'ARCH1050', name: 'Human Evolution and Paleontology Basics', credits: 3 },
-              { id: 'ar1060', code: 'ARCH1060', name: 'Sri Lankan Pre-History Framework', credits: 3 },
+              { id: 'aarc12583', code: 'AARC 12583', name: 'Epigraphy and Paleography', credits: 3 },
+              { id: 'aarc12593', code: 'AARC 12593', name: 'Evolution of Culture', credits: 3 },
+              { id: 'engl12602', code: 'ENGL 12602', name: 'English for Professionals', credits: 2 },
+              { id: 'comp12612', code: 'COMP 12612', name: 'Computer Applications for Archaeology', credits: 2 },
+              { id: 'anth12623', code: 'ANTH 12623', name: 'Introduction to Material and Non-material Culture', credits: 3 },
+              { id: 'bust12633', code: 'BUST 12633', name: 'Principles of Buddhist Civilization (Elective)', credits: 3 },
+              { id: 'comd11643', code: 'COMD 11643', name: 'Comparative Media Studies (Elective)', credits: 3 },
             ]
           },
           {
             semesterNumber: 3,
             subjects: [
-              { id: 'ar2010', code: 'ARCH2010', name: 'Surveying and Mapping in Archeology', credits: 3 },
-              { id: 'ar2020', code: 'ARCH2020', name: 'Epigraphy and Paleography Foundations', credits: 3 },
-              { id: 'ar2030', code: 'ARCH2030', name: 'Numismatics (Ancient Coins & Trade)', credits: 3 },
+              { id: 'aarc21513', code: 'AARC 21513', name: 'Hydraulic Civilization', credits: 3 },
+              { id: 'aarc21523', code: 'AARC 21523', name: 'Art and Architecture', credits: 3 },
+              { id: 'aarc21533', code: 'AARC 21533', name: 'Trade and Numismatics', credits: 3 },
+              { id: 'engl21543', code: 'ENGL 21543', name: 'English for Archaeology - I', credits: 3 },
+              { id: 'comp21553', code: 'COMP 21553', name: 'Introduction of Statistical Package for the Social Science', credits: 3 },
+              { id: 'bust21563', code: 'BUST 21563', name: 'Principles of Buddhist Social Philosophy (Elective)', credits: 3 },
+              { id: 'anth21573', code: 'ANTH 21573', name: 'Qualitative and Quantitative Methods in Anthropology (Elective)', credits: 3 },
             ]
           },
           {
             semesterNumber: 4,
             subjects: [
-              { id: 'ar2040', code: 'ARCH2040', name: 'Ceramic studies and Artifact Logging', credits: 3 },
-              { id: 'ar2050', code: 'ARCH2050', name: 'Principles of Conservation Science', credits: 3 },
-              { id: 'ar2060', code: 'ARCH2060', name: 'Buddhist Monastic Architecture Sites', credits: 3 },
+              { id: 'aarc22583', code: 'AARC 22583', name: 'Indigenous Technology', credits: 3 },
+              { id: 'aarc22593', code: 'AARC 22593', name: 'Industrial Archaeology', credits: 3 },
+              { id: 'aarc22603', code: 'AARC 22603', name: 'Environmental Archaeology', credits: 3 },
+              { id: 'engl22612', code: 'ENGL 22612', name: 'English for Archaeology - II', credits: 2 },
+              { id: 'bust22623', code: 'BUST 22623', name: 'Pre Buddhist and Contemporary Religious and Culture Background of India (Elective)', credits: 3 },
+              { id: 'anth22633', code: 'ANTH 22633', name: 'Theoretical Perspective in Socio-Cultural Anthropology (Elective)', credits: 3 },
             ]
           },
           {
             semesterNumber: 5,
             subjects: [
-              { id: 'ar3010', code: 'ARCH3010', name: 'Excavation Practicum (Field Site)', credits: 4 },
-              { id: 'ar3020', code: 'ARCH3020', name: 'Physical Material Conservation Lab', credits: 3 },
-              { id: 'ar3030', code: 'ARCH3030', name: 'Geo-Archaeology and Climate History', credits: 3 },
+              { id: 'aarc31513', code: 'AARC 31513', name: 'Ethnoarchaeology', credits: 3 },
+              { id: 'aarc31523', code: 'AARC 31523', name: 'Museology - Principles and Practices', credits: 3 },
+              { id: 'aarc31533', code: 'AARC 31533', name: 'Bioarchaeology', credits: 3 },
+              { id: 'aarc31543', code: 'AARC 31543', name: 'Geographical Information System', credits: 3 },
+              { id: 'comp31553', code: 'COMP 31553', name: 'Advance of Statistical Package for the Social Sciences (SPSS)', credits: 3 },
+              { id: 'bust31563', code: 'BUST 31563', name: 'Buddhist Social Work (Elective)', credits: 3 },
+              { id: 'anth31573', code: 'ANTH 31573', name: 'Genetics and Evolution (Elective)', credits: 3 },
             ]
           },
           {
             semesterNumber: 6,
             subjects: [
-              { id: 'ar3040', code: 'ARCH3040', name: 'Cultural Heritage Management & Laws', credits: 3 },
-              { id: 'ar3050', code: 'ARCH3050', name: 'Maritime Archeology on Shipwrecks', credits: 3 },
-              { id: 'ar3060', code: 'ARCH3060', name: 'GIS Mapping & Spatial Archeo-Analysis', credits: 3 },
+              { id: 'aarc32583', code: 'AARC 32583', name: 'Field Work 01: Exploration Methods and Practice', credits: 3 },
+              { id: 'aarc32593', code: 'AARC 32593', name: 'Settlement Archaeology', credits: 3 },
+              { id: 'aarc32603', code: 'AARC 32603', name: 'Public Archaeology', credits: 3 },
+              { id: 'aarc32613', code: 'AARC 32613', name: 'Computer-Aided Design and Drafting Software Application', credits: 3 },
+              { id: 'aarc32624', code: 'AARC 32624', name: 'Heritage Management', credits: 4 },
+              { id: 'aarc32633', code: 'AARC 32633', name: 'Estimation and Procurement', credits: 3 },
+              { id: 'anth32643', code: 'ANTH 32643', name: 'Applied Anthropology (Elective)', credits: 3 },
+              { id: 'bust32653', code: 'BUST 32653', name: 'Principles of Buddhist Management (Elective)', credits: 3 },
             ]
           },
           {
             semesterNumber: 7,
             subjects: [
-              { id: 'ar4010', code: 'ARCH4010', name: 'Advanced Museology and Public display', credits: 4 },
-              { id: 'ar4020', code: 'ARCH4020', name: 'Archeological Project Management', credits: 4 },
-              { id: 'ar4030', code: 'ARCH4030', name: 'Monograph Thesis Preparation Part I', credits: 4 },
+              { id: 'aarc41513', code: 'AARC 41513', name: 'Culture Tourism', credits: 3 },
+              { id: 'aarc41523', code: 'AARC 41523', name: 'Archaeological Photography', credits: 3 },
+              { id: 'aarc41533', code: 'AARC 41533', name: 'Field Work 02: Excavation Methods and Practice', credits: 3 },
+              { id: 'aarc41543', code: 'AARC 41543', name: 'Maritime Archaeology', credits: 3 },
+              { id: 'aarc41553', code: 'AARC 41553', name: 'Research Methodology', credits: 3 },
+              { id: 'aarc41563', code: 'AARC 41563', name: 'Archaeochemisty', credits: 3 },
             ]
           },
           {
             semesterNumber: 8,
             subjects: [
-              { id: 'ar4040', code: 'ARCH4040', name: 'Field Dissertation & Public Defence', credits: 8 },
-              { id: 'ar4050', code: 'ARCH4050', name: 'Digital & 3D Heritage Reconstructions', credits: 4 },
+              { id: 'aarc42573', code: 'AARC 42573', name: 'Archaeological Drafting and Cartography', credits: 3 },
+              { id: 'aarc42583', code: 'AARC 42583', name: 'Legal Protocols of Archaeological Activities in Sri Lanka', credits: 3 },
+              { id: 'aarc42593', code: 'AARC 42593', name: 'Preservation and Conservation', credits: 3 },
+              { id: 'aarc42606', code: 'AARC 42606', name: 'Industrial Training', credits: 6 },
+              { id: 'aarc42616', code: 'AARC 42616', name: 'Dissertation', credits: 6 },
             ]
           }
         ]

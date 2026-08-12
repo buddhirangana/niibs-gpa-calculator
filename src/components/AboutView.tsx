@@ -34,10 +34,10 @@ export default function AboutView({ onNavigate }: AboutViewProps) {
         </motion.div>
         
         <div className="space-y-1.5">
-          <h1 className="font-display font-black text-3xl sm:text-5xl text-slate-950 dark:text-white leading-tight">
+          <h1 className="font-display font-bold text-3xl sm:text-5xl text-slate-950 dark:text-white leading-tight">
             About NIIBS GPA Calculator
           </h1>
-          <p className="text-xs sm:text-sm font-mono text-niibs-blue dark:text-niibs-yellow uppercase tracking-widest font-bold">
+          <p className="text-xs sm:text-sm font-mono text-niibs-blue dark:text-niibs-yellow uppercase tracking-widest font-small">
             Academic Evaluation Suite & Developer Information • Version 1.0
           </p>
         </div>
@@ -58,7 +58,7 @@ export default function AboutView({ onNavigate }: AboutViewProps) {
           <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl overflow-hidden shrink-0 shadow-lg border-1 border-niibs-yellow/50 dark:border-niibs-yellow/40 bg-slate-900">
             <img
               src="/buddhi-rangana-img.webp"
-              alt="Buddhi Rangana - Developer"
+              alt="Buddhi Rangana - Developer of NIIBS GPA Calculator"
               className="w-full h-full object-cover object-center transform hover:scale-105 transition-transform duration-300"
             />
           </div>
@@ -67,10 +67,10 @@ export default function AboutView({ onNavigate }: AboutViewProps) {
           <div className="space-y-3 text-center md:text-left flex-1">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
               <div>
-                <span className="text-[10px] uppercase font-mono font-bold tracking-widest text-niibs-blue dark:text-niibs-yellow block">
+                <span className="text-[10px] uppercase font-mono font-medium tracking-widest text-niibs-blue dark:text-niibs-yellow block">
                   Lead Platform Engineer & Designer
                 </span>
-                <h2 className="font-display font-black text-2xl sm:text-3xl text-slate-950 dark:text-white">
+                <h2 className="font-display font-bold text-2xl sm:text-3xl text-slate-950 dark:text-white">
                   Buddhi Rangana
                 </h2>
               </div>
@@ -80,7 +80,7 @@ export default function AboutView({ onNavigate }: AboutViewProps) {
                   href="https://buddhirangana.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-3.5 py-2 rounded-xl bg-white/60 dark:bg-slate-900/60 hover:bg-niibs-yellow hover:text-slate-950 dark:hover:bg-niibs-yellow dark:hover:text-slate-950 text-slate-800 dark:text-slate-200 text-xs font-bold font-mono transition-all duration-200 border border-slate-200 dark:border-slate-800 flex items-center space-x-1.5 shadow-sm"
+                  className="px-3.5 py-2 rounded-xl bg-white/60 dark:bg-slate-900/60 hover:bg-niibs-yellow hover:text-slate-950 dark:hover:bg-niibs-yellow dark:hover:text-slate-950 text-slate-800 dark:text-slate-200 text-xs font-medium font-mono transition-all duration-200 border border-slate-200 dark:border-slate-800 flex items-center space-x-1.5 shadow-sm"
                 >
                   <Globe className="w-3.5 h-3.5" />
                   <span>Portfolio</span>
@@ -100,7 +100,7 @@ export default function AboutView({ onNavigate }: AboutViewProps) {
             </div>
 
             <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed max-w-3xl">
-              Engineered and designed by <b>Buddhi Rangana</b> to provide NIIBS undergraduates with an intuitive, highly responsive, and reliable academic calculation tool. The initiative aims to demystify complex credit weight calculations, degree class boundary rules, and target forecasting across all university faculties.
+              Engineered and designed by <b>Buddhi Rangana</b> to provide NIIBS undergraduates with an intuitive, highly responsive and reliable academic calculation tool. The initiative aims to demystify complex credit weight calculations, degree class boundary rules and target forecasting across all university faculties.
             </p>
 
             <div className="flex flex-wrap items-center gap-2 pt-1 justify-center md:justify-start">
@@ -111,7 +111,7 @@ export default function AboutView({ onNavigate }: AboutViewProps) {
                 TypeScript
               </span>
               <span className="px-2.5 py-1 rounded-lg bg-slate-200/60 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 text-[11px] font-mono font-medium">
-                Tailwind CSS v4
+                Tailwind CSS
               </span>
               <span className="px-2.5 py-1 rounded-lg bg-slate-200/60 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 text-[11px] font-mono font-medium">
                 Vite Engine
@@ -134,7 +134,7 @@ export default function AboutView({ onNavigate }: AboutViewProps) {
           <div className="space-y-2">
             <div className="flex items-center space-x-2 text-niibs-blue dark:text-niibs-yellow">
               <Lock className="w-4.5 h-4.5" />
-              <h4 className="font-display font-bold text-slate-950 dark:text-white text-xs uppercase tracking-wider">
+              <h4 className="font-display font-semibold text-slate-950 dark:text-white text-xs uppercase tracking-wider">
                 Full Client-Side Privacy
               </h4>
             </div>
@@ -146,12 +146,12 @@ export default function AboutView({ onNavigate }: AboutViewProps) {
           <div className="space-y-2">
             <div className="flex items-center space-x-2 text-emerald-600 dark:text-emerald-400">
               <ShieldCheck className="w-4.5 h-4.5" />
-              <h4 className="font-display font-bold text-slate-950 dark:text-white text-xs uppercase tracking-wider">
+              <h4 className="font-display font-semibold text-slate-950 dark:text-white text-xs uppercase tracking-wider">
                 UGC Sri Lanka Standardized
               </h4>
             </div>
             <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 leading-relaxed">
-              Algorithms follow official University Grants Commission Sri Lanka standards and NIIBS senate guidelines for Grade Point Values ($A+=4.0, A=4.0 \dots E=0.0$).
+              Algorithms follow official University Grants Commission Sri Lanka standards and NIIBS senate guidelines for Grade Point Values (A+ = 4.0, A = 4.0 ... E = 0.0).
             </p>
           </div>
         </div>
@@ -164,7 +164,7 @@ export default function AboutView({ onNavigate }: AboutViewProps) {
               General Portal Disclaimer
             </b>
             <p className="text-slate-500 dark:text-slate-400 leading-relaxed text-xs sm:text-sm">
-              All values computed are generated directly using math algorithms for guiding and forecasting purposes. Official transcripts, final certificate ratings, and credit approvals remain under the sole jurisdiction of the Board of Examinations at the Bollegala, Kelaniya campus of NIIBS.
+              All values computed are generated directly using math algorithms for guiding and forecasting purposes. Official transcripts, final certificate ratings, and credit approvals remain under the sole jurisdiction of the Board of Examinations at the NIIBS Campus, Bollegala, Kelaniya.
             </p>
           </div>
         </div>
@@ -174,13 +174,13 @@ export default function AboutView({ onNavigate }: AboutViewProps) {
       <div className="pt-2 flex flex-wrap items-center justify-center gap-4">
         <button
           onClick={() => onNavigate('calculator')}
-          className="px-6 py-3 bg-gradient-to-r from-niibs-blue to-indigo-700 hover:from-indigo-700 hover:to-niibs-blue dark:from-niibs-yellow dark:to-amber-400 dark:hover:from-amber-400 dark:hover:to-niibs-yellow text-white dark:text-slate-950 font-bold rounded-2xl shadow-lg transition-all duration-200 text-xs sm:text-sm font-display cursor-pointer"
+          className="px-6 py-3 bg-gradient-to-r from-niibs-blue to-indigo-700 hover:from-indigo-700 hover:to-niibs-blue dark:from-niibs-yellow dark:to-amber-400 dark:hover:from-amber-400 dark:hover:to-niibs-yellow text-white dark:text-slate-950 font-semibold rounded-2xl shadow-lg transition-all duration-200 text-xs sm:text-sm font-display cursor-pointer"
         >
-          Open Faculty Calculator
+          Open GPA Calculator
         </button>
         <button
           onClick={() => onNavigate('cgpa')}
-          className="px-6 py-3 border border-slate-200 dark:border-slate-800 bg-white/60 dark:bg-slate-900/60 hover:bg-white dark:hover:bg-slate-900 text-slate-800 dark:text-slate-200 font-bold rounded-2xl shadow-sm transition-all duration-200 text-xs sm:text-sm font-display cursor-pointer"
+          className="px-6 py-3 border border-slate-200 dark:border-slate-800 bg-white/60 dark:bg-slate-900/60 hover:bg-white dark:hover:bg-slate-900 text-slate-800 dark:text-slate-200 font-semibold rounded-2xl shadow-sm transition-all duration-200 text-xs sm:text-sm font-display cursor-pointer"
         >
           View CGPA Tracker
         </button>

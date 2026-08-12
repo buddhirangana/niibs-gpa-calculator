@@ -102,7 +102,6 @@ export default function FacultyCalculator({ onSaveSemester, savedSemesters, init
   });
 
   const calculatedGpa = totalCredits > 0 ? (totalGradePoints / totalCredits) : 0;
-  const deansListEligible = calculatedGpa >= 3.70 && totalCredits >= 12;
 
   // Save to History action
   const handleSaveToHistory = () => {
@@ -310,17 +309,7 @@ export default function FacultyCalculator({ onSaveSemester, savedSemesters, init
 
           <div className="mt-5 md:mt-0 flex flex-col items-center md:items-end space-y-3 shrink-0">
             {/* Eligibility Banner */}
-            {deansListEligible ? (
-              <div className="flex items-center space-x-1.5 px-3.5 py-1.5 bg-amber-500/15 text-amber-800 dark:text-niibs-yellow border border-amber-500/30 rounded-full text-xs font-bold font-mono uppercase tracking-wider shadow-sm font-display">
-                <Sparkles className="w-4 h-4 text-amber-500 dark:text-niibs-yellow" />
-                <span>Dean's List Eligible</span>
-              </div>
-            ) : (
-              <div className="text-[11px] text-slate-500 dark:text-slate-400 font-mono uppercase tracking-wide font-medium">
-                Dean's Threshold: 3.70 GPA & 12 Credits
-              </div>
-            )}
-
+            
             {/* Quick Actions */}
             <div className="flex items-center space-x-2.5 no-print">
               <button

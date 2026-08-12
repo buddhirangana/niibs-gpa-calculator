@@ -16,9 +16,9 @@ export interface SemesterData {
 }
 
 export interface Program {
-  id: string; // e.g., 'bsc-se'
-  name: string; // e.g., 'BSc (Hons) Software Engineering'
-  durationYears: number; // e.g., 4 or 3
+  id: string;
+  name: string;
+  durationYears: number;
   semesters: SemesterData[];
   gradingScheme?: GradingScheme[];
   degreeClassifications?: {

@@ -21,7 +21,8 @@ import {
   TrendingUp,
   RotateCcw,
   CheckCircle2,
-  Check
+  Check,
+  Star
 } from 'lucide-react';
 import { PieChart, Pie, Cell, Tooltip as RechartsTooltip, ResponsiveContainer, Legend as RechartsLegend } from 'recharts';
 import * as d3 from 'd3';
@@ -62,8 +63,54 @@ export default function Dashboard({ semesters, onNavigate, clearHistory }: Dashb
     }
   }
 
-  // Deans list eligibility (if any semester GPA >= 3.7 && credits completed >= 12 in that semester)
-  const deansListEligibleCount = semesters.filter(s => s.gpa >= 3.70 && s.credits >= 12).length;
+  // Dean's and VC's List eligibility (FCIT only, calculated yearly)
+  let isFCIT = false;
+  let deansListYears = 0;
+  let vcListYears = 0;
+  const deansSemesterIds = new Set<string>();
+  const vcSemesterIds = new Set<string>();
+
+  if (semesters.length > 0) {
+    const fcitPrograms = facultiesData.find(f => f.id === 'FCIT')?.programs.map(p => p.id) || [];
+    const fcitSemesters = semesters.filter(s => {
+      const parts = s.id.split('-');
+      if (parts[0] === 'term') {
+        const progId = parts.slice(1, -2).join('-');
+        return fcitPrograms.includes(progId);
+      }
+      return false;
+    });
+
+    if (fcitSemesters.length > 0 && fcitSemesters.length >= semesters.length / 2) {
+      isFCIT = true;
+      const yearMap = new Map<number, typeof semesters>();
+      
+      fcitSemesters.forEach(s => {
+        const parts = s.id.split('-');
+        const semNum = parseInt(parts[parts.length - 2], 10);
+        if (!isNaN(semNum)) {
+          const yearNum = Math.ceil(semNum / 2);
+          if (!yearMap.has(yearNum)) yearMap.set(yearNum, []);
+          yearMap.get(yearNum)!.push(s);
+        }
+      });
+
+      yearMap.forEach(yearSems => {
+        if (yearSems.length === 2) {
+          const bothVC = yearSems.every(s => s.gpa > 3.80);
+          const bothDeans = yearSems.every(s => s.gpa >= 3.70);
+
+          if (bothVC) {
+            vcListYears++;
+            yearSems.forEach(s => vcSemesterIds.add(s.id));
+          } else if (bothDeans) {
+            deansListYears++;
+            yearSems.forEach(s => deansSemesterIds.add(s.id));
+          }
+        }
+      });
+    }
+  }
 
   // Badge list logic
   const badges: { title: string; desc: string; icon: typeof Trophy; color: string; bgGradient: string }[] = [];
@@ -93,10 +140,18 @@ export default function Dashboard({ semesters, onNavigate, clearHistory }: Dashb
         bgGradient: 'from-purple-500/15 to-indigo-500/10'
       });
     }
-    if (deansListEligibleCount > 0) {
+    if (vcListYears > 0) {
       badges.push({
-        title: "Dean's Laureate",
-        desc: `Stellar standing in ${deansListEligibleCount} Semester(s).`,
+        title: "Vice-Chancellor's List",
+        desc: `Exemplary standing achieved in ${vcListYears} Year(s).`,
+        icon: Star,
+        color: 'text-rose-700 dark:text-rose-400 border-rose-500/30',
+        bgGradient: 'from-rose-500/15 to-orange-500/10'
+      });
+    } else if (deansListYears > 0) {
+      badges.push({
+        title: "Dean's List",
+        desc: `Stellar standing achieved in ${deansListYears} Year(s).`,
         icon: Award,
         color: 'text-niibs-blue dark:text-indigo-300 border-niibs-blue/30',
         bgGradient: 'from-niibs-blue/15 to-indigo-500/10'
@@ -650,7 +705,7 @@ export default function Dashboard({ semesters, onNavigate, clearHistory }: Dashb
                       <th className="py-3 px-2">Academic Term Name</th>
                       <th className="py-3 px-2">Term GPA</th>
                       <th className="py-3 px-2">Earned Units</th>
-                      <th className="py-3 px-2">Dean's List Status</th>
+                      {isFCIT && <th className="py-3 px-2">Annual Award Status</th>}
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-slate-100 dark:divide-slate-850/60 text-slate-700 dark:text-slate-300">
@@ -665,16 +720,25 @@ export default function Dashboard({ semesters, onNavigate, clearHistory }: Dashb
                         <td className="py-3.5 px-2 font-mono text-slate-600 dark:text-slate-400">
                           {sem.credits} Credits
                         </td>
-                        <td className="py-3.5 px-2">
-                          {sem.gpa >= 3.70 && sem.credits >= 12 ? (
-                            <span className="inline-flex items-center space-x-1 px-2.5 py-1 rounded-full text-[10px] font-bold bg-amber-500/15 text-amber-800 dark:text-niibs-yellow border border-amber-500/30 font-display">
-                              <CheckCircle2 className="w-3 h-3 text-amber-500 dark:text-niibs-yellow" />
-                              <span>Qualified</span>
-                            </span>
-                          ) : (
-                            <span className="text-slate-400 font-mono text-[10px]">—</span>
-                          )}
-                        </td>
+                        {isFCIT && (
+                          <td className="py-3.5 px-2">
+                            {vcSemesterIds.has(sem.id) ? (
+                              <span className="inline-flex items-center space-x-1 px-2.5 py-1 rounded-full text-[10px] font-bold bg-rose-500/15 text-rose-800 dark:text-rose-300 border border-rose-500/30 font-display">
+                                <CheckCircle2 className="w-3 h-3 text-rose-500 dark:text-rose-400" />
+                                <span>VC's List (Year)</span>
+                              </span>
+                            ) : deansSemesterIds.has(sem.id) ? (
+                              <span className="inline-flex items-center space-x-1 px-2.5 py-1 rounded-full text-[10px] font-bold bg-amber-500/15 text-amber-800 dark:text-niibs-yellow border border-amber-500/30 font-display">
+                                <CheckCircle2 className="w-3 h-3 text-amber-500 dark:text-niibs-yellow" />
+                                <span>Dean's List (Year)</span>
+                              </span>
+                            ) : (
+                              <span className="text-slate-400 font-mono text-[10px]">
+                                {sem.gpa >= 3.70 ? "On Track (Needs Yr)" : "—"}
+                              </span>
+                            )}
+                          </td>
+                        )}
                       </tr>
                     ))}
                   </tbody>

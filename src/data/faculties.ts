@@ -5,7 +5,7 @@
 
 import { Faculty } from '../types';
 
-// Standard NIIBS Computing Grading Scale
+// Standard FCIT Grading Scale
 export const fcitGradingScheme = [
   { grade: 'A+', gpaValue: 4.00, description: 'Superior' },
   { grade: 'A', gpaValue: 4.00, description: 'Superior' },
@@ -21,7 +21,7 @@ export const fcitGradingScheme = [
   { grade: 'E', gpaValue: 0.00, description: 'Failure' },
 ];
 
-// Standard NIIBS Humanities and Buddhist Studies Scale (Same GPA values but sometimes descriptive or slightly different rules)
+// Standard FBS & FHSS (except ACMT) Grading Scale
 export const fbsGradingScheme = [
   { grade: 'A+', gpaValue: 4.00, description: 'Distinction' },
   { grade: 'A', gpaValue: 4.00, description: 'Excellent' },
@@ -37,6 +37,7 @@ export const fbsGradingScheme = [
   { grade: 'E', gpaValue: 0.00, description: 'Fail' },
 ];
 
+// Standard  FHSS ACMT Grading Scale
 export const fhssAppliedMediaGradingScheme = [
   { grade: 'A+', gpaValue: 4.00, description: 'Superior' },
   { grade: 'A', gpaValue: 4.00, description: 'Superior' },
@@ -75,317 +76,99 @@ export const facultiesData: Faculty[] = [
     programs: [
       {
         id: 'bsc-it',
-        name: 'BSc (Hons) in Information Technology',
+        name: 'BSc (Hons.) in Information Technology',
         durationYears: 4,
         semesters: [
           {
             semesterNumber: 1,
             subjects: [
-              { id: 'it1010', code: 'IT1010', name: 'Programming Fundamentals', credits: 3 },
-              { id: 'it1020', code: 'IT1020', name: 'Mathematics for Computing', credits: 3 },
-              { id: 'it1030', code: 'IT1030', name: 'Computer Systems Organization', credits: 3 },
-              { id: 'it1040', code: 'IT1040', name: 'Communication Skills I', credits: 2 },
-              { id: 'it1050', code: 'IT1050', name: 'Buddhist Culture & Mindfulness Practice', credits: 2 },
+              { id: 'inte11012', code: 'INTE11012', name: 'Computer Fundamentals', credits: 2 },
+              { id: 'inte11022', code: 'INTE11022', name: 'IT Applications', credits: 2 },
+              { id: 'inte11032', code: 'INTE11032', name: 'Mathematics for Computing', credits: 2 },
+              { id: 'inte11043', code: 'INTE11043', name: 'Computer Hardware & Operating systems', credits: 3 },
+              { id: 'inte11052', code: 'INTE11052', name: 'Communication Skills for IT', credits: 2 },
+              { id: 'inte11062', code: 'INTE11062', name: 'Software Engineering', credits: 2 },
+              { id: 'inte11072', code: 'INTE11072', name: 'Introduction to Programming', credits: 2 },
             ]
           },
           {
             semesterNumber: 2,
             subjects: [
-              { id: 'it1060', code: 'IT1060', name: 'Object Oriented Programming', credits: 3 },
-              { id: 'it1070', code: 'IT1070', name: 'Database Management Systems', credits: 3 },
-              { id: 'it1080', code: 'IT1080', name: 'Software Engineering Essentials', credits: 3 },
-              { id: 'it1090', code: 'IT1090', name: 'Discrete Mathematics', credits: 3 },
-              { id: 'it1100', code: 'IT1100', name: 'Communication Skills II', credits: 2 },
+              { id: 'inte12013', code: 'INTE12013', name: 'Data Communication and Computer Networks', credits: 3 },
+              { id: 'inte12022', code: 'INTE12022', name: 'Information Security', credits: 2 },
+              { id: 'inte12033', code: 'INTE12033', name: 'Database Management Systems', credits: 3 },
+              { id: 'inte12043', code: 'INTE12043', name: 'Data Structures and Algorithms', credits: 3 },
+              { id: 'inte12053', code: 'INTE12053', name: 'Computer Graphic and multimedia', credits: 3 },
+              { id: 'inte12062', code: 'INTE12062', name: 'Probability and Statistics', credits: 2 },
             ]
           },
           {
             semesterNumber: 3,
             subjects: [
-              { id: 'it2010', code: 'IT2010', name: 'Data Structures and Algorithms', credits: 4 },
-              { id: 'it2020', code: 'IT2020', name: 'Web Application Development', credits: 3 },
-              { id: 'it2030', code: 'IT2030', name: 'Operating Systems', credits: 3 },
-              { id: 'it2040', code: 'IT2040', name: 'Probability and Statistics', credits: 3 },
+              { id: 'inte21013', code: 'INTE21013', name: 'Object Oriented Programming', credits: 3 },
+              { id: 'inte21023', code: 'INTE21023', name: 'System Analysis and Design', credits: 3 },
+              { id: 'inte21033', code: 'INTE21033', name: 'Advanced Database Management Systems', credits: 3 },
+              { id: 'inte21042', code: 'INTE21042', name: 'Information Systems', credits: 2 },
+              { id: 'inte21051', code: 'INTE21051', name: 'Discrete Mathematics', credits: 1 },
+              { id: 'inte21064', code: 'INTE21064', name: 'Web Application Development', credits: 4 },
             ]
           },
           {
             semesterNumber: 4,
             subjects: [
-              { id: 'it2050', code: 'IT2050', name: 'Computer Networks', credits: 3 },
-              { id: 'it2060', code: 'IT2060', name: 'Advanced Database Systems', credits: 3 },
-              { id: 'it2070', code: 'IT2070', name: 'Object Oriented Analysis & Design', credits: 3 },
-              { id: 'it2080', code: 'IT2080', name: 'System Administration', credits: 3 },
-              { id: 'it2090', code: 'IT2090', name: 'Research Methodology', credits: 2 },
+              { id: 'inte22013', code: 'INTE22013', name: 'Web Technologies and Web Development', credits: 3 },
+              { id: 'inte22023', code: 'INTE22023', name: 'Big Data Technologies', credits: 3 },
+              { id: 'inte22032', code: 'INTE22032', name: 'IT Change Management', credits: 2 },
+              { id: 'inte22042', code: 'INTE22042', name: 'Management Information System and Enterprise Resource Planning System', credits: 2 },
+              { id: 'inte22052', code: 'INTE22052', name: 'Advanced Software Engineering', credits: 2 },
+              { id: 'inte22062', code: 'INTE22062', name: 'IT Project', credits: 2 },
             ]
           },
           {
             semesterNumber: 5,
             subjects: [
-              { id: 'it3010', code: 'IT3010', name: 'Mobile Application Development', credits: 3 },
-              { id: 'it3020', code: 'IT3020', name: 'Information Security', credits: 3 },
-              { id: 'it3030', code: 'IT3030', name: 'Human Computer Interaction', credits: 2 },
-              { id: 'it3040', code: 'IT3040', name: 'Cloud Computing Technologies', credits: 3 },
-              { id: 'it3050', code: 'IT3050', name: 'Professional Practice & Ethics', credits: 2 },
+              { id: 'inte31013', code: 'INTE31013', name: 'Mobile Application Development', credits: 3 },
+              { id: 'inte31023', code: 'INTE31023', name: 'Internet Technologies and Social Media', credits: 3 },
+              { id: 'inte31034', code: 'INTE31034', name: 'IT Project Management', credits: 4 },
+              { id: 'inte31043', code: 'INTE31043', name: 'Data Management and Business Intelligence (Elective)', credits: 3 },
+              { id: 'inte31053', code: 'INTE31053', name: 'Software Engineering Tools and Metrics (Elective)', credits: 3 },
+              { id: 'inte31063', code: 'INTE31063', name: 'Artificial Intelligence (Elective)', credits: 3 },
             ]
           },
           {
             semesterNumber: 6,
             subjects: [
-              { id: 'it3060', code: 'IT3060', name: 'Data Science & Analytics', credits: 3 },
-              { id: 'it3070', code: 'IT3070', name: 'Agile Software Development', credits: 3 },
-              { id: 'it3080', code: 'IT3080', name: 'IT Project Management', credits: 3 },
-              { id: 'it3090', code: 'IT3090', name: 'Web Services & API Design', credits: 3 },
-              { id: 'it3100', code: 'IT3100', name: 'Collaborative Group Project', credits: 4 },
+              { id: 'inte32013', code: 'INTE32013', name: 'Software Quality Assurance', credits: 3 },
+              { id: 'inte32023', code: 'INTE32023', name: 'Cyber Security and IT Risk Management', credits: 3 },
+              { id: 'inte32032', code: 'INTE32032', name: 'Research Methodology', credits: 2 },
+              { id: 'inte32043', code: 'INTE32043', name: 'E-Business and Strategy (Elective)', credits: 3 },
+              { id: 'inte32053', code: 'INTE32053', name: 'Global Systems Outsourcing (Elective)', credits: 3 },
+              { id: 'inte32063', code: 'INTE32063', name: 'Innovation and Technology (Elective)', credits: 3 },
+              { id: 'inte32073', code: 'INTE32073', name: 'Robotics (Elective)', credits: 3 },
             ]
           },
           {
             semesterNumber: 7,
             subjects: [
-              { id: 'it4010', code: 'IT4010', name: 'Enterprise Application Architecture', credits: 3 },
-              { id: 'it4020', code: 'IT4020', name: 'Internet of Things (IoT)', credits: 3 },
-              { id: 'it4030', code: 'IT4030', name: 'AI & Machine Learning Foundations', credits: 3 },
-              { id: 'it4040', code: 'IT4040', name: 'Individual Research Project I', credits: 3 },
+              { id: 'inte43019', code: 'INTE43019', name: 'Research Project', credits: 9 },
+              { id: 'inte41023', code: 'INTE41023', name: 'IT Policy and E Governance', credits: 3 },
+              { id: 'inte41033', code: 'INTE41033', name: 'IT Strategic Planning and Management (Elective)', credits: 3 },
+              { id: 'inte41043', code: 'INTE41043', name: 'Advanced Artificial Intelligence (Elective)', credits: 3 },
             ]
           },
           {
             semesterNumber: 8,
             subjects: [
-              { id: 'it4050', code: 'IT4050', name: 'Industrial Internship', credits: 6 },
-              { id: 'it4060', code: 'IT4060', name: 'Individual Research Project II', credits: 3 },
-              { id: 'it4070', code: 'IT4070', name: 'User Experience Engineering', credits: 2 },
+              { id: 'inte42016', code: 'INTE42016', name: 'IT Industry Placement', credits: 6 },
+              { id: 'inte42022', code: 'INTE42022', name: 'Current trends in ICT', credits: 2 },
+              { id: 'inte42032', code: 'INTE42032', name: 'Managerial Leadership', credits: 2 },
+              { id: 'inte42042', code: 'INTE42042', name: 'International Communication', credits: 2 },
+              { id: 'inte42053', code: 'INTE42053', name: 'IT Start-ups and Entrepreneurship (Elective)', credits: 3 },
+              { id: 'inte42063', code: 'INTE42063', name: 'Business Analytics (Elective)', credits: 3 },
             ]
           }
         ]
       },
-      {
-        id: 'bsc-se',
-        name: 'BSc (Hons) in Software Engineering',
-        durationYears: 4,
-        semesters: [
-          {
-            semesterNumber: 1,
-            subjects: [
-              { id: 'se1010', code: 'SE1010', name: 'Introduction to Programming', credits: 3 },
-              { id: 'se1020', code: 'SE1020', name: 'Mathematics for Software Engineers', credits: 3 },
-              { id: 'se1030', code: 'SE1030', name: 'Computer Systems and Hardware', credits: 3 },
-              { id: 'se1040', code: 'SE1040', name: 'Essential English', credits: 2 },
-              { id: 'se1050', code: 'SE1050', name: 'Buddhist Philosophy and Culture', credits: 2 },
-            ]
-          },
-          {
-            semesterNumber: 2,
-            subjects: [
-              { id: 'se1060', code: 'SE1060', name: 'Object Oriented Design using Java', credits: 3 },
-              { id: 'se1070', code: 'SE1070', name: 'Introductory Relational Databases', credits: 3 },
-              { id: 'se1080', code: 'SE1080', name: 'Software Engineering Principles', credits: 3 },
-              { id: 'se1090', code: 'SE1090', name: 'Data Communication Fundamentals', credits: 3 },
-            ]
-          },
-          {
-            semesterNumber: 3,
-            subjects: [
-              { id: 'se2010', code: 'SE2010', name: 'Intermediate Data Structures & Algorithms', credits: 3 },
-              { id: 'se2020', code: 'SE2020', name: 'Advanced Web Engineering', credits: 3 },
-              { id: 'se2030', code: 'SE2030', name: 'Aesthetic User Interface Design', credits: 3 },
-              { id: 'se2040', code: 'SE2040', name: 'Probability and Graph Theory', credits: 3 },
-            ]
-          },
-          {
-            semesterNumber: 4,
-            subjects: [
-              { id: 'se2050', code: 'SE2050', name: 'Software Quality Assurance', credits: 3 },
-              { id: 'se2060', code: 'SE2060', name: 'Linux Administration & Scripting', credits: 3 },
-              { id: 'se2070', code: 'SE2070', name: 'Software Requirements Engineering', credits: 3 },
-              { id: 'se2080', code: 'SE2080', name: 'Database Architecture & Tuning', credits: 3 },
-            ]
-          },
-          {
-            semesterNumber: 5,
-            subjects: [
-              { id: 'se3010', code: 'SE3010', name: 'Design Patterns & Refactoring', credits: 3 },
-              { id: 'se3020', code: 'SE3020', name: 'Enterprise Systems Development', credits: 4 },
-              { id: 'se3030', code: 'SE3030', name: 'Securing Software Systems', credits: 3 },
-              { id: 'se3040', code: 'SE3040', name: 'Software Metrics & Economics', credits: 2 },
-            ]
-          },
-          {
-            semesterNumber: 6,
-            subjects: [
-              { id: 'se3050', code: 'SE3050', name: 'DevOps & Continuous Integration', credits: 3 },
-              { id: 'se3060', code: 'SE3060', name: 'Distributed Systems Architecture', credits: 3 },
-              { id: 'se3070', code: 'SE3070', name: 'Mobile Systems Engineering', credits: 3 },
-              { id: 'se3080', code: 'SE3080', name: 'Group Capstone Project I', credits: 4 },
-            ]
-          },
-          {
-            semesterNumber: 7,
-            subjects: [
-              { id: 'se4010', code: 'SE4010', name: 'Formal Methods in Software Engineering', credits: 3 },
-              { id: 'se4020', code: 'SE4020', name: 'Advanced Cloud Architecture', credits: 3 },
-              { id: 'se4030', code: 'SE4030', name: 'Thesis / Capstone Project II', credits: 4 },
-              { id: 'se4040', code: 'SE4040', name: 'Cognitive Computing & AI', credits: 3 },
-            ]
-          },
-          {
-            semesterNumber: 8,
-            subjects: [
-              { id: 'se4050', code: 'SE4050', name: 'Industry Practicum', credits: 6 },
-              { id: 'se4060', code: 'SE4060', name: 'Project Assessment & Viva Voce', credits: 3 },
-            ]
-          }
-        ]
-      },
-      {
-        id: 'bsc-ds',
-        name: 'BSc (Hons) in Data Science',
-        durationYears: 4,
-        semesters: [
-          {
-            semesterNumber: 1,
-            subjects: [
-              { id: 'ds1010', code: 'DS1010', name: 'Introduction to Python Programming', credits: 3 },
-              { id: 'ds1020', code: 'DS1020', name: 'Linear Algebra for Data Science', credits: 3 },
-              { id: 'ds1030', code: 'DS1030', name: 'Statistical Thinking I', credits: 3 },
-              { id: 'ds1040', code: 'DS1040', name: 'Introduction to Computer Systems', credits: 3 },
-            ]
-          },
-          {
-            semesterNumber: 2,
-            subjects: [
-              { id: 'ds1050', code: 'DS1050', name: 'Data Visualization & Analysis', credits: 3 },
-              { id: 'ds1060', code: 'DS1060', name: 'Relational & NoSQL Databases', credits: 3 },
-              { id: 'ds1070', code: 'DS1070', name: 'Statistical Thinking II', credits: 3 },
-              { id: 'ds1080', code: 'DS1080', name: 'Ethical Al & Society', credits: 2 },
-            ]
-          },
-          {
-            semesterNumber: 3,
-            subjects: [
-              { id: 'ds2010', code: 'DS2010', name: 'Data Mining and Warehousing', credits: 3 },
-              { id: 'ds2020', code: 'DS2020', name: 'Exploratory Data Analysis', credits: 3 },
-              { id: 'ds2030', code: 'DS2030', name: 'Programming with R', credits: 3 },
-              { id: 'ds2040', code: 'DS2040', name: 'Calculus and Optimization', credits: 3 },
-            ]
-          },
-          {
-            semesterNumber: 4,
-            subjects: [
-              { id: 'ds2050', code: 'DS2050', name: 'Machine Learning Algorithms I', credits: 3 },
-              { id: 'ds2060', code: 'DS2060', name: 'Big Data Infrastructures', credits: 3 },
-              { id: 'ds2070', code: 'DS2070', name: 'Regression Analysis Techniques', credits: 3 },
-              { id: 'ds2080', code: 'DS2080', name: 'Business Intelligence Systems', credits: 3 },
-            ]
-          },
-          {
-            semesterNumber: 5,
-            subjects: [
-              { id: 'ds3010', code: 'DS3010', name: 'Machine Learning Algorithms II', credits: 3 },
-              { id: 'ds3020', code: 'DS3020', name: 'Natural Language Processing (NLP)', credits: 3 },
-              { id: 'ds3030', code: 'DS3030', name: 'Information Retrieval systems', credits: 3 },
-              { id: 'ds3040', code: 'DS3040', name: 'Data Ingestion Architectures', credits: 3 },
-            ]
-          },
-          {
-            semesterNumber: 6,
-            subjects: [
-              { id: 'ds3050', code: 'DS3050', name: 'Deep Learning & Neural Networks', credits: 3 },
-              { id: 'ds3060', code: 'DS3060', name: 'Time Series Forecasting', credits: 3 },
-              { id: 'ds3070', code: 'DS3070', name: 'Data Science Mini Project', credits: 3 },
-              { id: 'ds3080', code: 'DS3080', name: 'Cloud-Based AI deployment', credits: 3 },
-            ]
-          },
-          {
-            semesterNumber: 7,
-            subjects: [
-              { id: 'ds4010', code: 'DS4010', name: 'Reinforcement Learning', credits: 3 },
-              { id: 'ds4020', code: 'DS4020', name: 'Computer Vision & Core Concepts', credits: 3 },
-              { id: 'ds4030', code: 'DS4030', name: 'Individual Thesis Semester I', credits: 4 },
-            ]
-          },
-          {
-            semesterNumber: 8,
-            subjects: [
-              { id: 'ds4040', code: 'DS4040', name: 'Industrial Internship of DS', credits: 6 },
-              { id: 'ds4050', code: 'DS4050', name: 'Individual Thesis Semester II', credits: 4 },
-            ]
-          }
-        ]
-      },
-      {
-        id: 'bsc-cs',
-        name: 'BSc (Hons) in Cyber Security',
-        durationYears: 4,
-        semesters: [
-          {
-            semesterNumber: 1,
-            subjects: [
-              { id: 'cs1010', code: 'CS1010', name: 'Fundamentals of Cyber Security', credits: 3 },
-              { id: 'cs1020', code: 'CS1020', name: 'Introduction to Networking', credits: 3 },
-              { id: 'cs1030', code: 'CS1030', name: 'Basics of Programming', credits: 3 },
-              { id: 'cs1040', code: 'CS1040', name: 'System Protection Practices', credits: 2 },
-            ]
-          },
-          {
-            semesterNumber: 2,
-            subjects: [
-              { id: 'cs1050', code: 'CS1050', name: 'Applied Cryptography', credits: 3 },
-              { id: 'cs1060', code: 'CS1060', name: 'Database & System Security', credits: 3 },
-              { id: 'cs1070', code: 'CS1070', name: 'Advanced Unix Systems', credits: 3 },
-              { id: 'cs1080', code: 'CS1080', name: 'Socio-Ethics of Hacking', credits: 2 },
-            ]
-          },
-          {
-            semesterNumber: 3,
-            subjects: [
-              { id: 'cs2010', code: 'CS2010', name: 'Defensive Architecture Design', credits: 3 },
-              { id: 'cs2020', code: 'CS2020', name: 'Penetration Testing Principles', credits: 3 },
-              { id: 'cs2030', code: 'CS2030', name: 'Wired & Wireless Net Security', credits: 3 },
-              { id: 'cs2040', code: 'CS2040', name: 'Malware Forensics', credits: 3 },
-            ]
-          },
-          {
-            semesterNumber: 4,
-            subjects: [
-              { id: 'cs2050', code: 'CS2050', name: 'Ethical Hacking Methodologies', credits: 3 },
-              { id: 'cs2060', code: 'CS2060', name: 'Security Incident Handling', credits: 3 },
-              { id: 'cs2070', code: 'CS2070', name: 'Operating System Audits', credits: 3 },
-              { id: 'cs2080', code: 'CS2080', name: 'Intrusion Detection Mechanics', credits: 3 },
-            ]
-          },
-          {
-            semesterNumber: 5,
-            subjects: [
-              { id: 'cs3010', code: 'CS3010', name: 'Smart Device Security (Mobile/IoT)', credits: 3 },
-              { id: 'cs3020', code: 'CS3020', name: 'Cyber Laws & Threat Regulations', credits: 3 },
-              { id: 'cs3030', code: 'CS3030', name: 'Security Operations Center (SOC)', credits: 3 },
-              { id: 'cs3040', code: 'CS3040', name: 'Risk Management Frameworks', credits: 3 },
-            ]
-          },
-          {
-            semesterNumber: 6,
-            subjects: [
-              { id: 'cs3050', code: 'CS3050', name: 'Reverse Engineering Labs', credits: 3 },
-              { id: 'cs3060', code: 'CS3060', name: 'Industrial Network Protection', credits: 3 },
-              { id: 'cs3070', code: 'CS3070', name: 'Active Cyber Defense Mini Project', credits: 3 },
-              { id: 'cs3080', code: 'CS3080', name: 'E-commerce Security Architectures', credits: 3 },
-            ]
-          },
-          {
-            semesterNumber: 7,
-            subjects: [
-              { id: 'cs4010', code: 'CS4010', name: 'Digital Forensic Investigations', credits: 4 },
-              { id: 'cs4020', code: 'CS4020', name: 'Enterprise Security Architecture', credits: 3 },
-              { id: 'cs4030', code: 'CS4030', name: 'Research Project Phase I', credits: 4 },
-            ]
-          },
-          {
-            semesterNumber: 8,
-            subjects: [
-              { id: 'cs4040', code: 'CS4040', name: 'Industrial Internship of CS', credits: 6 },
-              { id: 'cs4050', code: 'CS4050', name: 'Research Project Phase II', credits: 4 },
-            ]
-          }
-        ]
-      }
     ]
   },
   {
@@ -909,8 +692,8 @@ Key ordinances guidelines:
       a: 'An initial "E" grade registers 0.0 grade points, which heavily drags down your GPA. However, NIIBS allows course repeat exams. In most programs, passing the retake will replace the 0.0 value or average with your pass grade (typically capped at a C (2.0) grade point, depending on the Faculty’s Board of Study guidelines).',
     },
     {
-      q: 'What is the minimum GPA needed for the Dean’s List?',
-      a: 'To qualify for the prestigious Dean’s List, students must achieve a semester GPA of 3.70 or higher, with no pending "Incomplete" (I) grades, no failed subjects (E), and a minimum active registration load of 15 credits in that semester.',
+      q: 'What are the Dean’s List and Vice-Chancellor’s List awards?',
+      a: 'These prestigious awards are exclusive to the Faculty of Computing and Information Technology (FCIT). They are calculated annually (over a full academic year of two semesters). To qualify for the Dean’s List, students must achieve a GPA of 3.70 or higher in both semesters. The Vice-Chancellor’s List requires a GPA above 3.80 in both semesters. Additional conditions such as no failed subjects may apply.',
     },
     {
       q: 'What is the difference between GPA and CGPA?',

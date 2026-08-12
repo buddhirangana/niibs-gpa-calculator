@@ -83,8 +83,7 @@ export default function PwaInstallPrompt() {
           <motion.div
             initial={{ opacity: 0, y: 50, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 30, scale: 0.95 }}
-            className="fixed bottom-6 left-6 z-50 max-w-sm w-[calc(100%-3rem)] glass-card p-4 rounded-3xl border border-niibs-yellow/40 dark:border-niibs-yellow/30 bg-slate-900/90 dark:bg-slate-950/90 text-white shadow-2xl backdrop-blur-xl space-y-3"
+            className="fixed bottom-6 left-6 z-50 max-w-sm w-[calc(100%-3rem)] glass-card p-4 rounded-3xl border border-niibs-yellow/40 dark:border-niibs-yellow/30 shadow-2xl backdrop-blur-xl space-y-3"
           >
             <div className="flex items-start justify-between">
               <div className="flex items-center space-x-3">
@@ -92,10 +91,10 @@ export default function PwaInstallPrompt() {
                   <img src="/favicon.png" alt="NIIBS GPA Logo" className="w-full h-full object-contain" />
                 </div>
                 <div>
-                  <h4 className="font-display font-bold text-sm text-white leading-tight">
+                  <h4 className="font-display font-bold text-sm text-slate-900 dark:text-white leading-tight">
                     Install NIIBS GPA App
                   </h4>
-                  <p className="text-[11px] text-slate-400 leading-tight mt-0.5">
+                  <p className="text-[11px] text-slate-500 dark:text-slate-400 leading-tight mt-0.5">
                     Fast offline access & home screen shortcut.
                   </p>
                 </div>
@@ -103,7 +102,7 @@ export default function PwaInstallPrompt() {
 
               <button
                 onClick={() => setIsDismissed(true)}
-                className="p-1 text-slate-400 hover:text-white rounded-lg transition-colors cursor-pointer"
+                className="p-1 text-slate-400 hover:text-slate-600 dark:hover:text-white rounded-lg transition-colors cursor-pointer"
                 title="Dismiss"
               >
                 <X className="w-4 h-4" />
@@ -121,7 +120,7 @@ export default function PwaInstallPrompt() {
 
               <button
                 onClick={() => setIsDismissed(true)}
-                className="py-2 px-3 bg-white/10 hover:bg-white/20 text-slate-300 rounded-xl text-xs font-semibold transition-all cursor-pointer font-display"
+                className="py-2 px-3 bg-slate-200 hover:bg-slate-300 text-slate-700 dark:bg-white/10 dark:hover:bg-white/20 dark:text-slate-300 rounded-xl text-xs font-semibold transition-all cursor-pointer font-display"
               >
                 Later
               </button>

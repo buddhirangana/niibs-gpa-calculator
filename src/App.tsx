@@ -578,7 +578,7 @@ export default function App() {
               <div className="inline-flex p-1.5 rounded-2xl bg-slate-200/70 dark:bg-slate-900/70 border border-slate-300/50 dark:border-slate-800/80 backdrop-blur-md self-start sm:self-center">
                 <button
                   onClick={() => setActiveCalcTab("faculty")}
-                  className={`flex items-center space-x-2 px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all font-display cursor-pointer ${
+                  className={`flex items-center space-x-2 px-5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all font-display cursor-pointer ${
                     activeCalcTab === "faculty"
                       ? "bg-white dark:bg-slate-800 text-niibs-blue dark:text-niibs-yellow shadow-md shadow-slate-900/5"
                       : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
@@ -589,7 +589,7 @@ export default function App() {
                 </button>
                 <button
                   onClick={() => setActiveCalcTab("manual")}
-                  className={`flex items-center space-x-2 px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all font-display cursor-pointer ${
+                  className={`flex items-center space-x-2 px-5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all font-display cursor-pointer ${
                     activeCalcTab === "manual"
                       ? "bg-white dark:bg-slate-800 text-niibs-blue dark:text-niibs-yellow shadow-md shadow-slate-900/5"
                       : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"

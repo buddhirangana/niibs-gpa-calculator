@@ -32,11 +32,11 @@ export default function NotFoundView({ onNavigate }: NotFoundViewProps) {
 
         {/* 404 Large Monospace Code */}
         <div className="space-y-2">
-          <span className="font-mono text-6xl sm:text-8xl font-black block tracking-tighter text-niibs-blue dark:text-niibs-yellow drop-shadow-sm">
+          <span className="font-mono text-6xl sm:text-8xl font-bold block tracking-tighter text-niibs-blue dark:text-niibs-yellow drop-shadow-sm">
             404
           </span>
-          <h1 className="font-display font-black text-2xl sm:text-4xl text-slate-950 dark:text-white">
-            Page Not Found • Lost in the Curriculum?
+          <h1 className="font-display font-bold text-2xl sm:text-4xl text-slate-950 dark:text-white">
+            Page Not Found
           </h1>
           <p className="text-xs sm:text-base text-slate-500 dark:text-slate-400 max-w-lg mx-auto leading-relaxed pt-1">
             The resource or view descriptor you are searching for does not exist, has been moved, or is currently unavailable in the NIIBS GPA Calculator suite.
@@ -47,7 +47,7 @@ export default function NotFoundView({ onNavigate }: NotFoundViewProps) {
         <div className="pt-4 flex flex-wrap items-center justify-center gap-3.5 sm:gap-4">
           <button
             onClick={() => onNavigate("home")}
-            className="px-6 py-3.5 bg-gradient-to-r from-niibs-blue to-indigo-700 hover:from-indigo-700 hover:to-niibs-blue dark:from-niibs-yellow dark:to-amber-400 dark:hover:from-amber-400 dark:hover:to-niibs-yellow text-white dark:text-slate-950 font-bold rounded-2xl shadow-lg hover:scale-[1.02] active:scale-[0.98] transition-all text-xs sm:text-sm font-display cursor-pointer flex items-center space-x-2"
+            className="px-6 py-3.5 bg-gradient-to-r from-niibs-blue to-indigo-700 hover:from-indigo-700 hover:to-niibs-blue dark:from-niibs-yellow dark:to-amber-400 dark:hover:from-amber-400 dark:hover:to-niibs-yellow text-white dark:text-slate-950 font-semibold rounded-2xl shadow-lg hover:scale-[1.02] active:scale-[0.98] transition-all text-xs sm:text-sm font-display cursor-pointer flex items-center space-x-2"
           >
             <Home className="w-4 h-4" />
             <span>Return to Home</span>
@@ -55,7 +55,7 @@ export default function NotFoundView({ onNavigate }: NotFoundViewProps) {
 
           <button
             onClick={() => onNavigate("calculator")}
-            className="px-6 py-3.5 border border-slate-200 dark:border-slate-800 bg-white/60 dark:bg-slate-900/60 hover:bg-white dark:hover:bg-slate-900 text-slate-800 dark:text-slate-200 font-bold rounded-2xl shadow-sm hover:scale-[1.02] active:scale-[0.98] transition-all text-xs sm:text-sm font-display cursor-pointer flex items-center space-x-2 backdrop-blur-md"
+            className="px-6 py-3.5 border border-slate-200 dark:border-slate-800 bg-white/60 dark:bg-slate-900/60 hover:bg-white dark:hover:bg-slate-900 text-slate-800 dark:text-slate-200 font-semibold rounded-2xl shadow-sm hover:scale-[1.02] active:scale-[0.98] transition-all text-xs sm:text-sm font-display cursor-pointer flex items-center space-x-2 backdrop-blur-md"
           >
             <Calculator className="w-4 h-4" />
             <span>Open GPA Calculator</span>
@@ -63,7 +63,7 @@ export default function NotFoundView({ onNavigate }: NotFoundViewProps) {
 
           <button
             onClick={() => onNavigate("resources")}
-            className="px-6 py-3.5 border border-slate-200 dark:border-slate-800 bg-white/60 dark:bg-slate-900/60 hover:bg-white dark:hover:bg-slate-900 text-slate-800 dark:text-slate-200 font-bold rounded-2xl shadow-sm hover:scale-[1.02] active:scale-[0.98] transition-all text-xs sm:text-sm font-display cursor-pointer flex items-center space-x-2 backdrop-blur-md"
+            className="px-6 py-3.5 border border-slate-200 dark:border-slate-800 bg-white/60 dark:bg-slate-900/60 hover:bg-white dark:hover:bg-slate-900 text-slate-800 dark:text-slate-200 font-semibold rounded-2xl shadow-sm hover:scale-[1.02] active:scale-[0.98] transition-all text-xs sm:text-sm font-display cursor-pointer flex items-center space-x-2 backdrop-blur-md"
           >
             <BookOpen className="w-4 h-4" />
             <span>Reference Guides</span>

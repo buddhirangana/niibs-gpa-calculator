@@ -715,8 +715,9 @@ export const academicGuides = {
 A high Grade Point Average demonstrates academic excellence, personal discipline, and specialized subject comprehension. Your GPA is calculation-bound after every single semesterly assessment, reflecting progress, strengths, and target milestones.
 
 At NIIBS, Grade Point Average serves numerous academic thresholds:
+
 1. It is the primary credential utilized for predicting degrees and final Class Honors.
-2. It dictates standing criteria such as "President's List" and "Dean's List" eligibility.
+2. It dictates standing criteria such as "Vice-Chancellor's List" and "Dean's List" eligibility.
 3. It regulates academic standing notices, determining if a student requires specific counselling support (e.g. Probation status when GPA drops below 2.0).
 4. It provides vital evidence during postgraduate admissions (MA, MPhil, PhD) and professional recruitments.`,
   },
@@ -753,9 +754,9 @@ Key ordinances guidelines:
     content: `Your final cumulative score directly predicts your degree standing. NIIBS follows the Sri Lankan University Grants Commission (UGC) standards for final degree classifications:
 
 - **First Class (Honours)**: Earned when your final CGPA is **3.70** or above. This represents exceptional academic performance, putting you in the top tier of students nationally. Outstanding prospects for immediate postgrad research fellowships.
-- **Second Class Upper Division (Honours)**: Earned when your final CGPA falls between **3.30 and 3.69**. This indicates a very high caliber of scholarship, highly desirable to top global technology employers and elite global universities.
-- **Second Class Lower Division (Honours)**: Earned when your final CGPA falls between **3.00 and 3.29**. A solid, respectable academic standing reflecting solid professional capabilities and systematic core comprehension.
-- **General Pass / Pass**: Earned when your final CGPA is between **2.00 and 2.99**. This demonstrates successful, satisfactory fulfillment of all prescribed graduation criteria.`,
+- **Second Class Upper Division (Honours)**: Earned when your final CGPA falls between **3.30 and 3.70**. This indicates a very high caliber of scholarship, highly desirable to top global technology employers and elite global universities.
+- **Second Class Lower Division (Honours)**: Earned when your final CGPA falls between **3.00 and 3.30**. A solid, respectable academic standing reflecting solid professional capabilities and systematic core comprehension.
+- **General Pass / Pass**: Earned when your final CGPA is between **2.00 and 3.00**. This demonstrates successful, satisfactory fulfillment of all prescribed graduation criteria.`,
   },
   faqs: [
     {

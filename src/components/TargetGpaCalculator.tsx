@@ -78,7 +78,7 @@ export default function TargetGpaCalculator() {
         >
           <div className="pb-3 border-b border-slate-200/80 dark:border-slate-800/80 flex items-center justify-between">
             <div>
-              <h3 className="font-display font-bold text-slate-950 dark:text-white text-base">
+              <h3 className="font-display font-semibold text-slate-950 dark:text-white text-base">
                 Target Calibration
               </h3>
               <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
@@ -93,7 +93,7 @@ export default function TargetGpaCalculator() {
           <div className="space-y-4">
             {/* Current CGPA indicator input */}
             <div className="space-y-1.5">
-              <label className="text-[10px] uppercase font-bold tracking-wider text-slate-500 dark:text-slate-400 font-mono block">
+              <label className="text-[10px] uppercase font-medium tracking-wider text-slate-500 dark:text-slate-400 font-mono block">
                 Current Cumulative CGPA
               </label>
               <input
@@ -109,7 +109,7 @@ export default function TargetGpaCalculator() {
 
             {/* Total credits earned input */}
             <div className="space-y-1.5">
-              <label className="text-[10px] uppercase font-bold tracking-wider text-slate-500 dark:text-slate-400 font-mono block">
+              <label className="text-[10px] uppercase font-medium tracking-wider text-slate-500 dark:text-slate-400 font-mono block">
                 Completed Credits (Units)
               </label>
               <input
@@ -124,7 +124,7 @@ export default function TargetGpaCalculator() {
 
             {/* Target CGPA desired */}
             <div className="space-y-1.5">
-              <label className="text-[10px] uppercase font-bold tracking-wider text-slate-500 dark:text-slate-400 font-mono block">
+              <label className="text-[10px] uppercase font-medium tracking-wider text-slate-500 dark:text-slate-400 font-mono block">
                 Target CGPA Goal
               </label>
               <input
@@ -140,7 +140,7 @@ export default function TargetGpaCalculator() {
 
             {/* Remaining credits upcoming */}
             <div className="space-y-1.5">
-              <label className="text-[10px] uppercase font-bold tracking-wider text-slate-500 dark:text-slate-400 font-mono block">
+              <label className="text-[10px] uppercase font-medium tracking-wider text-slate-500 dark:text-slate-400 font-mono block">
                 Remaining Credits (Upcoming)
               </label>
               <input
@@ -172,20 +172,20 @@ export default function TargetGpaCalculator() {
               transition={{ duration: 0.2 }}
             >
               <div className="space-y-2 relative z-10">
-                <span className="text-[10px] uppercase font-bold tracking-wider text-niibs-blue dark:text-niibs-yellow font-mono block">
+                <span className="text-[10px] uppercase font-smedium tracking-wider text-niibs-blue dark:text-niibs-yellow font-mono block">
                   Calculated Target Path
                 </span>
-                <h3 className="font-display font-black text-2xl text-slate-950 dark:text-white">
+                <h3 className="font-display font-bold text-2xl text-slate-950 dark:text-white">
                   Incoming Semester Target
                 </h3>
                 <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 leading-relaxed max-w-sm">
-                  Required average points across the remaining <b className="font-mono text-slate-800 dark:text-white font-bold">{plan.remainingCredits}</b> upcoming course credits.
+                  Required average points across the remaining <b className="font-mono text-slate-800 dark:text-white font-semibold">{plan.remainingCredits}</b> upcoming course credits.
                 </p>
               </div>
 
               {/* Necessary GPA visual */}
               <div className="text-center md:text-right shrink-0 p-6 bg-white/40 dark:bg-slate-900/40 rounded-2xl border border-slate-200/80 dark:border-slate-800/80 backdrop-blur-md min-w-[200px] shadow-sm">
-                <span className="text-[10px] text-slate-400 font-mono block uppercase tracking-wider font-bold">
+                <span className="text-[10px] text-slate-400 font-mono block uppercase tracking-wider font-medium">
                   Required GPA
                 </span>
                 <span className={`font-mono text-4xl sm:text-5xl font-black block mt-2 tracking-tight ${
@@ -197,7 +197,7 @@ export default function TargetGpaCalculator() {
                 }`}>
                   {plan.requiredGpa !== null ? Math.max(0, plan.requiredGpa).toFixed(3) : 'N/A'}
                 </span>
-                <span className="text-[10px] text-slate-400 font-mono block uppercase mt-2 font-bold">
+                <span className="text-[10px] text-slate-400 font-mono block uppercase mt-2 font-medium">
                   Scale Limit: 4.000
                 </span>
               </div>
@@ -217,7 +217,7 @@ export default function TargetGpaCalculator() {
                 <CheckCircle2 className={`w-5 h-5 shrink-0 mt-0.5 ${(plan.requiredGpa || 0) > 3.5 ? 'text-amber-500 dark:text-niibs-yellow' : 'text-emerald-600 dark:text-emerald-400'}`} />
               )}
               <div className="space-y-1">
-                <h4 className="font-display font-bold text-base">
+                <h4 className="font-display font-semibold text-base">
                   {!plan.isPossible 
                     ? 'Target Mathematically Impossible' 
                     : (plan.requiredGpa || 0) > 3.5 
@@ -240,14 +240,14 @@ export default function TargetGpaCalculator() {
                 }}
                 transition={{ duration: 0.2 }}
               >
-                <h4 className="font-display font-bold text-slate-950 dark:text-white text-lg flex items-center space-x-2">
+                <h4 className="font-display font-semibold text-slate-950 dark:text-white text-lg flex items-center space-x-2">
                   <Sparkles className="w-5 h-5 text-niibs-yellow" />
                   <span>Strategy Guide for this Goal</span>
                 </h4>
                 
                 <div className="space-y-4 text-xs sm:text-sm font-sans">
                   <div className="p-5 rounded-2xl bg-white/40 dark:bg-slate-900/40 border border-slate-200/60 dark:border-slate-800/60 space-y-1.5 backdrop-blur-md">
-                    <span className="font-display font-bold text-slate-950 dark:text-slate-100 text-sm block">
+                    <span className="font-display font-semibold text-slate-950 dark:text-slate-100 text-sm block">
                       1. Core Weight Prioritization
                     </span>
                     <p className="text-slate-600 dark:text-slate-400 leading-relaxed text-xs sm:text-sm">
@@ -256,7 +256,7 @@ export default function TargetGpaCalculator() {
                   </div>
 
                   <div className="p-5 rounded-2xl bg-white/40 dark:bg-slate-900/40 border border-slate-200/60 dark:border-slate-800/60 space-y-1.5 backdrop-blur-md">
-                    <span className="font-display font-bold text-slate-950 dark:text-slate-100 text-sm block">
+                    <span className="font-display font-semibold text-slate-950 dark:text-slate-100 text-sm block">
                       2. Repeating Failed/Weak Subjects
                     </span>
                     <p className="text-slate-600 dark:text-slate-400 leading-relaxed text-xs sm:text-sm">
@@ -278,7 +278,7 @@ export default function TargetGpaCalculator() {
           >
             <Target className="w-12 h-12 text-slate-300 dark:text-slate-600" />
             <div className="space-y-1 text-center">
-              <h4 className="font-display font-bold text-base text-slate-800 dark:text-white">Enter Target Parameters</h4>
+              <h4 className="font-display font-semibold text-base text-slate-800 dark:text-white">Enter Target Parameters</h4>
               <p className="text-xs text-slate-500 dark:text-slate-400 max-w-sm mx-auto p-1 leading-relaxed">
                 Type completed points details to generate custom goal targets and mathematical strategies.
               </p>

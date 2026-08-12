@@ -69,17 +69,17 @@ function SemesterRow({
     >
       <div className="flex items-center justify-between">
         <div className="space-y-1">
-          <h4 className="font-display font-bold text-slate-900 dark:text-slate-100 text-sm sm:text-base">
+          <h4 className="font-display font-semibold text-slate-900 dark:text-slate-100 text-sm sm:text-base">
             {sem.name}
           </h4>
           <span className="text-xs text-slate-500 dark:text-slate-400 font-mono">
-            Earned Units: <b className="text-slate-800 dark:text-slate-200 font-bold">{sem.credits} Credits</b>
+            Earned Units: <b className="text-slate-800 dark:text-slate-200 font-medium">{sem.credits} Credits</b>
           </span>
         </div>
 
         <div className="flex items-center space-x-4 shrink-0">
           <div className="text-right">
-            <span className="font-mono text-xl sm:text-2xl font-black text-niibs-blue dark:text-niibs-yellow leading-none block">
+            <span className="font-mono text-xl sm:text-2xl font-bold text-niibs-blue dark:text-niibs-yellow leading-none block">
               {sem.gpa.toFixed(2)}
             </span>
             <span className="text-[10px] text-slate-400 font-mono uppercase tracking-wide">Term GPA</span>
@@ -351,25 +351,25 @@ export default function CgpaCalculator({ semesters, onAddSemester, onUpdateSemes
         <div className={`rounded-3xl p-6 sm:p-8 shadow-xl backdrop-blur-md flex flex-col justify-between overflow-hidden relative ${bannerStyle}`}>
           <div className="relative z-10 space-y-3">
             <div className="flex items-center space-x-2">
-              <span className="text-[11px] sm:text-xs font-mono font-bold uppercase tracking-wider text-niibs-blue dark:text-niibs-yellow">
+              <span className="text-[11px] sm:text-xs font-mono font-medium uppercase tracking-wider text-niibs-blue dark:text-niibs-yellow">
                 Aggregated Graduation Prediction
               </span>
             </div>
             
             <div className="flex items-baseline space-x-3">
-              <span className="font-mono text-5xl sm:text-6xl font-black text-slate-950 dark:text-white tracking-tight">
+              <span className="font-mono text-5xl sm:text-6xl font-bold text-slate-950 dark:text-white tracking-tight">
                 {calculatedCgpa.toFixed(3)}
               </span>
               <span className="text-xs sm:text-sm font-mono text-slate-500 dark:text-slate-400">Overall CGPA</span>
             </div>
             
             <div className="pt-4 border-t border-slate-200/60 dark:border-slate-800/60">
-              <p className="text-sm sm:text-base font-display font-extrabold tracking-wide text-niibs-blue dark:text-slate-100 flex items-center space-x-2">
+              <p className="text-sm sm:text-base font-display font-medium tracking-wide text-niibs-blue dark:text-slate-100 flex items-center space-x-2">
                 <Sparkles className="w-4 h-4 text-niibs-yellow" />
                 <span>Predicted Status: {honorsClassification}</span>
               </p>
               <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
-                Calculated over a database of <b className="font-mono text-slate-900 dark:text-white font-bold">{totalCredits}</b> completed units.
+                Calculated over a database of <b className="font-mono text-slate-900 dark:text-white font-medium">{totalCredits}</b> completed units.
               </p>
             </div>
           </div>
@@ -387,7 +387,7 @@ export default function CgpaCalculator({ semesters, onAddSemester, onUpdateSemes
         >
           <div className="flex items-center justify-between flex-wrap gap-3">
             <div>
-              <h3 className="font-display font-bold text-slate-900 dark:text-white text-lg">
+              <h3 className="font-display font-semibold text-slate-900 dark:text-white text-lg">
                 Multi-Semester Cumulative Log
               </h3>
               <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
@@ -438,7 +438,7 @@ export default function CgpaCalculator({ semesters, onAddSemester, onUpdateSemes
                 <div className="bg-rose-500/10 border border-rose-500/30 text-rose-950 dark:text-rose-200 p-4.5 rounded-2xl flex items-start space-x-3 animate-in fade-in zoom-in-95 duration-200">
                   <AlertCircle className="w-5 h-5 text-rose-500 shrink-0 mt-0.5" />
                   <div className="space-y-1">
-                    <h4 className="font-display font-bold text-sm">Honors Threshold Warning</h4>
+                    <h4 className="font-display font-semibold text-sm">Honors Threshold Warning</h4>
                     <p className="text-xs leading-relaxed opacity-90">
                       Your current CGPA ({calculatedCgpa.toFixed(2)}) is below the {thresholds.secondLower.toFixed(2)} threshold required for an honors degree bracket. You will need to achieve higher term averages in upcoming semesters to elevate your cumulative standing.
                     </p>
@@ -511,7 +511,7 @@ export default function CgpaCalculator({ semesters, onAddSemester, onUpdateSemes
 
               {gradeChartData.length > 0 && (
                 <div className="pt-6 pb-2 h-56 sm:h-64 w-full border-t border-slate-200/80 dark:border-slate-800/80 mt-6">
-                  <h4 className="font-display font-bold text-sm text-slate-800 dark:text-slate-200 mb-4 text-center">
+                  <h4 className="font-display font-semibold text-sm text-slate-800 dark:text-slate-200 mb-4 text-center">
                     Grade Frequency Distribution
                   </h4>
                   <ResponsiveContainer width="100%" height="80%">
@@ -568,7 +568,7 @@ export default function CgpaCalculator({ semesters, onAddSemester, onUpdateSemes
             <div className="py-16 text-center border-2 border-dashed border-slate-200 dark:border-slate-800 rounded-3xl flex flex-col items-center space-y-3">
               <BookOpen className="w-12 h-12 text-slate-300 dark:text-slate-600" strokeWidth={1.5} />
               <div className="space-y-1 text-center">
-                <h4 className="font-display font-bold text-base text-slate-800 dark:text-white">Cumulative Slate is Clean</h4>
+                <h4 className="font-display font-semibold text-base text-slate-800 dark:text-white">Cumulative Slate is Clean</h4>
                 <p className="text-xs text-slate-500 dark:text-slate-400 max-w-sm mx-auto p-1 leading-relaxed">
                   Use the quick form on the right or any of the GPA calculators to save core semester benchmarks here.
                 </p>
@@ -590,7 +590,7 @@ export default function CgpaCalculator({ semesters, onAddSemester, onUpdateSemes
         >
           <div className="pb-3.5 border-b border-slate-200/80 dark:border-slate-800/80 flex items-center justify-between">
             <div>
-              <h3 className="font-display font-bold text-slate-950 dark:text-white text-base">
+              <h3 className="font-display font-semibold text-slate-950 dark:text-white text-base">
                 Add Term Record
               </h3>
               <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
@@ -605,7 +605,7 @@ export default function CgpaCalculator({ semesters, onAddSemester, onUpdateSemes
           <form onSubmit={handleSubmit} className="space-y-4">
             {/* Term Name Descriptor */}
             <div className="space-y-1.5">
-              <label className="text-[10px] uppercase font-bold tracking-wider text-slate-500 dark:text-slate-400 font-mono block">
+              <label className="text-[10px] uppercase font-medium tracking-wider text-slate-500 dark:text-slate-400 font-mono block">
                 Semester Descriptor
               </label>
               <input
@@ -620,7 +620,7 @@ export default function CgpaCalculator({ semesters, onAddSemester, onUpdateSemes
             <div className="grid grid-cols-2 gap-3.5">
               {/* GPA score */}
               <div className="space-y-1.5">
-                <label className="text-[10px] uppercase font-bold tracking-wider text-slate-500 dark:text-slate-400 font-mono block">
+                <label className="text-[10px] uppercase font-medium tracking-wider text-slate-500 dark:text-slate-400 font-mono block">
                   Term GPA Index
                 </label>
                 <input
@@ -637,7 +637,7 @@ export default function CgpaCalculator({ semesters, onAddSemester, onUpdateSemes
 
               {/* Completed Credits load */}
               <div className="space-y-1.5">
-                <label className="text-[10px] uppercase font-bold tracking-wider text-slate-500 dark:text-slate-400 font-mono block">
+                <label className="text-[10px] uppercase font-medium tracking-wider text-slate-500 dark:text-slate-400 font-mono block">
                   Semester Credits
                 </label>
                 <input
@@ -661,7 +661,7 @@ export default function CgpaCalculator({ semesters, onAddSemester, onUpdateSemes
 
             <button
               type="submit"
-              className="w-full inline-flex items-center justify-center space-x-2 px-5 py-3 rounded-xl text-xs font-bold text-white bg-gradient-to-r from-niibs-blue to-indigo-700 dark:from-niibs-yellow dark:to-amber-400 dark:text-slate-950 hover:shadow-lg transition-all cursor-pointer font-display"
+              className="w-full inline-flex items-center justify-center space-x-2 px-5 py-3 rounded-xl text-xs font-semibold text-white bg-gradient-to-r from-niibs-blue to-indigo-700 dark:from-niibs-yellow dark:to-amber-400 dark:text-slate-950 hover:shadow-lg transition-all cursor-pointer font-display"
             >
               <Plus className="w-4 h-4" />
               <span>Log Semester Term</span>
@@ -680,7 +680,7 @@ export default function CgpaCalculator({ semesters, onAddSemester, onUpdateSemes
         >
           <div className="pb-3.5 border-b border-slate-200/80 dark:border-slate-800/80 flex items-center justify-between">
             <div>
-              <h3 className="font-display font-bold text-slate-950 dark:text-white text-base">
+              <h3 className="font-display font-semibold text-slate-950 dark:text-white text-base">
                 Target CGPA Planner
               </h3>
               <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
@@ -695,7 +695,7 @@ export default function CgpaCalculator({ semesters, onAddSemester, onUpdateSemes
           <div className="space-y-4">
             <div className="grid grid-cols-2 gap-3.5">
               <div className="space-y-1.5">
-                <label className="text-[10px] uppercase font-bold tracking-wider text-slate-500 dark:text-slate-400 font-mono block">
+                <label className="text-[10px] uppercase font-medium tracking-wider text-slate-500 dark:text-slate-400 font-mono block">
                   Target CGPA
                 </label>
                 <input
@@ -711,7 +711,7 @@ export default function CgpaCalculator({ semesters, onAddSemester, onUpdateSemes
               </div>
 
               <div className="space-y-1.5">
-                <label className="text-[10px] uppercase font-bold tracking-wider text-slate-500 dark:text-slate-400 font-mono block">
+                <label className="text-[10px] uppercase font-medium tracking-wider text-slate-500 dark:text-slate-400 font-mono block">
                   Total Degree Credits
                 </label>
                 <input

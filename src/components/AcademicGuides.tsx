@@ -21,7 +21,7 @@ import {
   Zap,
   Info
 } from 'lucide-react';
-import { academicGuides, fcitGradingScheme, fbsGradingScheme } from '../data/faculties';
+import { academicGuides, fcitGradingScheme, fbsGradingScheme, fhssAppliedMediaGradingScheme } from '../data/faculties';
 
 export default function AcademicGuides() {
   const [activeTab, setActiveTab] = useState<'what-is-gpa' | 'how-to-calculate' | 'grading-schemes' | 'degree-classes' | 'faqs'>('what-is-gpa');
@@ -53,12 +53,12 @@ export default function AcademicGuides() {
         </div>
         
         <div className="relative z-10 max-w-3xl space-y-4">
-          <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-niibs-yellow/20 border border-niibs-yellow/40 text-amber-800 dark:text-niibs-yellow font-mono text-xs font-bold uppercase tracking-wider">
+          <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-niibs-yellow/20 border border-niibs-yellow/40 text-amber-800 dark:text-niibs-yellow font-mono text-xs font-medium uppercase tracking-wider">
             <Book className="w-3.5 h-3.5" />
             <span>Official Academic Guidebook</span>
           </div>
           
-          <h1 className="font-display font-black text-3xl sm:text-5xl tracking-tight text-slate-950 dark:text-white leading-tight">
+          <h1 className="font-display font-bold text-3xl sm:text-5xl tracking-tight text-slate-950 dark:text-white leading-tight">
             NIIBS Grading & GPA Guidelines
           </h1>
           
@@ -72,7 +72,7 @@ export default function AcademicGuides() {
       <div className="flex flex-wrap gap-2.5 pb-3 overflow-x-auto no-print">
         <button
           onClick={() => setActiveTab('what-is-gpa')}
-          className={`flex items-center space-x-2 px-5 py-3 rounded-2xl text-xs font-bold uppercase tracking-wider transition-all duration-350 shrink-0 ${
+          className={`flex items-center space-x-2 px-5 py-3 rounded-2xl text-xs font-semibold uppercase tracking-wider transition-all duration-350 shrink-0 ${
             activeTab === 'what-is-gpa'
               ? 'bg-[#2d3091] text-white dark:bg-niibs-yellow dark:text-slate-900 shadow-md transform hover:scale-[1.02]'
               : 'glass-card text-slate-700 dark:text-slate-300 hover:bg-white/40 dark:hover:bg-slate-800/40'
@@ -83,7 +83,7 @@ export default function AcademicGuides() {
         </button>
         <button
           onClick={() => setActiveTab('how-to-calculate')}
-          className={`flex items-center space-x-2 px-5 py-3 rounded-2xl text-xs font-bold uppercase tracking-wider transition-all duration-350 shrink-0 ${
+          className={`flex items-center space-x-2 px-5 py-3 rounded-2xl text-xs font-semibold uppercase tracking-wider transition-all duration-350 shrink-0 ${
             activeTab === 'how-to-calculate'
               ? 'bg-[#2d3091] text-white dark:bg-niibs-yellow dark:text-slate-900 shadow-md transform hover:scale-[1.02]'
               : 'glass-card text-slate-700 dark:text-slate-300 hover:bg-white/40 dark:hover:bg-slate-800/40'
@@ -94,7 +94,7 @@ export default function AcademicGuides() {
         </button>
         <button
           onClick={() => setActiveTab('grading-schemes')}
-          className={`flex items-center space-x-2 px-5 py-3 rounded-2xl text-xs font-bold uppercase tracking-wider transition-all duration-350 shrink-0 ${
+          className={`flex items-center space-x-2 px-5 py-3 rounded-2xl text-xs font-semibold uppercase tracking-wider transition-all duration-350 shrink-0 ${
             activeTab === 'grading-schemes'
               ? 'bg-[#2d3091] text-white dark:bg-niibs-yellow dark:text-slate-900 shadow-md transform hover:scale-[1.02]'
               : 'glass-card text-slate-700 dark:text-slate-300 hover:bg-white/40 dark:hover:bg-slate-800/40'
@@ -105,7 +105,7 @@ export default function AcademicGuides() {
         </button>
         <button
           onClick={() => setActiveTab('degree-classes')}
-          className={`flex items-center space-x-2 px-5 py-3 rounded-2xl text-xs font-bold uppercase tracking-wider transition-all duration-350 shrink-0 ${
+          className={`flex items-center space-x-2 px-5 py-3 rounded-2xl text-xs font-semibold uppercase tracking-wider transition-all duration-350 shrink-0 ${
             activeTab === 'degree-classes'
               ? 'bg-[#2d3091] text-white dark:bg-niibs-yellow dark:text-slate-900 shadow-md transform hover:scale-[1.02]'
               : 'glass-card text-slate-700 dark:text-slate-300 hover:bg-white/40 dark:hover:bg-slate-800/40'
@@ -116,7 +116,7 @@ export default function AcademicGuides() {
         </button>
         <button
           onClick={() => setActiveTab('faqs')}
-          className={`flex items-center space-x-2 px-5 py-3 rounded-2xl text-xs font-bold uppercase tracking-wider transition-all duration-350 shrink-0 ${
+          className={`flex items-center space-x-2 px-5 py-3 rounded-2xl text-xs font-semibold uppercase tracking-wider transition-all duration-350 shrink-0 ${
             activeTab === 'faqs'
               ? 'bg-[#2d3091] text-white dark:bg-niibs-yellow dark:text-slate-900 shadow-md transform hover:scale-[1.02]'
               : 'glass-card text-slate-700 dark:text-slate-300 hover:bg-white/40 dark:hover:bg-slate-800/40'
@@ -140,7 +140,7 @@ export default function AcademicGuides() {
         {activeTab === 'what-is-gpa' && (
           <div className="space-y-8 animate-in fade-in duration-300">
             <div className="space-y-3">
-              <h2 className="font-display font-black text-2xl sm:text-3xl text-slate-900 dark:text-white flex items-center space-x-3">
+              <h2 className="font-display font-semibold text-2xl sm:text-3xl text-slate-900 dark:text-white flex items-center space-x-3">
                 <div className="p-2.5 rounded-2xl bg-niibs-blue/10 dark:bg-niibs-yellow/15 text-niibs-blue dark:text-niibs-yellow">
                   <Award className="w-6 h-6" />
                 </div>
@@ -149,14 +149,18 @@ export default function AcademicGuides() {
             </div>
 
             <div className="text-slate-600 dark:text-slate-300 leading-relaxed space-y-4 text-sm sm:text-base font-sans">
-              {academicGuides.gpaIntroduction.content}
+              {academicGuides.gpaIntroduction.content.split('\n\n').map((paragraph, idx) => (
+                <p key={idx} className="whitespace-pre-line">
+                  {paragraph}
+                </p>
+              ))}
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4">
               <div className="p-6 rounded-2xl bg-white/40 dark:bg-slate-900/40 border border-slate-200/60 dark:border-slate-800/60 space-y-3">
                 <div className="flex items-center space-x-2 text-niibs-blue dark:text-niibs-yellow">
                   <Sparkles className="w-5 h-5" />
-                  <h4 className="font-display font-bold text-slate-950 dark:text-white text-base">
+                  <h4 className="font-display font-semibold text-slate-950 dark:text-white text-base">
                     Why Keep Your GPA High?
                   </h4>
                 </div>
@@ -168,7 +172,7 @@ export default function AcademicGuides() {
               <div className="p-6 rounded-2xl bg-white/40 dark:bg-slate-900/40 border border-slate-200/60 dark:border-slate-800/60 space-y-3">
                 <div className="flex items-center space-x-2 text-indigo-600 dark:text-indigo-400">
                   <GraduationCap className="w-5 h-5" />
-                  <h4 className="font-display font-bold text-slate-950 dark:text-white text-base">
+                  <h4 className="font-display font-semibold text-slate-950 dark:text-white text-base">
                     Undergraduate Research Standing
                   </h4>
                 </div>
@@ -184,7 +188,7 @@ export default function AcademicGuides() {
         {activeTab === 'how-to-calculate' && (
           <div className="space-y-8 animate-in fade-in duration-300">
             <div className="space-y-3">
-              <h2 className="font-display font-black text-2xl sm:text-3xl text-slate-900 dark:text-white flex items-center space-x-3">
+              <h2 className="font-display font-semibold text-2xl sm:text-3xl text-slate-900 dark:text-white flex items-center space-x-3">
                 <div className="p-2.5 rounded-2xl bg-niibs-yellow/20 text-amber-700 dark:text-niibs-yellow">
                   <Scale className="w-6 h-6" />
                 </div>
@@ -194,10 +198,10 @@ export default function AcademicGuides() {
 
             {/* Formula Block */}
             <div className="p-6 sm:p-8 bg-gradient-to-br from-amber-500/10 via-yellow-500/5 to-transparent border border-amber-500/30 rounded-3xl text-center space-y-3 backdrop-blur-md">
-              <span className="text-xs uppercase font-mono font-bold tracking-widest text-amber-800 dark:text-amber-300 block">
+              <span className="text-xs uppercase font-mono font-medium tracking-widest text-amber-800 dark:text-amber-300 block">
                 Mathematics Definition Standard
               </span>
-              <p className="font-mono text-xl sm:text-3xl font-extrabold text-slate-950 dark:text-amber-200 py-2">
+              <p className="font-mono text-xl sm:text-3xl font-semibold text-slate-950 dark:text-amber-200 py-2">
                 {academicGuides.gpaCalculationGuide.formula}
               </p>
               <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 max-w-xl mx-auto">
@@ -207,14 +211,14 @@ export default function AcademicGuides() {
 
             {/* Step Block */}
             <div className="space-y-4 pt-2">
-              <h3 className="font-display font-bold text-slate-950 dark:text-white text-xl">
+              <h3 className="font-display font-semibold text-slate-950 dark:text-white text-xl">
                 Calculating Your Grades Step-by-Step
               </h3>
               
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 {academicGuides.gpaCalculationGuide.steps.map((step, idx) => (
                   <div key={idx} className="relative p-6 rounded-3xl border border-slate-200/60 dark:border-slate-800/60 bg-white/40 dark:bg-slate-900/40 backdrop-blur-md">
-                    <span className="absolute top-4 right-4 font-mono font-black text-5xl text-slate-300/40 dark:text-slate-800/60">
+                    <span className="absolute top-4 right-4 font-mono font-bold text-5xl text-slate-300/40 dark:text-slate-800/60">
                       0{idx + 1}
                     </span>
                     <div className="relative z-10 space-y-2">
@@ -231,7 +235,7 @@ export default function AcademicGuides() {
             </div>
 
             <div className="border-t border-slate-200/80 dark:border-slate-800/80 pt-6">
-              <h3 className="font-display font-bold text-slate-950 dark:text-white text-lg mb-2">
+              <h3 className="font-display font-semibold text-slate-950 dark:text-white text-lg mb-2">
                 Cumulative GPA calculation (CGPA)
               </h3>
               <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
@@ -245,7 +249,7 @@ export default function AcademicGuides() {
         {activeTab === 'grading-schemes' && (
           <div className="space-y-8 animate-in fade-in duration-300">
             <div>
-              <h2 className="font-display font-black text-2xl sm:text-3xl text-slate-900 dark:text-white flex items-center space-x-3">
+              <h2 className="font-display font-semibold text-2xl sm:text-3xl text-slate-900 dark:text-white flex items-center space-x-3">
                 <div className="p-2.5 rounded-2xl bg-niibs-blue/10 dark:bg-niibs-yellow/15 text-niibs-blue dark:text-niibs-yellow">
                   <FileText className="w-6 h-6" />
                 </div>
@@ -256,19 +260,19 @@ export default function AcademicGuides() {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 xl:grid-cols-3 gap-8">
               {/* Computing Scale */}
               <div className="space-y-4">
                 <div className="p-4 bg-indigo-500/10 rounded-2xl border-l-4 border-niibs-blue dark:border-niibs-yellow backdrop-blur-md">
-                  <h3 className="font-display font-bold text-slate-950 dark:text-white text-sm">
-                    Faculty of Computing & IT (FCIT) Scale
+                  <h3 className="font-display font-semibold text-slate-950 dark:text-white text-sm">
+                    FCIT Scale
                   </h3>
                 </div>
 
                 <div className="overflow-x-auto">
                   <table className="w-full text-left text-xs border-collapse">
                     <thead>
-                      <tr className="border-b border-slate-200 dark:border-slate-800 text-slate-400 font-mono text-[10px] uppercase">
+                      <tr className="border-b border-slate-200 dark:border-slate-800 text-slate-400 font-medium text-[10px] uppercase">
                         <th className="py-3 px-2">Grade</th>
                         <th className="py-3 px-2">GPA Points</th>
                         <th className="py-3 px-2">Traditional Meaning</th>
@@ -277,10 +281,10 @@ export default function AcademicGuides() {
                     <tbody className="divide-y divide-slate-100 dark:divide-slate-850/60 font-mono">
                       {fcitGradingScheme.map((g, idx) => (
                         <tr key={idx} className="hover:bg-slate-100/50 dark:hover:bg-slate-800/30 transition-colors">
-                          <td className="py-3 px-2 font-bold text-niibs-blue dark:text-niibs-yellow text-sm">
+                          <td className="py-3 px-2 font-semibold text-niibs-blue dark:text-niibs-yellow text-sm">
                             {g.grade}
                           </td>
-                          <td className="py-3 px-2 text-slate-800 dark:text-slate-200 font-extrabold text-sm">
+                          <td className="py-3 px-2 text-slate-800 dark:text-slate-200 font-semibold text-sm">
                             {g.gpaValue.toFixed(2)}
                           </td>
                           <td className="py-3 px-2 font-sans text-slate-500 dark:text-slate-400">
@@ -296,15 +300,15 @@ export default function AcademicGuides() {
               {/* Buddhist & Humanities */}
               <div className="space-y-4">
                 <div className="p-4 bg-amber-500/10 rounded-2xl border-l-4 border-amber-500 dark:border-niibs-yellow backdrop-blur-md">
-                  <h3 className="font-display font-bold text-slate-950 dark:text-white text-sm">
-                    Buddhist Studies (FBS) & Humanities (FHSS) Scale
+                  <h3 className="font-display font-semibold text-slate-950 dark:text-white text-sm">
+                    FBS & FHSS Scale (Except ACMT)
                   </h3>
                 </div>
 
                 <div className="overflow-x-auto">
                   <table className="w-full text-left text-xs border-collapse">
                     <thead>
-                      <tr className="border-b border-slate-200 dark:border-slate-800 text-slate-400 font-mono text-[10px] uppercase">
+                      <tr className="border-b border-slate-200 dark:border-slate-800 text-slate-400 font-medium text-[10px] uppercase">
                         <th className="py-3 px-2">Grade</th>
                         <th className="py-3 px-2">GPA Points</th>
                         <th className="py-3 px-2">Traditional Meaning</th>
@@ -313,10 +317,46 @@ export default function AcademicGuides() {
                     <tbody className="divide-y divide-slate-100 dark:divide-slate-850/60 font-mono">
                       {fbsGradingScheme.map((g, idx) => (
                         <tr key={idx} className="hover:bg-slate-100/50 dark:hover:bg-slate-800/30 transition-colors">
-                          <td className="py-3 px-2 font-bold text-niibs-blue dark:text-niibs-yellow text-sm">
+                          <td className="py-3 px-2 font-semibold text-niibs-blue dark:text-niibs-yellow text-sm">
                             {g.grade}
                           </td>
-                          <td className="py-3 px-2 text-slate-800 dark:text-slate-200 font-extrabold text-sm">
+                          <td className="py-3 px-2 text-slate-800 dark:text-slate-200 font-semibold text-sm">
+                            {g.gpaValue.toFixed(2)}
+                          </td>
+                          <td className="py-3 px-2 font-sans text-slate-500 dark:text-slate-400">
+                            {g.description}
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              {/* FHSS ACMT Scale */}
+              <div className="space-y-4">
+                <div className="p-4 bg-emerald-500/10 rounded-2xl border-l-4 border-emerald-500 dark:border-emerald-400 backdrop-blur-md">
+                  <h3 className="font-display font-semibold text-slate-950 dark:text-white text-sm">
+                    FHSS - ACMT Scale
+                  </h3>
+                </div>
+
+                <div className="overflow-x-auto">
+                  <table className="w-full text-left text-xs border-collapse">
+                    <thead>
+                      <tr className="border-b border-slate-200 dark:border-slate-800 text-slate-400 font-medium text-[10px] uppercase">
+                        <th className="py-3 px-2">Grade</th>
+                        <th className="py-3 px-2">GPA Points</th>
+                        <th className="py-3 px-2">Traditional Meaning</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-slate-100 dark:divide-slate-850/60 font-mono">
+                      {fhssAppliedMediaGradingScheme.map((g, idx) => (
+                        <tr key={idx} className="hover:bg-slate-100/50 dark:hover:bg-slate-800/30 transition-colors">
+                          <td className="py-3 px-2 font-semibold text-niibs-blue dark:text-niibs-yellow text-sm">
+                            {g.grade}
+                          </td>
+                          <td className="py-3 px-2 text-slate-800 dark:text-slate-200 font-semibold text-sm">
                             {g.gpaValue.toFixed(2)}
                           </td>
                           <td className="py-3 px-2 font-sans text-slate-500 dark:text-slate-400">
@@ -336,22 +376,28 @@ export default function AcademicGuides() {
         {activeTab === 'degree-classes' && (
           <div className="space-y-8 animate-in fade-in duration-300">
             <div>
-              <h2 className="font-display font-black text-2xl sm:text-3xl text-slate-900 dark:text-white flex items-center space-x-3">
+              <h2 className="font-display font-semibold text-2xl sm:text-3xl text-slate-900 dark:text-white flex items-center space-x-3">
                 <div className="p-2.5 rounded-2xl bg-amber-500/10 text-amber-500 dark:text-niibs-yellow">
                   <Award className="w-6 h-6" />
                 </div>
                 <span>{academicGuides.degreeClassGuide.title}</span>
               </h2>
-              <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed mt-2 max-w-3xl">
-                {academicGuides.degreeClassGuide.content}
-              </p>
+                <div className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed mt-4 max-w-4xl space-y-3">
+                  {academicGuides.degreeClassGuide.content.split('\n').map((line, i) => (
+                    <p key={i} className="whitespace-pre-line">
+                      {line.split('**').map((part, j) => 
+                        j % 2 === 1 ? <strong key={j} className="font-semibold text-slate-900 dark:text-slate-100">{part}</strong> : part
+                      )}
+                    </p>
+                  ))}
+                </div>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
               {/* First Class */}
               <div className="p-6 rounded-3xl border-2 border-niibs-yellow bg-gradient-to-br from-amber-500/15 via-yellow-500/5 to-transparent backdrop-blur-md text-slate-950 dark:text-white space-y-3 shadow-lg shadow-amber-500/5 hover:scale-[1.02] transition-transform duration-200">
-                <span className="font-mono text-3xl font-black text-amber-600 dark:text-niibs-yellow block">≥ 3.70</span>
-                <h4 className="font-display font-black text-base text-niibs-blue dark:text-amber-300">First Class Honours</h4>
+                <span className="font-mono text-3xl font-bold text-amber-600 dark:text-niibs-yellow block">≥ 3.70</span>
+                <h4 className="font-display font-semibold text-base text-niibs-blue dark:text-amber-300">First Class Honours</h4>
                 <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
                   Requires highly organized study habits, consistent preparation, and pristine grading indexes.
                 </p>
@@ -359,8 +405,8 @@ export default function AcademicGuides() {
 
               {/* Second Upper */}
               <div className="p-6 rounded-3xl border border-slate-200/80 dark:border-slate-800/80 bg-white/40 dark:bg-slate-900/40 backdrop-blur-md text-slate-950 dark:text-white space-y-3 hover:scale-[1.02] transition-transform duration-200">
-                <span className="font-mono text-3xl font-black text-slate-800 dark:text-slate-100 block">3.30 – 3.69</span>
-                <h4 className="font-display font-bold text-base text-slate-950 dark:text-white">Second Class (Upper)</h4>
+                <span className="font-mono text-3xl font-bold text-slate-800 dark:text-slate-100 block">3.30 - 3.70</span>
+                <h4 className="font-display font-semibold text-base text-slate-950 dark:text-white">Second Class (Upper)</h4>
                 <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
                   Highly prestigious level. Proves substantial grasp of computing, IT, or Buddhist philosophy subjects.
                 </p>
@@ -368,8 +414,8 @@ export default function AcademicGuides() {
 
               {/* Second Lower */}
               <div className="p-6 rounded-3xl border border-slate-200/80 dark:border-slate-800/80 bg-white/40 dark:bg-slate-900/40 backdrop-blur-md text-slate-950 dark:text-white space-y-3 hover:scale-[1.02] transition-transform duration-200">
-                <span className="font-mono text-3xl font-black text-slate-800 dark:text-slate-100 block">3.00 – 3.29</span>
-                <h4 className="font-display font-bold text-base text-slate-950 dark:text-white">Second Class (Lower)</h4>
+                <span className="font-mono text-3xl font-bold text-slate-800 dark:text-slate-100 block">3.00 - 3.30</span>
+                <h4 className="font-display font-semibold text-base text-slate-950 dark:text-white">Second Class (Lower)</h4>
                 <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
                   Establishes excellent technical capacity. Strong eligibility for local software and corporate roles.
                 </p>
@@ -377,8 +423,8 @@ export default function AcademicGuides() {
 
               {/* General Pass */}
               <div className="p-6 rounded-3xl border border-slate-200/80 dark:border-slate-800/80 bg-white/40 dark:bg-slate-900/40 backdrop-blur-md text-slate-950 dark:text-white space-y-3 hover:scale-[1.02] transition-transform duration-200">
-                <span className="font-mono text-3xl font-black text-slate-600 dark:text-slate-400 block">2.00 – 2.99</span>
-                <h4 className="font-display font-bold text-base text-slate-950 dark:text-white">General Pass</h4>
+                <span className="font-mono text-3xl font-bold text-slate-600 dark:text-slate-400 block">2.00 - 3.00</span>
+                <h4 className="font-display font-semibold text-base text-slate-950 dark:text-white">General Pass</h4>
                 <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
                   Requires successful accumulation of required units (90-120 credits) while maintaining positive academic standing.
                 </p>
@@ -392,7 +438,7 @@ export default function AcademicGuides() {
           <div className="space-y-6 animate-in fade-in duration-300">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-200/80 dark:border-slate-800/80 pb-6">
               <div>
-                <h2 className="font-display font-black text-2xl sm:text-3xl text-slate-900 dark:text-white flex items-center space-x-3">
+                <h2 className="font-display font-semibold text-2xl sm:text-3xl text-slate-900 dark:text-white flex items-center space-x-3">
                   <div className="p-2.5 rounded-2xl bg-niibs-blue/10 dark:bg-niibs-yellow/15 text-niibs-blue dark:text-niibs-yellow">
                     <HelpCircle className="w-6 h-6" />
                   </div>
@@ -426,7 +472,7 @@ export default function AcademicGuides() {
                     >
                       <button
                         onClick={() => setExpandedFaq(isExpanded ? null : idx)}
-                        className="flex items-center justify-between w-full text-left font-display font-bold text-slate-900 dark:text-white text-sm sm:text-base focus:outline-none cursor-pointer"
+                        className="flex items-center justify-between w-full text-left font-display font-semibold text-slate-900 dark:text-white text-sm sm:text-base focus:outline-none cursor-pointer"
                       >
                         <span className="pr-4">{faq.q}</span>
                         <ChevronDown className={`w-5 h-5 shrink-0 transition-transform duration-200 text-slate-400 ${isExpanded ? 'rotate-180 text-niibs-blue dark:text-niibs-yellow' : ''}`} />
@@ -456,11 +502,11 @@ export default function AcademicGuides() {
           <ShieldCheck className="w-6 h-6" />
         </div>
         <div className="space-y-1">
-          <h4 className="font-display font-bold text-slate-950 dark:text-slate-100 text-base">
+          <h4 className="font-display font-medium text-slate-950 dark:text-slate-100 text-base">
             NIIBS Board and UGC Compliance Guarantee
           </h4>
           <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-            All calculations computed inside this portal comply with the standard GPA equations approved by the Sri Lankan University Grants Commission. However, final official transcripts are managed exclusively by the Board of Examinations at NIIBS Bollegala campus.
+            All calculations computed inside this portal comply with the standard GPA equations approved by the Sri Lankan University Grants Commission. However, final official transcripts are managed exclusively by the Board of Examinations at NIIBS Campus.
           </p>
         </div>
       </div>

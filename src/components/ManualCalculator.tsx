@@ -90,7 +90,7 @@ export default function ManualCalculator({ onSaveSemester }: ManualCalculatorPro
 
   // Share result
   const handleShareResult = () => {
-    const text = `My NIIBS Manual GPA Calculation Result 🎓\nTerm Name: ${customTermName}\nCalculated GPA: ${calculatedGpa.toFixed(3)}\nPercentage: ${gradePercentage.toFixed(1)}%\nCalculate yours online at: https://gpacalculator.niibs.lk`;
+    const text = `My NIIBS Manual GPA Calculation Result 🎓\nTerm Name: ${customTermName}\nCalculated GPA: ${calculatedGpa.toFixed(3)}\nPercentage: ${gradePercentage.toFixed(1)}%\n`;
     navigator.clipboard.writeText(text);
     setShareSuccess(true);
     setTimeout(() => setShareSuccess(false), 3000);
@@ -111,7 +111,7 @@ export default function ManualCalculator({ onSaveSemester }: ManualCalculatorPro
         >
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-slate-200/80 dark:border-slate-800/80 pb-5">
             <div>
-              <h3 className="font-display font-bold text-slate-900 dark:text-white text-lg flex items-center space-x-2">
+              <h3 className="font-display font-semibold text-slate-900 dark:text-white text-lg flex items-center space-x-2">
                 <Layers className="w-5 h-5 text-niibs-blue dark:text-niibs-yellow" />
                 <span>Customize GPA Calculations</span>
               </h3>
@@ -130,7 +130,7 @@ export default function ManualCalculator({ onSaveSemester }: ManualCalculatorPro
           </div>
 
           {/* Header titles for Desktop */}
-          <div className="hidden sm:grid grid-cols-12 gap-3.5 px-4 text-[10px] uppercase tracking-wider font-mono font-bold text-slate-400">
+          <div className="hidden sm:grid grid-cols-12 gap-3.5 px-4 text-[10px] uppercase tracking-wider font-mono font-medium text-slate-400">
             <div className="col-span-5">Subject Descriptor</div>
             <div className="col-span-3">Credit Weight</div>
             <div className="col-span-3">Letter Grade</div>
@@ -146,7 +146,7 @@ export default function ManualCalculator({ onSaveSemester }: ManualCalculatorPro
               >
                 {/* Course Name Index Field */}
                 <div className="col-span-12 sm:col-span-5 space-y-1">
-                  <span className="text-[10px] text-slate-400 font-mono font-bold block sm:hidden">
+                  <span className="text-[10px] text-slate-400 font-mono font-semibold block sm:hidden">
                     Subject Name {index + 1}
                   </span>
                   <input
@@ -160,11 +160,11 @@ export default function ManualCalculator({ onSaveSemester }: ManualCalculatorPro
 
                 {/* Credits Input Selection */}
                 <div className="col-span-6 sm:col-span-3 space-y-1">
-                  <span className="text-[10px] text-slate-400 font-mono font-bold block sm:hidden">Credits</span>
+                  <span className="text-[10px] text-slate-400 font-mono font-semibold block sm:hidden">Credits</span>
                   <select
                     value={sub.credits}
                     onChange={(e) => handleRowChange(sub.id, 'credits', Number(e.target.value))}
-                    className="w-full px-3 py-2.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white/60 dark:bg-slate-900/60 text-slate-800 dark:text-slate-200 text-xs focus:ring-2 focus:ring-niibs-yellow focus:outline-none font-bold font-mono"
+                    className="w-full px-3 py-2.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white/60 dark:bg-slate-900/60 text-slate-800 dark:text-slate-200 text-xs focus:ring-2 focus:ring-niibs-yellow focus:outline-none font-medium font-mono"
                   >
                     {[1, 2, 3, 4, 5, 6].map(c => (
                       <option key={c} value={c} className="dark:bg-slate-950 dark:text-slate-300">{c} Credits</option>
@@ -174,11 +174,11 @@ export default function ManualCalculator({ onSaveSemester }: ManualCalculatorPro
 
                 {/* Selection Grade Choice */}
                 <div className="col-span-5 sm:col-span-3 space-y-1">
-                  <span className="text-[10px] text-slate-400 font-mono font-bold block sm:hidden">Select Grade</span>
+                  <span className="text-[10px] text-slate-400 font-mono font-semibold block sm:hidden">Select Grade</span>
                   <select
                     value={sub.grade}
                     onChange={(e) => handleRowChange(sub.id, 'grade', e.target.value)}
-                    className="w-full px-3 py-2.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white/60 dark:bg-slate-900/60 text-slate-800 dark:text-slate-200 text-xs focus:ring-2 focus:ring-niibs-yellow focus:outline-none font-extrabold font-mono"
+                    className="w-full px-3 py-2.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white/60 dark:bg-slate-900/60 text-slate-800 dark:text-slate-200 text-xs focus:ring-2 focus:ring-niibs-yellow focus:outline-none font-medium font-mono"
                   >
                     <option value="" className="dark:bg-slate-950 dark:text-slate-300">— Select —</option>
                     {['A+', 'A', 'A-', 'B+', 'B', 'B-', 'C+', 'C', 'C-', 'D+', 'D', 'E'].map(g => (
@@ -215,7 +215,7 @@ export default function ManualCalculator({ onSaveSemester }: ManualCalculatorPro
           transition={{ duration: 0.2 }}
         >
           <div className="pb-3 border-b border-slate-200/80 dark:border-slate-800/80 flex items-center justify-between">
-            <span className="text-[10px] uppercase font-bold tracking-wider text-niibs-blue dark:text-niibs-yellow font-mono block">
+            <span className="text-[10px] uppercase font-medium tracking-wider text-niibs-blue dark:text-niibs-yellow font-mono block">
               Result Board
             </span>
             <Sparkles className="w-4 h-4 text-niibs-yellow" />
@@ -223,13 +223,13 @@ export default function ManualCalculator({ onSaveSemester }: ManualCalculatorPro
 
           <div className="space-y-4">
             <div className="text-center p-6 bg-gradient-to-br from-niibs-blue/5 via-transparent to-niibs-yellow/5 dark:bg-slate-900/40 rounded-2xl border border-slate-200/80 dark:border-slate-800/80 shadow-inner">
-              <span className="text-[10px] uppercase font-mono text-slate-400 font-bold block tracking-wider">
+              <span className="text-[10px] uppercase font-mono text-slate-400 font-medium block tracking-wider">
                 TERM GPA
               </span>
-              <span className="font-mono text-5xl font-black text-slate-950 dark:text-white block mt-2 tracking-tight">
+              <span className="font-mono text-5xl font-bold text-slate-950 dark:text-white block mt-2 tracking-tight">
                 {calculatedGpa.toFixed(3)}
               </span>
-              <span className="text-xs font-mono font-bold text-niibs-blue dark:text-niibs-yellow block mt-2">
+              <span className="text-xs font-mono font-medium text-niibs-blue dark:text-niibs-yellow block mt-2">
                 Total Credits: {totalCredits} Cr.
               </span>
             </div>
@@ -238,18 +238,18 @@ export default function ManualCalculator({ onSaveSemester }: ManualCalculatorPro
             <div className="space-y-2.5 pt-2 text-xs">
               <div className="flex justify-between items-center pb-2.5 border-b border-slate-200/60 dark:border-slate-800/60 font-sans">
                 <span className="text-slate-500 dark:text-slate-400 font-medium">Earned Credits</span>
-                <span className="font-mono font-bold text-slate-800 dark:text-slate-200">{earnedCredits} Credits</span>
+                <span className="font-mono font-medium text-slate-800 dark:text-slate-200">{earnedCredits} Credits</span>
               </div>
               <div className="flex justify-between items-center pb-2.5 border-b border-slate-200/60 dark:border-slate-800/60 font-sans">
                 <span className="text-slate-500 dark:text-slate-400 font-medium">Cumulative Marks Percent</span>
-                <span className="font-mono font-bold text-slate-800 dark:text-slate-200">{gradePercentage.toFixed(1)}%</span>
+                <span className="font-mono font-medium text-slate-800 dark:text-slate-200">{gradePercentage.toFixed(1)}%</span>
               </div>
             </div>
 
             {/* Custom save layout */}
             <div className="space-y-4 pt-2">
               <div className="space-y-1.5">
-                <label className="text-[10px] uppercase tracking-wider font-bold text-slate-500 dark:text-slate-400 block font-mono">
+                <label className="text-[10px] uppercase tracking-wider font-medium text-slate-500 dark:text-slate-400 block font-mono">
                   Custom Semester Name
                 </label>
                 <input
@@ -262,14 +262,14 @@ export default function ManualCalculator({ onSaveSemester }: ManualCalculatorPro
               </div>
 
               {/* Actions */}
-              <div className="grid grid-cols-2 gap-3 mt-4">
-                <button
+              <div className="grid grid-cols-1 gap-3 mt-4">
+                {/* <button
                   onClick={handleShareResult}
                   className="px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white/40 dark:bg-slate-900/40 text-slate-700 dark:text-slate-300 hover:bg-white dark:hover:bg-slate-800 backdrop-blur-md transition-all font-bold text-xs flex items-center justify-center space-x-2 cursor-pointer font-display"
                 >
                   <Share2 className="w-4 h-4" />
                   <span>{shareSuccess ? 'Copied' : 'Share'}</span>
-                </button>
+                </button> */}
 
                 <button
                   onClick={handleSaveToHistory}

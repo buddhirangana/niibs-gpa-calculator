@@ -192,174 +192,185 @@ export const facultiesData: Faculty[] = [
     programs: [
       {
         id: 'ba-bs-gen',
-        name: 'Bachelor of Arts (General) in Buddhist Studies',
+        name: 'BA (General) in Buddhist Studies',
         durationYears: 3,
         semesters: [
           {
             semesterNumber: 1,
             subjects: [
-              { id: 'bsg1010', code: 'BUGA1010', name: 'Introduction to Pali Language', credits: 3 },
-              { id: 'bsg1020', code: 'BUGA1020', name: 'Early Buddhist Philosophy', credits: 3 },
-              { id: 'bsg1030', code: 'BUGA1030', name: 'History of Monks and Monastic Rules', credits: 3 },
-              { id: 'bsg1040', code: 'BUGA1040', name: 'Academic English and Writing', credits: 3 },
+              { id: 'bust11013', code: 'BUST 11013', name: 'Fundamentals of Early Buddhism', credits: 3 },
+              { id: 'bust11023', code: 'BUST 11023', name: 'Principles of Buddhist Social Philosophy', credits: 3 },
+              { id: 'bust11033', code: 'BUST 11033', name: 'Introduction to Theravāda Canonical Literature', credits: 3 },
+              { id: 'bust11043', code: 'BUST 11043', name: 'Principles of Buddhist Communication', credits: 3 },
+              { id: 'bust11053', code: 'BUST 11053', name: 'Pre-Buddhist and Contemporary Religious and Cultural Background of India', credits: 3 },
+              { id: 'ctlo11011', code: 'CTLO 11011', name: 'Critical Thinking and Logic - I', credits: 1 },
+              { id: 'come11011', code: 'COME 11011', name: 'Compulsory English - I', credits: 1 },
+              { id: 'comi11011', code: 'COMI 11011', name: 'Compulsory ICT', credits: 1 },
             ]
           },
           {
             semesterNumber: 2,
             subjects: [
-              { id: 'bsg1050', code: 'BUGA1050', name: 'Buddhist Hermeneutics & Translations', credits: 3 },
-              { id: 'bsg1060', code: 'BUGA1060', name: 'Intermediate Pali Canonical Reading', credits: 3 },
-              { id: 'bsg1070', code: 'BUGA1070', name: 'Theravada Abhidhamma Studies I', credits: 3 },
-              { id: 'bsg1080', code: 'BUGA1080', name: 'Social Ethics in Buddhism', credits: 3 },
+              { id: 'bust12063', code: 'BUST 12063', name: 'Introduction to Buddhist Social Work', credits: 3 },
+              { id: 'bust12073', code: 'BUST 12073', name: 'Buddhist Meditation', credits: 3 },
+              { id: 'bust12083', code: 'BUST 12083', name: 'An Approach to Theravāda Literary Sources', credits: 3 },
+              { id: 'bust12093', code: 'BUST 12093', name: 'Principles of Buddhist Management', credits: 3 },
+              { id: 'bust12103', code: 'BUST 12103', name: 'Principles of Buddhist Civilization', credits: 3 },
+              { id: 'ctlo12021', code: 'CTLO 12021', name: 'Critical Thinking and Logic - II', credits: 1 },
+              { id: 'come12021', code: 'COME 12021', name: 'Compulsory English - II', credits: 1 },
             ]
           },
           {
             semesterNumber: 3,
             subjects: [
-              { id: 'bsg2010', code: 'BUGA2010', name: 'Buddhist Sanskrit Texts', credits: 3 },
-              { id: 'bsg2020', code: 'BUGA2020', name: 'Buddhist Culture & Fine Arts', credits: 3 },
-              { id: 'bsg2030', code: 'BUGA2030', name: 'History of Indian Buddhist Philosophy', credits: 3 },
-              { id: 'bsg2040', code: 'BUGA2040', name: 'Logic and Debate in Buddhist Texts', credits: 3 },
+              { id: 'bust21113', code: 'BUST 21113', name: 'Cultural Background of Pre-Buddhist Sri Lanka', credits: 3 },
+              { id: 'bust21123', code: 'BUST 21123', name: 'Syntactic and Semantic Study of Theravada Sutta Literature', credits: 3 },
+              { id: 'bust21133', code: 'BUST 21133', name: 'Buddhism and Six Indian Philosophical Traditions', credits: 3 },
+              { id: 'bust21143', code: 'BUST 21143', name: 'Buddhist Psychology', credits: 3 },
+              { id: 'bust21153', code: 'BUST 21153', name: 'Origins and Evolution of Sri Lankan Buddhist Culture', credits: 3 },
+              { id: 'come21031', code: 'COME 21031', name: 'Compulsory English - III', credits: 1 },
+              { id: 'pali21011', code: 'PALI 21011', name: 'Pali Language - I', credits: 1 },
+              { id: 'busa21011', code: 'BUSA 21011', name: 'An Approach to Buddhist Sanskrit - I', credits: 1 },
             ]
           },
           {
             semesterNumber: 4,
             subjects: [
-              { id: 'bsg2050', code: 'BUGA2050', name: 'Aesthetic Literary Studies in Buddhism', credits: 3 },
-              { id: 'bsg2060', code: 'BUGA2060', name: 'History of Buddhism in Sri Lanka', credits: 3 },
-              { id: 'bsg2070', code: 'BUGA2070', name: 'Mindfulness Theory and Practice', credits: 3 },
-              { id: 'bsg2080', code: 'BUGA2080', name: 'General Information Technology', credits: 3 },
+              { id: 'bust22183', code: 'BUST 22183', name: 'Evolution of Early Buddhist Schools', credits: 3 },
+              { id: 'bust22193', code: 'BUST 22193', name: 'Buddhist Thought in Pali Nikāyas', credits: 3 },
+              { id: 'bust22203', code: 'BUST 22203', name: 'Expansion of Buddhist Culture in Asia', credits: 3 },
+              { id: 'bust22213', code: 'BUST 22213', name: 'Buddhist Epistemology', credits: 3 },
+              { id: 'bust22223', code: 'BUST 22223', name: 'Buddhist Rituals and Ceremonies', credits: 3 },
+              { id: 'come22041', code: 'COME 22041', name: 'Compulsory English - IV', credits: 1 },
+              { id: 'pali22021', code: 'PALI 22021', name: 'Pali Language - II', credits: 1 },
+              { id: 'busa22021', code: 'BUSA 22021', name: 'An Approach to Buddhist Sanskrit - II', credits: 1 },
             ]
           },
           {
             semesterNumber: 5,
             subjects: [
-              { id: 'bsg3010', code: 'BUGA3010', name: 'Mahayana and Vajrayana Traditonal Philosophy', credits: 3 },
-              { id: 'bsg3020', code: 'BUGA3020', name: 'Western Philosophy & Religion Comparison', credits: 3 },
-              { id: 'bsg3030', code: 'BUGA3030', name: 'Modern Social Challenges & Buddhist Psychology', credits: 3 },
-              { id: 'bsg3040', code: 'BUGA3040', name: 'Buddhist Hermitage Administration', credits: 3 },
+              { id: 'bust31253', code: 'BUST 31253', name: 'Buddhism and Modern World', credits: 3 },
+              { id: 'bust31263', code: 'BUST 31263', name: 'Theravāda Abhidhamma Studies', credits: 3 },
+              { id: 'bust31273', code: 'BUST 31273', name: 'Buddhist Ethics', credits: 3 },
+              { id: 'bust31283', code: 'BUST 31283', name: 'Mahāyāna Culture', credits: 3 },
+              { id: 'bust31293', code: 'BUST 31293', name: 'Buddhist Aesthetics', credits: 3 },
+              { id: 'come31051', code: 'COME 31051', name: 'Compulsory English - V', credits: 1 },
+              { id: 'pali31031', code: 'PALI 31031', name: 'Pali Language -III', credits: 1 },
             ]
           },
           {
             semesterNumber: 6,
             subjects: [
-              { id: 'bsg3050', code: 'BUGA3050', name: 'Buddhism and Modern Science', credits: 3 },
-              { id: 'bsg3060', code: 'BUGA3060', name: 'Contemporary Social Theory and Devotion', credits: 3 },
-              { id: 'bsg3070', code: 'BUGA3070', name: 'Research Project / Monograph', credits: 4 },
+              { id: 'bust32323', code: 'BUST 32323', name: 'Buddhist Art and Architecture', credits: 3 },
+              { id: 'bust32333', code: 'BUST 32333', name: 'Reading Comprehension of Pali Commentarial Literature', credits: 3 },
+              { id: 'bust32343', code: 'BUST 32343', name: 'Buddhism and World Religions', credits: 3 },
+              { id: 'bust32353', code: 'BUST 32353', name: 'Theravāda Vinaya Studies', credits: 3 },
+              { id: 'bust32363', code: 'BUST 32363', name: 'Buddhist Logic', credits: 3 },
+              { id: 'come32061', code: 'COME 32061', name: 'Compulsory English - VI', credits: 1 },
+              { id: 'pali32041', code: 'PALI 32041', name: 'Traditions of Pali Grammar', credits: 1 },
             ]
           }
         ]
       },
       {
         id: 'ba-bs-hons',
-        name: 'Bachelor of Arts (Hons) in Buddhist Studies',
+        name: 'BA (Hons.) in Buddhist Studies',
         durationYears: 4,
         semesters: [
           {
             semesterNumber: 1,
             subjects: [
-              { id: 'bsh1010', code: 'BUHA1010', name: 'Detailed Pali Grammar I', credits: 3 },
-              { id: 'bsh1020', code: 'BUHA1020', name: 'Introduction to Buddhism & Core Tenets', credits: 3 },
-              { id: 'bsh1030', code: 'BUHA1030', name: 'Sutta Pitaka Core Investigations', credits: 3 },
-              { id: 'bsh1040', code: 'BUHA1040', name: 'Sri Lankan Language and Culture Roots', credits: 3 },
+              { id: 'bust11013', code: 'BUST 11013', name: 'Fundamentals of Early Buddhism', credits: 3 },
+              { id: 'bust11023', code: 'BUST 11023', name: 'Principles of Buddhist Social Philosophy', credits: 3 },
+              { id: 'bust11033', code: 'BUST 11033', name: 'Introduction to Theravāda Canonical Literature', credits: 3 },
+              { id: 'bust11043', code: 'BUST 11043', name: 'Principles of Buddhist Communication', credits: 3 },
+              { id: 'bust11053', code: 'BUST 11053', name: 'Pre-Buddhist and Contemporary Religious and Cultural Background of India', credits: 3 },
+              { id: 'ctlo11011', code: 'CTLO 11011', name: 'Critical Thinking and Logic - I', credits: 1 },
+              { id: 'come11011', code: 'COME 11011', name: 'Compulsory English - I', credits: 1 },
+              { id: 'comi11011', code: 'COMI 11011', name: 'Compulsory ICT', credits: 1 },
             ]
           },
           {
             semesterNumber: 2,
             subjects: [
-              { id: 'bsh1050', code: 'BUHA1050', name: 'Theravada Vinaya Critique', credits: 3 },
-              { id: 'bsh1060', code: 'BUHA1060', name: 'Pali Grammar and Texts II', credits: 3 },
-              { id: 'bsh1070', code: 'BUHA1070', name: 'Buddhist Abhidhamma Studies Level II', credits: 3 },
-              { id: 'bsh1080', code: 'BUHA1080', name: 'Religious Systems in Ancient India', credits: 3 },
+              { id: 'bust12063', code: 'BUST 12063', name: 'Introduction to Buddhist Social Work', credits: 3 },
+              { id: 'bust12073', code: 'BUST 12073', name: 'Buddhist Meditation', credits: 3 },
+              { id: 'bust12083', code: 'BUST 12083', name: 'An Approach to Theravāda Literary Sources', credits: 3 },
+              { id: 'bust12093', code: 'BUST 12093', name: 'Principles of Buddhist Management', credits: 3 },
+              { id: 'bust12103', code: 'BUST 12103', name: 'Principles of Buddhist Civilization', credits: 3 },
+              { id: 'ctlo12021', code: 'CTLO 12021', name: 'Critical Thinking and Logic - II', credits: 1 },
+              { id: 'come12021', code: 'COME 12021', name: 'Compulsory English - II', credits: 1 },
             ]
           },
           {
             semesterNumber: 3,
             subjects: [
-              { id: 'bsh2010', code: 'BUHA2010', name: 'Buddhist Sanskrit Grammar I', credits: 3 },
-              { id: 'bsh2020', code: 'BUHA2020', name: 'Introduction to Epigraphy and Coins', credits: 3 },
-              { id: 'bsh2030', code: 'BUHA2030', name: 'History of East Asian Buddhism', credits: 3 },
-              { id: 'bsh2040', code: 'BUHA2040', name: 'Sanskrit Literary Works of Buddhist Authors', credits: 3 },
+              { id: 'bust21113', code: 'BUST 21113', name: 'Cultural Background of Pre-Buddhist Sri Lanka', credits: 3 },
+              { id: 'bust21123', code: 'BUST 21123', name: 'Syntactic and Semantic Study of Theravada Sutta Literature', credits: 3 },
+              { id: 'bust21133', code: 'BUST 21133', name: 'Buddhism and Six Indian Philosophical Traditions', credits: 3 },
+              { id: 'bust21163', code: 'BUST 21163', name: 'Buddhist Psychology and Counselling', credits: 3 },
+              { id: 'bust21173', code: 'BUST 21173', name: 'Buddhism in Colonial Sri Lanka and Renaissance', credits: 3 },
+              { id: 'come21031', code: 'COME 21031', name: 'Compulsory English - III', credits: 1 },
+              { id: 'pali21011', code: 'PALI 21011', name: 'Pali Language - I', credits: 1 },
+              { id: 'busa21011', code: 'BUSA 21011', name: 'An Approach to Buddhist Sanskrit - I', credits: 1 },
             ]
           },
           {
             semesterNumber: 4,
             subjects: [
-              { id: 'bsh2050', code: 'BUHA2050', name: 'Theravada & Mahayana Comparison Studies', credits: 3 },
-              { id: 'bsh2060', code: 'BUHA2060', name: 'Historical Development of Pali Texts', credits: 3 },
-              { id: 'bsh2070', code: 'BUHA2070', name: 'Buddhist Meditational Theories', credits: 3 },
-              { id: 'bsh2080', code: 'BUHA2080', name: 'Computer Applications in Pali Studies', credits: 3 },
+              { id: 'bust22183', code: 'BUST 22183', name: 'Evolution of Early Buddhist Schools', credits: 3 },
+              { id: 'bust22193', code: 'BUST 22193', name: 'Buddhist Thought in Pali Nikāyas', credits: 3 },
+              { id: 'bust22203', code: 'BUST 22203', name: 'Expansion of Buddhist Culture in Asia', credits: 3 },
+              { id: 'bust22233', code: 'BUST 22233', name: 'Buddhism and Western Theories of Knowledge', credits: 3 },
+              { id: 'bust22243', code: 'BUST 22243', name: 'Syntactic and Semantic Studies on Abhidhamma Piṭaka and Vinaya Piṭaka', credits: 3 },
+              { id: 'come22041', code: 'COME 22041', name: 'Compulsory English - IV', credits: 1 },
+              { id: 'pali22021', code: 'PALI 22021', name: 'Pali Language - II', credits: 1 },
+              { id: 'busa22021', code: 'BUSA 22021', name: 'An Approach to Buddhist Sanskrit - II', credits: 1 },
             ]
           },
           {
             semesterNumber: 5,
             subjects: [
-              { id: 'bsh3010', code: 'BUHA3010', name: 'Buddhist Philosophy of Education', credits: 3 },
-              { id: 'bsh3020', code: 'BUHA3020', name: 'Advanced Buddhist Sanskrit II', credits: 3 },
-              { id: 'bsh3030', code: 'BUHA3030', name: 'Social and Political Thought of Buddhism', credits: 3 },
-              { id: 'bsh3040', code: 'BUHA3040', name: 'Buddhist Psychology & Counseling Theories', credits: 3 },
+              { id: 'bust31253', code: 'BUST 31253', name: 'Buddhism and Modern World', credits: 3 },
+              { id: 'bust31263', code: 'BUST 31263', name: 'Theravāda Abhidhamma Studies', credits: 3 },
+              { id: 'bust31273', code: 'BUST 31273', name: 'Buddhist Ethics', credits: 3 },
+              { id: 'bust31303', code: 'BUST 31303', name: 'Buddhist Education Philosophy', credits: 3 },
+              { id: 'bust31313', code: 'BUST 31313', name: 'Mahāyāna Philosophy', credits: 3 },
+              { id: 'come31051', code: 'COME 31051', name: 'Compulsory English - V', credits: 1 },
+              { id: 'pali31031', code: 'PALI 31031', name: 'Pali Language - III', credits: 1 },
             ]
           },
           {
             semesterNumber: 6,
             subjects: [
-              { id: 'bsh3050', code: 'BUHA3050', name: 'Pali Exegetical Literature and Chronology', credits: 3 },
-              { id: 'bsh3060', code: 'BUHA3060', name: 'Buddhism and Human Ecology', credits: 3 },
-              { id: 'bsh3070', code: 'BUHA3070', name: 'Monastery Heritage Sites Conservation', credits: 3 },
-              { id: 'bsh3080', code: 'BUHA3080', name: 'Field Study and Archaeology Excursion', credits: 3 },
+              { id: 'bust32323', code: 'BUST 32323', name: 'Buddhist Art and Architecture', credits: 3 },
+              { id: 'bust32333', code: 'BUST 32333', name: 'Reading Comprehension of Pali Commentarial Literature', credits: 3 },
+              { id: 'bust32343', code: 'BUST 32343', name: 'Buddhism and World Religions', credits: 3 },
+              { id: 'bust32373', code: 'BUST 32373', name: 'Buddhist Legal and Ethical Philosophy', credits: 3 },
+              { id: 'bust32383', code: 'BUST 32383', name: 'Buddhist Logic and Western Logic', credits: 3 },
+              { id: 'come32061', code: 'COME 32061', name: 'Compulsory English - VI', credits: 1 },
+              { id: 'pali32041', code: 'PALI 32041', name: 'Traditions of Pali Grammar', credits: 1 },
             ]
           },
           {
             semesterNumber: 7,
             subjects: [
-              { id: 'bsh4010', code: 'BUHA4010', name: 'Pali Grammar (Advanced Concepts)', credits: 3 },
-              { id: 'bsh4020', code: 'BUHA4020', name: 'Buddhist Social and Moral Logic', credits: 3 },
-              { id: 'bsh4030', code: 'BUHA4030', name: 'Introduction to Tibetology and Tibetan', credits: 3 },
-              { id: 'bsh4040', code: 'BUHA4040', name: 'Honours Research Proposal', credits: 4 },
+              { id: 'bust41393', code: 'BUST 41393', name: 'Buddhism and Western Thought', credits: 3 },
+              { id: 'bust41403', code: 'BUST 41403', name: 'Buddhist Studies in the West', credits: 3 },
+              { id: 'bust41413', code: 'BUST 41413', name: 'Research Methodology for Buddhist Studies', credits: 3 },
+              { id: 'bust41423', code: 'BUST 41423', name: 'Buddhist Sanskrit Literature', credits: 3 },
+              { id: 'bust40436', code: 'BUST 40436', name: 'Independent Study', credits: 6 },
+              { id: 'pali41051', code: 'PALI 41051', name: 'The Linguistic Approach to Pali Grammar', credits: 1 },
             ]
           },
           {
             semesterNumber: 8,
             subjects: [
-              { id: 'bsh4050', code: 'BUHA4050', name: 'Contemporary Buddhist Revival Movements', credits: 3 },
-              { id: 'bsh4060', code: 'BUHA4060', name: 'Honours Research Dissertation', credits: 6 },
-              { id: 'bsh4070', code: 'BUHA4070', name: 'Advanced Academic Writing & Viva-Voce', credits: 3 },
-            ]
-          }
-        ]
-      },
-      {
-        id: 'ma-bs',
-        name: 'MA in Buddhist Studies',
-        durationYears: 2,
-        semesters: [
-          {
-            semesterNumber: 1,
-            subjects: [
-              { id: 'mab1010', code: 'BUPS5010', name: 'Socio-Political Philosophy of Buddhism', credits: 4 },
-              { id: 'mab1020', code: 'BUPS5020', name: 'Theravada Abhidhamma (Psychology Outline)', credits: 4 },
-              { id: 'mab1030', code: 'BUPS5030', name: 'Pali Language Research Framework', credits: 4 },
-            ]
-          },
-          {
-            semesterNumber: 2,
-            subjects: [
-              { id: 'mab1040', code: 'BUPS5040', name: 'Mahayana and Pure Land Doctrines', credits: 4 },
-              { id: 'mab1050', code: 'BUPS5050', name: 'Comparative Religion Studies', credits: 4 },
-              { id: 'mab1060', code: 'BUPS5060', name: 'Buddhist Meditation (Minafulness)', credits: 4 },
-            ]
-          },
-          {
-            semesterNumber: 3,
-            subjects: [
-              { id: 'mab2010', code: 'BUPS6010', name: 'Epigraphical Records & Buddhist History', credits: 4 },
-              { id: 'mab2020', code: 'BUPS6020', name: 'Buddhist Economic Principles & Ethics', credits: 4 },
-            ]
-          },
-          {
-            semesterNumber: 4,
-            subjects: [
-              { id: 'mab2030', code: 'BUPS6030', name: 'MA Research Dissertation & Seminar', credits: 12 },
+              { id: 'bust42443', code: 'BUST 42443', name: 'Studies on Buddhist Manuscripts and Inscriptions', credits: 3 },
+              { id: 'bust42453', code: 'BUST 42453', name: 'Chinese and Tibetan Buddhist Literature', credits: 3 },
+              { id: 'bust42466', code: 'BUST 42466', name: 'Internship', credits: 6 },
+              { id: 'bust40436_s2', code: 'BUST 40436', name: 'Independent Study', credits: 6 },
+              { id: 'prak42011', code: 'PRAK 42011', name: 'An Approach to Prakrit Language', credits: 1 },
             ]
           }
         ]

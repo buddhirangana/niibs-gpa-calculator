@@ -5,6 +5,7 @@
 
 import { useState, FormEvent } from 'react';
 import { SemesterRecord } from '../types';
+import { getDegreeClassifications } from '../data/faculties';
 import { 
   Award, 
   Plus, 
@@ -192,18 +193,19 @@ export default function CgpaCalculator({ semesters, onAddSemester, onUpdateSemes
   // Predict Honors Degree Standing
   let honorsClassification = 'General Degree Standby';
   let bannerStyle = 'bg-white/40 dark:bg-slate-900/40 border border-slate-200/80 dark:border-slate-800/80 text-slate-900 dark:text-white';
+  const thresholds = getDegreeClassifications(semesters);
 
   if (totalCredits > 0) {
-    if (calculatedCgpa >= 3.70) {
+    if (calculatedCgpa >= thresholds.firstClass) {
       honorsClassification = 'First Class Honours (Distinction)';
       bannerStyle = 'bg-gradient-to-r from-amber-500/15 via-yellow-500/5 to-transparent border border-amber-500/30 text-slate-900 dark:text-white';
-    } else if (calculatedCgpa >= 3.30) {
+    } else if (calculatedCgpa >= thresholds.secondUpper) {
       honorsClassification = 'Second Class Upper Division';
       bannerStyle = 'bg-gradient-to-r from-niibs-blue/15 via-indigo-500/5 to-transparent border border-niibs-blue/30 text-slate-900 dark:text-white';
-    } else if (calculatedCgpa >= 3.00) {
+    } else if (calculatedCgpa >= thresholds.secondLower) {
       honorsClassification = 'Second Class Lower Division';
       bannerStyle = 'bg-gradient-to-r from-emerald-500/15 via-teal-500/5 to-transparent border border-emerald-500/30 text-slate-900 dark:text-white';
-    } else if (calculatedCgpa >= 2.00) {
+    } else if (calculatedCgpa >= thresholds.generalDegree) {
       honorsClassification = 'General Pass';
       bannerStyle = 'bg-white/40 dark:bg-slate-900/40 border border-slate-200/80 dark:border-slate-800/80 text-slate-900 dark:text-white';
     } else {
@@ -432,13 +434,13 @@ export default function CgpaCalculator({ semesters, onAddSemester, onUpdateSemes
 
           {semesters.length > 0 ? (
             <div className="space-y-6">
-              {totalCredits > 0 && calculatedCgpa < 3.00 && (
+              {totalCredits > 0 && calculatedCgpa < thresholds.secondLower && (
                 <div className="bg-rose-500/10 border border-rose-500/30 text-rose-950 dark:text-rose-200 p-4.5 rounded-2xl flex items-start space-x-3 animate-in fade-in zoom-in-95 duration-200">
                   <AlertCircle className="w-5 h-5 text-rose-500 shrink-0 mt-0.5" />
                   <div className="space-y-1">
                     <h4 className="font-display font-bold text-sm">Honors Threshold Warning</h4>
                     <p className="text-xs leading-relaxed opacity-90">
-                      Your current CGPA ({calculatedCgpa.toFixed(2)}) is below the 3.00 threshold required for an honors degree bracket. You will need to achieve higher term averages in upcoming semesters to elevate your cumulative standing.
+                      Your current CGPA ({calculatedCgpa.toFixed(2)}) is below the {thresholds.secondLower.toFixed(2)} threshold required for an honors degree bracket. You will need to achieve higher term averages in upcoming semesters to elevate your cumulative standing.
                     </p>
                   </div>
                 </div>
@@ -463,11 +465,11 @@ export default function CgpaCalculator({ semesters, onAddSemester, onUpdateSemes
                         tick={{ fontSize: 10, fill: '#64748b', fontFamily: 'JetBrains Mono' }} 
                       />
                       <ReferenceLine 
-                        y={3.0} 
+                        y={thresholds.secondLower} 
                         stroke="#ef4444" 
                         strokeDasharray="4 4" 
                         opacity={0.6}
-                        label={{ position: 'insideBottomRight', value: 'Honors Min (3.0)', fill: '#ef4444', fontSize: 10, offset: 5, fontFamily: 'JetBrains Mono' }} 
+                        label={{ position: 'insideBottomRight', value: `Honors Min (${thresholds.secondLower.toFixed(1)})`, fill: '#ef4444', fontSize: 10, offset: 5, fontFamily: 'JetBrains Mono' }} 
                       />
                       <Tooltip 
                         contentStyle={{ 

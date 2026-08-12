@@ -5,6 +5,7 @@ import { motion } from "motion/react";
  */
 
 import { SemesterRecord } from '../types';
+import { facultiesData, getDegreeClassifications } from '../data/faculties';
 import { 
   Award, 
   GraduationCap, 
@@ -39,19 +40,20 @@ export default function Dashboard({ semesters, onNavigate, clearHistory }: Dashb
   const calculatedCgpa = totalCredits > 0 ? (totalPoints / totalCredits) : 0;
 
   // Determine Class
+  const thresholds = getDegreeClassifications(semesters);
   let degreeClass = 'No Active Record';
   let classColor = 'bg-slate-100 text-slate-600 dark:bg-slate-800/60 dark:text-slate-400 border-slate-200 dark:border-slate-700';
   if (totalCredits > 0) {
-    if (calculatedCgpa >= 3.70) {
+    if (calculatedCgpa >= thresholds.firstClass) {
       degreeClass = 'First Class Honours';
       classColor = 'bg-amber-500/15 text-amber-700 dark:text-niibs-yellow border-amber-500/30';
-    } else if (calculatedCgpa >= 3.30) {
+    } else if (calculatedCgpa >= thresholds.secondUpper) {
       degreeClass = 'Second Class Upper Division';
       classColor = 'bg-niibs-blue/15 text-niibs-blue dark:text-indigo-300 border-niibs-blue/30';
-    } else if (calculatedCgpa >= 3.00) {
+    } else if (calculatedCgpa >= thresholds.secondLower) {
       degreeClass = 'Second Class Lower Division';
       classColor = 'bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 border-emerald-500/30';
-    } else if (calculatedCgpa >= 2.00) {
+    } else if (calculatedCgpa >= thresholds.generalDegree) {
       degreeClass = 'General Pass';
       classColor = 'bg-slate-200/70 text-slate-800 dark:bg-slate-800 dark:text-slate-200 border-slate-300 dark:border-slate-700';
     } else {
@@ -73,10 +75,10 @@ export default function Dashboard({ semesters, onNavigate, clearHistory }: Dashb
       color: 'text-teal-700 dark:text-teal-300 border-teal-500/30',
       bgGradient: 'from-teal-500/15 to-emerald-500/10'
     });
-    if (calculatedCgpa >= 3.7) {
+    if (calculatedCgpa >= thresholds.firstClass) {
       badges.push({
-        title: 'Lotus Transcendence',
-        desc: 'Achieving pristine First Class standing (CGPA ≥ 3.70).',
+        title: 'Summa Cum Laude Status',
+        desc: `Achieving pristine First Class standing (CGPA ≥ ${thresholds.firstClass.toFixed(2)}).`,
         icon: Sparkles,
         color: 'text-amber-700 dark:text-niibs-yellow border-amber-500/30',
         bgGradient: 'from-amber-500/15 to-yellow-500/10'

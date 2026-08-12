@@ -87,7 +87,7 @@ export default function FacultyCalculator({ onSaveSemester, savedSemesters, init
   };
 
   // GPA calculation engine
-  const activeScheme = activeFaculty.rules.gradingScheme;
+  const activeScheme = activeProgram?.gradingScheme || activeFaculty.rules.gradingScheme;
   let totalCredits = 0;
   let totalGradePoints = 0;
 
@@ -430,7 +430,7 @@ export default function FacultyCalculator({ onSaveSemester, savedSemesters, init
                   {/* Right Column Select Grader */}
                   <div className="flex items-center space-x-2 shrink-0">
                     <div className="flex flex-wrap gap-1 max-w-[290px] sm:max-w-none justify-start sm:justify-end no-print">
-                      {['A+', 'A', 'A-', 'B+', 'B', 'B-', 'C+', 'C', 'C-', 'D', 'E'].map(g => {
+                      {activeScheme.map(sch => sch.grade).map(g => {
                         const isSelected = sub.grade === g;
                         return (
                           <button

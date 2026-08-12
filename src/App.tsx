@@ -213,7 +213,7 @@ export default function App() {
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4 }}
-                className="inline-flex items-center space-x-2.5 px-4 py-2 rounded-full bg-gradient-to-r from-niibs-yellow/20 via-amber-500/10 to-niibs-yellow/20 border border-niibs-yellow/40 text-niibs-yellow dark:text-niibs-yellow font-mono text-xs font-bold uppercase tracking-wider shadow-sm"
+                className="inline-flex items-center space-x-2.5 px-4 py-2 rounded-full bg-gradient-to-r from-niibs-yellow/20 via-amber-500/10 to-niibs-yellow/20 border border-niibs-yellow/40 text-niibs-yellow dark:text-niibs-yellow font-mono text-xs font-normal uppercase tracking-wider shadow-sm"
               >
                 <span className="relative flex h-2 w-2">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-niibs-yellow opacity-75"></span>
@@ -242,10 +242,7 @@ export default function App() {
                 transition={{ duration: 0.5, delay: 0.2 }}
                 className="text-base sm:text-xl text-slate-600 dark:text-slate-300 max-w-2xl mx-auto leading-relaxed font-normal"
               >
-                The standard-grade GPA calculator for Nāgānanda International
-                Institute for Buddhist Studies. Preload program subjects,
-                simulate target grades, and predict your final honors degree
-                standing.
+                Calculate your GPA with precision using official curriculum data. Add your module names, credits and grades to get your current CGPA.
               </motion.p>
 
               {/* Action Buttons */}
@@ -317,7 +314,7 @@ export default function App() {
                     <Zap className="w-5 h-5" />
                   </div>
                   <div className="font-display font-black text-lg text-slate-900 dark:text-white">Real-Time</div>
-                  <div className="text-[11px] text-slate-500 dark:text-slate-400 font-medium">Honors Forecasting</div>
+                  <div className="text-[11px] text-slate-500 dark:text-slate-400 font-medium">GPA Forecasting</div>
                 </div>
               </motion.div>
             </section>

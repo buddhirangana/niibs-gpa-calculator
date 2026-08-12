@@ -20,6 +20,13 @@ export interface Program {
   name: string; // e.g., 'BSc (Hons) Software Engineering'
   durationYears: number; // e.g., 4 or 3
   semesters: SemesterData[];
+  gradingScheme?: GradingScheme[];
+  degreeClassifications?: {
+    firstClass: number;
+    secondUpper: number;
+    secondLower: number;
+    generalDegree: number;
+  };
 }
 
 export interface GradingScheme {

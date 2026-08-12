@@ -7,34 +7,50 @@ import { Faculty } from '../types';
 
 // Standard NIIBS Computing Grading Scale
 export const fcitGradingScheme = [
-  { grade: 'A+', gpaValue: 4.0, description: 'Excellent' },
-  { grade: 'A', gpaValue: 4.0, description: 'Excellent' },
-  { grade: 'A-', gpaValue: 3.7, description: 'Very Good' },
-  { grade: 'B+', gpaValue: 3.3, description: 'Good' },
-  { grade: 'B', gpaValue: 3.0, description: 'Good' },
-  { grade: 'B-', gpaValue: 2.7, description: 'Satisfactory' },
-  { grade: 'C+', gpaValue: 2.3, description: 'Satisfactory' },
-  { grade: 'C', gpaValue: 2.0, description: 'Pass' },
-  { grade: 'C-', gpaValue: 1.7, description: 'Weak Pass' },
-  { grade: 'D+', gpaValue: 1.3, description: 'Conditional Pass' },
-  { grade: 'D', gpaValue: 1.0, description: 'Conditional Pass' },
-  { grade: 'E', gpaValue: 0.0, description: 'Fail' },
+  { grade: 'A+', gpaValue: 4.00, description: 'Superior' },
+  { grade: 'A', gpaValue: 4.00, description: 'Superior' },
+  { grade: 'A-', gpaValue: 3.70, description: 'Superior' },
+  { grade: 'B+', gpaValue: 3.30, description: 'Meritorious' },
+  { grade: 'B', gpaValue: 3.00, description: 'Meritorious' },
+  { grade: 'B-', gpaValue: 2.70, description: 'Meritorious' },
+  { grade: 'C+', gpaValue: 2.30, description: 'Adequate' },
+  { grade: 'C', gpaValue: 2.00, description: 'Adequate' },
+  { grade: 'C-', gpaValue: 1.70, description: 'Unsatisfactory' },
+  { grade: 'D+', gpaValue: 1.30, description: 'Unsatisfactory' },
+  { grade: 'D', gpaValue: 1.00, description: 'Unsatisfactory' },
+  { grade: 'E', gpaValue: 0.00, description: 'Failure' },
 ];
 
 // Standard NIIBS Humanities and Buddhist Studies Scale (Same GPA values but sometimes descriptive or slightly different rules)
 export const fbsGradingScheme = [
-  { grade: 'A+', gpaValue: 4.0, description: 'Distinction' },
-  { grade: 'A', gpaValue: 4.0, description: 'Excellent' },
-  { grade: 'A-', gpaValue: 3.7, description: 'Very Good' },
-  { grade: 'B+', gpaValue: 3.3, description: 'Good' },
-  { grade: 'B', gpaValue: 3.0, description: 'Satisfactory' },
-  { grade: 'B-', gpaValue: 2.7, description: 'Fairly Good' },
-  { grade: 'C+', gpaValue: 2.3, description: 'Fair' },
-  { grade: 'C', gpaValue: 2.0, description: 'Satisfactory Pass' },
-  { grade: 'C-', gpaValue: 1.7, description: 'Weak Pass' },
-  { grade: 'D+', gpaValue: 1.3, description: 'Poor' },
-  { grade: 'D', gpaValue: 1.0, description: 'Very Poor' },
-  { grade: 'E', gpaValue: 0.0, description: 'Fail' },
+  { grade: 'A+', gpaValue: 4.00, description: 'Distinction' },
+  { grade: 'A', gpaValue: 4.00, description: 'Excellent' },
+  { grade: 'A-', gpaValue: 3.70, description: 'Very Good' },
+  { grade: 'B+', gpaValue: 3.30, description: 'Good' },
+  { grade: 'B', gpaValue: 3.00, description: 'Satisfactory' },
+  { grade: 'B-', gpaValue: 2.70, description: 'Fairly Good' },
+  { grade: 'C+', gpaValue: 2.30, description: 'Fair' },
+  { grade: 'C', gpaValue: 2.00, description: 'Satisfactory Pass' },
+  { grade: 'C-', gpaValue: 1.70, description: 'Weak Pass' },
+  { grade: 'D+', gpaValue: 1.30, description: 'Poor' },
+  { grade: 'D', gpaValue: 1.00, description: 'Very Poor' },
+  { grade: 'E', gpaValue: 0.00, description: 'Fail' },
+];
+
+export const fhssAppliedMediaGradingScheme = [
+  { grade: 'A+', gpaValue: 4.00, description: 'Superior' },
+  { grade: 'A', gpaValue: 4.00, description: 'Superior' },
+  { grade: 'A-', gpaValue: 3.70, description: 'Superior' },
+  { grade: 'B+', gpaValue: 3.20, description: 'Meritorious' },
+  { grade: 'B', gpaValue: 3.00, description: 'Meritorious' },
+  { grade: 'B-', gpaValue: 2.70, description: 'Meritorious' },
+  { grade: 'C+', gpaValue: 2.30, description: 'Adequate' },
+  { grade: 'C', gpaValue: 2.00, description: 'Adequate' },
+  { grade: 'C-', gpaValue: 1.70, description: 'Adequate' },
+  { grade: 'D+', gpaValue: 1.30, description: 'Minimal' },
+  { grade: 'D', gpaValue: 1.00, description: 'Minimal' },
+  { grade: 'D-', gpaValue: 0.75, description: 'Minimal' },
+  { grade: 'E', gpaValue: 0.00, description: 'Failure' },
 ];
 
 export const facultiesData: Faculty[] = [
@@ -590,6 +606,13 @@ export const facultiesData: Faculty[] = [
         id: 'ba-acmt',
         name: 'BA (Hons) in Applied Communication and Media Technology',
         durationYears: 4,
+        gradingScheme: fhssAppliedMediaGradingScheme,
+        degreeClassifications: {
+          firstClass: 3.50,
+          secondUpper: 3.25,
+          secondLower: 3.00,
+          generalDegree: 2.00
+        },
         semesters: [
           {
             semesterNumber: 1,
@@ -805,6 +828,29 @@ export const facultiesData: Faculty[] = [
     ]
   }
 ];
+
+export function getDegreeClassifications(semesters: any[]) {
+  const defaultClassifications = {
+    firstClass: 3.70,
+    secondUpper: 3.30,
+    secondLower: 3.00,
+    generalDegree: 2.00
+  };
+
+  if (!semesters || semesters.length === 0) return defaultClassifications;
+
+  for (let i = semesters.length - 1; i >= 0; i--) {
+    if (!semesters[i].id) continue;
+    for (const fac of facultiesData) {
+      for (const prog of fac.programs) {
+        if (semesters[i].id.startsWith(`term-${prog.id}-`)) {
+          return prog.degreeClassifications || fac.rules.degreeClassifications;
+        }
+      }
+    }
+  }
+  return defaultClassifications;
+}
 
 // Academic Guide resources content (1500+ words across structured fields)
 export const academicGuides = {

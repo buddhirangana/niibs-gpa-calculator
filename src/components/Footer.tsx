@@ -182,10 +182,10 @@ export default function Footer({ onViewChange }: FooterProps) {
               <span>© {currentYear} NIIBS GPA Calculator.</span>
               <span className="hidden sm:inline">All rights reserved.</span>
             </p>
-            <span className="hidden sm:inline text-slate-800">•</span>
-            <div className="flex items-center space-x-1.5 text-slate-400 bg-slate-900/80 px-3 py-1 rounded-full border border-slate-800 font-mono text-[11px]">
+            <span className="hidden sm:inline text-slate-600">•</span>
+            <div className="flex items-center space-x-1.5 px-3 py-1 rounded-full border border-slate-700 font-mono text-[11px]">
               <Calendar className="w-3.5 h-3.5 text-niibs-yellow shrink-0" />
-              <span>Last Updated: <strong className="text-slate-100 font-normal">August 13, 2026</strong></span>
+              <span>Last Updated: August 13, 2026</span>
             </div>
           </div>
 

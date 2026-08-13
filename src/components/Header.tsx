@@ -111,6 +111,7 @@ export default function Header({ currentView, onViewChange, theme, setTheme }: H
               onClick={cycleTheme}
               className="p-2 sm:p-2.5 rounded-xl border border-slate-200/60 dark:border-slate-700/60 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 hover:bg-white dark:hover:bg-slate-700 hover:scale-105 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-niibs-blue dark:focus:ring-niibs-yellow shadow-sm flex items-center space-x-1 backdrop-blur-md"
               title={`Theme: ${theme}`}
+              aria-label={`Switch color theme (currently ${theme})`}
             >
               {theme === 'light' && <Sun className="w-4 h-4 text-niibs-yellow animate-pulse" />}
               {theme === 'dark' && <Moon className="w-4 h-4 text-niibs-yellow" />}
@@ -120,6 +121,7 @@ export default function Header({ currentView, onViewChange, theme, setTheme }: H
                   <Sun className="w-3.5 h-3.5 text-slate-400 dark:text-slate-500" />
                 </div>
               )}
+              <span className="sr-only">Switch theme (Current: {theme})</span>
             </button>
 
             {/* Mobile Menu Toggle */}
@@ -127,8 +129,10 @@ export default function Header({ currentView, onViewChange, theme, setTheme }: H
               id="mobile-drawer-toggle"
               onClick={() => setIsOpen(!isOpen)}
               className="p-2 md:hidden rounded-xl bg-white/20 dark:bg-slate-800/20 text-slate-800 dark:text-white border border-slate-200/30 dark:border-slate-800/30 focus:outline-none"
+              aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"}
             >
               {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              <span className="sr-only">{isOpen ? "Close navigation menu" : "Open navigation menu"}</span>
             </button>
           </div>
         </div>

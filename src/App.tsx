@@ -1,4 +1,5 @@
 import { motion, AnimatePresence } from "motion/react";
+import { Analytics } from '@vercel/analytics/react';
 /**
  * @license
  * SPDX-License-Identifier: Apache-2.0
@@ -703,6 +704,7 @@ export default function App() {
           </motion.div>
         )}
       </AnimatePresence>
+      <Analytics />
     </div>
   );
 }

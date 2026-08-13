@@ -34,9 +34,7 @@ export default defineConfig(() => {
       target: 'es2022',
       cssTarget: 'es2022',
       cssCodeSplit: true,
-      modulePreload: {
-        polyfill: false,
-      },
+      modulePreload: false,
       rollupOptions: {
         output: {
           manualChunks(id) {

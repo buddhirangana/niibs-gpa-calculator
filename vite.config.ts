@@ -1,26 +1,11 @@
 import tailwindcss from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react';
 import path from 'path';
-import {defineConfig, Plugin} from 'vite';
-
-// Custom plugin to make main CSS non-render-blocking
-function nonRenderBlockingCss(): Plugin {
-  return {
-    name: 'non-render-blocking-css',
-    transformIndexHtml(html) {
-      return html.replace(
-        /<link rel="stylesheet" crossorigin href="(\/assets\/index-[^"]+\.css)">/g,
-        `<link rel="preload" href="$1" as="style" />
-<link rel="stylesheet" href="$1" media="print" onload="this.media='all'" />
-<noscript><link rel="stylesheet" href="$1" /></noscript>`
-      );
-    },
-  };
-}
+import {defineConfig} from 'vite';
 
 export default defineConfig(() => {
   return {
-    plugins: [react(), tailwindcss(), nonRenderBlockingCss()],
+    plugins: [react(), tailwindcss()],
     resolve: {
       alias: {
         '@': path.resolve(__dirname, '.'),

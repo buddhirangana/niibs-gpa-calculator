@@ -247,53 +247,175 @@ export default function CgpaCalculator({ semesters, onAddSemester, onUpdateSemes
   const handleExportCsv = () => {
     if (semesters.length === 0) return;
 
-    const headers = ['Semester Name,Credits,GPA'];
-    const rows = semesters.map(sem => `"${sem.name.replace(/"/g, '""')}",${sem.credits},${sem.gpa.toFixed(2)}`);
-    
-    const csvContent = headers.concat(rows).join('\n');
+    const formattedDate = new Date().toISOString().split('T')[0];
+    const generatedOn = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+
+    let csvContent = `NIIBS GPA Calculator - Official Cumulative CGPA Summary Report\n`;
+    csvContent += `Generated Date,"${generatedOn}"\n`;
+    csvContent += `Overall CGPA,${calculatedCgpa.toFixed(3)}\n`;
+    csvContent += `Total Completed Credits,${totalCredits}\n`;
+    csvContent += `Honors Classification,"${honorsClassification.replace(/"/g, '""')}"\n`;
+    csvContent += `Total Semesters Logged,${semesters.length}\n`;
+    csvContent += `\n`;
+    csvContent += `"#","Semester / Term Name","Credits","Term GPA","Total Grade Points","Notes"\n`;
+
+    semesters.forEach((sem, idx) => {
+      const termPoints = sem.gpa * sem.credits;
+      const notesStr = sem.notes ? sem.notes.replace(/"/g, '""') : '';
+      csvContent += `${idx + 1},"${sem.name.replace(/"/g, '""')}",${sem.credits},${sem.gpa.toFixed(2)},${termPoints.toFixed(2)},"${notesStr}"\n`;
+    });
+
+    const totalPoints = semesters.reduce((acc, sem) => acc + (sem.gpa * sem.credits), 0);
+    csvContent += `\n`;
+    csvContent += `"SUMMARY","CUMULATIVE TOTALS",${totalCredits},${calculatedCgpa.toFixed(3)},${totalPoints.toFixed(2)},"Status: ${honorsClassification.replace(/"/g, '""')}"\n`;
+
     const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
     const url = URL.createObjectURL(blob);
-    
+
     const link = document.createElement('a');
     link.setAttribute('href', url);
-    link.setAttribute('download', `cgpa-export-${new Date().toISOString().split('T')[0]}.csv`);
+    link.setAttribute('download', `NIIBS-CGPA-Report-${formattedDate}.csv`);
     link.style.visibility = 'hidden';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
+    URL.revokeObjectURL(url);
   };
 
   const handleExportPdf = () => {
     if (semesters.length === 0) return;
-    
+
     const doc = new jsPDF();
-    
+    const formattedDate = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+
+    // Primary Header Banner
+    doc.setFillColor(45, 48, 145); // NIIBS Blue
+    doc.rect(0, 0, 210, 28, 'F');
+
+    // Title inside Header Banner
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(15);
+    doc.setTextColor(255, 255, 255);
+    doc.text('NIIBS GPA CALCULATOR', 14, 15);
+
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(9);
+    doc.setTextColor(230, 235, 255);
+    doc.text('Official Academic Cumulative CGPA Statement', 14, 22);
+
+    doc.setFontSize(8);
+    doc.text(`Issued: ${formattedDate}`, 196, 15, { align: 'right' });
+    doc.text('Official Report', 196, 21, { align: 'right' });
+
+    // Summary Box
+    doc.setFillColor(248, 250, 252);
+    doc.setDrawColor(226, 232, 240);
+    doc.roundedRect(14, 34, 182, 30, 3, 3, 'FD');
+
+    // Column 1: CGPA
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(8);
+    doc.setTextColor(100, 116, 139);
+    doc.text('OVERALL CGPA', 20, 43);
+
     doc.setFontSize(18);
-    doc.text('CGPA Cumulative Report', 14, 22);
-    
-    doc.setFontSize(11);
-    doc.setTextColor(100);
-    doc.text(`Total Credits: ${totalCredits}`, 14, 30);
-    doc.text(`Overall CGPA: ${calculatedCgpa.toFixed(3)}`, 14, 36);
-    doc.text(`Predicted Status: ${honorsClassification}`, 14, 42);
+    doc.setTextColor(15, 23, 42);
+    doc.text(calculatedCgpa.toFixed(3), 20, 54);
 
-    const tableData = semesters.map(sem => [
-      sem.name,
-      sem.credits.toString(),
-      sem.gpa.toFixed(2),
-      sem.notes || ''
-    ]);
+    doc.setFontSize(8);
+    doc.setTextColor(100, 116, 139);
+    doc.text('/ 4.000 Scale', 48, 54);
 
-    autoTable(doc, {
-      startY: 50,
-      head: [['Semester Name', 'Credits', 'Term GPA', 'Notes']],
-      body: tableData,
-      theme: 'grid',
-      headStyles: { fillColor: [45, 48, 145] },
-      styles: { fontSize: 10, cellPadding: 4 },
+    // Column 2: Credits
+    doc.setFontSize(8);
+    doc.setTextColor(100, 116, 139);
+    doc.text('TOTAL COMPLETED CREDITS', 82, 43);
+
+    doc.setFontSize(18);
+    doc.setTextColor(15, 23, 42);
+    doc.text(totalCredits.toString(), 82, 54);
+
+    doc.setFontSize(8);
+    doc.setTextColor(100, 116, 139);
+    doc.text('Credit Hours', 102, 54);
+
+    // Column 3: Predicted Status
+    doc.setFontSize(8);
+    doc.setTextColor(100, 116, 139);
+    doc.text('PREDICTED HONORS STATUS', 142, 43);
+
+    doc.setFontSize(10);
+    doc.setFont('helvetica', 'bold');
+    doc.setTextColor(45, 48, 145);
+    doc.text(honorsClassification, 142, 53);
+
+    // Table of Semesters
+    let totalGradePointsSum = 0;
+    const tableData = semesters.map((sem, idx) => {
+      const points = sem.gpa * sem.credits;
+      totalGradePointsSum += points;
+      return [
+        (idx + 1).toString(),
+        sem.name,
+        sem.credits.toString(),
+        sem.gpa.toFixed(2),
+        points.toFixed(2),
+        sem.notes || '—'
+      ];
     });
 
-    doc.save(`cgpa-report-${new Date().toISOString().split('T')[0]}.pdf`);
+    autoTable(doc, {
+      startY: 70,
+      head: [['#', 'Semester / Term Descriptor', 'Credits', 'Term GPA', 'Points Earned', 'Notes']],
+      body: tableData,
+      theme: 'grid',
+      headStyles: {
+        fillColor: [45, 48, 145],
+        textColor: [255, 255, 255],
+        fontStyle: 'bold',
+        fontSize: 9,
+        halign: 'left'
+      },
+      columnStyles: {
+        0: { halign: 'center', cellWidth: 12 },
+        1: { cellWidth: 70 },
+        2: { halign: 'center', cellWidth: 22 },
+        3: { halign: 'center', cellWidth: 24 },
+        4: { halign: 'right', cellWidth: 26 },
+        5: { cellWidth: 'auto' }
+      },
+      foot: [[
+        'Total',
+        'Cumulative Summary',
+        totalCredits.toString(),
+        `CGPA: ${calculatedCgpa.toFixed(3)}`,
+        totalGradePointsSum.toFixed(2),
+        `Status: ${honorsClassification}`
+      ]],
+      footStyles: {
+        fillColor: [241, 245, 249],
+        textColor: [15, 23, 42],
+        fontStyle: 'bold',
+        fontSize: 9
+      },
+      styles: {
+        fontSize: 9,
+        cellPadding: 4.5,
+        textColor: [30, 41, 59]
+      },
+      alternateRowStyles: {
+        fillColor: [248, 250, 252]
+      }
+    });
+
+    const finalY = (doc as any).lastAutoTable ? (doc as any).lastAutoTable.finalY + 15 : 200;
+    doc.setFont('helvetica', 'italic');
+    doc.setFontSize(8);
+    doc.setTextColor(148, 163, 184);
+    doc.text('Disclaimer: This transcript summary is generated electronically via NIIBS GPA Calculator.', 14, Math.min(finalY, 275));
+    doc.text('Official academic records must be verified directly with the NIIBS Examination Division.', 14, Math.min(finalY + 4, 279));
+
+    doc.save(`NIIBS-CGPA-Report-${new Date().toISOString().split('T')[0]}.pdf`);
   };
 
   const handlePrint = () => {
@@ -304,7 +426,7 @@ export default function CgpaCalculator({ semesters, onAddSemester, onUpdateSemes
     const creditsUpToNow = semesters.slice(0, index + 1).reduce((sum, s) => sum + s.credits, 0);
     const pointsUpToNow = semesters.slice(0, index + 1).reduce((sum, s) => sum + (s.gpa * s.credits), 0);
     const cgpaUpToNow = creditsUpToNow > 0 ? (pointsUpToNow / creditsUpToNow) : 0;
-    
+
     return {
       name: sem.name.length > 15 ? sem.name.substring(0, 15) + '...' : sem.name,
       fullName: sem.name,
@@ -335,22 +457,145 @@ export default function CgpaCalculator({ semesters, onAddSemester, onUpdateSemes
     });
 
   return (
-    <div id="cgpa-calculator-component" className="grid grid-cols-1 lg:grid-cols-3 gap-8 relative z-10 print:block max-w-6xl mx-auto print-document">
-      
-      {/* Official Print Header */}
-      <div className="hidden print-only print-header print-report-header">
-        <div className="print-brand-row">
-          <div className="print-brand-mark">NIIBS</div>
-          <div>
-            <h1>NIIBS GPA Calculators</h1>
-            <p>Official academic transcript and cumulative summary</p>
+    <>
+      {/* Official Academic Print Report Document (Print Only) */}
+      <div className="hidden print:block print-document-container w-full bg-white text-slate-900 font-sans">
+        {/* Institutional Branding Header */}
+        <div className="border-b-2 border-slate-900 pb-4 mb-5">
+          <div className="flex items-center justify-between mb-3">
+            <div className="flex items-center space-x-4">
+              <div className="w-14 h-14 rounded-2xl border-2 border-slate-900 bg-white flex items-center justify-center p-1.5 shadow-sm shrink-0 overflow-hidden">
+                <img src="/favicon.png" alt="NIIBS GPA Calculator Logo" className="w-full h-full object-contain" />
+              </div>
+              <div>
+                <h1 className="text-xl font-bold uppercase tracking-wider text-slate-950 font-sans leading-tight">
+                  NIIBS GPA Calculator
+                </h1>
+                <p className="text-xs text-slate-700 font-sans tracking-wide font-medium">
+                  Official Cumulative CGPA Performance Statement &amp; Transcript Summary
+                </p>
+              </div>
+            </div>
+            <div className="text-right shrink-0">
+              <span className="inline-block px-3 py-1 bg-slate-900 text-white font-mono text-[10px] font-semibold tracking-widest uppercase rounded-sm">
+                CUMULATIVE REPORT
+              </span>
+              <p className="text-[10px] text-slate-600 font-mono mt-1">
+                Issued: {new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}
+              </p>
+            </div>
+          </div>
+
+          {/* Academic Metadata Grid */}
+          <div className="grid grid-cols-2 gap-x-6 gap-y-2 pt-3 border-t border-slate-300 text-xs text-slate-800">
+            <div>
+              <span className="font-semibold text-slate-600 font-mono text-[10px] uppercase block">Evaluation Type</span>
+              <span className="font-bold text-slate-950">Multi-Semester Cumulative CGPA Log</span>
+            </div>
+            <div>
+              <span className="font-semibold text-slate-600 font-mono text-[10px] uppercase block">Semesters Logged</span>
+              <span className="font-bold text-slate-950">{semesters.length} Academic Terms</span>
+            </div>
           </div>
         </div>
-        <div className="print-report-meta">
-          <span>Generated: {new Date().toLocaleDateString()}</span>
-          <span>Report Type: CGPA Summary</span>
+
+        {/* Executive Summary Cards */}
+        <div className="grid grid-cols-3 gap-4 mb-6">
+          <div className="p-3.5 border-2 border-slate-900 bg-slate-50 text-center rounded-md">
+            <span className="text-[10px] uppercase tracking-wider font-mono font-semibold text-slate-600 block">OVERALL CGPA</span>
+            <span className="text-3xl font-bold font-mono text-slate-950 leading-tight block mt-0.5">
+              {calculatedCgpa.toFixed(3)}
+            </span>
+            <span className="text-[10px] text-slate-500 font-mono">out of 4.000</span>
+          </div>
+          <div className="p-3.5 border-2 border-slate-900 bg-slate-50 text-center rounded-md">
+            <span className="text-[10px] uppercase tracking-wider font-mono font-semibold text-slate-600 block">TOTAL COMPLETED CREDITS</span>
+            <span className="text-3xl font-bold font-mono text-slate-950 leading-tight block mt-0.5">
+              {totalCredits}
+            </span>
+            <span className="text-[10px] text-slate-500 font-mono">Credit Hours</span>
+          </div>
+          <div className="p-3.5 border-2 border-slate-900 bg-slate-50 text-center rounded-md">
+            <span className="text-[10px] uppercase tracking-wider font-mono font-semibold text-slate-600 block">PREDICTED HONORS STATUS</span>
+            <span className="text-xs font-bold text-slate-950 block mt-2 font-sans">
+              {honorsClassification}
+            </span>
+            <span className="text-[10px] text-slate-500 font-mono">Based on logged semesters</span>
+          </div>
+        </div>
+
+        {/* Semester Cumulative Ledger Table */}
+        <div className="mb-6">
+          <h3 className="text-xs font-bold uppercase tracking-wider text-slate-900 font-mono mb-2 pb-1 border-b border-slate-900">
+            Multi-Semester Cumulative Performance Log
+          </h3>
+          <table className="w-full text-left border-collapse text-xs">
+            <thead>
+              <tr className="border-b-2 border-slate-900 bg-slate-100 font-mono text-[11px] text-slate-900">
+                <th className="py-2 px-2 w-8 text-center border-r border-slate-300">#</th>
+                <th className="py-2 px-3 border-r border-slate-300">Semester Descriptor</th>
+                <th className="py-2 px-3 w-20 text-center border-r border-slate-300">Credits</th>
+                <th className="py-2 px-3 w-24 text-center border-r border-slate-300">Term GPA</th>
+                <th className="py-2 px-3 w-28 text-right border-r border-slate-300">Grade Points</th>
+                <th className="py-2 px-3 border-r border-slate-300">Notes / Details</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-slate-200">
+              {semesters.map((sem, idx) => {
+                const points = sem.gpa * sem.credits;
+                return (
+                  <tr key={sem.id} className={idx % 2 === 1 ? 'bg-slate-50/50' : ''}>
+                    <td className="py-2 px-2 text-center font-mono text-slate-500 border-r border-slate-200">{idx + 1}</td>
+                    <td className="py-2 px-3 font-medium text-slate-950 border-r border-slate-200">{sem.name}</td>
+                    <td className="py-2 px-3 text-center font-mono border-r border-slate-200">{sem.credits}</td>
+                    <td className="py-2 px-3 text-center font-mono font-bold border-r border-slate-200">{sem.gpa.toFixed(2)}</td>
+                    <td className="py-2 px-3 text-right font-mono font-bold border-r border-slate-200">{points.toFixed(2)}</td>
+                    <td className="py-2 px-3 text-slate-600 border-r border-slate-200">{sem.notes || '—'}</td>
+                  </tr>
+                );
+              })}
+            </tbody>
+            <tfoot>
+              <tr className="border-t-2 border-slate-900 bg-slate-100 font-mono font-bold text-slate-950">
+                <td colSpan={2} className="py-2.5 px-3 text-right uppercase tracking-wider text-[11px] border-r border-slate-300">
+                  Cumulative Totals:
+                </td>
+                <td className="py-2.5 px-3 text-center border-r border-slate-300">{totalCredits}</td>
+                <td className="py-2.5 px-3 text-center border-r border-slate-300">CGPA: {calculatedCgpa.toFixed(3)}</td>
+                <td className="py-2.5 px-3 text-right text-sm border-r border-slate-300">
+                  {semesters.reduce((acc, sem) => acc + (sem.gpa * sem.credits), 0).toFixed(2)}
+                </td>
+                <td className="py-2.5 px-3 text-xs font-bold">
+                  Status: {honorsClassification}
+                </td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+
+        {/* Official Footer Notice and Signatures */}
+        <div className="pt-4 border-t border-slate-300 mt-auto break-inside-avoid">
+          <p className="text-[10px] text-slate-500 font-sans italic leading-tight text-center mb-8">
+            Disclaimer: This evaluation report is computer-generated based on NIIBS faculty curriculum rules. Official academic transcripts must be requested directly from the NIIBS Examination Division.
+          </p>
+
+          <div className="grid grid-cols-2 gap-12 pt-6 font-mono text-xs text-slate-800">
+            <div>
+              <div className="border-b border-slate-400 mb-1.5 h-8"></div>
+              <p className="font-bold text-slate-950">Student Signature &amp; Date</p>
+              <p className="text-[10px] text-slate-500">I confirm the accuracy of term grades recorded above.</p>
+            </div>
+            <div>
+              <div className="border-b border-slate-400 mb-1.5 h-8"></div>
+              <p className="font-bold text-slate-950">Authorized Academic Verifier</p>
+              <p className="text-[10px] text-slate-500">NIIBS Academic Records Division / Seal</p>
+            </div>
+          </div>
         </div>
       </div>
+
+      {/* Screen Interactive Web View (Hidden when printing) */}
+      <div id="cgpa-calculator-component" className="grid grid-cols-1 lg:grid-cols-3 gap-8 relative z-10 print:hidden max-w-6xl mx-auto">
 
       {/* Semester details list - Left 2 columns */}
       <div className="lg:col-span-2 space-y-6">
@@ -776,5 +1021,6 @@ export default function CgpaCalculator({ semesters, onAddSemester, onUpdateSemes
         </motion.div>
       </div>
     </div>
-  );
+  </>
+);
 }

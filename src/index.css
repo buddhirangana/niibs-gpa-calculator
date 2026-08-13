@@ -225,155 +225,50 @@ a, button {
     padding: 0 !important;
   }
 
-  .print-selector-panel,
-  .print-form-block,
-  .print-field-group,
-  .print-header-row,
-  .print-options-list,
-  .print-semester-grid {
-    display: block !important;
-    max-width: 100% !important;
-    width: 100% !important;
-  }
-
-  .print-form-block {
-    border: 2px solid #111111 !important;
-    border-radius: 0 !important;
-    box-shadow: none !important;
-    padding: 0.85rem 1rem !important;
-    background: #ffffff !important;
-    break-inside: avoid;
-  }
-
-  .print-header-row {
-    display: flex !important;
-    align-items: center;
-    justify-content: space-between;
-    padding-bottom: 0.55rem;
-    margin-bottom: 0.4rem;
-    border-bottom: 2px solid #111111;
-  }
-
-  .print-title {
-    font-size: 18pt !important;
-    font-weight: 700 !important;
-    color: #111111 !important;
-    font-family: "Times New Roman", Georgia, serif !important;
-  }
-
-  .print-label {
-    font-size: 9pt !important;
-    letter-spacing: 0.12em !important;
-    text-transform: uppercase;
-    color: #111111 !important;
-    opacity: 1 !important;
-    margin-top: 0.5rem;
-  }
-
-  .print-option-btn,
-  .print-select,
-  .print-semester-btn {
-    border: 1.5px solid #111111 !important;
-    border-radius: 0.6rem !important;
-    background: #ffffff !important;
-    color: #111111 !important;
-    box-shadow: none !important;
-    font-family: "Times New Roman", Georgia, serif !important;
-  }
-
-  .print-option-btn {
-    display: flex !important;
-    align-items: center;
-    justify-content: space-between;
-    gap: 0.5rem;
-    padding: 0.75rem 0.8rem !important;
-    margin-bottom: 0.5rem;
-  }
-
-  .print-option-tag {
-    border: 1px solid #111111 !important;
-    border-radius: 0.35rem !important;
-    background: #e5e7eb !important;
-    color: #111111 !important;
-    padding: 0.1rem 0.4rem !important;
-  }
-
-  .print-option-btn.bg-niibs-blue\/10,
-  .print-option-btn.border-niibs-blue,
-  .print-option-btn[style*="border-niibs-blue"],
-  .print-option-btn[style*="background"],
-  .print-option-btn:focus,
-  .print-option-btn:hover,
-  .print-option-btn.is-selected {
-    background: #f3e6a7 !important;
-    border-color: #d9a200 !important;
-    color: #111111 !important;
-  }
-
-  .print-option-btn.bg-niibs-blue\/10 .print-option-tag,
-  .print-option-btn.border-niibs-blue .print-option-tag,
-  .print-option-btn.is-selected .print-option-tag {
-    background: #d9a200 !important;
-    color: #111111 !important;
-    border-color: #111111 !important;
-  }
-
-  .print-select {
-    display: block !important;
-    padding: 0.7rem 0.8rem !important;
-    margin-top: 0.2rem;
-    width: 100%;
-    background: #f8f3d7 !important;
-    border-color: #d9a200 !important;
-    color: #111111 !important;
-  }
-
-  .print-semester-grid {
-    display: flex !important;
-    flex-wrap: wrap;
-    gap: 0.4rem;
-    margin-top: 0.2rem;
-  }
-
-  .print-semester-btn {
-    width: auto !important;
-    min-width: 3rem;
-    padding: 0.5rem 0.7rem !important;
-    font-size: 12pt !important;
-    margin: 0 !important;
-    background: #ffffff !important;
-    color: #111111 !important;
-  }
-
-  .print-semester-btn.bg-niibs-blue,
-  .print-semester-btn.border-niibs-blue,
-  .print-semester-btn.is-selected,
-  .print-semester-btn[style*="background"] {
-    background: #f3c84f !important;
-    border-color: #d9a200 !important;
-    color: #111111 !important;
-    font-weight: 700 !important;
-  }
-
-  .print-icon {
-    display: block !important;
-    width: 1.3rem !important;
-    height: 1.3rem !important;
-    color: #111111 !important;
-  }
-
-  /* Hide browser-only chrome and controls */
-  header,
-  footer,
-  nav,
-  .no-print,
-  .print\:hidden,
-  .glass-nav,
-  .ambient-glow-1,
-  .ambient-glow-2,
-  .ambient-glow-3 {
+  .print-selector-panel {
     display: none !important;
   }
+
+  .print-document-container {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #ffffff !important;
+    color: #0f172a !important;
+  }
+
+  /* Print Header & Footer Styling */
+  .print-report-header {
+    margin-bottom: 0.6rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 2px solid #111111;
+  }
+  .print-brand-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.4rem;
+  }
+  .print-brand-mark {
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: #111111;
+    margin-right: 0.5rem;
+  }
+  .print-report-meta {
+    font-size: 9pt;
+    color: #111111;
+  }
+  .print-report-meta span { margin-right: 0.8rem; }
+  .print-footer {
+    margin-top: 0.8rem;
+    text-align: center;
+    font-size: 8pt;
+    color: #111111;
+  }
+
 
   .print-only {
     display: block !important;
@@ -382,8 +277,6 @@ a, button {
   #root,
   main,
   .min-h-screen,
-  #cgpa-calculator-component,
-  #faculty-calculator-component,
   .print-document {
     display: block !important;
     width: 100% !important;
@@ -396,13 +289,34 @@ a, button {
   }
 
   .grid,
-  .lg\:col-span-2,
-  .lg\:col-span-1 {
+  .lg\:col-span-2 {
     display: block !important;
     max-width: 100% !important;
     width: 100% !important;
     grid-template-columns: none !important;
     column-gap: 0 !important;
+  }
+
+  /* Strict hide for all screen-only UI elements when printing */
+  header,
+  footer,
+  nav,
+  .no-print,
+  .print-selector-panel,
+  .print-form-block,
+  .print-field-group,
+  .print-header-row,
+  .print-options-list,
+  .print-semester-grid,
+  .glass-nav,
+  .ambient-glow-1,
+  .ambient-glow-2,
+  .ambient-glow-3,
+  .print\:hidden,
+  #faculty-calculator-component.print\:hidden,
+  #cgpa-calculator-component.print\:hidden,
+  [class*="print:hidden"] {
+    display: none !important;
   }
 
   .glass-card,
@@ -475,7 +389,7 @@ a, button {
     color: #333333 !important;
     font-size: 9pt !important;
     letter-spacing: 0.02em;
-    font-family: "Times New Roman", Georgia, serif !important;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
   }
 
   .print-report-meta {
@@ -488,18 +402,15 @@ a, button {
 
   p, h1, h2, h3, h4, h5, h6, span, div, li, ul, b, strong {
     color: #111111 !important;
-    font-family: "Times New Roman", Georgia, serif !important;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
   }
 
-  .font-display, .font-mono, .font-sans {
-    font-family: "Times New Roman", Georgia, serif !important;
+  .font-display, .font-sans {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
   }
 
-  .print-summary-panel .font-mono,
-  .print-summary-panel .font-display,
-  .print-ledger .font-mono,
-  .print-ledger .font-display {
-    font-family: "Times New Roman", Georgia, serif !important;
+  .font-mono {
+    font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace !important;
   }
 
   main {

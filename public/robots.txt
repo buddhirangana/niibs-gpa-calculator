@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://niibsgpa.buddhirangana.com/sitemap.xml

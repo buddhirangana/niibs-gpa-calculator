@@ -561,7 +561,7 @@ export default function App() {
         {currentView === "calculator" && (
           <div className="space-y-8 animate-in fade-in duration-300 max-w-6xl mx-auto">
             {/* View Title */}
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-slate-200/80 dark:border-slate-800/80 pb-6">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-slate-200/80 dark:border-slate-800/80 pb-6 print:hidden">
               <div>
                 <h1 className="font-display font-black text-2xl sm:text-4xl text-slate-950 dark:text-white flex items-center space-x-3">
                   <div className="p-2.5 rounded-2xl bg-niibs-blue/10 dark:bg-niibs-yellow/15 text-niibs-blue dark:text-niibs-yellow">
@@ -616,7 +616,7 @@ export default function App() {
 
         {currentView === "cgpa" && (
           <div className="space-y-8 animate-in fade-in duration-300 max-w-6xl mx-auto">
-            <div className="border-b border-slate-200/80 dark:border-slate-800/80 pb-6">
+            <div className="border-b border-slate-200/80 dark:border-slate-800/80 pb-6 print:hidden">
               <h1 className="font-display font-black text-2xl sm:text-4xl text-slate-950 dark:text-white flex items-center space-x-3">
                 <div className="p-2.5 rounded-2xl bg-niibs-yellow/20 text-niibs-yellow dark:text-niibs-yellow">
                   <Award className="w-7 h-7 text-niibs-yellow" />
@@ -647,7 +647,7 @@ export default function App() {
 
         {currentView === "target_gpa" && (
           <div className="space-y-8 animate-in fade-in duration-300 max-w-6xl mx-auto">
-            <div className="border-b border-slate-200/80 dark:border-slate-800/80 pb-6">
+            <div className="border-b border-slate-200/80 dark:border-slate-800/80 pb-6 print:hidden">
               <h1 className="font-display font-black text-2xl sm:text-4xl text-slate-950 dark:text-white flex items-center space-x-3">
                 <div className="p-2.5 rounded-2xl bg-niibs-blue/10 dark:bg-niibs-yellow/15 text-niibs-blue dark:text-niibs-yellow">
                   <GraduationCap className="w-7 h-7" />

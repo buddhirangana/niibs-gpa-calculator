@@ -1,48 +1,77 @@
 # 🎓 NIIBS GPA Calculator
 
-The **NIIBS GPA Calculator** is a free, online tool designed for students of the Nāgānanda International Institute for Buddhist Studies (NIIBS) to easily calculate and track their semester and cumulative Grade Point Averages (GPA & CGPA) based on official university credit weightage and grade point values.
+[![Live Website](https://img.shields.io/badge/Live-niibsgpa.buddhirangana.com-2d3091?style=for-the-badge&logo=googlechrome&logoColor=white)](https://niibsgpa.buddhirangana.com)
+[![PWA Ready](https://img.shields.io/badge/PWA-100%25_Offline-00a650?style=for-the-badge&logo=pwa&logoColor=white)](https://niibsgpa.buddhirangana.com)
+[![License: MIT](https://img.shields.io/badge/License-MIT-ffc013?style=for-the-badge&logoColor=black)](LICENSE)
 
-## Features
+The **NIIBS GPA Calculator** is an official-grade, progressive academic evaluation tool designed for undergraduates at the **Nāgānanda International Institute for Buddhist Studies (NIIBS)**. It enables students to calculate, track, and forecast their semester SGPA and cumulative CGPA according to official university credit weightages, faculty grading rules, and degree classification criteria.
 
-- **GPA Calculator:** Quickly calculate your current semester's GPA by entering course credits and grades.
-- **CGPA Tracker:** Keep track of your cumulative GPA across multiple semesters.
-- **Target Planner:** Plan your future grades to achieve your target CGPA goals.
-- **Academic Resources:** Access comprehensive reference guides and toolsets for different faculties (FCIT, FBS, FHSS).
-- **Responsive Design:** Beautifully optimized for both desktop and mobile devices.
-- **Theme Support:** Full support for dark, light, and system themes to ensure a comfortable viewing experience.
+🌐 **Live Application:** [https://niibsgpa.buddhirangana.com](https://niibsgpa.buddhirangana.com)
 
-## Getting Started
+## 🌟 Key Features
 
-First, install the dependencies:
+- 📚 **Faculty Syllabus Grid Mode**: Pre-loaded official curriculum grids for:
+  - **FCIT** (Faculty of Computing and Information Technology)
+  - **FBS** (Faculty of Buddhist Studies)
+  - **FHSS** (Faculty of Humanities and Social Sciences)
+- 🖨️ **Official Print Transcript Generation**: Print clean 1-page academic transcript statements equipped with NIIBS logo branding, course performance tables, summary cards, and verification signature blocks.
+- 📄 **Styled PDF Report Export**: Generate custom PDF cumulative transcripts featuring NIIBS primary branding banners, summary metrics, and auto-styled table grids.
+- 📊 **CSV Data Export**: Export multi-semester records into formatted CSV spreadsheets with summary totals.
+- 🎯 **Target CGPA Planner**: Compute required minimum GPA for remaining credit hours to achieve target honors classification brackets.
+- 📱 **Progressive Web App (PWA)**: Installable on mobile and desktop devices with full offline support via Service Worker caching.
+- 🎨 **Modern Dark & Light UI**: Sleek glassmorphism visual design with system theme detection.
+- 🔍 **SEO & OpenGraph Optimized**: Complete OpenGraph cards, Twitter preview banners, canonical tags, and Schema.org `WebApplication` structured data.
 
-```bash
-npm install
-```
+## 🚀 Getting Started
 
-Then, run the development server:
+### Prerequisites
 
-```bash
-npm run dev
-```
+Make sure you have **Node.js** (v18 or higher) installed on your system.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the app running locally.
+### Installation
 
-## Technologies Used
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/buddhirangana/niibs-gpa-calculator.git
+   cd niibs-gpa-calculator
+   ```
 
-- [React](https://react.org/)
-- [Vite](https://vitejs.dev/)
-- [Tailwind CSS](https://tailwindcss.com/)
-- [TypeScript](https://www.typescriptlang.org/)
-- [Lucide React](https://lucide.dev/) for elegant icons
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-## Disclaimer
+3. Start the local development server:
+   ```bash
+   npm run dev
+   ```
+   Open `http://localhost:3000` in your browser.
 
-This GPA calculator is an independent tool created using NIIBS Student Handbooks. It is not affiliated with, endorsed by, or sponsored by the Nāgānanda International Institute for Buddhist Studies (NIIBS). The accuracy of results is not guaranteed. Please use this tool at your own discretion.
+4. Build for production:
+   ```bash
+   npm run build
+   ```
 
-## License
+## 🛠️ Built With
+
+- **Core Framework:** [React 18](https://reactjs.org/) + [Vite](https://vitejs.dev/)
+- **Language:** [TypeScript](https://www.typescriptlang.org/)
+- **Styling:** [Tailwind CSS](https://tailwindcss.com/) + Vanilla CSS design system
+- **Icons:** [Lucide React](https://lucide.dev/)
+- **Charts:** [Recharts](https://recharts.org/)
+- **Animations:** [Framer Motion](https://motion.dev/)
+- **PDF Generation:** [jsPDF](https://github.com/parallax/jsPDF) + [jspdf-autotable](https://github.com/simonbengtsson/jsPDF-AutoTable)
+
+## ⚠️ Disclaimer
+
+This GPA calculator is an independent tool created based on NIIBS Student Handbooks and faculty curriculum directives. It is intended for academic evaluation and planning purposes. Official transcripts must be requested directly from the NIIBS Examination Division.
+
+## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## Author
+## 👨‍💻 Author
 
-Made with ❤️ by [Buddhi Rangana](https://buddhirangana.com).
+Created with ❤️ by **[Buddhi Rangana](https://buddhirangana.com)**.
+- Website: [https://buddhirangana.com](https://buddhirangana.com)
+- Hosting URL: [https://niibsgpa.buddhirangana.com](https://niibsgpa.buddhirangana.com)

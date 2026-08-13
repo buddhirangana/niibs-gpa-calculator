@@ -335,20 +335,28 @@ export default function CgpaCalculator({ semesters, onAddSemester, onUpdateSemes
     });
 
   return (
-    <div id="cgpa-calculator-component" className="grid grid-cols-1 lg:grid-cols-3 gap-8 relative z-10 print:block max-w-6xl mx-auto">
+    <div id="cgpa-calculator-component" className="grid grid-cols-1 lg:grid-cols-3 gap-8 relative z-10 print:block max-w-6xl mx-auto print-document">
       
       {/* Official Print Header */}
-      <div className="hidden print-only print-header">
-        <h1>Official Academic Transcript</h1>
-        <p>Generated: {new Date().toLocaleDateString()}</p>
-        <p>Cumulative Summary Report</p>
+      <div className="hidden print-only print-header print-report-header">
+        <div className="print-brand-row">
+          <div className="print-brand-mark">NIIBS</div>
+          <div>
+            <h1>NIIBS GPA Calculators</h1>
+            <p>Official academic transcript and cumulative summary</p>
+          </div>
+        </div>
+        <div className="print-report-meta">
+          <span>Generated: {new Date().toLocaleDateString()}</span>
+          <span>Report Type: CGPA Summary</span>
+        </div>
       </div>
 
       {/* Semester details list - Left 2 columns */}
       <div className="lg:col-span-2 space-y-6">
         
         {/* Dynamic overall indicator card */}
-        <div className={`rounded-3xl p-6 sm:p-8 shadow-xl backdrop-blur-md flex flex-col justify-between overflow-hidden relative ${bannerStyle}`}>
+        <div className={`rounded-3xl p-6 sm:p-8 shadow-xl backdrop-blur-md flex flex-col justify-between overflow-hidden relative print-summary-panel ${bannerStyle}`}>
           <div className="relative z-10 space-y-3">
             <div className="flex items-center space-x-2">
               <span className="text-[11px] sm:text-xs font-mono font-medium uppercase tracking-wider text-niibs-blue dark:text-niibs-yellow">
@@ -378,7 +386,7 @@ export default function CgpaCalculator({ semesters, onAddSemester, onUpdateSemes
 
         {/* Saved historical data display ledger */}
         <motion.div
-          className="glass-card rounded-3xl p-6 sm:p-8 shadow-xl space-y-6 border border-slate-200/80 dark:border-slate-800/80"
+          className="glass-card rounded-3xl p-6 sm:p-8 shadow-xl space-y-6 border border-slate-200/80 dark:border-slate-800/80 print-ledger"
           whileHover={{
             y: -2,
             boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.06), 0 10px 10px -5px rgba(0, 0, 0, 0.02)"

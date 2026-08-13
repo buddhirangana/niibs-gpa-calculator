@@ -154,31 +154,31 @@ export default function FacultyCalculator({ onSaveSemester, savedSemesters, init
   };
 
   return (
-    <div id="faculty-calculator-component" className="grid grid-cols-1 lg:grid-cols-3 gap-8 relative z-10 max-w-6xl mx-auto">
+    <div id="faculty-calculator-component" className="grid grid-cols-1 lg:grid-cols-3 gap-8 relative z-10 max-w-6xl mx-auto print-sheet">
 
       {/* Selector Fields - Left 1 Column */}
-      <div className="lg:col-span-1 space-y-6 no-print">
+      <div className="lg:col-span-1 space-y-6 print-selector-panel">
         <motion.div
-          className="glass-card p-6 sm:p-7 rounded-3xl space-y-6 border border-slate-200/80 dark:border-slate-800/80 shadow-xl"
+          className="glass-card p-6 sm:p-7 rounded-3xl space-y-6 border border-slate-200/80 dark:border-slate-800/80 shadow-xl print-form-block"
           whileHover={{
             y: -2,
             boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.06), 0 10px 10px -5px rgba(0, 0, 0, 0.02)"
           }}
           transition={{ duration: 0.2 }}
         >
-          <div className="pb-3 border-b border-slate-200/80 dark:border-slate-800/80 flex items-center justify-between">
-            <h3 className="font-display font-semibold text-lg text-slate-900 dark:text-white">
+          <div className="pb-3 border-b border-slate-200/80 dark:border-slate-800/80 flex items-center justify-between print-header-row">
+            <h3 className="font-display font-semibold text-lg text-slate-900 dark:text-white print-title">
               Syllabus Selector
             </h3>
-            <BookOpen className="w-5 h-5 text-niibs-blue dark:text-niibs-yellow" />
+            <BookOpen className="w-5 h-5 text-niibs-blue dark:text-niibs-yellow print-icon" />
           </div>
 
           {/* Faculty Selector Selection */}
-          <div className="space-y-2 flex flex-col">
-            <label className="text-[10px] uppercase tracking-wider font-medium text-slate-500 dark:text-slate-400 block font-mono">
+          <div className="space-y-2 flex flex-col print-field-group">
+            <label className="text-[10px] uppercase tracking-wider font-medium text-slate-500 dark:text-slate-400 block font-mono print-label">
               Academic Faculty
             </label>
-            <div className="grid grid-cols-1 gap-2">
+            <div className="grid grid-cols-1 gap-2 print-options-list">
               {facultiesData.map(fac => {
                 const isSelected = selectedFacultyId === fac.id;
                 return (
@@ -186,14 +186,14 @@ export default function FacultyCalculator({ onSaveSemester, savedSemesters, init
                     id={`fac-select-${fac.id}`}
                     key={fac.id}
                     onClick={() => setSelectedFacultyId(fac.id)}
-                    className={`w-full text-left px-4 py-3 rounded-2xl border text-xs sm:text-sm font-bold tracking-wide transition-all duration-200 cursor-pointer font-display ${isSelected
+                    className={`w-full text-left px-4 py-3 rounded-2xl border text-xs sm:text-sm font-bold tracking-wide transition-all duration-200 cursor-pointer font-display print-option-btn ${isSelected
                         ? 'border-niibs-blue dark:border-niibs-yellow bg-niibs-blue/10 dark:bg-niibs-yellow/15 text-niibs-blue dark:text-niibs-yellow shadow-md shadow-slate-900/5'
                         : 'border-slate-200/80 dark:border-slate-800/80 text-slate-600 dark:text-slate-400 hover:bg-slate-100/50 dark:hover:bg-slate-800/50'
                       }`}
                   >
                     <div className="flex justify-between items-center">
                       <span>{fac.name}</span>
-                      <span className={`text-[10px] px-2 py-0.5 rounded-full font-mono font-semibold ${isSelected
+                      <span className={`text-[10px] px-2 py-0.5 rounded-full font-mono font-semibold print-option-tag ${isSelected
                           ? 'bg-niibs-blue text-white dark:bg-niibs-yellow dark:text-slate-950'
                           : 'bg-slate-200/60 dark:bg-slate-800/80 text-slate-600 dark:text-slate-400'
                         }`}>
@@ -208,15 +208,15 @@ export default function FacultyCalculator({ onSaveSemester, savedSemesters, init
 
           {/* Program Select Options */}
           {activePrograms.length > 0 && (
-            <div className="space-y-2">
-              <label className="text-[10px] uppercase tracking-wider font-medium text-slate-500 dark:text-slate-400 block font-mono">
+            <div className="space-y-2 print-field-group">
+              <label className="text-[10px] uppercase tracking-wider font-medium text-slate-500 dark:text-slate-400 block font-mono print-label">
                 Degree Program Curriculum
               </label>
               <select
                 id="program-selector-dropdown"
                 value={selectedProgramId}
                 onChange={(e) => setSelectedProgramId(e.target.value)}
-                className="w-full px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 text-slate-800 dark:text-slate-200 text-xs sm:text-sm focus:ring-2 focus:ring-niibs-yellow focus:outline-none backdrop-blur-md font-medium"
+                className="w-full px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 text-slate-800 dark:text-slate-200 text-xs sm:text-sm focus:ring-2 focus:ring-niibs-yellow focus:outline-none backdrop-blur-md font-medium print-select"
               >
                 {activePrograms.map(prog => (
                   <option key={prog.id} value={prog.id} className="dark:bg-slate-950 dark:text-slate-200">
@@ -229,11 +229,11 @@ export default function FacultyCalculator({ onSaveSemester, savedSemesters, init
 
           {/* Semester Selector Grid */}
           {activeProgram && (
-            <div className="space-y-2">
-              <label className="text-[10px] uppercase tracking-wider font-medium text-slate-500 dark:text-slate-400 block font-mono">
+            <div className="space-y-2 print-field-group">
+              <label className="text-[10px] uppercase tracking-wider font-medium text-slate-500 dark:text-slate-400 block font-mono print-label">
                 Academic Semester
               </label>
-              <div className="grid grid-cols-4 gap-2">
+              <div className="grid grid-cols-4 gap-2 print-semester-grid">
                 {activeProgram.semesters.map(sem => {
                   const isSelected = selectedSemesterIndex === sem.semesterNumber;
                   return (
@@ -241,7 +241,7 @@ export default function FacultyCalculator({ onSaveSemester, savedSemesters, init
                       id={`sem-grid-btn-${sem.semesterNumber}`}
                       key={sem.semesterNumber}
                       onClick={() => setSelectedSemesterIndex(sem.semesterNumber)}
-                      className={`py-2 rounded-xl text-xs font-mono font-semibold border transition-all duration-200 cursor-pointer ${isSelected
+                      className={`py-2 rounded-xl text-xs font-mono font-semibold border transition-all duration-200 cursor-pointer print-semester-btn ${isSelected
                           ? 'border-niibs-blue bg-niibs-blue text-white dark:border-niibs-yellow dark:bg-niibs-yellow dark:text-slate-950 shadow-md'
                           : 'border-slate-200 dark:border-slate-800 bg-white/40 dark:bg-slate-900/40 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800'
                         }`}

@@ -83,7 +83,7 @@ export default function PwaInstallPrompt() {
           <motion.div
             initial={{ opacity: 0, y: 50, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            className="fixed bottom-6 left-6 z-50 max-w-sm w-[calc(100%-3rem)] glass-card p-4 rounded-3xl border border-niibs-yellow/40 dark:border-niibs-yellow/30 shadow-2xl backdrop-blur-xl space-y-3"
+            className="fixed bottom-6 left-6 z-50 max-w-sm w-[calc(100%-3rem)] glass-card p-4 rounded-3xl border border-niibs-yellow/40 dark:border-niibs-yellow/30 shadow-2xl backdrop-blur-xl space-y-3 no-print"
           >
             <div className="flex items-start justify-between">
               <div className="flex items-center space-x-3">

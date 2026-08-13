@@ -1,0 +1,22 @@
+# NIIBS GPA Calculator
+
+> Official academic evaluation, SGPA calculation, and cumulative CGPA forecasting tool for undergraduates at the Nāgānanda International Institute for Buddhist Studies (NIIBS).
+
+## Main Application Views
+
+- [NIIBS GPA Calculator Home](https://niibsgpa.buddhirangana.com/): Primary web application interface for calculating SGPA and CGPA.
+- [Faculty Syllabus Calculator](https://niibsgpa.buddhirangana.com/): Pre-configured course credit grids for FCIT, FBS, and FHSS faculties.
+- [CGPA Tracker & Semester Log](https://niibsgpa.buddhirangana.com/): Multi-semester cumulative GPA logging, transcript view, PDF export, and CSV export.
+- [Target CGPA Planner](https://niibsgpa.buddhirangana.com/): Target planning tool to calculate required average GPA for remaining credit hours.
+
+## Supported Academic Faculties
+
+- [Faculty of Computing & Information Technology (FCIT)](https://niibsgpa.buddhirangana.com/): 4.0 GPA scale standard, BSc (Hons.) in Information Technology curriculum.
+- [Faculty of Buddhist Studies (FBS)](https://niibsgpa.buddhirangana.com/): 4.0 GPA scale standard, BA & BA (Hons.) in Buddhist Studies curriculum.
+- [Faculty of Humanities & Social Sciences (FHSS)](https://niibsgpa.buddhirangana.com/): 4.0 GPA scale standard, BA & BA (Hons.) degree programs.
+
+## Documentation & Developer Links
+
+- [GitHub Repository](https://github.com/buddhirangana/niibs-gpa-calculator): Open-source source code and project documentation.
+- [Developer Website](https://buddhirangana.com): Created by Buddhi Rangana.
+- [XML Sitemap](https://niibsgpa.buddhirangana.com/sitemap.xml): XML sitemap for search engine indexing.

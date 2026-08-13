@@ -3,12 +3,13 @@
  * Caches static assets for 100% offline access & fast loading.
  */
 
-const CACHE_NAME = 'niibs-gpa-v1';
+const CACHE_NAME = 'niibs-gpa-calculator';
 const ASSETS_TO_CACHE = [
   '/',
   '/index.html',
   '/manifest.json',
   '/favicon.png',
+  '/og-image.jpg',
   '/buddhi-rangana-img.webp'
 ];
 

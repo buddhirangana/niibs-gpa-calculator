@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { GraduationCap, MapPin, Phone, Mail, Globe, ExternalLink, AlertCircle, Heart } from 'lucide-react';
+import { GraduationCap, MapPin, Phone, Mail, Globe, ExternalLink, AlertCircle, Heart, Calendar } from 'lucide-react';
 
 interface FooterProps {
   onViewChange: (view: string) => void;
@@ -35,13 +35,17 @@ export default function Footer({ onViewChange }: FooterProps) {
                 <GraduationCap className="w-6 h-6 text-niibs-yellow" />
               </div>
               <div>
-                <div className="flex items-center space-x-1.5">
+                <div className="flex items-center space-x-2">
                   <span className="font-display font-semibold text-xl tracking-tight text-white">
                     NIIBS
                   </span>
                   <span className="text-[9px] px-1.5 py-0.5 rounded bg-niibs-yellow/20 text-niibs-yellow font-mono font-bold tracking-wider">
                     v1.0
                   </span>
+                  {/* <span className="text-[9px] px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-mono flex items-center space-x-1">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                    <span>Updated: Aug 2026</span>
+                  </span> */}
                 </div>
                 <span className="text-[10px] sm:text-xs font-mono font-medium tracking-wide text-niibs-yellow uppercase block leading-none mt-0.5">
                   GPA CALCULATOR
@@ -172,17 +176,25 @@ export default function Footer({ onViewChange }: FooterProps) {
         </div>
 
         {/* Footer Bottom / Meta */}
-        <div className="border-t border-slate-800/80 pt-8 mt-8 flex flex-col md:flex-row items-center justify-between text-xs text-slate-500 font-medium">
-          <p className="flex items-center space-x-1">
-            <span>© {currentYear} NIIBS GPA Calculator.</span>
-            <span className="hidden sm:inline">All rights reserved.</span>
-          </p>
-          <div className="flex items-center space-x-6 mt-4 md:mt-0">
+        <div className="border-t border-slate-800/80 pt-8 mt-8 flex flex-col md:flex-row items-center justify-between text-xs text-slate-500 font-medium gap-4">
+          <div className="flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-4 text-center sm:text-left">
+            <p className="flex items-center space-x-1">
+              <span>© {currentYear} NIIBS GPA Calculator.</span>
+              <span className="hidden sm:inline">All rights reserved.</span>
+            </p>
+            <span className="hidden sm:inline text-slate-800">•</span>
+            <div className="flex items-center space-x-1.5 text-slate-400 bg-slate-900/80 px-3 py-1 rounded-full border border-slate-800 font-mono text-[11px]">
+              <Calendar className="w-3.5 h-3.5 text-niibs-yellow shrink-0" />
+              <span>Last Updated: <strong className="text-slate-100 font-normal">August 13, 2026</strong></span>
+            </div>
+          </div>
+
+          <div className="flex items-center space-x-6">
             <span className="flex items-center space-x-1.5 bg-slate-900 px-3 py-1.5 rounded-full border border-slate-800">
               <span>Made with</span>
               <Heart className="w-3.5 h-3.5 text-niibs-red animate-pulse" fill="currentColor" />
               <span>by</span>
-              <a href="https://buddhirangana.com" target="_blank" rel="noopener noreferrer" className="text-slate-300 hover:text-white transition-colors ml-0.5">
+              <a href="https://buddhirangana.com" target="_blank" rel="noopener noreferrer" className="text-slate-300 hover:text-white transition-colors ml-0.5 font-semibold">
                 Buddhi Rangana
               </a>
             </span>

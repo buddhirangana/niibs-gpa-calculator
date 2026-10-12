@@ -26,8 +26,6 @@ import {
 } from 'lucide-react';
 import { LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend, ReferenceLine } from 'recharts';
 import { motion, AnimatePresence } from 'motion/react';
-import jsPDF from 'jspdf';
-import autoTable from 'jspdf-autotable';
 
 interface CgpaCalculatorProps {
   semesters: SemesterRecord[];
@@ -94,15 +92,19 @@ function SemesterRow({
                   : 'text-slate-400 hover:text-slate-600 dark:hover:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800'
               }`}
               title="Notes"
+              aria-label="Toggle semester notes"
             >
               <BookOpen className="w-4 h-4" />
+              <span className="sr-only">Toggle Notes</span>
             </button>
             <button
               onClick={() => onDelete(sem.id)}
               className="p-2 text-slate-400 hover:text-rose-600 hover:bg-rose-50 dark:hover:bg-rose-950/30 rounded-xl transition-all cursor-pointer"
               title="Remove record"
+              aria-label="Remove semester record"
             >
               <Trash className="w-4 h-4" />
+              <span className="sr-only">Remove Record</span>
             </button>
           </div>
         </div>
@@ -130,8 +132,10 @@ function SemesterRow({
                     onClick={handleSaveNotes}
                     className="p-2.5 bg-niibs-blue dark:bg-niibs-yellow text-white dark:text-slate-950 rounded-xl hover:opacity-90 transition-opacity cursor-pointer font-bold"
                     title="Save Notes"
+                    aria-label="Save semester notes"
                   >
                     <Save className="w-4 h-4" />
+                    <span className="sr-only">Save Notes</span>
                   </button>
                 </div>
               ) : (
@@ -282,8 +286,11 @@ export default function CgpaCalculator({ semesters, onAddSemester, onUpdateSemes
     URL.revokeObjectURL(url);
   };
 
-  const handleExportPdf = () => {
+  const handleExportPdf = async () => {
     if (semesters.length === 0) return;
+
+    const { default: jsPDF } = await import('jspdf');
+    const { default: autoTable } = await import('jspdf-autotable');
 
     const doc = new jsPDF();
     const formattedDate = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
@@ -654,6 +661,7 @@ export default function CgpaCalculator({ semesters, onAddSemester, onUpdateSemes
                   onClick={handlePrint}
                   className="inline-flex items-center space-x-1.5 text-xs text-slate-600 dark:text-slate-300 font-mono font-bold border border-slate-200 dark:border-slate-800 px-3 py-1.5 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-all cursor-pointer"
                   title="Print Report"
+                  aria-label="Print cumulative CGPA report"
                 >
                   <Printer className="w-3.5 h-3.5" />
                   <span>Print</span>
@@ -662,6 +670,7 @@ export default function CgpaCalculator({ semesters, onAddSemester, onUpdateSemes
                   onClick={handleExportPdf}
                   className="inline-flex items-center space-x-1.5 text-xs text-slate-600 dark:text-slate-300 font-mono font-bold border border-slate-200 dark:border-slate-800 px-3 py-1.5 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-all cursor-pointer"
                   title="Download PDF Report"
+                  aria-label="Download PDF CGPA report"
                 >
                   <FileText className="w-3.5 h-3.5" />
                   <span>PDF</span>
@@ -670,6 +679,7 @@ export default function CgpaCalculator({ semesters, onAddSemester, onUpdateSemes
                   onClick={handleExportCsv}
                   className="inline-flex items-center space-x-1.5 text-xs text-slate-600 dark:text-slate-300 font-mono font-bold border border-slate-200 dark:border-slate-800 px-3 py-1.5 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-all cursor-pointer"
                   title="Export to CSV"
+                  aria-label="Export to CSV spreadsheet"
                 >
                   <FileSpreadsheet className="w-3.5 h-3.5" />
                   <span>CSV</span>
@@ -677,6 +687,7 @@ export default function CgpaCalculator({ semesters, onAddSemester, onUpdateSemes
                 <button
                   onClick={onClearAll}
                   className="inline-flex items-center space-x-1 text-xs text-rose-600 dark:text-rose-400 font-mono font-bold border border-rose-200 dark:border-rose-900/60 px-3 py-1.5 rounded-xl hover:bg-rose-50 dark:hover:bg-rose-950/30 transition-all cursor-pointer"
+                  aria-label="Clear all recorded terms"
                 >
                   <RotateCcw className="w-3.5 h-3.5" />
                   <span>Clear</span>

@@ -10,6 +10,7 @@ const ASSETS_TO_CACHE = [
   '/manifest.json',
   '/favicon.png',
   '/og-image.jpg',
+  '/llms.txt',
   '/buddhi-rangana-img.webp'
 ];
 

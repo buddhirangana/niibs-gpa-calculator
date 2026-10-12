@@ -104,8 +104,10 @@ export default function PwaInstallPrompt() {
                 onClick={() => setIsDismissed(true)}
                 className="p-1 text-slate-400 hover:text-slate-600 dark:hover:text-white rounded-lg transition-colors cursor-pointer"
                 title="Dismiss"
+                aria-label="Dismiss install prompt"
               >
                 <X className="w-4 h-4" />
+                <span className="sr-only">Dismiss install prompt</span>
               </button>
             </div>
 

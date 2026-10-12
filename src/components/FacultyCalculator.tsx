@@ -482,8 +482,10 @@ export default function FacultyCalculator({ onSaveSemester, savedSemesters, init
                   onClick={handlePrint}
                   className="p-2.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white/40 dark:bg-slate-900/40 text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white backdrop-blur-md transition-all active:scale-95 cursor-pointer"
                   title="Print Transcript"
+                  aria-label="Print Transcript"
                 >
                   <Printer className="w-4 h-4" />
+                  <span className="sr-only">Print Transcript</span>
                 </button>
 
                 <button

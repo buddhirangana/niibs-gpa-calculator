@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { GraduationCap, MapPin, Phone, Mail, Globe, ExternalLink, AlertCircle, Heart, Calendar } from 'lucide-react';
+import { GraduationCap, MapPin, Phone, Mail, Globe, ExternalLink, AlertCircle, Heart, Calendar, Coffee } from 'lucide-react';
 
 interface FooterProps {
   onViewChange: (view: string) => void;
@@ -29,7 +29,7 @@ export default function Footer({ onViewChange }: FooterProps) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-8 mb-12">
           {/* Brand/Description Column */}
-          <div className="md:col-span-2 space-y-6">
+          <div className="md:col-span-2 space-y-6 flex flex-col items-center md:items-start text-center md:text-left">
             <div className="flex items-center space-x-3 cursor-pointer group w-max" onClick={() => handleNav('home')}>
               <div className="p-2.5 bg-white/5 text-niibs-yellow rounded-xl shadow-md border border-white/10 group-hover:border-niibs-yellow/40 group-hover:bg-niibs-yellow/10 transition-all duration-300 backdrop-blur-md">
                 <GraduationCap className="w-6 h-6 text-niibs-yellow" />
@@ -53,11 +53,11 @@ export default function Footer({ onViewChange }: FooterProps) {
               </div>
             </div>
 
-            <p className="text-sm leading-relaxed text-slate-400 max-w-sm">
+            <p className="text-sm leading-relaxed text-slate-400 max-w-sm mx-auto md:mx-0">
               The NIIBS GPA Calculator is a free, online tool designed for students to easily calculate and track their semester and cumulative Grade Point Averages based on official university credit weightage.
             </p>
 
-            <div className="flex items-center space-x-3 pt-2">
+            <div className="flex flex-wrap items-center justify-center md:justify-start gap-3 pt-2">
               <a
                 href="https://niibs.lk"
                 target="_blank"
@@ -95,11 +95,11 @@ export default function Footer({ onViewChange }: FooterProps) {
           </div>
 
           {/* Practical Navigation Utilities */}
-          <div>
+          <div className="text-center md:text-left">
             <h3 className="font-display font-semibold text-white tracking-wider text-sm mb-5 uppercase opacity-90">
               Academic Toolsets
             </h3>
-            <ul className="space-y-3 text-sm">
+            <ul className="space-y-3 text-sm flex flex-col items-center md:items-start">
               <li>
                 <button onClick={() => handleNav('calculator')} className="text-slate-400 hover:text-white transition-all text-left flex items-center space-x-2.5 group">
                   <span className="w-1.5 h-1.5 rounded-full bg-slate-700 group-hover:bg-niibs-yellow transition-colors"></span>
@@ -134,24 +134,24 @@ export default function Footer({ onViewChange }: FooterProps) {
           </div>
 
           {/* Contact Details Column */}
-          <div>
+          <div className="text-center md:text-left">
             <h3 className="font-display font-semibold text-white tracking-wider text-sm mb-5 uppercase opacity-90">
               Institute Info
             </h3>
-            <ul className="space-y-4 text-sm text-slate-400 font-sans">
-              <li className="flex items-start space-x-3 group cursor-default">
+            <ul className="space-y-4 text-sm text-slate-400 font-sans flex flex-col items-center md:items-start">
+              <li className="flex items-start justify-center md:justify-start space-x-3 group cursor-default text-left">
                 <div className="p-1.5 rounded-lg bg-white/5 border border-white/10 group-hover:border-niibs-yellow/40 group-hover:bg-niibs-yellow/10 transition-colors mt-0.5 shrink-0">
                   <MapPin className="w-3.5 h-3.5 text-slate-400 group-hover:text-niibs-yellow transition-colors" />
                 </div>
                 <span className="leading-relaxed">Nāgānanda International Institute for Buddhist Studies (NIIBS), Manelwatta, Bollegala, Kelaniya.</span>
               </li>
-              <li className="flex items-center space-x-3 group">
+              <li className="flex items-center justify-center md:justify-start space-x-3 group">
                 <div className="p-1.5 rounded-lg bg-white/5 border border-white/10 group-hover:border-niibs-yellow/40 group-hover:bg-niibs-yellow/10 transition-colors shrink-0">
                   <Phone className="w-3.5 h-3.5 text-slate-400 group-hover:text-niibs-yellow transition-colors" />
                 </div>
                 <span><a href="tel:+94112904666" className="hover:text-white transition-colors">+94 11 2904 666</a></span>
               </li>
-              <li className="flex items-center space-x-3 group">
+              <li className="flex items-center justify-center md:justify-start space-x-3 group">
                 <div className="p-1.5 rounded-lg bg-white/5 border border-white/10 group-hover:border-niibs-yellow/40 group-hover:bg-niibs-yellow/10 transition-colors shrink-0">
                   <Mail className="w-3.5 h-3.5 text-slate-400 group-hover:text-niibs-yellow transition-colors" />
                 </div>
@@ -172,6 +172,22 @@ export default function Footer({ onViewChange }: FooterProps) {
             <p className="font-sans">
               This GPA calculator is an independent tool created using NIIBS Student Handbooks. It is not affiliated with, endorsed by, or sponsored by the Nāgānanda International Institute for Buddhist Studies (NIIBS). The accuracy of results is not guaranteed. Please use this tool at your own discretion.
             </p>
+          </div>
+          {/* Buy Me a Coffee */}
+          <div className="flex flex-col sm:flex-row items-center gap-4 shrink-0 w-full md:w-auto pt-5 md:pt-0 border-t border-slate-800/80 md:border-t-0 md:pl-5 md:border-l relative">
+            <img
+              src="/qr-code.png"
+              alt="Buy Me a Coffee QR code"
+              className="w-32 h-32 sm:w-24 sm:h-24 rounded-xl bg-white p-1.5 object-contain shrink-0 shadow-md"
+              loading="lazy"
+            />
+            <div className="text-xs text-slate-400 leading-relaxed text-center sm:text-left">
+              <span className="flex items-center justify-center sm:justify-start space-x-1.5 text-slate-200 font-display font-semibold text-sm">
+                <Coffee className="w-4 h-4 text-niibs-yellow" />
+                <span>Buy me a coffee</span>
+              </span>
+              <span className="block mt-1">Scan to support this free tool.</span>
+            </div>
           </div>
         </div>
 
